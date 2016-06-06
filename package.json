@@ -1,0 +1,24 @@
+{
+  "name": "nmonaco",
+  "version": "0.0.0",
+  "description": "A daily build of microsoft monaco",
+  "bin": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basarat/monaco.git"
+  },
+  "keywords": [
+    "typescript",
+    "monaco"
+  ],
+  "author": "basaratali@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/basarat/monaco/issues"
+  },
+  "homepage": "https://github.com/basarat/monaco#readme",
+  "devDependencies": {
+    "gulp": "^3.8.9"
+  }
+}
