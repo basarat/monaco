@@ -10,6 +10,9 @@ git clean -xfd
 git fetch origin
 git reset --hard origin/master
 
+# Install everything
+npm install
+
 # TODO: do some stuff
 
 # Again reset sub repo
