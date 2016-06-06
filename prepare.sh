@@ -10,11 +10,11 @@ git clean -xfd
 git fetch origin
 git reset --hard origin/master
 
-# Install everything
-npm install
-
 # Do pre build modifications
 node ../extensions/preBuild.js
+
+# Install everything
+npm install
 
 # Build once to get a new LKG
 ./node_modules/.bin/gulp compile
