@@ -7,8 +7,12 @@ The plan is to provide daily automated builds on microsoft monaco.
 * out : the built assets
 * build : scripts for building various stuff
 
-## PLAN
+## How original monaco is built
 
-We need to set env `VSCODE_BUILD_DECLARATION_FILES=1`
-Then run `gulp compile`
-And then `node build/lib/api`
+* npm install
+* `gulp compile` (with declarations setting set to true)
+* And then `node build/lib/api`
+
+## Our Build
+
+All done using `prepare.sh` (with the help of `extensions/preBuild.ts`).
