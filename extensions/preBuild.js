@@ -9,6 +9,23 @@ function writeFile(filePath, content) {
     fs.writeFileSync(__dirname + '/' + filePath, content);
 }
 exports.writeFile = writeFile;
+function stringify(object, eol) {
+    if (eol === void 0) { eol = '\n'; }
+    var cache = [];
+    var value = JSON.stringify(object, function (key, value) {
+        if (typeof value === 'object' && value !== null) {
+            if (cache.indexOf(value) !== -1) {
+                return;
+            }
+            cache.push(value);
+        }
+        return value;
+    }, 2);
+    value = value.split('\n').join(eol) + eol;
+    cache = null;
+    return value;
+}
+exports.stringify = stringify;
 var lineFixes = [{
         fileName: '../vscode/gulpfile.js',
         orig: "var declaration = !!process.env['VSCODE_BUILD_DECLARATION_FILES']",
@@ -26,3 +43,7 @@ var packageJsonPath = "../vscode/package.json";
 nodeGypPackagesWeDontWant.forEach(function (packageName) {
     writeFile(packageJsonPath, readFile(packageJsonPath).split('\n').filter(function (x) { return !x.includes(packageName); }).join('\n'));
 });
+var packJsonContents = JSON.parse(readFile(packageJsonPath));
+delete packJsonContents.config;
+delete packJsonContents.devDependencies.ghooks;
+writeFile(packageJsonPath, stringify(packJsonContents));
