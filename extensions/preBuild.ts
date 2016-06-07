@@ -22,3 +22,16 @@ var lineFixes = [{
 for (let fix of lineFixes) {
     writeFile(fix.fileName, readFile(fix.fileName).replace(fix.orig, fix.new));
 }
+
+declare global {
+    interface String {
+        includes(str: string): boolean;
+    }
+}
+const nodeGypPackagesWeDontWant = [
+    "vscode-textmate"
+]
+const packageJsonPath = "../vscode/package.json";
+nodeGypPackagesWeDontWant.forEach(packageName => {
+    writeFile(packageJsonPath, readFile(packageJsonPath).split('\n').filter(x => !x.includes(packageName)).join('\n'));
+})

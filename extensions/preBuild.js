@@ -18,3 +18,10 @@ for (var _i = 0, lineFixes_1 = lineFixes; _i < lineFixes_1.length; _i++) {
     var fix = lineFixes_1[_i];
     writeFile(fix.fileName, readFile(fix.fileName).replace(fix.orig, fix.new));
 }
+var nodeGypPackagesWeDontWant = [
+    "vscode-textmate"
+];
+var packageJsonPath = "../vscode/package.json";
+nodeGypPackagesWeDontWant.forEach(function (packageName) {
+    writeFile(packageJsonPath, readFile(packageJsonPath).split('\n').filter(function (x) { return !x.includes(packageName); }).join('\n'));
+});
