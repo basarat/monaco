@@ -16,8 +16,11 @@ node ../extensions/preBuild.js
 # Install everything
 npm install
 
-# Build once to get a new LKG
+# Build VSCode once to get a new LKG
 ./node_modules/.bin/gulp compile
+
+# Build monaco
+node ./build/monaco/api
 
 # TODO: do some stuff
 

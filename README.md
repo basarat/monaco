@@ -11,10 +11,6 @@ The plan is to provide daily automated builds on microsoft monaco.
 
 Please see `build/monaco/README.md`
 
-* npm install
-* `gulp compile` (with declarations setting set to true)
-* And then `node build/lib/api`
-
 ## Our Build
 
 All done using `prepare.sh` (with the help of `extensions/preBuild.ts`).
