@@ -29,7 +29,8 @@ declare global {
     }
 }
 const nodeGypPackagesWeDontWant = [
-    "vscode-textmate"
+    "vscode-textmate",
+    "preinstall" // Don't want preinstall (its there to protect us from using `npm install` vs. `atom's npm install`. We are fine with npm)
 ]
 const packageJsonPath = "../vscode/package.json";
 nodeGypPackagesWeDontWant.forEach(packageName => {

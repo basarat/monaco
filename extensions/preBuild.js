@@ -19,7 +19,8 @@ for (var _i = 0, lineFixes_1 = lineFixes; _i < lineFixes_1.length; _i++) {
     writeFile(fix.fileName, readFile(fix.fileName).replace(fix.orig, fix.new));
 }
 var nodeGypPackagesWeDontWant = [
-    "vscode-textmate"
+    "vscode-textmate",
+    "preinstall"
 ];
 var packageJsonPath = "../vscode/package.json";
 nodeGypPackagesWeDontWant.forEach(function (packageName) {
