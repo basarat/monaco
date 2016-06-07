@@ -37,6 +37,7 @@ for (var _i = 0, lineFixes_1 = lineFixes; _i < lineFixes_1.length; _i++) {
 }
 var nodeGypPackagesWeDontWant = [
     "vscode-textmate",
+    "native-keymap",
     "preinstall"
 ];
 var packageJsonPath = "../vscode/package.json";
