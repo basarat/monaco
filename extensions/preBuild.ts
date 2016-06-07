@@ -41,6 +41,10 @@ var lineFixes = [{
     fileName: '../vscode/gulpfile.js',
     orig: `var declaration = !!process.env['VSCODE_BUILD_DECLARATION_FILES']`,
     new: `var declaration = true;`
+},{
+    fileName: '../vscode/build/lib/nls.js', // Reported here : https://github.com/Microsoft/vscode/issues/7290
+    orig: `if (!f.sourceMap) {`,
+    new: `if (!f.sourceMap) { return;`
 }];
 
 for (let fix of lineFixes) {

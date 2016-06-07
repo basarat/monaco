@@ -30,6 +30,10 @@ var lineFixes = [{
         fileName: '../vscode/gulpfile.js',
         orig: "var declaration = !!process.env['VSCODE_BUILD_DECLARATION_FILES']",
         new: "var declaration = true;"
+    }, {
+        fileName: '../vscode/build/lib/nls.js',
+        orig: "if (!f.sourceMap) {",
+        new: "if (!f.sourceMap) { return;"
     }];
 for (var _i = 0, lineFixes_1 = lineFixes; _i < lineFixes_1.length; _i++) {
     var fix = lineFixes_1[_i];
