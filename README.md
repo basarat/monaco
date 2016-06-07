@@ -9,6 +9,8 @@ The plan is to provide daily automated builds on microsoft monaco.
 
 ## How original monaco is built
 
+Please see `build/monaco/README.md`
+
 * npm install
 * `gulp compile` (with declarations setting set to true)
 * And then `node build/lib/api`
