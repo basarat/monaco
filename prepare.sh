@@ -20,6 +20,7 @@ npm install
 ./node_modules/.bin/gulp compile
 
 # Build monaco
+# This generates a new `src/vs/monaco.d.ts`
 node ./build/monaco/api
 
 # TODO: do some stuff
