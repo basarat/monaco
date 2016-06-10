@@ -15,6 +15,11 @@ git reset --hard origin/master
 #
 cp -r ./src/vs/editor ../src/vs
 cp -r ./src/vs/base ../src/vs
+cp -r ./src/vs/platform ../src/vs
+# copy some prebuilt assets
+cp ./src/vs/nls.d.ts ../src/vs/nls.d.ts
+cp ./src/vs/nls.d.ts ../build/vs/nls.d.ts
+cp ./src/vs/nls.js ../build/vs/nls.js
 
 # Do pre build modifications
 node ../extensions/preBuild.js
