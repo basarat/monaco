@@ -49,6 +49,16 @@ var lineFixes = [
       orig: `export function createMonacoBaseAPI(): typeof monaco {`,
       new: `export function createMonacoBaseAPI() {`
     },
+    {
+      fileName: '../src/vs/editor/browser/standalone/standaloneLanguages.ts',
+      orig: `export function createMonacoLanguagesAPI(): typeof monaco.languages {`,
+      new: `export function createMonacoLanguagesAPI() {`
+    },
+    {
+      fileName: '../src/vs/editor/common/services/editorSimpleWorker.ts',
+      orig: `function createMonacoWorkerAPI(): typeof monaco.worker {`,
+      new: `function createMonacoWorkerAPI() {`
+    },
 ];
 
 for (let fix of lineFixes) {

@@ -332,7 +332,7 @@ export function create(): IRequestHandler {
 	return instance;
 }
 
-function createMonacoWorkerAPI(): typeof monaco.worker {
+function createMonacoWorkerAPI() {
 	return {
 		get mirrorModels () {
 			return instance.getModels();
