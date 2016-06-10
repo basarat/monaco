@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/basarat/monaco#readme",
   "devDependencies": {
-    "gulp": "^3.8.9"
+    "typescript": "^1.8.0"
   }
 }
