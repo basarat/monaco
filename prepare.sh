@@ -14,6 +14,7 @@ git reset --hard origin/master
 # copy monaco
 #
 cp -r ./src/vs/editor ../src/vs
+cp -r ./src/vs/base ../src/vs
 
 # Do pre build modifications
 node ../extensions/preBuild.js
