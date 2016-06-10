@@ -12,8 +12,7 @@
 		"experimentalDecorators": true
 	},
 	"compileOnSave": false,
-	"exclude": [
-		"vs/languages/typescript/common/lib/lib.es6.d.ts",
-		"vs/languages/typescript/common/lib/lib.d.ts"
+	"files": [
+		"./vs/editor/editor.main.ts"
 	]
 }
