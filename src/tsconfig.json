@@ -3,12 +3,14 @@
 		"module": "amd",
 		"moduleResolution": "classic",
 		"noImplicitAny": false,
+		"inlineSourceMap": true,
 		"removeComments": false,
 		"preserveConstEnums": true,
 		"target": "es5",
 		"sourceMap": false,
 		"experimentalDecorators": true
 	},
+	"outDir": "../build",
 	"compileOnSave": false,
 	"exclude": [
 		"vs/languages/typescript/common/lib/lib.es6.d.ts",
