@@ -18,7 +18,7 @@ npm install
 
 #
 # Build monaco
-# 
+#
 
 # Build VSCode once to get a new `out` folder
 ./node_modules/.bin/gulp compile
@@ -28,6 +28,9 @@ node ./build/monaco/api
 
 # This generates the `out-monaco-editor-core` folder which is for npm publishing
 ./node_modules/.bin/gulp editor-distro
+
+# Copy it out to our `build` folder
+cp ./out-monaco-editor-core ../build
 
 # TODO: do some stuff
 
