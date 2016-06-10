@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"module": "amd",
+		"moduleResolution": "classic",
+		"noImplicitAny": false,
+		"removeComments": false,
+		"preserveConstEnums": true,
+		"target": "es5",
+		"sourceMap": false,
+		"experimentalDecorators": true
+	},
+	"compileOnSave": false,
+	"exclude": [
+		"vs/languages/typescript/common/lib/lib.es6.d.ts",
+		"vs/languages/typescript/common/lib/lib.d.ts"
+	]
+}
