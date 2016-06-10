@@ -16,7 +16,13 @@ git reset --hard origin/master
 cp -r ./src/vs/editor ../src/vs
 cp -r ./src/vs/base ../src/vs
 cp -r ./src/vs/platform ../src/vs
+#
 # copy some prebuilt assets
+#
+# vscode
+cp ./src/vs/vscode.d.ts ../src/vs/vscode.d.ts
+cp ./src/vs/vscode.d.ts ../build/vs/vscode.d.ts
+# nls
 cp ./src/vs/nls.d.ts ../src/vs/nls.d.ts
 cp ./src/vs/nls.d.ts ../build/vs/nls.d.ts
 cp ./src/vs/nls.js ../build/vs/nls.js

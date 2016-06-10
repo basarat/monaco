@@ -13,6 +13,7 @@
 	},
 	"compileOnSave": false,
 	"files": [
-		"./vs/editor/editor.main.ts"
+		"./vs/editor/editor.main.ts",
+		"./vs/vscode.d.ts"
 	]
 }
