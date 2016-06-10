@@ -34,55 +34,55 @@ export function stringify(object: Object, eol: string = '\n'): string {
     return value;
 }
 
-/**
- * Any line changes
- */
-var lineFixes = [{
-    fileName: '../vscode/gulpfile.js',
-    orig: `var declaration = !!process.env['VSCODE_BUILD_DECLARATION_FILES']`,
-    new: `var declaration = true;`
-},{
-    fileName: '../vscode/build/lib/nls.js', // Reported here : https://github.com/Microsoft/vscode/issues/7290
-    orig: `if (!f.sourceMap) {`,
-    new: `if (!f.sourceMap) { return;`
-}];
-
-for (let fix of lineFixes) {
-    writeFile(fix.fileName, readFile(fix.fileName).replace(fix.orig, fix.new));
-}
-
-/**
- * Package.json cleanups
- */
-declare global {
-    interface String {
-        includes(str: string): boolean;
-    }
-}
-const nodeGypPackagesWeDontWant = [
-    "vscode-textmate",
-    "native-keymap",
-    "preinstall" // Don't want preinstall (its there to protect us from using `npm install` vs. `atom's npm install`. We are fine with npm)
-]
-const packageJsonPath = "../vscode/package.json";
-nodeGypPackagesWeDontWant.forEach(packageName => {
-    writeFile(packageJsonPath, readFile(packageJsonPath).split('\n').filter(x => !x.includes(packageName)).join('\n'));
-})
-/** We also don't want their ghooks to get triggered */
-const packJsonContents = JSON.parse(readFile(packageJsonPath));
-delete packJsonContents.config;
-delete packJsonContents.devDependencies.ghooks;
-writeFile(packageJsonPath, stringify(packJsonContents));
-
-/**
- * Extend the monaco API to expose more stuff
- */
-const recipeFile = "../vscode/build/monaco/monaco.d.ts.recipe";
-const recipeAdditions = `
-declare module monaco.editor {
-
-#include(vs/editor/common/services/editorWorkerServiceImpl): EditorWorkerClient
-
-}
-`;
-writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);
+// /**
+//  * Any line changes
+//  */
+// var lineFixes = [{
+//     fileName: '../vscode/gulpfile.js',
+//     orig: `var declaration = !!process.env['VSCODE_BUILD_DECLARATION_FILES']`,
+//     new: `var declaration = true;`
+// },{
+//     fileName: '../vscode/build/lib/nls.js', // Reported here : https://github.com/Microsoft/vscode/issues/7290
+//     orig: `if (!f.sourceMap) {`,
+//     new: `if (!f.sourceMap) { return;`
+// }];
+//
+// for (let fix of lineFixes) {
+//     writeFile(fix.fileName, readFile(fix.fileName).replace(fix.orig, fix.new));
+// }
+//
+// /**
+//  * Package.json cleanups
+//  */
+// declare global {
+//     interface String {
+//         includes(str: string): boolean;
+//     }
+// }
+// const nodeGypPackagesWeDontWant = [
+//     "vscode-textmate",
+//     "native-keymap",
+//     "preinstall" // Don't want preinstall (its there to protect us from using `npm install` vs. `atom's npm install`. We are fine with npm)
+// ]
+// const packageJsonPath = "../vscode/package.json";
+// nodeGypPackagesWeDontWant.forEach(packageName => {
+//     writeFile(packageJsonPath, readFile(packageJsonPath).split('\n').filter(x => !x.includes(packageName)).join('\n'));
+// })
+// /** We also don't want their ghooks to get triggered */
+// const packJsonContents = JSON.parse(readFile(packageJsonPath));
+// delete packJsonContents.config;
+// delete packJsonContents.devDependencies.ghooks;
+// writeFile(packageJsonPath, stringify(packJsonContents));
+//
+// /**
+//  * Extend the monaco API to expose more stuff
+//  */
+// const recipeFile = "../vscode/build/monaco/monaco.d.ts.recipe";
+// const recipeAdditions = `
+// declare module monaco.editor {
+//
+// #include(vs/editor/common/services/editorWorkerServiceImpl): EditorWorkerClient
+//
+// }
+// `;
+// writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);

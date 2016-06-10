@@ -26,32 +26,3 @@ function stringify(object, eol) {
     return value;
 }
 exports.stringify = stringify;
-var lineFixes = [{
-        fileName: '../vscode/gulpfile.js',
-        orig: "var declaration = !!process.env['VSCODE_BUILD_DECLARATION_FILES']",
-        new: "var declaration = true;"
-    }, {
-        fileName: '../vscode/build/lib/nls.js',
-        orig: "if (!f.sourceMap) {",
-        new: "if (!f.sourceMap) { return;"
-    }];
-for (var _i = 0, lineFixes_1 = lineFixes; _i < lineFixes_1.length; _i++) {
-    var fix = lineFixes_1[_i];
-    writeFile(fix.fileName, readFile(fix.fileName).replace(fix.orig, fix.new));
-}
-var nodeGypPackagesWeDontWant = [
-    "vscode-textmate",
-    "native-keymap",
-    "preinstall"
-];
-var packageJsonPath = "../vscode/package.json";
-nodeGypPackagesWeDontWant.forEach(function (packageName) {
-    writeFile(packageJsonPath, readFile(packageJsonPath).split('\n').filter(function (x) { return !x.includes(packageName); }).join('\n'));
-});
-var packJsonContents = JSON.parse(readFile(packageJsonPath));
-delete packJsonContents.config;
-delete packJsonContents.devDependencies.ghooks;
-writeFile(packageJsonPath, stringify(packJsonContents));
-var recipeFile = "../vscode/build/monaco/monaco.d.ts.recipe";
-var recipeAdditions = "\ndeclare module monaco.editor {\n\n#include(vs/editor/common/services/editorWorkerServiceImpl): EditorWorkerClient\n\n}\n";
-writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);
