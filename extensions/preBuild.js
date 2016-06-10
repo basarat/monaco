@@ -52,3 +52,6 @@ var packJsonContents = JSON.parse(readFile(packageJsonPath));
 delete packJsonContents.config;
 delete packJsonContents.devDependencies.ghooks;
 writeFile(packageJsonPath, stringify(packJsonContents));
+var recipeFile = "../vscode/build/monaco/monaco.d.ts.recipe";
+var recipeAdditions = "\ndeclare module monaco.editor {\n\n#include(vs/editor/common/services/editorWorkerServiceImpl): EditorWorkerClient\n\n}\n";
+writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);
