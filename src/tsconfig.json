@@ -6,11 +6,10 @@
 		"inlineSourceMap": true,
 		"removeComments": false,
 		"preserveConstEnums": true,
-		"target": "es5",
-		"sourceMap": false,
+		"target": "es5",		
+		"outDir": "../build",
 		"experimentalDecorators": true
 	},
-	"outDir": "../build",
 	"compileOnSave": false,
 	"exclude": [
 		"vs/languages/typescript/common/lib/lib.es6.d.ts",
