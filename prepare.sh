@@ -18,6 +18,9 @@ cp -r ./src/vs/editor ../src/vs
 # Do pre build modifications
 node ../extensions/preBuild.js
 
+# Build using tsc
+../node_modules/.bin/tsc -p ../src/tsconfig.json
+
 #
 # Build monaco
 #
