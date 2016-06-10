@@ -34,22 +34,26 @@ export function stringify(object: Object, eol: string = '\n'): string {
     return value;
 }
 
-// /**
-//  * Any line changes
-//  */
-// var lineFixes = [{
-//     fileName: '../vscode/gulpfile.js',
-//     orig: `var declaration = !!process.env['VSCODE_BUILD_DECLARATION_FILES']`,
-//     new: `var declaration = true;`
-// },{
-//     fileName: '../vscode/build/lib/nls.js', // Reported here : https://github.com/Microsoft/vscode/issues/7290
-//     orig: `if (!f.sourceMap) {`,
-//     new: `if (!f.sourceMap) { return;`
-// }];
-//
-// for (let fix of lineFixes) {
-//     writeFile(fix.fileName, readFile(fix.fileName).replace(fix.orig, fix.new));
-// }
+/**
+ * Any line changes
+ */
+var lineFixes = [
+    /** Instead of `monaco` we let the type inference flow */
+    {
+      fileName: '../src/vs/editor/browser/standalone/standaloneEditor.ts',
+      orig: `export function createMonacoEditorAPI(): typeof monaco.editor {`,
+      new: `export function createMonacoEditorAPI() {`
+    },
+    {
+      fileName: '../src/vs/editor/common/standalone/standaloneBase.ts',
+      orig: `export function createMonacoBaseAPI(): typeof monaco {`,
+      new: `export function createMonacoBaseAPI() {`
+    },
+];
+
+for (let fix of lineFixes) {
+    writeFile(fix.fileName, readFile(fix.fileName).replace(fix.orig, fix.new));
+}
 //
 // /**
 //  * Package.json cleanups

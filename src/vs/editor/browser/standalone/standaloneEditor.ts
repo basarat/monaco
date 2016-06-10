@@ -284,7 +284,7 @@ export function colorizeModelLine(model:IModel, lineNumber:number, tabSize:numbe
 /**
  * @internal
  */
-export function createMonacoEditorAPI(): typeof monaco.editor {
+export function createMonacoEditorAPI() {
 	return {
 		// methods
 		create: create,

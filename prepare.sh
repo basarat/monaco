@@ -22,6 +22,7 @@ cp ./src/vs/nls.d.ts ../build/vs/nls.d.ts
 cp ./src/vs/nls.js ../build/vs/nls.js
 
 # Do pre build modifications
+../node_modules/.bin/tsc -p ../extensions/tsconfig.json
 node ../extensions/preBuild.js
 
 # Build using tsc

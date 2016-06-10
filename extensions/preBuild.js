@@ -26,3 +26,19 @@ function stringify(object, eol) {
     return value;
 }
 exports.stringify = stringify;
+var lineFixes = [
+    {
+        fileName: '../src/vs/editor/browser/standalone/standaloneEditor.ts',
+        orig: "export function createMonacoEditorAPI(): typeof monaco.editor {",
+        new: "export function createMonacoEditorAPI() {"
+    },
+    {
+        fileName: '../src/vs/editor/common/standalone/standaloneBase.ts',
+        orig: "export function createMonacoBaseAPI(): typeof monaco {",
+        new: "export function createMonacoBaseAPI() {"
+    },
+];
+for (var _i = 0, lineFixes_1 = lineFixes; _i < lineFixes_1.length; _i++) {
+    var fix = lineFixes_1[_i];
+    writeFile(fix.fileName, readFile(fix.fileName).replace(fix.orig, fix.new));
+}

@@ -14,7 +14,7 @@ import {CancellationTokenSource} from 'vs/base/common/cancellation';
 import Severity from 'vs/base/common/severity';
 import URI from 'vs/base/common/uri';
 
-export function createMonacoBaseAPI(): typeof monaco {
+export function createMonacoBaseAPI() {
 	return {
 		editor: undefined,
 		worker: undefined,
