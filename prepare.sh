@@ -16,6 +16,8 @@ git reset --hard origin/master
 cp -r ./src/vs/editor ../src/vs
 cp -r ./src/vs/base ../src/vs
 cp -r ./src/vs/platform ../src/vs
+mkdir -p ../src/vs/workbench/services/quickopen
+cp -r ./src/vs/workbench/services/quickopen/common ../src/vs/workbench/services/quickopen
 #
 # copy some prebuilt assets
 #
