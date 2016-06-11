@@ -19,6 +19,7 @@ branches:
   only:
   - master
 deploy:
+  skip_cleanup: true
   provider: npm
   email: basaratali@gmail.com
   api_key:
