@@ -25,6 +25,8 @@ cp -r ./src/vs/workbench/services/quickopen/common ../src/vs/workbench/services/
 # loader
 cp ./src/vs/loader.js ../src/vs/loader.js
 cp ./src/vs/loader.js ../build/vs/loader.js
+cp ./src/vs/css.js ../src/vs/css.js
+cp ./src/vs/css.js ../build/vs/css.js
 # vscode
 cp ./src/vs/vscode.d.ts ../src/vs/vscode.d.ts
 cp ./src/vs/vscode.d.ts ../build/vs/vscode.d.ts
