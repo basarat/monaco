@@ -19,8 +19,11 @@ cp -r ./src/vs/platform ../src/vs
 mkdir -p ../src/vs/workbench/services/quickopen
 cp -r ./src/vs/workbench/services/quickopen/common ../src/vs/workbench/services/quickopen
 #
-# copy some prebuilt assets
+# copy some prebuilt assets (to src and build)
 #
+# loader
+cp ./src/vs/loader.js ../src/vs/loader.js
+cp ./src/vs/loader.js ../build/vs/loader.js
 # vscode
 cp ./src/vs/vscode.d.ts ../src/vs/vscode.d.ts
 cp ./src/vs/vscode.d.ts ../build/vs/vscode.d.ts
