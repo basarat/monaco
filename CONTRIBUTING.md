@@ -1,9 +1,17 @@
+# Why
+A build of monaco:
+* that we have more control over.
+* exposing private stuff that we want to use
+* not having it change under us as often 🌹
+
 # How?
 See `prepare.sh` for comments. But here is an overview
 
 * copy specific vscode srces to `src` that are significant for a monaco build
 * build these sources using our own `tsconfig.json` (the entry points in this file determine *what actually gets built*). The `.js` assets are `outDir`ed to `build` directory
 * copy all non `.ts` artifcats to `build` directory (e.g. svg, css etc)
+
+So long term maintenance burden only seems like maintaining `tsconfig.json`.
 
 # Release
 

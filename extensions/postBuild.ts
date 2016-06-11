@@ -1,24 +1,27 @@
 /**
  * Make modifications to source post build
  */
-/** Imports */
-import * as utils from "./utils";
+/** imports */
+import {getAllFilesInFolder, copy} from "./utils";
+/**
+ * Copy some more files over
+ */
 const path = require('path');
 /** The src dir */
 const srcDir = path.resolve(__dirname + '/../src');
 const buildDir = path.resolve(__dirname + '/../build');
 /** All the files in `src` */
-const allFiles: string[] = require('glob').sync('./**/*', { cwd: srcDir }).map(p=>path.resolve(srcDir,p));
+const allFiles: string[] = getAllFilesInFolder(srcDir);
 
 /** Move any `.css` files in source to build */
 allFiles.filter(f => f.endsWith('.css')).forEach(src => {
-    utils.copy(src, src.replace(srcDir, buildDir));
+    copy(src, src.replace(srcDir, buildDir));
 })
 /** copy all svg files */
 allFiles.filter(f => f.endsWith('.svg')).forEach(src => {
-    utils.copy(src, src.replace(srcDir, buildDir));
+    copy(src, src.replace(srcDir, buildDir));
 })
 /** If there are any `.js` files, they should be copied over as well! */
 allFiles.filter(f => f.endsWith('.js')).forEach(src => {
-    utils.copy(src, src.replace(srcDir, buildDir));
+    copy(src, src.replace(srcDir, buildDir));
 })
