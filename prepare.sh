@@ -20,7 +20,7 @@ cp -r ./src/vs/languages ../src/vs
 mkdir -p ../src/vs/workbench/services/quickopen
 cp -r ./src/vs/workbench/services/quickopen/common ../src/vs/workbench/services/quickopen
 #
-# copy some prebuilt assets (to src and build)
+# copy some prebuilt assets (to src (if not done already) and always to build)
 #
 # loader
 cp ./src/vs/loader.js ../src/vs/loader.js
@@ -34,6 +34,11 @@ cp ./src/vs/vscode.d.ts ../build/vs/vscode.d.ts
 cp ./src/vs/nls.d.ts ../src/vs/nls.d.ts
 cp ./src/vs/nls.d.ts ../build/vs/nls.d.ts
 cp ./src/vs/nls.js ../build/vs/nls.js
+# winjs
+cp ./src/vs/base/common/winjs.base.d.ts ../build/vs/base/common/winjs.base.d.ts
+cp ./src/vs/base/common/winjs.base.js ../build/vs/base/common/winjs.base.js
+# marked
+cp -r ./src/vs/base/common/marked ../build/vs/base/common
 
 # Do pre build modifications
 ../node_modules/.bin/tsc -p ../extensions/tsconfig.json
