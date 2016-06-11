@@ -23,6 +23,8 @@ npm publish
 
 # Travis
 
+This is just the documentation on how travis was setup to do automatic deploys (to help you with forks) 🌹
+
 * install travis `gem install travis`
 * now go to your repository directory
 
