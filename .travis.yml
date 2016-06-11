@@ -1,6 +1,9 @@
 language: node_js
 node_js:
 - stable
+env:
+  global:
+    secure: aEjSjlHE0An6vY+xO5vg+VTcoMN4HLxgXDIpksOIfZkM4Y8JnLQwKH9wMvXIOaF7rf2t8UHZhLPXJdyYdt6Ei7B4l6jyDQ1UYqP+y7kKYAvDyvAhaTKJLpDFDyksV8fjCa3PIMa2IcN3JD2q/JxFGcRRugfN1h56kfuieHHm+VmeD3Y8hkRxm+X8SgHfaZPf5Tp9dITR2g90wlOmoNFRVwkgbo80QHgiIE4fUW8KNcAbL0VXzalIob54IPQNEA75JA700cHKt/lJstCWL+H+VLiLPBUKG/3L3D8hitfrQXBAVr5QiecY9giDyR5rTvps8UdpxnBTFqtLwFpMHY/9VhWAB8XraktfC5NkSjF4B81UoBKgek7fOB4Y45Hn5wYHqHAT6RLWJ8gOaWgPXaSKrtknS6eXV2nxO+VHMWa+VBuXdhbJKhYptXQhu75+HBYSr4QtZRwCXQG71GYU3QHAMvpCKZYSDHhuBnM2WNILOhY6g62Odjmdd9y0F9Ne7t2ZKxaLrL7PRFxMR/wFGR6XJssJMgCMer3aHXlqQsONhhXAg3TogDawvNGiD/nsOeqieEeCiDRsjoqSKY3TGgcFtaclIKJxWH0OJgSluafRE4RuTPK+f9hckqAWbD8sLSIMXupfEFNN4emNrClkrFk2bPNdXV3t+x6gWpUhp2wrpZc=
 before_script:
 - git config --global user.email "basaratali@gmail.com"
 - git config --global user.name "Travis-CI"
