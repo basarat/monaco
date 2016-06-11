@@ -37,6 +37,7 @@ cp ./src/vs/nls.js ../build/vs/nls.js
 # winjs
 cp ./src/vs/base/common/winjs.base.d.ts ../build/vs/base/common/winjs.base.d.ts
 cp ./src/vs/base/common/winjs.base.js ../build/vs/base/common/winjs.base.js
+cp ./src/vs/base/common/winjs.base.raw.js ../build/vs/base/common/winjs.base.raw.js
 # marked
 cp -r ./src/vs/base/common/marked ../build/vs/base/common
 
