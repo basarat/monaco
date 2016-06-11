@@ -14,3 +14,18 @@ Please see `build/monaco/README.md`
 ## Our Build
 
 All done using `prepare.sh` (with the help of `extensions/preBuild.ts`).
+
+
+## Installation
+
+Due to limited testing and automated release we recommend hard version installs:
+
+```
+npm install nmonaco --save --save-exact
+```
+
+you can put this your package.json (and now you can `npm run unmonaco`):
+
+```
+    "unmonaco": "npm install nmonaco@latest --save --save-exact && npm run tsc",
+```
