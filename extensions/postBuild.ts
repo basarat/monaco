@@ -11,6 +11,10 @@ const buildDir = path.resolve(__dirname + '/../build');
 const allFiles: string[] = require('glob').sync('./**/*', { cwd: srcDir }).map(p=>path.resolve(srcDir,p));
 
 /** Move any `.css` files in source to build */
-allFiles.filter(f => f.endsWith('.css')).forEach(srcCss => {
-    utils.copy(srcCss, srcCss.replace(srcDir, buildDir));
+allFiles.filter(f => f.endsWith('.css')).forEach(src => {
+    utils.copy(src, src.replace(srcDir, buildDir));
+})
+/** copy all svg files */
+allFiles.filter(f => f.endsWith('.svg')).forEach(src => {
+    utils.copy(src, src.replace(srcDir, buildDir));
 })
