@@ -2,11 +2,13 @@
 
 ## Quickly
 
-Quick workflow (runs `prepare` and `release`):
+Quick workflow (runs `prepare` and `release` and releases):
 
 ```sh
 quick.sh
 ```
+
+If something goes wrong with our build we can use this to quickly do releases to see what's going on 🌹
 
 ## Manually
 
