@@ -3,7 +3,6 @@
  */
 
 // Utilities
-declare var require, __dirname;
 var fs = require('fs');
 var EOL: string = require('os').EOL;
 export function readFile(filePath: string): string {

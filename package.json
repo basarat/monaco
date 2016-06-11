@@ -1,9 +1,8 @@
 {
   "name": "nmonaco",
-  "version": "0.201606111345.0+549478a00488e27b9ce2b754fed8ae6dc1d90bbf",
+  "version": "0.201606111417.0+549478a00488e27b9ce2b754fed8ae6dc1d90bbf",
   "description": "A daily build of microsoft monaco",
-  "bin": {
-  },
+  "bin": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/basarat/monaco.git"
@@ -19,6 +18,7 @@
   },
   "homepage": "https://github.com/basarat/monaco#readme",
   "devDependencies": {
+    "glob": "^7.0.3",
     "typescript": "^1.8.0"
   }
 }

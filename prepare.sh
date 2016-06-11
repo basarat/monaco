@@ -42,6 +42,9 @@ node ../extensions/preBuild.js
 # Build using tsc
 ../node_modules/.bin/tsc -p ../src/tsconfig.json
 
+# Do post build modifications
+node ../extensions/postBuild.js
+
 #
 # Build monaco
 #
