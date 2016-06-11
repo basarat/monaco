@@ -10,3 +10,6 @@ allFiles.filter(function (f) { return f.endsWith('.css'); }).forEach(function (s
 allFiles.filter(function (f) { return f.endsWith('.svg'); }).forEach(function (src) {
     utils.copy(src, src.replace(srcDir, buildDir));
 });
+allFiles.filter(function (f) { return f.endsWith('.js'); }).forEach(function (src) {
+    utils.copy(src, src.replace(srcDir, buildDir));
+});

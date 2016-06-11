@@ -18,3 +18,7 @@ allFiles.filter(f => f.endsWith('.css')).forEach(src => {
 allFiles.filter(f => f.endsWith('.svg')).forEach(src => {
     utils.copy(src, src.replace(srcDir, buildDir));
 })
+/** If there are any `.js` files, they should be copied over as well! */
+allFiles.filter(f => f.endsWith('.js')).forEach(src => {
+    utils.copy(src, src.replace(srcDir, buildDir));
+})
