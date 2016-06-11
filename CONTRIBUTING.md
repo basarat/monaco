@@ -21,6 +21,8 @@ release.sh
 npm publish
 ```
 
+> Note: once travis was setup to publish we don't need `npm publish` anymore.
+
 # Travis
 
 This is just the documentation on how travis was setup to do automatic deploys (to help you with forks) 🌹
