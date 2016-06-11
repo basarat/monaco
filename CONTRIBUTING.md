@@ -26,7 +26,7 @@ npm publish
 install travis `gem install travis`
 
 ## Github push
-* Generate a github token `settings -> applications -> personal access tokens -> generate new token`
+* Generate a github token `settings -> personal access tokens -> generate new token` (give it `repo` access)
 * run `travis encrypt -r <USER>/<REPOSITORY> GH_TOKEN=<GH-TOKEN> --add env.global`. This should setup `env.global.secure` in your `.travis.yml`
 
 This `GH-TOKEN` is used in our `after_success` script 🌹
