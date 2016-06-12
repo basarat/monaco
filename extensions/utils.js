@@ -49,3 +49,7 @@ function remove(filePath) {
     return fse.removeSync(filePath);
 }
 exports.remove = remove;
+function resolve(relativeFilePath) {
+    return path.resolve(__dirname + '/../' + relativeFilePath);
+}
+exports.resolve = resolve;

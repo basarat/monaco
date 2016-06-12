@@ -1,5 +1,33 @@
 "use strict";
 var utils_1 = require("./utils");
+var utils = require("./utils");
+var path = require('path');
+var lineFixes = [
+    {
+        fileName: './vscode/gulpfile.js',
+        orig: "if (isWatch) {",
+        new: "if (true) {"
+    },
+    {
+        fileName: './vscode/build/gulpfile.editor.js',
+        orig: "result.paths['vs/base/common/marked/marked'] = 'out-build/vs/base/common/marked/marked.mock';",
+        new: ""
+    },
+    {
+        fileName: './vscode/gulpfile.js',
+        orig: "require('./build/gulpfile.hygiene');",
+        new: ""
+    },
+    {
+        fileName: './vscode/gulpfile.js',
+        orig: "require('./build/gulpfile.vscode');",
+        new: ""
+    },
+];
+for (var _i = 0, lineFixes_1 = lineFixes; _i < lineFixes_1.length; _i++) {
+    var fix = lineFixes_1[_i];
+    utils_1.writeFile(fix.fileName, utils_1.readFile(fix.fileName).replace(fix.orig, fix.new));
+}
 var packagesWeDontWant = [
     "pty.js",
     "vscode-textmate",
@@ -14,23 +42,51 @@ packagesWeDontWant.forEach(function (packageName) {
 var packJsonContents = JSON.parse(utils_1.readFile(packageJsonPath));
 delete packJsonContents.config;
 delete packJsonContents.devDependencies.ghooks;
-utils_1.writeFile(packageJsonPath, utils_1.stringify(packJsonContents));
-var lineFixes = [
-    {
-        fileName: './vscode/gulpfile.js',
-        orig: "if (isWatch) {",
-        new: "if (true) {"
-    },
-    {
-        fileName: './vscode/build/gulpfile.editor.js',
-        orig: "result.paths['vs/base/common/marked/marked'] = 'out-build/vs/base/common/marked/marked.mock';",
-        new: ""
-    }
+var keepThePackages = [
+    'gulp',
+    'gulp-json-editor',
+    'gulp-buffer',
+    'gulp-tsb',
+    'gulp-filter',
+    'gulp-mocha',
+    'event-stream',
+    'gulp-remote-src',
+    'gulp-vinyl-zip',
+    'gulp-bom',
+    'gulp-sourcemaps',
+    'underscore',
+    'object-assign',
+    'typescript',
+    'lazy.js',
+    'clone',
+    'vinyl',
+    'source-map',
+    'debounce',
+    'gulp-azure-storage',
+    'azure-storage',
+    'gulp-rename',
+    'gulp-vinyl-zip',
+    'gulp-util',
+    'rimraf',
+    'gulp-cssnano',
+    'gulp-uglify',
+    'gulp-concat',
+    'gulp-util',
+    'vscode-nls-dev',
 ];
-for (var _i = 0, lineFixes_1 = lineFixes; _i < lineFixes_1.length; _i++) {
-    var fix = lineFixes_1[_i];
-    utils_1.writeFile(fix.fileName, utils_1.readFile(fix.fileName).replace(fix.orig, fix.new));
-}
+Object.keys(packJsonContents.dependencies).forEach(function (dep) {
+    if (keepThePackages.indexOf(dep) !== -1)
+        return;
+    delete packJsonContents.dependencies[dep];
+});
+Object.keys(packJsonContents.devDependencies).forEach(function (dep) {
+    if (keepThePackages.indexOf(dep) !== -1)
+        return;
+    delete packJsonContents.devDependencies[dep];
+});
+delete packJsonContents.scripts;
+utils_1.writeFile(packageJsonPath, utils_1.stringify(packJsonContents));
+utils.remove(utils.resolve('./vscode/npm-shrinkwrap.json'));
 var recipeFile = "./vscode/build/monaco/monaco.d.ts.recipe";
 var recipeAdditions = "\n";
 utils_1.writeFile(recipeFile, utils_1.readFile(recipeFile) + recipeAdditions);

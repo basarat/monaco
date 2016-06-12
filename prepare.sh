@@ -6,7 +6,9 @@ git submodule update --recursive --init
 # Official Microsoft/vscode clone
 cd ./vscode
 
-git clean -xfd
+# Reset to origin.
+# commented out `git clean` for faster npm install
+# git clean -xfd
 git fetch origin
 git reset --hard origin/master
 

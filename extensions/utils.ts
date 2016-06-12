@@ -49,3 +49,6 @@ export function isDir(filePath: string): boolean {
 export function remove(filePath: string) {
     return fse.removeSync(filePath);
 }
+export function resolve(relativeFilePath: string){
+    return path.resolve(__dirname + '/../' + relativeFilePath);
+}
