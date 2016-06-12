@@ -5,11 +5,7 @@ A build of monaco:
 * not having it change under us as often 🌹
 
 # How?
-See `prepare.sh` for comments. But here is an overview
-
-* copy specific vscode srces to `src` that are significant for a monaco build
-* build these sources using our own `tsconfig.json`. The `.js` assets are `outDir`ed to `build` directory
-* copy all non `.ts` artifcats to `build` directory (e.g. svg, css etc)
+See `prepare.sh` for comments.
 
 # Release
 
