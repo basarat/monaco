@@ -36,13 +36,30 @@ for (let fix of lineFixes) {
 }
 
 /**
- * Delete folders that are `node`
+ * Delete some things that break the build
  */
 const path = require('path');
-/** The src dir */
 const srcDir = path.resolve(__dirname + '/../src');
 const allFiles = getAllFilesInFolder(srcDir);
 const allFolders = allFiles.filter(x => utils.isDir(x));
 
-const nodeFolders = allFolders.filter(x=>x.endsWith('node'));
-// console.log(nodeFolders)
+/** folders */
+allFolders
+    .filter(x =>
+        x.endsWith('node')
+        || x.endsWith('selectionClipboard')
+    )
+    .forEach(utils.remove);
+/** files */
+allFiles.filter(x=>
+        x.endsWith('.test.ts')
+        || x.endsWith('TMState.ts')
+        || x.endsWith('commandTestUtils.ts')
+        || x.endsWith('editableTextModelTestUtils.ts')
+        || x.endsWith('modesUtil.ts')
+        || x.endsWith('nativeExtensionService.ts')
+        || x.endsWith('wireProtocol.ts')
+        || x.endsWith('ipcRemoteCom.ts')
+        || x.endsWith('package.ts')
+        || x.endsWith('product.ts')
+    ).forEach(utils.remove);

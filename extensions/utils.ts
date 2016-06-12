@@ -46,3 +46,6 @@ export function getAllFilesInFolder(fullSrcDir: string): string[] {
 export function isDir(filePath: string): boolean {
     return fs.lstatSync(filePath).isDirectory();
 }
+export function remove(filePath: string) {
+    return fse.removeSync(filePath);
+}

@@ -45,3 +45,7 @@ function isDir(filePath) {
     return fs.lstatSync(filePath).isDirectory();
 }
 exports.isDir = isDir;
+function remove(filePath) {
+    return fse.removeSync(filePath);
+}
+exports.remove = remove;

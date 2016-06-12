@@ -31,4 +31,21 @@ var path = require('path');
 var srcDir = path.resolve(__dirname + '/../src');
 var allFiles = utils_1.getAllFilesInFolder(srcDir);
 var allFolders = allFiles.filter(function (x) { return utils.isDir(x); });
-var nodeFolders = allFolders.filter(function (x) { return x.endsWith('node'); });
+allFolders
+    .filter(function (x) {
+    return x.endsWith('node')
+        || x.endsWith('selectionClipboard');
+})
+    .forEach(utils.remove);
+allFiles.filter(function (x) {
+    return x.endsWith('.test.ts')
+        || x.endsWith('TMState.ts')
+        || x.endsWith('commandTestUtils.ts')
+        || x.endsWith('editableTextModelTestUtils.ts')
+        || x.endsWith('modesUtil.ts')
+        || x.endsWith('nativeExtensionService.ts')
+        || x.endsWith('wireProtocol.ts')
+        || x.endsWith('ipcRemoteCom.ts')
+        || x.endsWith('package.ts')
+        || x.endsWith('product.ts');
+}).forEach(utils.remove);

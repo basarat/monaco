@@ -11,20 +11,5 @@
 		"outDir": "../build/vs",
 		"experimentalDecorators": true
 	},
-	"compileOnSave": false,
-	"files": [
-		"./vs/editor/editor.main.ts",
-		"./vs/languages/languages.main.ts",
-		"./vs/languages/css/common/css.ts",
-		"./vs/languages/handlebars/common/handlebars.ts",
-		"./vs/languages/html/common/html.ts",
-		"./vs/languages/json/common/json.ts",
-		"./vs/languages/less/common/less.ts",
-		"./vs/languages/markdown/common/markdown.ts",
-		"./vs/languages/php/common/php.ts",
-		"./vs/languages/razor/common/razor.ts",
-		"./vs/languages/sass/common/sass.ts",
-		"./vs/vscode.d.ts",
-		"./vs/loader.d.ts"
-	]
+	"compileOnSave": false
 }
