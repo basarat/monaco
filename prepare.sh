@@ -21,12 +21,6 @@ node ../extensions/preBuild.js
 # Install everything
 npm install
 
-# Build VSCode once to get a new `out` folder
-./node_modules/.bin/gulp compile
-
-# This generates a new `src/vs/monaco.d.ts`
-node ./build/monaco/api
-
 # This generates the `out-editor` folder which is for npm publishing
 ./node_modules/.bin/gulp optimize-editor
 
