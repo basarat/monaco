@@ -28,12 +28,20 @@ writeFile(packageJsonPath, stringify(packJsonContents));
 /**
  * Any line changes
  */
-var lineFixes = [{
-    /** Allows us to build monaco.d.ts */
-    fileName: './vscode/gulpfile.js',
-    orig: `if (isWatch) {`,
-    new: `if (true) {`
-}];
+var lineFixes = [
+    {
+        /** Allows us to build monaco.d.ts */
+        fileName: './vscode/gulpfile.js',
+        orig: `if (isWatch) {`,
+        new: `if (true) {`
+    },
+    {
+        /** ship marked as a part of the build */
+        fileName: './vscode/build/gulpfile.editor.js',
+        orig: `result.paths['vs/base/common/marked/marked'] = 'out-build/vs/base/common/marked/marked.mock';`,
+        new: ``
+    }
+];
 
 for (let fix of lineFixes) {
     writeFile(fix.fileName, readFile(fix.fileName).replace(fix.orig, fix.new));

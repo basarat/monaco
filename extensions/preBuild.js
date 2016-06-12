@@ -14,11 +14,18 @@ var packJsonContents = JSON.parse(utils_1.readFile(packageJsonPath));
 delete packJsonContents.config;
 delete packJsonContents.devDependencies.ghooks;
 utils_1.writeFile(packageJsonPath, utils_1.stringify(packJsonContents));
-var lineFixes = [{
+var lineFixes = [
+    {
         fileName: './vscode/gulpfile.js',
         orig: "if (isWatch) {",
         new: "if (true) {"
-    }];
+    },
+    {
+        fileName: './vscode/build/gulpfile.editor.js',
+        orig: "result.paths['vs/base/common/marked/marked'] = 'out-build/vs/base/common/marked/marked.mock';",
+        new: ""
+    }
+];
 for (var _i = 0, lineFixes_1 = lineFixes; _i < lineFixes_1.length; _i++) {
     var fix = lineFixes_1[_i];
     utils_1.writeFile(fix.fileName, utils_1.readFile(fix.fileName).replace(fix.orig, fix.new));
