@@ -8,14 +8,16 @@ import * as utils from "./utils";
 /**
  * Package.json cleanups
  */
-const nodeGypPackagesWeDontWant = [
+const packagesWeDontWant = [
+    // node-gyp
     "pty.js",
     "vscode-textmate",
     "native-keymap",
-    "preinstall" // Don't want preinstall (its there to protect us from using `npm install` vs. `atom's npm install`. We are fine with npm)
+    "windows-mutex",
+    "preinstall", // Don't want preinstall (its there to protect us from using `npm install` vs. `atom's npm install`. We are fine with npm)
 ]
 const packageJsonPath = "./vscode/package.json";
-nodeGypPackagesWeDontWant.forEach(packageName => {
+packagesWeDontWant.forEach(packageName => {
     writeFile(packageJsonPath, readFile(packageJsonPath).split('\n').filter(x => !x.includes(packageName)).join('\n'));
 })
 /** We also don't want their ghooks to get triggered */

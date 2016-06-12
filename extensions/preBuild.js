@@ -1,13 +1,14 @@
 "use strict";
 var utils_1 = require("./utils");
-var nodeGypPackagesWeDontWant = [
+var packagesWeDontWant = [
     "pty.js",
     "vscode-textmate",
     "native-keymap",
-    "preinstall"
+    "windows-mutex",
+    "preinstall",
 ];
 var packageJsonPath = "./vscode/package.json";
-nodeGypPackagesWeDontWant.forEach(function (packageName) {
+packagesWeDontWant.forEach(function (packageName) {
     utils_1.writeFile(packageJsonPath, utils_1.readFile(packageJsonPath).split('\n').filter(function (x) { return !x.includes(packageName); }).join('\n'));
 });
 var packJsonContents = JSON.parse(utils_1.readFile(packageJsonPath));
