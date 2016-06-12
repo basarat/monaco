@@ -23,6 +23,7 @@ cp -r ./src/vs/workbench/services/quickopen/common ../src/vs/workbench/services/
 # copy some prebuilt assets (to src (if not done already) and always to build)
 #
 # loader
+mkdir -p ../build/vs
 cp ./src/vs/loader.js ../src/vs/loader.js
 cp ./src/vs/loader.js ../build/vs/loader.js
 cp ./src/vs/css.js ../src/vs/css.js
@@ -35,6 +36,7 @@ cp ./src/vs/nls.d.ts ../src/vs/nls.d.ts
 cp ./src/vs/nls.d.ts ../build/vs/nls.d.ts
 cp ./src/vs/nls.js ../build/vs/nls.js
 # winjs
+mkdir -p ../build/vs/base/common
 cp ./src/vs/base/common/winjs.base.d.ts ../build/vs/base/common/winjs.base.d.ts
 cp ./src/vs/base/common/winjs.base.js ../build/vs/base/common/winjs.base.js
 cp ./src/vs/base/common/winjs.base.raw.js ../build/vs/base/common/winjs.base.raw.js
