@@ -31,6 +31,7 @@ node ./build/monaco/api
 ./node_modules/.bin/gulp editor-distro
 
 # Copy it out to our `build` folder
+rm -rf ../build
 mkdir -p ../build
 cp -r ./out-monaco-editor-core/dev ../build
 cp ./out-monaco-editor-core/monaco.d.ts ../build
