@@ -5,6 +5,7 @@
 		"declaration": true,
 		"noImplicitAny": false,
 		"inlineSourceMap": true,
+		"inlineSources": true,
 		"removeComments": false,
 		"preserveConstEnums": true,
 		"target": "es5",
