@@ -1,6 +1,7 @@
 "use strict";
 var utils_1 = require("./utils");
 var nodeGypPackagesWeDontWant = [
+    "pty.js",
     "vscode-textmate",
     "native-keymap",
     "preinstall"

@@ -9,6 +9,7 @@ import * as utils from "./utils";
  * Package.json cleanups
  */
 const nodeGypPackagesWeDontWant = [
+    "pty.js",
     "vscode-textmate",
     "native-keymap",
     "preinstall" // Don't want preinstall (its there to protect us from using `npm install` vs. `atom's npm install`. We are fine with npm)
