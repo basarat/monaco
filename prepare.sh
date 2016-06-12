@@ -27,7 +27,7 @@ npm install
 # Copy it out to our `build` folder
 rm -rf ../build
 mkdir -p ../build
-cp -r ./out-editor ../build
+cp -r ./out-editor/vs ../build
 cp ./src/vs/monaco.d.ts ../build
 
 # Do post build modifications
