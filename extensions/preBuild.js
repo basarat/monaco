@@ -14,7 +14,7 @@ delete packJsonContents.config;
 delete packJsonContents.devDependencies.ghooks;
 utils_1.writeFile(packageJsonPath, utils_1.stringify(packJsonContents));
 var lineFixes = [{
-        fileName: '../vscode/gulpfile.js',
+        fileName: './vscode/gulpfile.js',
         orig: "if (isWatch) {",
         new: "if (true) {"
     }];

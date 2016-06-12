@@ -29,7 +29,7 @@ writeFile(packageJsonPath, stringify(packJsonContents));
  */
 var lineFixes = [{
     /** Allows us to build monaco.d.ts */
-    fileName: '../vscode/gulpfile.js',
+    fileName: './vscode/gulpfile.js',
     orig: `if (isWatch) {`,
     new: `if (true) {`
 }];
