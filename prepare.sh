@@ -29,6 +29,9 @@ cp ./src/vs/loader.js ../src/vs/loader.js
 cp ./src/vs/loader.js ../build/vs/loader.js
 cp ./src/vs/css.js ../src/vs/css.js
 cp ./src/vs/css.js ../build/vs/css.js
+# monaco
+cp ./src/vs/monaco.d.ts ../src/vs/monaco.d.ts
+cp ./src/vs/monaco.d.ts ../build/vs/monaco.d.ts
 # vscode
 cp ./src/vs/vscode.d.ts ../src/vs/vscode.d.ts
 cp ./src/vs/vscode.d.ts ../build/vs/vscode.d.ts
