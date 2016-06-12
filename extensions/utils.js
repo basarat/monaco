@@ -41,3 +41,7 @@ function getAllFilesInFolder(fullSrcDir) {
     return glob.sync('./**/*', { cwd: fullSrcDir }).map(function (p) { return path.resolve(fullSrcDir, p); });
 }
 exports.getAllFilesInFolder = getAllFilesInFolder;
+function isDir(filePath) {
+    return fs.lstatSync(filePath).isDirectory();
+}
+exports.isDir = isDir;

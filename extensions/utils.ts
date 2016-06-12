@@ -43,3 +43,6 @@ export function stringify(object: Object, eol: string = '\n'): string {
 export function getAllFilesInFolder(fullSrcDir: string): string[] {
     return glob.sync('./**/*', { cwd: fullSrcDir }).map(p => path.resolve(fullSrcDir, p));
 }
+export function isDir(filePath: string): boolean {
+    return fs.lstatSync(filePath).isDirectory();
+}

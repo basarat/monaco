@@ -13,6 +13,7 @@ git reset --hard origin/master
 #
 # copy monaco
 #
+rm -rf ../build
 cp -r ./src/vs/editor ../src/vs
 cp -r ./src/vs/base ../src/vs
 cp -r ./src/vs/platform ../src/vs
