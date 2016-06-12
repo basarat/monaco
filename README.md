@@ -7,9 +7,11 @@ The plan is to provide daily automated builds on microsoft monaco.
 * out : the built assets
 * build : scripts for building various stuff
 
+the `build/gulpfile.editor.js` contains the monaco building stuff.
+
 ## How original monaco is built
 
-Please see `build/monaco/README.md`
+Please see `build/monaco/README.md`. We simplified it (for our purposes) by reading a bunch of source code around the gulpfiles.
 
 ## Our Build
 
@@ -29,3 +31,6 @@ you can put this your package.json (and now you can `npm run unmonaco`):
 ```
     "unmonaco": "npm install nmonaco@latest --save --save-exact && npm run tsc",
 ```
+
+## Why?
+If you just want a quick editor on a web page the `monaco-editor` will get you there quick : https://www.npmjs.com/package/monaco-editor. But if you want to specialize the experience for a particular language (in our case `JavaScript`/`TypeScript` as we do in [alm.tools](http://alm.tools) you might want to use this package).

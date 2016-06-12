@@ -27,17 +27,17 @@ npm install
 # This generates a new `src/vs/monaco.d.ts`
 node ./build/monaco/api
 
-# This generates the `out-monaco-editor-core` folder which is for npm publishing
-./node_modules/.bin/gulp editor-distro
+# This generates the `out-editor` folder which is for npm publishing
+./node_modules/.bin/gulp optimize-editor
 
 # Copy it out to our `build` folder
 rm -rf ../build
 mkdir -p ../build
-cp -r ./out-monaco-editor-core/dev ../build
-cp ./out-monaco-editor-core/monaco.d.ts ../build
+cp -r ./out-editor ../build
+cp ./src/vs/monaco.d.ts ../build
 
 # Do post build modifications
 node ../extensions/postBuild.js
 
-# Again reset sub repo
+# Again reset sub repo (so we don't leave the submodule dirty)
 git reset --hard origin/master
