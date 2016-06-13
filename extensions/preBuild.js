@@ -88,5 +88,5 @@ delete packJsonContents.scripts;
 utils_1.writeFile(packageJsonPath, utils_1.stringify(packJsonContents));
 utils.remove(utils.resolve('./vscode/npm-shrinkwrap.json'));
 var recipeFile = "./vscode/build/monaco/monaco.d.ts.recipe";
-var recipeAdditions = "\n";
+var recipeAdditions = "\ndeclare module monaco.editor {\n    #include(vs/editor/common/editorCommon): ICommonEditorContributionCtor, ICommonEditorContributionDescriptor, IEditorActionContributionCtor\n}\ndeclare module monaco.internal {\n/** We wanted CommonEditorRegistry. Rest is brought in for it */\n#include(vs/editor/common/editorCommonExtensions;editorCommon=>monaco.editor): CommonEditorRegistry, EditorActionDescriptor, IEditorCommandHandler, IEditorActionKeybindingOptions\n#include(vs/platform/keybinding/common/keybindingService): IKeybindings\n#include(vs/platform/instantiation/common/instantiation): ServicesAccessor\n}\n";
 utils_1.writeFile(recipeFile, utils_1.readFile(recipeFile) + recipeAdditions);

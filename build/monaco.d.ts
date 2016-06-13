@@ -4678,3 +4678,83 @@ declare module monaco.worker {
     export var mirrorModels: IMirrorModel[];
 
 }
+declare module monaco.editor {
+
+    /**
+     * @internal
+     */
+    export type ICommonEditorContributionCtor = IConstructorSignature1<ICommonCodeEditor, IEditorContribution>;
+
+    /**
+     * An editor contribution descriptor that will be used to construct editor contributions
+     * @internal
+     */
+    export interface ICommonEditorContributionDescriptor {
+        /**
+         * Create an instance of the contribution
+         */
+        createInstance(instantiationService: IInstantiationService, editor: ICommonCodeEditor): IEditorContribution;
+    }
+
+    /**
+     * @internal
+     */
+    export type IEditorActionContributionCtor = IConstructorSignature2<IEditorActionDescriptorData, ICommonCodeEditor, IEditorContribution>;
+}
+declare module monaco.internal {
+    /** We wanted CommonEditorRegistry. Rest is brought in for it */
+
+    export module CommonEditorRegistry {
+        function registerEditorAction(desc: EditorActionDescriptor): void;
+        function registerEditorContribution(ctor: monaco.editor.ICommonEditorContributionCtor): void;
+        function getEditorContributions(): monaco.editor.ICommonEditorContributionDescriptor[];
+        function commandWeight(importance?: number): number;
+        function registerEditorCommand(commandId: string, weight: number, keybinding: IKeybindings, needsTextFocus: boolean, needsKey: string, handler: IEditorCommandHandler): void;
+        function registerLanguageCommand(id: string, handler: (accessor: ServicesAccessor, args: {
+            [n: string]: any;
+        }) => any): void;
+        function registerDefaultLanguageCommand(id: string, handler: (model: monaco.editor.IModel, position: Position, args: {
+            [n: string]: any;
+        }) => any): void;
+    }
+
+    export class EditorActionDescriptor {
+        ctor: monaco.editor.IEditorActionContributionCtor;
+        id: string;
+        label: string;
+        alias: string;
+        kbOpts: IEditorActionKeybindingOptions;
+        constructor(ctor: monaco.editor.IEditorActionContributionCtor, id: string, label: string, kbOpts?: IEditorActionKeybindingOptions, alias?: string);
+    }
+
+    export interface IEditorCommandHandler {
+        (accessor: ServicesAccessor, editor: monaco.editor.ICommonCodeEditor, args: any): void;
+    }
+
+    export interface IEditorActionKeybindingOptions extends IKeybindings {
+        handler?: ICommandHandler;
+        context: ContextKey;
+        kbExpr?: KbExpr;
+    }
+
+    export interface IKeybindings {
+        primary: number;
+        secondary?: number[];
+        win?: {
+            primary: number;
+            secondary?: number[];
+        };
+        linux?: {
+            primary: number;
+            secondary?: number[];
+        };
+        mac?: {
+            primary: number;
+            secondary?: number[];
+        };
+    }
+
+    export interface ServicesAccessor {
+        get<T>(id: ServiceIdentifier<T>, isOptional?: typeof optional): T;
+    }
+}
