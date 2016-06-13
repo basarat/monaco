@@ -102,6 +102,8 @@ const keepThePackages = [
     'gulp-util',
     /** build/gulpfile.extension.js */
     'vscode-nls-dev',
+    /** build/watch/index.js */
+    'gulp-watch',
 ]
 Object.keys(packJsonContents.dependencies).forEach(dep => {
     if (keepThePackages.indexOf(dep) !== -1) return;

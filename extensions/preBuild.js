@@ -73,6 +73,7 @@ var keepThePackages = [
     'gulp-concat',
     'gulp-util',
     'vscode-nls-dev',
+    'gulp-watch',
 ];
 Object.keys(packJsonContents.dependencies).forEach(function (dep) {
     if (keepThePackages.indexOf(dep) !== -1)
