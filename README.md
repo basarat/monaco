@@ -14,7 +14,7 @@ Please see `build/monaco/README.md`. We simplified it (for our purposes) by read
 * the `build/gulpfile.editor.js` contains the monaco building stuff.
 * the `monaco.d.ts` api is built with `build/monaco/api.ts`.
 
-Warning: the `monaco.d.ts.recipe` is loosely related to `editor.main.ts` etc so you need to make changes to both in sync :-/
+Note: the `monaco.d.ts.recipe` is loosely related to `editor.main.ts` etc. You get to use the outcome of the recipe (i.e. `monaco.d.ts`) as `typeof monaco.something` in your `editor.main` stuff to ensure types match 🌹
 
 Also `@internal` stuff is stripped by `api.ts`, if you try to bring it all in you will get errors as a lot of stuff is hidden and you will need to bring
 in all of it using `api` + `editor.main` (quite a bit of work.)
