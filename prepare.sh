@@ -20,11 +20,11 @@ node ../extensions/preBuild.js
 # Build monaco
 #
 
-# Rebuild the api.js file
-./node_modules/.bin/tsc ./src/typings/node.d.ts ../extensions/globals.d.ts ./build/monaco/api.ts
-
 # Install everything
 npm install
+
+# Rebuild the api.js file
+./node_modules/.bin/tsc ./src/typings/node.d.ts ../extensions/globals.d.ts ./build/monaco/api.ts
 
 # This generates the `out-editor` folder which is for npm publishing
 ./node_modules/.bin/gulp optimize-editor
