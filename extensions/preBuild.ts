@@ -127,7 +127,7 @@ utils.remove(utils.resolve('./vscode/npm-shrinkwrap.json'));
 /**
  * Extend the monaco API to expose more stuff
  * Some notes:
- * - editorCommon stuff should go in monaco.editor and editorCommon should be redirected to that
+ * - please append to editor.main whatever you export here to prevent runtime errors
  */
 const recipeFile = "./vscode/build/monaco/monaco.d.ts.recipe";
 const recipeAdditions = `
@@ -159,3 +159,16 @@ declare module monaco.internal {
 }
 `;
 writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);
+
+/**
+ * Add to editor.main
+ */
+const editorMainFile = "./vscode/src/vs/editor/editor.main.ts";
+const editorMainAdditions = `
+/** expose more stuff from monaco */
+import {CommonEditorRegistry} from "vs/editor/common/editorCommonExtensions";
+global.monaco.internal = {
+	CommonEditorRegistry
+}
+`;
+writeFile(editorMainFile, readFile(editorMainFile) + editorMainAdditions);
