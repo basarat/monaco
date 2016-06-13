@@ -2,7 +2,7 @@
 var utils_1 = require("./utils");
 var utils = require("./utils");
 var path = require('path');
-var lineFixes = [
+var contentFixes = [
     {
         fileName: './vscode/gulpfile.js',
         orig: "if (isWatch) {",
@@ -24,8 +24,8 @@ var lineFixes = [
         new: ""
     },
 ];
-for (var _i = 0, lineFixes_1 = lineFixes; _i < lineFixes_1.length; _i++) {
-    var fix = lineFixes_1[_i];
+for (var _i = 0, contentFixes_1 = contentFixes; _i < contentFixes_1.length; _i++) {
+    var fix = contentFixes_1[_i];
     utils_1.writeFile(fix.fileName, utils_1.readFile(fix.fileName).replace(fix.orig, fix.new));
 }
 var packagesWeDontWant = [
