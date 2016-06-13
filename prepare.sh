@@ -38,5 +38,8 @@ cp ./src/vs/monaco.d.ts ../build
 # Do post build modifications
 node ../extensions/postBuild.js
 
+# Verify that the generated monaco.d.ts typechecks
+./node_modules/.bin/tsc ../build/monaco.d.ts
+
 # Again reset sub repo (so we don't leave the submodule dirty)
 git reset --hard origin/master

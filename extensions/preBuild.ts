@@ -131,14 +131,31 @@ utils.remove(utils.resolve('./vscode/npm-shrinkwrap.json'));
  */
 const recipeFile = "./vscode/build/monaco/monaco.d.ts.recipe";
 const recipeAdditions = `
-declare module monaco.editor {
-    #include(vs/editor/common/editorCommon): ICommonEditorContributionCtor, ICommonEditorContributionDescriptor, IEditorActionContributionCtor
-}
-declare module monaco.internal {
 /** We wanted CommonEditorRegistry. Rest is brought in for it */
-#include(vs/editor/common/editorCommonExtensions;editorCommon=>monaco.editor): CommonEditorRegistry, EditorActionDescriptor, IEditorCommandHandler, IEditorActionKeybindingOptions
-#include(vs/platform/keybinding/common/keybindingService): IKeybindings
-#include(vs/platform/instantiation/common/instantiation): ServicesAccessor
+
+declare module monaco {
+
+    /** Stuff from "types" */
+    #include(vs/base/common/types): TypeConstraint
+
+
+    /** Stuff from instantiation **/
+    #include(vs/platform/instantiation/common/instantiation): IConstructorSignature1, IConstructorSignature2, ServiceIdentifier, ServicesAccessor, optional
+    /** Was a really deep rabbit hole so shortened */
+    export type IInstantiationService = any;
+}
+
+declare module monaco.editor {
+
+    #include(vs/editor/common/editorCommon): ICommonEditorContributionCtor, ICommonEditorContributionDescriptor, IEditorActionContributionCtor, IEditorActionDescriptorData
+
+}
+
+declare module monaco.internal {
+
+    #include(vs/editor/common/editorCommonExtensions;editorCommon=>monaco.editor): CommonEditorRegistry, EditorActionDescriptor, IEditorCommandHandler, IEditorActionKeybindingOptions, ContextKey
+    #include(vs/platform/keybinding/common/keybindingService): IKeybindings, ICommandHandler, ICommandHandlerDescription, KbExpr, KbExprType
+
 }
 `;
 writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);

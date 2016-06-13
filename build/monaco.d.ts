@@ -4678,7 +4678,51 @@ declare module monaco.worker {
     export var mirrorModels: IMirrorModel[];
 
 }
+/** We wanted CommonEditorRegistry. Rest is brought in for it */
+
+declare module monaco {
+
+    /** Stuff from "types" */
+
+    export type TypeConstraint = string | Function;
+
+
+    /** Stuff from instantiation **/
+
+    export interface IConstructorSignature1<A1, T> {
+        new (first: A1, ...services: {
+            serviceId: ServiceIdentifier<any>;
+        }[]): T;
+    }
+
+    export interface IConstructorSignature2<A1, A2, T> {
+        new (first: A1, second: A2, ...services: {
+            serviceId: ServiceIdentifier<any>;
+        }[]): T;
+    }
+
+    /**
+     * Identifies a service of type T
+     */
+    export interface ServiceIdentifier<T> {
+        (...args: any[]): void;
+        type: T;
+    }
+
+    export interface ServicesAccessor {
+        get<T>(id: ServiceIdentifier<T>, isOptional?: typeof optional): T;
+    }
+
+    /**
+     * Mark a service dependency as optional.
+     */
+    export function optional<T>(serviceIdentifier: ServiceIdentifier<T>): (target: Function, key: string, index: number) => void;
+    /** Was a really deep rabbit hole so shortened */
+    export type IInstantiationService = any;
+}
+
 declare module monaco.editor {
+
 
     /**
      * @internal
@@ -4700,9 +4744,21 @@ declare module monaco.editor {
      * @internal
      */
     export type IEditorActionContributionCtor = IConstructorSignature2<IEditorActionDescriptorData, ICommonCodeEditor, IEditorContribution>;
+
+    /**
+     * Data associated with an editor action contribution
+     * @internal
+     */
+    export interface IEditorActionDescriptorData {
+        id: string;
+        label: string;
+        alias?: string;
+    }
+
 }
+
 declare module monaco.internal {
-    /** We wanted CommonEditorRegistry. Rest is brought in for it */
+
 
     export module CommonEditorRegistry {
         function registerEditorAction(desc: EditorActionDescriptor): void;
@@ -4737,6 +4793,12 @@ declare module monaco.internal {
         kbExpr?: KbExpr;
     }
 
+    export enum ContextKey {
+        None = 0,
+        EditorTextFocus = 1,
+        EditorFocus = 2,
+    }
+
     export interface IKeybindings {
         primary: number;
         secondary?: number[];
@@ -4754,7 +4816,35 @@ declare module monaco.internal {
         };
     }
 
-    export interface ServicesAccessor {
-        get<T>(id: ServiceIdentifier<T>, isOptional?: typeof optional): T;
+    export interface ICommandHandler {
+        (accessor: ServicesAccessor, ...args: any[]): void;
+        description?: string | ICommandHandlerDescription;
     }
+
+    export interface ICommandHandlerDescription {
+        description: string;
+        args: {
+            name: string;
+            description?: string;
+            constraint?: TypeConstraint;
+        }[];
+        returns?: string;
+    }
+
+    export interface KbExpr {
+        getType(): KbExprType;
+        equals(other: KbExpr): boolean;
+        evaluate(context: any): boolean;
+        normalize(): KbExpr;
+        serialize(): string;
+    }
+
+    export enum KbExprType {
+        KbDefinedExpression = 1,
+        KbNotExpression = 2,
+        KbEqualsExpression = 3,
+        KbNotEqualsExpression = 4,
+        KbAndExpression = 5,
+    }
+
 }
