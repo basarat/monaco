@@ -34,38 +34,6 @@ var contentFixes = [
         orig: `require('./build/gulpfile.vscode');`,
         new: ``
     },
-
-    /**
-     * Expose all the internal APIs.
-     * Tried but didn't work as then we end up bringing in a lot of stuff to fix all the compile errors.
-     * Looking for a better way
-     */
-    // {
-    //     fileName: './vscode/build/monaco/api.ts',
-    //     orig: `triviaText.indexOf('@internal') === -1`,
-    //     new: `true`
-    // },
-    // {
-    //     fileName: './vscode/build/monaco/api.ts',
-    //     orig: `nodeText.indexOf('@internal') === -1`,
-    //     new: `true`
-    // },
-    // {
-    //     fileName: './vscode/build/monaco/api.ts',
-    //     orig: `result = result.replace(memberText, '');`,
-    //     new: `// result = result.replace(memberText, '');`
-    // },
-    // /** And also don't do any renaming (otherwise we end up with interface member duplications because we expose more stuff) */
-    // {
-    //     fileName: './vscode/build/monaco/api.ts',
-    //     orig: `let replacer = createReplacer(m1[2]);`,
-    //     new: `let replacer = (x:string) => x;`
-    // },
-    // {
-    //     fileName: './vscode/build/monaco/api.ts',
-    //     orig: `let replacer = createReplacer(m2[2]);`,
-    //     new: `let replacer = (x:string) => x;`
-    // },
 ];
 
 for (let fix of contentFixes) {
