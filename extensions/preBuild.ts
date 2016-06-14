@@ -133,6 +133,13 @@ utils.remove(utils.resolve('./vscode/npm-shrinkwrap.json'));
  */
 const recipeFile = "./vscode/build/monaco/monaco.d.ts.recipe";
 const recipeAdditions = `
+/** uplift some stuff from monaco.editor so that we can all have a party in the same namespace */
+declare module monaco {
+    export type ICommonCodeEditor = monaco.editor.ICommonCodeEditor;
+    export type IEditorContribution = monaco.editor.IEditorContribution;
+    export type IModel = monaco.editor.IModel;
+}
+
 /** We wanted CommonEditorRegistry. Rest is brought in for it */
 
 declare module monaco {
@@ -147,21 +154,21 @@ declare module monaco {
     export type IInstantiationService = any;
 }
 
-declare module monaco.editor {
+declare module monaco {
 
     #include(vs/editor/common/editorCommon): ICommonEditorContributionCtor, ICommonEditorContributionDescriptor, IEditorActionContributionCtor, IEditorActionDescriptorData
 
 }
 
-declare module monaco.internal {
+declare module monaco {
 
-    #include(vs/editor/common/editorCommonExtensions;editorCommon=>monaco.editor): CommonEditorRegistry, EditorActionDescriptor, IEditorCommandHandler, IEditorActionKeybindingOptions, ContextKey
+    #include(vs/editor/common/editorCommonExtensions;editorCommon.=>): CommonEditorRegistry, EditorActionDescriptor, IEditorCommandHandler, IEditorActionKeybindingOptions, ContextKey
     #include(vs/platform/keybinding/common/keybindingService): IKeybindings, ICommandHandler, ICommandHandlerDescription, KbExpr, KbExprType, ICommandsMap, IKeybindingItem
 
 }
 
 /** We wanted KeyBindingsRegistry. Rest is brought in for it */
-declare module monaco.internal {
+declare module monaco {
     #include(vs/platform/keybinding/common/keybindingsRegistry): KeybindingsRegistry, IKeybindingsRegistry, ICommandRule, ICommandDescriptor
 }
 `;
@@ -175,11 +182,9 @@ const editorMainAdditions = `
 /** expose more stuff from monaco */
 import {CommonEditorRegistry, EditorActionDescriptor} from "vs/editor/common/editorCommonExtensions";
 import {KeybindingsRegistry} from 'vs/platform/keybinding/common/keybindingsRegistry';
-global.monaco.internal = {
-    CommonEditorRegistry,
-    EditorActionDescriptor,
-    KeybindingsRegistry,
-}
+global.monaco.CommonEditorRegistry = CommonEditorRegistry;
+global.monaco.EditorActionDescriptor = EditorActionDescriptor;
+global.monaco.KeybindingsRegistry = KeybindingsRegistry;
 `;
 writeFile(editorMainFile, readFile(editorMainFile) + editorMainAdditions);
 
@@ -235,7 +240,7 @@ const fixesForFiles: IFixForFile[] = [
             },
         ]
     },
-    /** 
+    /**
      * Duplicate copy line down to duplicate line with a new shortcut
      */
     {

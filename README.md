@@ -9,12 +9,12 @@ The plan is to provide daily automated builds on microsoft monaco.
 
 ## How monaco-editor-core is built
 
-Please see `vscode/build/monaco/README.md`. We simplified it and the process is documented in `prepare.sh`. Some notes on monaco-editor-core: 
+Please see `vscode/build/monaco/README.md`. We simplified it and the process is documented in `prepare.sh`. Some notes on monaco-editor-core:
 
 * the `build/gulpfile.editor.js` contains the monaco building stuff.
 * the `monaco.d.ts` api is built with `build/monaco/api.ts`.
 
-Note: the `monaco.d.ts.recipe` is loosely related to `editor.main.ts` etc. You get to use the outcome of the recipe (i.e. `monaco.d.ts`) as `typeof monaco.something` in your `editor.main` stuff to ensure types match 🌹
+Note: the `monaco.d.ts.recipe` is loosely related to `editor.main.ts` etc. You get to use the outcome of the recipe (i.e. `monaco.d.ts`) as `typeof monaco.something` in your `editor.main` stuff to ensure types match but it can fail silently due to excessive use of `any` so be careful 🌹
 
 Also `@internal` stuff is stripped by `api.ts`, if you try to bring it all in you will get errors as a lot of stuff is hidden and you will need to bring
 in all of it using `api` + `editor.main` (quite a bit of work.)

@@ -4678,6 +4678,13 @@ declare module monaco.worker {
     export var mirrorModels: IMirrorModel[];
 
 }
+/** uplift some stuff from monaco.editor so that we can all have a party in the same namespace */
+declare module monaco {
+    export type ICommonCodeEditor = monaco.editor.ICommonCodeEditor;
+    export type IEditorContribution = monaco.editor.IEditorContribution;
+    export type IModel = monaco.editor.IModel;
+}
+
 /** We wanted CommonEditorRegistry. Rest is brought in for it */
 
 declare module monaco {
@@ -4721,7 +4728,7 @@ declare module monaco {
     export type IInstantiationService = any;
 }
 
-declare module monaco.editor {
+declare module monaco {
 
 
     /**
@@ -4757,34 +4764,34 @@ declare module monaco.editor {
 
 }
 
-declare module monaco.internal {
+declare module monaco {
 
 
     export module CommonEditorRegistry {
         function registerEditorAction(desc: EditorActionDescriptor): void;
-        function registerEditorContribution(ctor: monaco.editor.ICommonEditorContributionCtor): void;
-        function getEditorContributions(): monaco.editor.ICommonEditorContributionDescriptor[];
+        function registerEditorContribution(ctor: ICommonEditorContributionCtor): void;
+        function getEditorContributions(): ICommonEditorContributionDescriptor[];
         function commandWeight(importance?: number): number;
         function registerEditorCommand(commandId: string, weight: number, keybinding: IKeybindings, needsTextFocus: boolean, needsKey: string, handler: IEditorCommandHandler): void;
         function registerLanguageCommand(id: string, handler: (accessor: ServicesAccessor, args: {
             [n: string]: any;
         }) => any): void;
-        function registerDefaultLanguageCommand(id: string, handler: (model: monaco.editor.IModel, position: Position, args: {
+        function registerDefaultLanguageCommand(id: string, handler: (model: IModel, position: Position, args: {
             [n: string]: any;
         }) => any): void;
     }
 
     export class EditorActionDescriptor {
-        ctor: monaco.editor.IEditorActionContributionCtor;
+        ctor: IEditorActionContributionCtor;
         id: string;
         label: string;
         alias: string;
         kbOpts: IEditorActionKeybindingOptions;
-        constructor(ctor: monaco.editor.IEditorActionContributionCtor, id: string, label: string, kbOpts?: IEditorActionKeybindingOptions, alias?: string);
+        constructor(ctor: IEditorActionContributionCtor, id: string, label: string, kbOpts?: IEditorActionKeybindingOptions, alias?: string);
     }
 
     export interface IEditorCommandHandler {
-        (accessor: ServicesAccessor, editor: monaco.editor.ICommonCodeEditor, args: any): void;
+        (accessor: ServicesAccessor, editor: ICommonCodeEditor, args: any): void;
     }
 
     export interface IEditorActionKeybindingOptions extends IKeybindings {
@@ -4862,7 +4869,7 @@ declare module monaco.internal {
 }
 
 /** We wanted KeyBindingsRegistry. Rest is brought in for it */
-declare module monaco.internal {
+declare module monaco {
 
     export let KeybindingsRegistry: IKeybindingsRegistry;
 
