@@ -540,31 +540,6 @@ define("vs/editor/editor.main.nls.it", {
 	"vs/editor/contrib/zoneWidget/browser/peekViewWidget": [
 		"Chiudi",
 	],
-	"vs/languages/css/common/css.contribution": [
-		"Configurazione di CSS",
-		"Controlla le gravità dei problemi e la convalida CSS.",
-	],
-	"vs/languages/css/common/services/lintRules": [
-		"Quando si usa un prefisso specifico del fornitore, assicurarsi di includere anche tutte le altre proprietà specifiche del fornitore",
-		"Quando si usa un prefisso specifico del fornitore, includere anche la proprietà standard",
-		"Non usare definizioni di stile duplicate",
-		"Non usare set di regole vuoti",
-		"Le istruzioni Import non vengono caricate in parallelo",
-		"Non usare width o height con padding o border",
-		"Il selettore universale (*) è notoriamente lento",
-		"Non è necessaria alcuna unità per lo zero",
-		"La regola @font-face deve definire le proprietà \'src\' e \'font-family\'",
-		"I colori esadecimali devono essere composti da tre o sei numeri esadecimali",
-		"Numero di parametri non valido",
-		"Proprietà sconosciuta.",
-		"Gli hack IE sono necessari solo per il supporto di IE7 e versioni precedenti",
-		"Proprietà specifica del fornitore sconosciuta.",
-		"La proprietà viene ignorata a causa della visualizzazione. Ad esempio, con \'display: inline\', le proprietà width, height, margin-top, margin-bottom e float non hanno effetto",
-		"Evitare di usare !important perché indica che la specificità dell\'intero codice CSS non è più controllabile ed è necessario effettuarne il refactoring.",
-		"Evitare di usare \'float\'. Con gli elementi float si ottiene codice CSS che causa facilmente interruzioni in caso di modifica di un aspetto del layout.",
-		"I selettori non devono contenere ID perché queste regole sono strettamente accoppiate al codice HTML.",
-		"Abilita o disabilita tutte le convalide",
-	],
 	"vs/languages/html/common/html.contribution": [
 		"Configurazione HTML",
 		"Numero massimo di caratteri per riga (0 = disabilita).",
@@ -584,17 +559,9 @@ define("vs/editor/editor.main.nls.it", {
 		"Matrice di criteri dei file da usare per la ricerca durante la risoluzione di file JSON in schemi.",
 		"Definizione dello schema per l\'URL specificato. È necessario specificare lo schema per evitare accessi all\'URL dello schema.",
 	],
-	"vs/languages/less/common/less.contribution": [
-		"Configurazione LESS",
-		"Controlla le gravità dei problemi e la convalida LESS.",
-	],
 	"vs/languages/markdown/common/markdown.contribution": [
 		"Configurazione dell\'anteprima markdown",
 		"Elenco di URL o percorsi locali dei fogli di stile CSS da usare dall\'anteprima markdown.",
-	],
-	"vs/languages/sass/common/sass.contribution": [
-		"Configurazione SASS",
-		"Controlla le gravità dei problemi e la convalida SASS.",
 	],
 	"vs/platform/configuration/common/configurationRegistry": [
 		"Impostazioni di configurazione di contributes.",

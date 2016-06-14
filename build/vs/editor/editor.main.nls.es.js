@@ -540,31 +540,6 @@ define("vs/editor/editor.main.nls.es", {
 	"vs/editor/contrib/zoneWidget/browser/peekViewWidget": [
 		"Cerrar",
 	],
-	"vs/languages/css/common/css.contribution": [
-		"Configuración de CSS",
-		"Controla la gravedad de los problemas y la validación de CSS.",
-	],
-	"vs/languages/css/common/services/lintRules": [
-		"Cuando use un prefijo específico del proveedor, compruebe que también haya incluido el resto de propiedades específicas del proveedor.",
-		"Cuando use un prefijo específico del proveedor, incluya también la propiedad estándar.",
-		"No use definiciones de estilo duplicadas.",
-		"No use conjuntos de reglas vacíos.",
-		"Las instrucciones Import no se cargan en paralelo.",
-		"No use ancho o alto con el relleno o los bordes.",
-		"Se sabe que el selector universal (*) es lento.",
-		"No se necesita una unidad para cero.",
-		"La regla @font-face debe definir las propiedades \'src\' y \'font-family\'.",
-		"Los colores hexadecimales deben estar formados por tres o seis números hexadecimales.",
-		"Número de parámetros no válido",
-		"Propiedad desconocida.",
-		"Las modificaciones de IE solo son necesarias cuando admiten IE7 y anteriores",
-		"Propiedad específica del proveedor desconocida.",
-		"La propiedad se ignora a causa de la pantalla. Por ejemplo, con \'display: inline\', el ancho, el alto, el margen superior e inferior y las propiedades de float no tienen efecto.",
-		"Le recomendamos no usar !important. Esto indica que la especificidad de todo el CSS está fuera de control y que debe refactorizarse.",
-		"Le recomendamos no usar \'float\'. Los floats producen CSS frágiles, fáciles de corromper si cambia cualquier aspecto del diseño.",
-		"Los selectores no deben contener identificadores porque estas reglas están estrechamente ligadas a HTML.",
-		"Habilita o deshabilita todas las validaciones.",
-	],
 	"vs/languages/html/common/html.contribution": [
 		"Configuración HTML",
 		"Cantidad máxima de caracteres por línea (0 = deshabilitar).",
@@ -584,17 +559,9 @@ define("vs/editor/editor.main.nls.es", {
 		"Una matriz de patrones de archivos para encontrar coincidencias al resolver archivos JSON para esquemas.",
 		"La definición de esquema de la URL dada. El esquema solo debe proporcionarse para evitar el acceso a la URL del esquema.",
 	],
-	"vs/languages/less/common/less.contribution": [
-		"Configuración de LESS",
-		"Controla la gravedad de los problemas y la validación de LESS.",
-	],
 	"vs/languages/markdown/common/markdown.contribution": [
 		"Configuración de vista previa del marcado",
 		"Una lista de las URL o de las rutas de acceso locales a las hojas de estilos CSS que se deben usar en la vista previa del marcado.",
-	],
-	"vs/languages/sass/common/sass.contribution": [
-		"Configuración de SASS",
-		"Controla la gravedad de los problemas y la validación de SasS.",
 	],
 	"vs/platform/configuration/common/configurationRegistry": [
 		"Aporta opciones de configuración.",

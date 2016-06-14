@@ -8765,6 +8765,7 @@ define(__m[21], __M([0,1,2,18,28]), function (require, exports, strings, objects
             var currentFullWord = SnippetsRegistry.getNonWhitespacePrefix(model, position).toLowerCase();
             var result = {
                 currentWord: currentWord,
+                incomplete: currentWord.length === 0,
                 suggestions: []
             };
             var modeId = model.getModeId();

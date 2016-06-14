@@ -540,31 +540,6 @@ define("vs/editor/editor.main.nls.de", {
 	"vs/editor/contrib/zoneWidget/browser/peekViewWidget": [
 		"Schließen",
 	],
-	"vs/languages/css/common/css.contribution": [
-		"CSS-Konfiguration",
-		"Steuert die CSS-Validierung und Problemschweregrade.",
-	],
-	"vs/languages/css/common/services/lintRules": [
-		"Stellen Sie beim Verwenden vom anbieterspezifischen Präfix sicher, dass alle anderen anbieterspezifischen Eigenschaften miteinbezogen werden",
-		"Beim Verwenden von anbieterspezifischen Präfix auch die Standardeigenschaft miteinbeziehen",
-		"Keine doppelten Formatdefinitionen verwenden",
-		"Keine leeren Regelsätze verwenden",
-		"Import-Anweisungen können nicht parallel laden",
-		"Verwenden Sie width oder height nicht beim Festlegen von padding oder border",
-		"Es ist bekannt, dass der Universal-Selektor (*) langsam ist",
-		"Keine Einheit für Null erforderlich",
-		"@font-face-Regel muss Eigenschaften src und font-family definieren",
-		"Hexfarben müssen aus drei oder sechs Hexzahlen bestehen",
-		"Ungültige Parameteranzahl",
-		"Unbekannte Eigenschaft.",
-		"IE-Hacks sind nur für die Unterstützung von IE7 und älter erforderlich",
-		"Unbekannte anbieterspezifische Eigenschaft.",
-		"Die Eigenschaft wird aufgrund der Anzeige ignoriert. Mit \"display: inline\" besitzen die width-, height-, margin-top-, margin-bottom- und float-Eigenschaften z. B. keine Auswirkung.",
-		"Verwendung von „!important“ vermeiden. Damit wird angegeben, dass die Spezifität vom gesamten CSS außer Kontrolle geraten ist und umgestaltet werden muss.",
-		"Die Verwendung von \"float\" vermeiden. float-Eigenschaften führen zu anfälligem CSS, das schnell nicht mehr funktioniert, wenn sich ein Aspekt des Layouts ändert.",
-		"Selektoren sollten keine IDs enthalten, da diese Regeln zu eng mit HTML verknüpft sind.",
-		"Aktiviert oder deaktiviert alle Überprüfungen.",
-	],
 	"vs/languages/html/common/html.contribution": [
 		"HTML-Konfiguration",
 		"Die maximale Anzahl von Zeichen pro Zeile (0 = deaktiviert).",
@@ -584,17 +559,9 @@ define("vs/editor/editor.main.nls.de", {
 		"Ein Array von Dateimustern, mit denen beim Auflösen von JSON-Dateien zu Schemas abgeglichen wird.",
 		"Die Schemadefinition für die angegebene URL. Das Schema muss nur bereitgestellt werden, um den Zugriff auf die Schema-URL zu vermeiden.",
 	],
-	"vs/languages/less/common/less.contribution": [
-		"LESS-Konfiguration",
-		"Steuert die LESS-Validierung und Problemschweregrade.",
-	],
 	"vs/languages/markdown/common/markdown.contribution": [
 		"Markdown-Vorschau-Konfiguration",
 		"Eine Liste von URLs oder lokalen Pfaden zu CSS-Stylesheets, die in der Markdown-Vorschau zu verwenden sind.",
-	],
-	"vs/languages/sass/common/sass.contribution": [
-		"SASS-Konfiguration",
-		"Steuert die SASS-Validierung und Problemschweregrade.",
 	],
 	"vs/platform/configuration/common/configurationRegistry": [
 		"Trägt Konfigurationseigenschaften bei.",

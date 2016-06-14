@@ -540,31 +540,6 @@ define("vs/editor/editor.main.nls.zh-tw", {
 	"vs/editor/contrib/zoneWidget/browser/peekViewWidget": [
 		"關閉",
 	],
-	"vs/languages/css/common/css.contribution": [
-		"CSS 組態",
-		"控制 CSS 驗證和問題嚴重性。",
-	],
-	"vs/languages/css/common/services/lintRules": [
-		"在使用廠商專屬的前置詞時，請確定也包括其他所有的廠商特定屬性。",
-		"在使用廠商專屬的前置詞時，也包括標準屬性。",
-		"請勿使用重複的樣式定義",
-		"請勿使用空白規則集",
-		"Import 陳述式不會平行載入",
-		"使用填補或框線時不要使用寬度或高度。",
-		"已知通用選取器 (*) 速度緩慢",
-		"零不需要任何單位",
-		"@font-face 規則必須定義 \'src\' 和 \'font-family\' 屬性",
-		"十六進位色彩必須由三個或六個十六進位數字組成",
-		"無效的參數數目",
-		"未知的屬性。",
-		"只有在支援 IE7 及更舊的版本時才需要 IE Hack",
-		"未知的廠商專屬屬性。",
-		"屬性因顯示而忽略。例如，若為 \'display: inline\'，則 width、height、margin-top、margin-bottom 以及 float 屬性就不會有任何作用。",
-		"避免使用 !important。這表示整個 CSS 的明確性皆失控，需要重構。",
-		"避免使用 \'float\'。浮動會使 CSS 脆弱，在版面配置的任一層面改變時容易中斷。",
-		"選取器不應包含 ID，因為這些規則與 HTML 結合過於緊密。",
-		"啟用或停用所有驗證",
-	],
 	"vs/languages/html/common/html.contribution": [
 		"HTML 設定",
 		"每行的字元數上限 (0 = 停用)。",
@@ -584,17 +559,9 @@ define("vs/editor/editor.main.nls.zh-tw", {
 		"在將 JSON 檔案解析為結構描述時，用來比對的檔案模式陣列。",
 		"指定 URL 的結構描述定義。您只需要提供結構描述，以避免存取結構描述 URL。",
 	],
-	"vs/languages/less/common/less.contribution": [
-		"LESS 組態",
-		"控制 LESS 驗證和問題嚴重性。",
-	],
 	"vs/languages/markdown/common/markdown.contribution": [
 		"Markdown 預覽組態",
 		"從 Markdown 預覽可用的 CSS 樣式表之 URL 或本機路徑清單。",
-	],
-	"vs/languages/sass/common/sass.contribution": [
-		"SASS 組態",
-		"控制 Sass 驗證和問題嚴重性。",
 	],
 	"vs/platform/configuration/common/configurationRegistry": [
 		"提供組態設定。",

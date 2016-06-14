@@ -8532,6 +8532,8 @@ define(__m[34], __M([1,0,33,3]), function (require, exports, nls, defaultPlatfor
         CommonKeybindings.CTRLCMD_DOWN_ARROW = KeyMod.CtrlCmd | KeyCode.DownArrow;
         CommonKeybindings.LEFT_ARROW = KeyCode.LeftArrow;
         CommonKeybindings.RIGHT_ARROW = KeyCode.RightArrow;
+        CommonKeybindings.HOME = KeyCode.Home;
+        CommonKeybindings.END = KeyCode.End;
         CommonKeybindings.PAGE_UP = KeyCode.PageUp;
         CommonKeybindings.SHIFT_PAGE_UP = KeyMod.Shift | KeyCode.PageUp;
         CommonKeybindings.PAGE_DOWN = KeyCode.PageDown;

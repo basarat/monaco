@@ -540,31 +540,6 @@ define("vs/editor/editor.main.nls.ko", {
 	"vs/editor/contrib/zoneWidget/browser/peekViewWidget": [
 		"닫기",
 	],
-	"vs/languages/css/common/css.contribution": [
-		"CSS 구성",
-		"CSS 유효성 검사 및 문제 심각도를 제어합니다.",
-	],
-	"vs/languages/css/common/services/lintRules": [
-		"공급업체 관련 접두사를 사용할 경우 다른 모든 공급업체 관련 속성도 포함합니다.",
-		"공급업체 관련 접두사를 사용할 때 표준 속성도 포함합니다.",
-		"중복된 스타일 정의를 사용하지 마세요.",
-		"빈 규칙 집합을 사용하지 마세요.",
-		"Import 문은 병렬로 로드되지 않습니다.",
-		"패딩 또는 테두리를 사용하는 경우 너비 또는 높이를 사용하지 마세요.",
-		"범용 선택기 (*)는 느린 것으로 알려져 있습니다.",
-		"0에는 단위가 필요하지 않습니다.",
-		"@font-face 규칙에서 \'src\' 및 \'font-family\' 속성을 정의해야 합니다.",
-		"16진수 색은 3개 또는 6개의 16진수로 구성되어야 합니다.",
-		"잘못된 매개 변수 수",
-		"알 수 없는 속성입니다.",
-		"IE 핵(Hack)은 IE7 이상을 지원할 때만 필요합니다.",
-		"알 수 없는 공급업체 관련 속성입니다.",
-		"display 때문에 속성이 무시됩니다. 예를 들어 \'display: inline\'을 사용할 경우 width, height, margin-top, margin-bottom 및 float 속성은 적용되지 않습니다.",
-		"!important는 사용하지 않도록 합니다. 이것은 전체 CSS의 특정성에 문제가 있어서 리팩터링해야 함을 나타냅니다.",
-		"\'float\'를 사용하지 않도록 합니다. Float를 사용하면 레이아웃의 한쪽이 바뀔 경우 CSS가 쉽게 깨질 수 있습니다.",
-		"이러한 규칙은 HTML과 긴밀하게 결합되므로 선택기에 ID를 포함하면 안 됩니다.",
-		"모든 유효성 검사 사용 또는 사용 안 함",
-	],
 	"vs/languages/html/common/html.contribution": [
 		"HTML 구성",
 		"한 줄당 최대 문자 수입니다(0 = 사용 안 함).",
@@ -584,17 +559,9 @@ define("vs/editor/editor.main.nls.ko", {
 		"스키마에 대한 JSON 파일을 확인할 때 일치할 파일 패턴의 배열입니다.",
 		"지정된 URL에 대한 스키마 정의입니다. 스키마 URL에 대한 액세스 방지를 위해서만 스키마를 제공해야 합니다.",
 	],
-	"vs/languages/less/common/less.contribution": [
-		"LESS 구성",
-		"LESS 유효성 검사 및 문제 심각도를 제어합니다.",
-	],
 	"vs/languages/markdown/common/markdown.contribution": [
 		"Markdown 미리 보기 구성",
 		"Markdown 미리 보기에서 사용할 CSS 스타일시트의 로컬 경로 또는 URL 목록입니다.",
-	],
-	"vs/languages/sass/common/sass.contribution": [
-		"Sass 구성",
-		"Sass 유효성 검사 및 문제 심각도를 제어합니다.",
 	],
 	"vs/platform/configuration/common/configurationRegistry": [
 		"구성 설정을 적용합니다.",

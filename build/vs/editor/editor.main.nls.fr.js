@@ -540,31 +540,6 @@ define("vs/editor/editor.main.nls.fr", {
 	"vs/editor/contrib/zoneWidget/browser/peekViewWidget": [
 		"Fermer",
 	],
-	"vs/languages/css/common/css.contribution": [
-		"Configuration de CSS",
-		"Contrôle la validation CSS et les problèmes de gravité.",
-	],
-	"vs/languages/css/common/services/lintRules": [
-		"Lors de l\'utilisation d\'un préfixe spécifique à un fabricant, toujours inclure également toutes les propriétés spécifiques au fabricant",
-		"Lors de l\'utilisation d\'un préfixe spécifique à un fournisseur, ajouter également la propriété standard",
-		"Ne pas utiliser de définitions de style en double",
-		"Ne pas utiliser d\'ensembles de règles vides",
-		"Les instructions d\'importation ne sont pas chargées en parallèle",
-		"Ne pas utiliser la largeur ou la hauteur avec une marge intérieure ou une bordure",
-		"Le sélecteur universel (*) est connu pour sa lenteur",
-		"Aucune unité requise pour zéro",
-		"la règle @font-face doit définir les propriétés \'src\' et \'font-family\'",
-		"Les couleurs Hex doivent contenir trois ou six chiffres hex",
-		"Nombre de paramètres incorrect",
-		"Propriété inconnue.",
-		"Les hacks IE ne sont nécessaires que si IE7 et versions antérieures sont pris en charge",
-		"Propriété spécifique à un fournisseur inconnue.",
-		"Propriété ignorée en raison de l\'affichage. Par exemple, avec \'display: inline\', les propriétés width, height, margin-top, margin-bottom et float sont sans effet",
-		"N\'utilisez pas !important. Cela indique que la spécificité de l\'intégralité du code CSS est incorrecte et qu\'il doit être refactorisé.",
-		"N\'utilisez pas \'float\'. Les éléments Float peuvent fragiliser le code CSS qui est ainsi plus vulnérable si un aspect de la disposition change.",
-		"Les sélecteurs ne doivent pas contenir d\'ID, car ces règles sont trop fortement couplées au code HTML.",
-		"Active ou désactive toutes les validations",
-	],
 	"vs/languages/html/common/html.contribution": [
 		"Configuration HTML",
 		"Nombre maximal de caractères par ligne (0 = désactiver).",
@@ -584,17 +559,9 @@ define("vs/editor/editor.main.nls.fr", {
 		"Tableau de modèles de fichiers pour la recherche de correspondance lors de la résolution de fichiers JSON en schémas.",
 		"Définition du schéma pour l\'URL indiquée. Le schéma doit être fourni uniquement pour éviter les accès à l\'URL du schéma.",
 	],
-	"vs/languages/less/common/less.contribution": [
-		"Configuration LESS",
-		"Contrôle la validation LESS et les problèmes de gravité.",
-	],
 	"vs/languages/markdown/common/markdown.contribution": [
 		"Configuration de l\'aperçu de texte",
 		"Une liste d\'URL ou de chemins d\'accès locaux vers les feuilles de styles CSS à utiliser à partir de l\'aperçu de texte.",
-	],
-	"vs/languages/sass/common/sass.contribution": [
-		"Configuration Sass",
-		"Contrôle la validation Sass et les problèmes de gravité.",
 	],
 	"vs/platform/configuration/common/configurationRegistry": [
 		"Ajoute des paramètres de configuration.",

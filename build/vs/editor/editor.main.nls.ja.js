@@ -540,31 +540,6 @@ define("vs/editor/editor.main.nls.ja", {
 	"vs/editor/contrib/zoneWidget/browser/peekViewWidget": [
 		"閉じる",
 	],
-	"vs/languages/css/common/css.contribution": [
-		"CSS の構成",
-		"CSS 検証と問題の重大度を制御します。",
-	],
-	"vs/languages/css/common/services/lintRules": [
-		"ベンダー固有のプレフィックスを使用する場合は、他のすべてのベンダー固有のプロパティも必ず含めてください",
-		"ベンダー固有のプレフィックスを使用する場合は、標準のプロパティも含めます",
-		"重複するスタイル定義を使用しないでください",
-		"空の規則セットを使用しないでください",
-		"複数の Import ステートメントを同時に読み込むことはできません",
-		"パディングまたは枠線を使用する場合は幅または高さを使用しないでください",
-		"ユニバーサル セレクター (*) を使用すると処理速度が低下することが分かっています",
-		"0 の単位は必要ありません",
-		"@font-face 規則で \'src\' プロパティと \'font-family\' プロパティを定義する必要があります",
-		"16 進数の色には、3 つまたは 6 つの 16 進数が含まれる必要があります",
-		"正しくないパラメーターの数",
-		"不明なプロパティ。",
-		"IE ハックは、IE7 以前をサポートする場合にのみ必要です",
-		"不明なベンダー固有のプロパティ。",
-		"表示によりプロパティが無視されます。たとえば、\'display: inline\' の場合、width、height、margin-top、margin-bottom、および float のプロパティには効果がありません",
-		"!important は使用しないでください。これは CSS 全体の特定性が制御不能になり、リファクタリングが必要なことを示しています。",
-		"\'float\' は使用しないでください。float を使用すると、レイアウトの一部が変更されたときに CSS が破損しやすくなります。",
-		"セレクターには ID を含めないでください。これらの規則と HTML の結合が密接すぎます。",
-		"すべての検証を有効または無効にします",
-	],
 	"vs/languages/html/common/html.contribution": [
 		"HTML 構成",
 		"1 行あたりの最大文字数 (0 = 無効にする)。",
@@ -584,17 +559,9 @@ define("vs/editor/editor.main.nls.ja", {
 		"JSON ファイルをスキーマに解決するときに照合に使用する、ファイル パターンの配列。",
 		"指定された URL のスキーマ定義。スキーマの URL へのアクセスを防ぐために、スキーマのみを入力してください。",
 	],
-	"vs/languages/less/common/less.contribution": [
-		"LESS の構成",
-		"LESS 検証と問題の重大度を制御します。",
-	],
 	"vs/languages/markdown/common/markdown.contribution": [
 		"マークダウン プレビューの構成",
 		"マークダウン プレビューで使用する CSS スタイル シートへの URL またはローカル パスのリスト。",
-	],
-	"vs/languages/sass/common/sass.contribution": [
-		"SASS の構成",
-		"SASS 検証と問題の重大度を制御します。",
 	],
 	"vs/platform/configuration/common/configurationRegistry": [
 		"構成の設定を提供します。",

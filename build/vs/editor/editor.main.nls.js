@@ -543,31 +543,6 @@ define("vs/editor/editor.main.nls", {
 	"vs/editor/contrib/zoneWidget/browser/peekViewWidget": [
 		"Close"
 	],
-	"vs/languages/css/common/css.contribution": [
-		"CSS configuration",
-		"Controls CSS validation and problem severities."
-	],
-	"vs/languages/css/common/services/lintRules": [
-		"When using a vendor-specific prefix make sure to also include all other vendor-specific properties",
-		"When using a vendor-specific prefix also include the standard property",
-		"Do not use duplicate style definitions",
-		"Do not use empty rulesets",
-		"Import statements do not load in parallel",
-		"Do not use width or height when using padding or border",
-		"The universal selector (*) is known to be slow",
-		"No unit for zero needed",
-		"@font-face rule must define 'src' and 'font-family' properties",
-		"Hex colors must consist of three or six hex numbers",
-		"Invalid number of parameters",
-		"Unknown property.",
-		"IE hacks are only necessary when supporting IE7 and older",
-		"Unknown vendor specific property.",
-		"Property is ignored due to the display. E.g. with 'display: inline', the width, height, margin-top, margin-bottom, and float properties have no effect",
-		"Avoid using !important. It is an indication that the specificity of the entire CSS has gotten out of control and needs to be refactored.",
-		"Avoid using 'float'. Floats lead to fragile CSS that is easy to break if one aspect of the layout changes.",
-		"Selectors should not contain IDs because these rules are too tightly coupled with the HTML.",
-		"Enables or disables all validations"
-	],
 	"vs/languages/html/common/html.contribution": [
 		"HTML configuration",
 		"Maximum amount of characters per line (0 = disable).",
@@ -587,17 +562,9 @@ define("vs/editor/editor.main.nls", {
 		"An array of file patterns to match against when resolving JSON files to schemas.",
 		"The schema definition for the given URL. The schema only needs to be provided to avoid accesses to the schema URL."
 	],
-	"vs/languages/less/common/less.contribution": [
-		"LESS configuration",
-		"Controls LESS validation and problem severities."
-	],
 	"vs/languages/markdown/common/markdown.contribution": [
 		"Markdown preview configuration",
 		"A list of URLs or local paths to CSS style sheets to use from the markdown preview."
-	],
-	"vs/languages/sass/common/sass.contribution": [
-		"SCSS (Sass) configuration",
-		"Controls SCSS validation and problem severities."
 	],
 	"vs/platform/configuration/common/configurationRegistry": [
 		"Contributes configuration settings.",
