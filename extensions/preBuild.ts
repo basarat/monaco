@@ -214,7 +214,8 @@ interface IFix {
 }
 interface IFixForFile {
     filePath: string,
-    fixes: IFix[]
+    fixes: IFix[],
+    additions?: string,
 }
 const fixesForFiles: IFixForFile[] = [
     /**
@@ -233,7 +234,33 @@ const fixesForFiles: IFixForFile[] = [
                 new: `linux: { primary:KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L }`
             },
         ]
-    }
+    },
+    /** 
+     * Duplicate copy line down to duplicate line with a new shortcut
+     */
+    {
+        filePath: './vscode/src/vs/editor/contrib/linesOperations/common/linesOperations.ts',
+        fixes: [
+            {
+                // We want to use this for jumpy
+                orig: 'primary: KeyMod.CtrlCmd | KeyCode.Enter',
+                new: ''
+            }
+        ],
+        additions: `
+class DuplicateLinesAction extends CopyLinesAction {
+	static ID = 'editor.action.duplicateLinesAction';
+
+	constructor(descriptor:IEditorActionDescriptorData, editor:ICommonCodeEditor) {
+		super(descriptor, editor, true);
+	}
+}
+CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(DuplicateLinesAction, DuplicateLinesAction.ID, nls.localize('lines.copyDown', "Duplicate Line"), {
+	context: ContextKey.EditorTextFocus,
+	primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_D
+}, 'Duplicate Line'));
+        `
+    },
 ]
 
 fixesForFiles.forEach(fff => {
@@ -241,5 +268,8 @@ fixesForFiles.forEach(fff => {
     fff.fixes.forEach(fix => {
         content = content.replace(fix.orig, fix.new);
     })
+    if (fff.additions) {
+        content = content + fff.additions;
+    }
     writeFile(fff.filePath, content);
 })
