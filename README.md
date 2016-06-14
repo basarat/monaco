@@ -7,9 +7,9 @@ The plan is to provide daily automated builds on microsoft monaco.
 * out : the built assets
 * build : scripts for building various stuff
 
-## How original monaco is built
+## How monaco-editor-core is built
 
-Please see `build/monaco/README.md`. We simplified it (for our purposes) by reading a bunch of source code around the gulpfiles.
+Please see `vscode/build/monaco/README.md`. We simplified it and the process is documented in `prepare.sh`. Some notes on monaco-editor-core: 
 
 * the `build/gulpfile.editor.js` contains the monaco building stuff.
 * the `monaco.d.ts` api is built with `build/monaco/api.ts`.
@@ -28,13 +28,13 @@ All done using `prepare.sh` (with the help of stuff in the `extensions` folder).
 Due to limited testing and automated release we recommend hard version installs:
 
 ```
-npm install nmonaco --save --save-exact
+npm install monaco --save --save-exact
 ```
 
-you can put this your package.json (and now you can `npm run unmonaco`):
+you can put this your package.json (and now you can `npm run umonaco`):
 
 ```
-    "unmonaco": "npm install nmonaco@latest --save --save-exact && npm run tsc",
+    "umonaco": "npm install nmonaco@latest --save --save-exact && npm run tsc",
 ```
 
 ## Why?
