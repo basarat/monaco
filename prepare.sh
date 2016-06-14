@@ -49,4 +49,6 @@ node ../extensions/postBuild.js
 ./node_modules/.bin/tsc ../build/monaco.d.ts
 
 # Again reset sub repo (so we don't leave the submodule dirty)
+# Commented out as its not really needed since we do it at the start anyways
+# Leaving in the changes helps us debug this script better
 # git reset --hard origin/master
