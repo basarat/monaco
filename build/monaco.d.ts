@@ -4898,3 +4898,95 @@ declare module monaco {
         description?: string | ICommandHandlerDescription;
     }
 }
+
+/** We wanted EditorAction */
+declare module monaco {
+
+    export class EditorAction extends Action implements IEditorContribution {
+        editor: ICommonCodeEditor;
+        constructor(descriptor: IEditorActionDescriptorData, editor: ICommonCodeEditor, condition?: Behaviour);
+        getId(): string;
+        dispose(): void;
+        /**
+         * A helper to be able to group and sort actions when they are presented visually.
+         */
+        getGroupId(): string;
+        shouldShowInContextMenu(): boolean;
+        getDescriptor(): IEditorActionDescriptorData;
+        enabled: boolean;
+        resetEnablementState(): void;
+        /**
+         * Returns {{true}} in case this action works
+         * with the current mode. To be overwritten
+         * in subclasses.
+         */
+        isSupported(): boolean;
+        /**
+         * Returns the enablement state of this action. This
+         * method is being called in the process of {{updateEnablementState}}
+         * and overwriters should call super (this method).
+         */
+        getEnablementState(): boolean;
+        getAlias(): string;
+    }
+
+    export class Action extends EventEmitter implements IAction {
+        static LABEL: string;
+        static TOOLTIP: string;
+        static CLASS: string;
+        static ENABLED: string;
+        static CHECKED: string;
+        _id: string;
+        _label: string;
+        _tooltip: string;
+        _cssClass: string;
+        _enabled: boolean;
+        _checked: boolean;
+        _actionCallback: IActionCallback;
+        _order: number;
+        constructor(id: string, label?: string, cssClass?: string, enabled?: boolean, actionCallback?: IActionCallback);
+        id: string;
+        label: string;
+        _setLabel(value: string): void;
+        tooltip: string;
+        _setTooltip(value: string): void;
+        class: string;
+        _setClass(value: string): void;
+        enabled: boolean;
+        _setEnabled(value: boolean): void;
+        checked: boolean;
+        _setChecked(value: boolean): void;
+        order: number;
+        actionCallback: IActionCallback;
+        run(event?: any): Promise<any>;
+    }
+
+    export interface IAction extends IDisposable {
+        id: string;
+        label: string;
+        tooltip: string;
+        class: string;
+        enabled: boolean;
+        checked: boolean;
+        run(event?: any): Promise<any>;
+    }
+
+    export interface IActionCallback {
+        (event: any): Promise<any>;
+    }
+
+    export enum Behaviour {
+        TextFocus = 1,
+        WidgetFocus = 2,
+        Writeable = 4,
+        UpdateOnModelChange = 8,
+        UpdateOnConfigurationChange = 16,
+        ShowInContextMenu = 32,
+        UpdateOnCursorPositionChange = 64,
+    }
+
+    /** Placeholder. Bringing it in would be too much work */
+    class EventEmitter {
+        dispose(): void;
+    }
+}

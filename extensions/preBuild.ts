@@ -171,6 +171,18 @@ declare module monaco {
 declare module monaco {
     #include(vs/platform/keybinding/common/keybindingsRegistry): KeybindingsRegistry, IKeybindingsRegistry, ICommandRule, ICommandDescriptor
 }
+
+/** We wanted EditorAction */
+declare module monaco {
+    #include(vs/editor/common/editorAction): EditorAction
+    #include(vs/base/common/actions): Action, IAction, IActionCallback
+    #include(vs/editor/common/editorActionEnablement): Behaviour
+
+    /** Placeholder. Bringing it in would be too much work */
+    class EventEmitter{
+        dispose(): void;
+    }
+}
 `;
 writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);
 
@@ -181,10 +193,12 @@ const editorMainFile = "./vscode/src/vs/editor/editor.main.ts";
 const editorMainAdditions = `
 /** expose more stuff from monaco */
 import {CommonEditorRegistry, EditorActionDescriptor} from "vs/editor/common/editorCommonExtensions";
-import {KeybindingsRegistry} from 'vs/platform/keybinding/common/keybindingsRegistry';
 global.monaco.CommonEditorRegistry = CommonEditorRegistry;
 global.monaco.EditorActionDescriptor = EditorActionDescriptor;
+import {KeybindingsRegistry} from 'vs/platform/keybinding/common/keybindingsRegistry';
 global.monaco.KeybindingsRegistry = KeybindingsRegistry;
+import {EditorAction} from 'vs/editor/common/editorAction';
+global.monaco.EditorAction = EditorAction;
 `;
 writeFile(editorMainFile, readFile(editorMainFile) + editorMainAdditions);
 
