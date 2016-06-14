@@ -242,8 +242,17 @@ const fixesForFiles: IFixForFile[] = [
         filePath: './vscode/src/vs/editor/contrib/linesOperations/common/linesOperations.ts',
         fixes: [
             {
-                // We want to use this for jumpy
-                orig: 'primary: KeyMod.CtrlCmd | KeyCode.Enter',
+                // We want to use this for jumpy and tab jumps
+                orig: `
+CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(InsertLineBeforeAction, InsertLineBeforeAction.ID, nls.localize('lines.insertBefore', "Insert Line Above"), {
+	context: ContextKey.EditorTextFocus,
+	primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.Enter
+}, 'Insert Line Above'));
+CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(InsertLineAfterAction, InsertLineAfterAction.ID, nls.localize('lines.insertAfter', "Insert Line Below"), {
+	context: ContextKey.EditorTextFocus,
+	primary: KeyMod.CtrlCmd | KeyCode.Enter
+}, 'Insert Line Below'));
+                `,
                 new: ''
             }
         ],
@@ -265,8 +274,9 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(DuplicateLi
 
 fixesForFiles.forEach(fff => {
     let content = readFile(fff.filePath);
+    content = content.split(/\r\n?|\n/).join('\n');
     fff.fixes.forEach(fix => {
-        content = content.replace(fix.orig, fix.new);
+        content = content.replace(fix.orig.split(/\r\n?|\n/).join('\n').trim(), fix.new);
     })
     if (fff.additions) {
         content = content + fff.additions;
