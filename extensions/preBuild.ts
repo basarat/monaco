@@ -156,8 +156,13 @@ declare module monaco.editor {
 declare module monaco.internal {
 
     #include(vs/editor/common/editorCommonExtensions;editorCommon=>monaco.editor): CommonEditorRegistry, EditorActionDescriptor, IEditorCommandHandler, IEditorActionKeybindingOptions, ContextKey
-    #include(vs/platform/keybinding/common/keybindingService): IKeybindings, ICommandHandler, ICommandHandlerDescription, KbExpr, KbExprType
+    #include(vs/platform/keybinding/common/keybindingService): IKeybindings, ICommandHandler, ICommandHandlerDescription, KbExpr, KbExprType, ICommandsMap, IKeybindingItem
 
+}
+
+/** We wanted KeyBindingsRegistry. Rest is brought in for it */
+declare module monaco.internal {
+    #include(vs/platform/keybinding/common/keybindingsRegistry): KeybindingsRegistry, IKeybindingsRegistry, ICommandRule, ICommandDescriptor
 }
 `;
 writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);
@@ -169,8 +174,10 @@ const editorMainFile = "./vscode/src/vs/editor/editor.main.ts";
 const editorMainAdditions = `
 /** expose more stuff from monaco */
 import {CommonEditorRegistry} from "vs/editor/common/editorCommonExtensions";
+import {KeybindingsRegistry} from 'vs/platform/keybinding/common/keybindingsRegistry';
 global.monaco.internal = {
-	CommonEditorRegistry
+	CommonEditorRegistry,
+    KeybindingsRegistry,
 }
 `;
 writeFile(editorMainFile, readFile(editorMainFile) + editorMainAdditions);
