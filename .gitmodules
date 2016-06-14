@@ -1,3 +1,6 @@
 [submodule "vscode"]
 	path = vscode
 	url = https://github.com/Microsoft/vscode.git
+[submodule "monaco-languages"]
+	path = monaco-languages
+	url = https://github.com/Microsoft/monaco-languages.git
