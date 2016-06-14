@@ -18,121 +18,121 @@ MonacoEditorLanguages.push({
 	extensions: [ '.coffee' ],
 	aliases: [ 'CoffeeScript', 'coffeescript', 'coffee' ],
 	mimetypes: ['text/x-coffeescript', 'text/coffeescript'],
-	moduleId: 'vs/editor/standalone-languages/coffee'
+	defModule: 'vs/editor/standalone-languages/coffee'
 });
 MonacoEditorLanguages.push({
 	id: 'c',
 	extensions: [ '.c', '.h' ],
 	aliases: [ 'C', 'c' ],
-	moduleId: 'vs/editor/standalone-languages/cpp'
+	defModule: 'vs/editor/standalone-languages/cpp'
 });
 MonacoEditorLanguages.push({
 	id: 'cpp',
 	extensions: [ '.cpp', '.cc', '.cxx', '.hpp', '.hh', '.hxx' ],
 	aliases: [ 'C++', 'Cpp', 'cpp'],
-	moduleId: 'vs/editor/standalone-languages/cpp'
+	defModule: 'vs/editor/standalone-languages/cpp'
 });
 MonacoEditorLanguages.push({
 	id: 'csharp',
 	extensions: [ '.cs', '.csx' ],
 	aliases: [ 'C#', 'csharp' ],
-	moduleId: 'vs/editor/standalone-languages/csharp'
+	defModule: 'vs/editor/standalone-languages/csharp'
 });
 MonacoEditorLanguages.push({
 	id: 'dockerfile',
 	extensions: [ '.dockerfile' ],
 	filenames: [ 'Dockerfile' ],
 	aliases: [ 'Dockerfile' ],
-	moduleId: 'vs/editor/standalone-languages/dockerfile'
+	defModule: 'vs/editor/standalone-languages/dockerfile'
 });
 MonacoEditorLanguages.push({
 	id: 'fsharp',
 	extensions: [ '.fs', '.fsi', '.ml', '.mli', '.fsx', '.fsscript' ],
 	aliases: [ 'F#', 'FSharp', 'fsharp' ],
-	moduleId: 'vs/editor/standalone-languages/fsharp'
+	defModule: 'vs/editor/standalone-languages/fsharp'
 });
 MonacoEditorLanguages.push({
 	id: 'go',
 	extensions: [ '.go' ],
 	aliases: [ 'Go' ],
-	moduleId: 'vs/editor/standalone-languages/go'
+	defModule: 'vs/editor/standalone-languages/go'
 });
 MonacoEditorLanguages.push({
 	id: 'ini',
 	extensions: [ '.ini', '.properties', '.gitconfig' ],
 	filenames: ['config', '.gitattributes', '.gitconfig', '.editorconfig'],
 	aliases: [ 'Ini', 'ini' ],
-	moduleId: 'vs/editor/standalone-languages/ini'
+	defModule: 'vs/editor/standalone-languages/ini'
 });
 MonacoEditorLanguages.push({
 	id: 'jade',
 	extensions: [ '.jade', '.pug' ],
 	aliases: [ 'Jade', 'jade' ],
-	moduleId: 'vs/editor/standalone-languages/jade'
+	defModule: 'vs/editor/standalone-languages/jade'
 });
 MonacoEditorLanguages.push({
 	id: 'java',
 	extensions: [ '.java', '.jav' ],
 	aliases: [ 'Java', 'java' ],
 	mimetypes: ['text/x-java-source', 'text/x-java'],
-	moduleId: 'vs/editor/standalone-languages/java'
+	defModule: 'vs/editor/standalone-languages/java'
 });
 MonacoEditorLanguages.push({
 	id: 'lua',
 	extensions: [ '.lua' ],
 	aliases: [ 'Lua', 'lua' ],
-	moduleId: 'vs/editor/standalone-languages/lua'
+	defModule: 'vs/editor/standalone-languages/lua'
 });
 MonacoEditorLanguages.push({
 	id: 'objective-c',
 	extensions: [ '.m' ],
 	aliases: [ 'Objective-C'],
-	moduleId: 'vs/editor/standalone-languages/objective-c'
+	defModule: 'vs/editor/standalone-languages/objective-c'
 });
 MonacoEditorLanguages.push({
 	id: 'powershell',
 	extensions: [ '.ps1', '.psm1', '.psd1' ],
 	aliases: [ 'PowerShell', 'powershell', 'ps', 'ps1' ],
-	moduleId: 'vs/editor/standalone-languages/powershell'
+	defModule: 'vs/editor/standalone-languages/powershell'
 });
 MonacoEditorLanguages.push({
 	id: 'python',
 	extensions: [ '.py', '.rpy', '.pyw', '.cpy', '.gyp', '.gypi' ],
 	aliases: [ 'Python', 'py' ],
 	firstLine: '^#!/.*\\bpython[0-9.-]*\\b',
-	moduleId: 'vs/editor/standalone-languages/python'
+	defModule: 'vs/editor/standalone-languages/python'
 });
 MonacoEditorLanguages.push({
 	id: 'r',
 	extensions: [ '.r', '.rhistory', '.rprofile', '.rt' ],
 	aliases: [ 'R', 'r' ],
-	moduleId: 'vs/editor/standalone-languages/r'
+	defModule: 'vs/editor/standalone-languages/r'
 });
 MonacoEditorLanguages.push({
 	id: 'ruby',
 	extensions: [ '.rb', '.rbx', '.rjs', '.gemspec', '.pp' ],
 	filenames: [ 'rakefile' ],
 	aliases: [ 'Ruby', 'rb' ],
-	moduleId: 'vs/editor/standalone-languages/ruby'
+	defModule: 'vs/editor/standalone-languages/ruby'
 });
 MonacoEditorLanguages.push({
 	id: 'swift',
 	aliases: ['Swift','swift'],
 	extensions: ['.swift'],
 	mimetypes: ['text/swift'],
-	moduleId: 'vs/editor/standalone-languages/swift'
+	defModule: 'vs/editor/standalone-languages/swift'
 });
 MonacoEditorLanguages.push({
 	id: 'sql',
 	extensions: [ '.sql' ],
 	aliases: [ 'SQL' ],
-	moduleId: 'vs/editor/standalone-languages/sql'
+	defModule: 'vs/editor/standalone-languages/sql'
 });
 MonacoEditorLanguages.push({
 	id: 'vb',
 	extensions: [ '.vb' ],
 	aliases: [ 'Visual Basic', 'vb' ],
-	moduleId: 'vs/editor/standalone-languages/vb'
+	defModule: 'vs/editor/standalone-languages/vb'
 });
 MonacoEditorLanguages.push({
 	id: 'xml',
@@ -140,13 +140,39 @@ MonacoEditorLanguages.push({
 	firstLine : '(\\<\\?xml.*)|(\\<svg)|(\\<\\!doctype\\s+svg)',
 	aliases: [ 'XML', 'xml' ],
 	mimetypes: ['text/xml', 'application/xml', 'application/xaml+xml', 'application/xml-dtd'],
-	moduleId: 'vs/editor/standalone-languages/xml'
+	defModule: 'vs/editor/standalone-languages/xml'
 });
 
 
 import {ModesRegistry} from 'vs/editor/common/modes/modesRegistry';
-function registerLanguage(def): void {
-	ModesRegistry.registerCompatMode(def);
+import {ExtensionsRegistry} from 'vs/platform/extensions/common/extensionsRegistry';
+export function registerMonarchStandaloneLanguage(language:any, defModule:string): void {
+	ModesRegistry.registerLanguage(language);
+
+	ExtensionsRegistry.registerOneTimeActivationEventListener('onLanguage:' + language.id, () => {
+		require([defModule], (value:{language:IMonarchLanguage;conf:IRichLanguageConfiguration}) => {
+			if (!value.language) {
+				console.error('Expected ' + defModule + ' to export a `language`');
+				return;
+			}
+
+			startup.initStaticServicesIfNecessary();
+			let staticPlatformServices = ensureStaticPlatformServices(null);
+			let modeService = staticPlatformServices.modeService;
+
+			let lexer = compile(language.id, value.language);
+
+			modeService.registerTokenizationSupport(language.id, (mode) => {
+				return createTokenizationSupport(modeService, mode, lexer);
+			});
+
+			LanguageConfigurationRegistry.register(language.id, value.conf);
+		}, (err) => {
+			console.error('Cannot find module ' + defModule, err);
+		});
+	});
 }
 
-MonacoEditorLanguages.forEach(registerLanguage);
+MonacoEditorLanguages.forEach((language) => {
+	registerMonarchStandaloneLanguage(language, language.defModule);
+});
