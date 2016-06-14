@@ -16,8 +16,9 @@ commitName="$(date -u +%Y-%m-%d) [ci skip] Version: $commitVersion"
 echo $commitName > kicktravis
 
 # Update package.json
-< package.json > package.json.new sed -E "s/(\s+\"version\": \")[^\"]+(\",)/\1$commitVersion\2/"
-mv package.json.new package.json
+node ./extensions/bumpVersion.js
+
+# Add to git
 echo "Adding to git"
 git add -A
 git checkout master
