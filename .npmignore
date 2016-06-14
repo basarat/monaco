@@ -1,4 +1,6 @@
 .gitmodules
 extensions/
 vscode/
+monaco-languages/
+standalone-languages/
 src/
