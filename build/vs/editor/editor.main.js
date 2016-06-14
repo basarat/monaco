@@ -6,7 +6,7 @@
  *-----------------------------------------------------------*/
 
 (function() {
-var __m = ["require","exports","vs/base/common/winjs.base","vs/base/common/lifecycle","vs/nls","vs/nls!vs/editor/editor.main","vs/editor/common/editorCommon","vs/editor/common/core/range","vs/base/common/errors","vs/css!vs/editor/editor.main","vs/base/common/strings","vs/base/browser/dom","vs/editor/common/editorCommonExtensions","vs/base/common/keyCodes","vs/base/common/async","vs/platform/instantiation/common/instantiation","vs/editor/common/modes","vs/base/common/platform","vs/base/common/event","vs/editor/common/editorAction","vs/platform/keybinding/common/keybindingService","vs/editor/common/core/position","vs/editor/browser/editorBrowser","vs/base/common/eventEmitter","vs/editor/common/core/selection","vs/editor/common/editorActionEnablement","vs/base/browser/browser","vs/base/browser/styleMutator","vs/base/common/types","vs/base/common/uri","vs/editor/browser/editorBrowserExtensions","vs/base/common/objects","vs/platform/platform","vs/base/common/severity","vs/base/common/arrays","vs/platform/telemetry/common/telemetry","vs/base/browser/builder","vs/base/browser/mouseEvent","vs/base/common/paths","vs/editor/common/modes/languageConfigurationRegistry","vs/editor/common/services/modelService","vs/platform/editor/common/editor","vs/base/browser/ui/scrollbar/scrollableElementOptions","vs/editor/common/modes/modesRegistry","vs/base/browser/ui/widget","vs/platform/message/common/message","vs/editor/common/modes/supports","vs/editor/browser/view/viewPart","vs/platform/thread/common/thread","vs/base/browser/keyboardEvent","vs/editor/common/viewModel/viewEventHandler","vs/base/common/assert","vs/base/common/actions","vs/platform/configuration/common/configurationRegistry","vs/editor/common/config/defaultConfig","vs/base/common/timer","vs/platform/keybinding/common/keybindingsRegistry","vs/base/common/collections","vs/editor/common/core/editOperation","vs/editor/common/core/viewLineToken","vs/base/common/events","vs/base/common/idGenerator","vs/editor/browser/config/configuration","vs/editor/common/services/codeEditorService","vs/editor/common/services/editorWorkerService","vs/base/browser/touch","vs/base/parts/tree/browser/treeDefaults","vs/base/browser/htmlContentRenderer","vs/platform/configuration/common/configuration","vs/platform/markers/common/markers","vs/platform/instantiation/common/descriptors","vs/base/common/filters","vs/editor/browser/view/dynamicViewOverlay","vs/base/browser/ui/actionbar/actionbar","vs/platform/instantiation/common/serviceCollection","vs/platform/contextview/browser/contextView","vs/editor/common/config/config","vs/editor/common/core/modeTransition","vs/editor/common/modes/supports/richEditBrackets","vs/platform/workspace/common/workspace","vs/platform/jsonschemas/common/jsonContributionRegistry","vs/base/common/network","vs/platform/extensions/common/extensionsRegistry","vs/editor/common/model/wordHelper","vs/editor/common/services/modeService","vs/editor/contrib/snippet/common/snippet","vs/base/parts/quickopen/common/quickOpen","vs/base/browser/ui/aria/aria","vs/editor/common/core/arrays","vs/editor/browser/widget/codeEditorWidget","vs/editor/contrib/zoneWidget/browser/peekViewWidget","vs/base/browser/ui/scrollbar/scrollableElement","vs/editor/common/modes/monarch/monarchCommon","vs/editor/common/modes/nullMode","vs/base/common/flags","vs/editor/contrib/suggest/common/suggest","vs/editor/common/config/commonEditorConfig","vs/platform/keybinding/common/keybindingResolver","vs/base/common/iterator","vs/editor/common/view/renderingContext","vs/editor/contrib/referenceSearch/browser/referencesModel","vs/editor/common/viewLayout/viewLineRenderer","vs/editor/common/model/textModelWithTokens","vs/editor/common/viewModel/prefixSumComputer","vs/base/browser/ui/highlightedlabel/highlightedLabel","vs/editor/common/model/textModel","vs/editor/common/commands/replaceCommand","vs/editor/common/controller/cursorMoveHelper","vs/editor/common/model/modelLine","vs/editor/browser/standalone/simpleServices","vs/base/parts/tree/browser/treeImpl","vs/editor/common/viewModel/viewModel","vs/platform/files/common/files","vs/platform/event/common/event","vs/base/common/map","vs/editor/contrib/quickOpen/browser/editorQuickOpen","vs/editor/browser/standalone/standaloneServices","vs/base/common/cancellation","vs/base/browser/ui/inputbox/inputBox","vs/base/browser/globalMouseMoveMonitor","vs/base/browser/ui/scrollbar/scrollbarArrow","vs/editor/common/modes/abstractState","vs/base/browser/ui/sash/sash","vs/base/parts/quickopen/browser/quickOpenModel","vs/editor/contrib/toggleTabFocusMode/common/toggleTabFocusMode","vs/base/common/uuid","vs/platform/thread/common/threadService","vs/editor/browser/widget/diffEditorWidget","vs/editor/common/modes/lineStream","vs/editor/contrib/referenceSearch/browser/referencesWidget","vs/editor/common/modes/monarch/monarchCompile","vs/editor/contrib/zoneWidget/browser/zoneWidget","vs/editor/contrib/hover/browser/hoverWidgets","vs/editor/browser/viewParts/overviewRuler/overviewRulerImpl","vs/editor/browser/view/viewLayer","vs/base/worker/defaultWorkerFactory","vs/editor/common/modes/supports/tokenizationSupport","vs/editor/common/modes/monarch/monarchLexer","vs/editor/common/modes/textToHtmlTokenizer","vs/platform/opener/common/opener","vs/base/browser/ui/scrollbar/abstractScrollbar","vs/base/common/json","vs/editor/contrib/quickOpen/common/quickOpen","vs/editor/contrib/hover/browser/hoverOperation","vs/base/browser/ui/scrollbar/scrollbarState","vs/editor/contrib/find/common/findModel","vs/editor/contrib/comment/common/blockCommentCommand","vs/editor/common/model/textModelWithTokensHelpers","vs/editor/common/controller/oneCursor","vs/editor/contrib/quickFix/common/quickFix","vs/editor/contrib/parameterHints/common/parameterHints","vs/editor/common/viewModel/splitLinesCollection","vs/platform/instantiation/common/instantiationService","vs/base/common/glob","vs/editor/browser/standalone/standaloneCodeEditor","vs/platform/extensions/common/extensions","vs/platform/storage/common/storage","vs/editor/common/model/tokensBinaryEncoding","vs/editor/browser/viewParts/glyphMargin/glyphMargin","vs/platform/request/common/request","vs/editor/browser/standalone/colorizer","vs/platform/keybinding/browser/keybindingServiceImpl","vs/editor/contrib/referenceSearch/browser/referencesController","vs/editor/common/viewLayout/viewLineParts","vs/editor/common/services/editorWorkerServiceImpl","vs/base/browser/ui/contextview/contextview","vs/base/common/labels","vs/editor/common/modes/abstractMode","vs/editor/common/modes/supports/suggestSupport","vs/css!vs/base/browser/ui/progressbar/progressbar","vs/base/browser/iframe","vs/base/common/mime","vs/editor/common/controller/textAreaState","vs/base/common/callbackList","vs/editor/common/model/model","vs/editor/browser/widget/embeddedCodeEditorWidget","vs/base/common/stopwatch","vs/nls!vs/editor/contrib/referenceSearch/browser/referenceSearch","vs/nls!vs/base/browser/ui/actionbar/actionbar","vs/editor/contrib/linesOperations/common/sortLinesCommand","vs/nls!vs/base/browser/ui/aria/aria","vs/nls!vs/base/browser/ui/findinput/findInput","vs/nls!vs/base/browser/ui/inputbox/inputBox","vs/nls!vs/base/common/errors","vs/editor/contrib/linesOperations/common/moveLinesCommand","vs/editor/contrib/linesOperations/common/deleteLinesCommand","vs/editor/contrib/linesOperations/common/copyLinesCommand","vs/editor/contrib/indentation/common/indentationCommands","vs/editor/contrib/inPlaceReplace/common/inPlaceReplaceCommand","vs/editor/contrib/format/common/formatCommand","vs/editor/contrib/folding/common/indentFoldStrategy","vs/base/common/scrollable","vs/editor/contrib/find/common/replaceAllCommand","vs/editor/contrib/find/common/findDecorations","vs/editor/browser/editor.all","vs/editor/common/viewModel/viewModelDecorations","vs/editor/common/viewModel/viewModelCursors","vs/base/browser/ui/scrollbar/scrollbarVisibilityController","vs/editor/browser/viewParts/selections/selections","vs/base/common/worker/simpleWorker","vs/base/common/worker/workerProtocol","vs/base/common/worker/workerClient","vs/base/parts/quickopen/browser/quickOpenViewer","vs/base/parts/tree/browser/treeModel","vs/base/parts/tree/browser/treeViewModel","vs/editor/browser/viewParts/linesDecorations/linesDecorations","vs/editor/browser/view/viewEventDispatcher","vs/editor/browser/viewParts/lineNumbers/lineNumbers","vs/editor/common/model/editStack","vs/editor/browser/viewParts/decorations/decorations","vs/editor/browser/viewParts/currentLineHighlight/currentLineHighlight","vs/editor/common/modes/languageFeatureRegistry","vs/editor/common/viewModel/characterHardWrappingLineMapper","vs/editor/common/modes/supports/onEnter","vs/editor/common/viewModel/filteredLineTokens","vs/editor/common/commands/shiftCommand","vs/editor/common/viewLayout/linesLayout","vs/editor/common/controller/cursorCollection","vs/editor/common/viewLayout/verticalObjects","vs/editor/common/viewModel/viewModelImpl","vs/editor/common/viewLayout/whitespaceComputer","vs/editor/contrib/comment/common/lineCommentCommand","vs/editor/contrib/diffNavigator/common/diffNavigator","vs/editor/common/viewLayout/viewLinesViewportData","vs/editor/contrib/find/common/findState","vs/editor/common/viewLayout/editorLayoutProvider","vs/editor/contrib/links/common/links","vs/editor/common/view/viewContext","vs/editor/contrib/smartSelect/common/tokenTree","vs/editor/contrib/suggest/browser/completionModel","vs/nls!vs/base/common/json","vs/editor/browser/viewParts/lines/rangeUtil","vs/editor/contrib/defineKeybinding/common/smartSnippetInserter","vs/nls!vs/base/common/keyCodes","vs/editor/common/view/overviewZoneManager","vs/editor/common/modes/supports/electricCharacter","vs/editor/common/modes/supports/characterPair","vs/editor/common/modes/languageSelector","vs/editor/common/model/tokenIterator","vs/editor/common/model/lineToken","vs/editor/common/model/indentationGuesser","vs/editor/common/core/editorState","vs/editor/browser/view/viewController","vs/editor/browser/controller/mouseTarget","vs/editor/common/commands/surroundSelectionCommand","vs/base/browser/ui/countBadge/countBadge","vs/editor/common/commands/trimTrailingWhitespaceCommand","vs/base/browser/ui/fileLabel/fileLabel","vs/base/browser/ui/leftRightWidget/leftRightWidget","vs/base/browser/ui/list/rowCache","vs/base/browser/ui/menu/menu","vs/base/browser/ui/progressbar/progressbar","vs/editor/browser/config/elementSizeObserver","vs/css!vs/platform/keybinding/browser/keybindings","vs/base/browser/ui/checkbox/checkbox","vs/css!vs/platform/contextview/browser/contextMenuHandler","vs/base/browser/ui/findinput/findInput","vs/css!vs/editor/contrib/zoneWidget/browser/zoneWidget","vs/css!vs/editor/contrib/zoneWidget/browser/peekViewWidget","vs/base/browser/ui/scrollbar/horizontalScrollbar","vs/base/browser/ui/scrollbar/verticalScrollbar","vs/css!vs/editor/contrib/wordHighlighter/browser/wordHighlighter","vs/base/browser/ui/list/listView","vs/base/browser/ui/list/listWidget","vs/base/parts/tree/browser/treeView","vs/css!vs/editor/contrib/suggest/browser/suggest","vs/editor/browser/controller/mouseHandler","vs/editor/browser/controller/pointerHandler","vs/css!vs/editor/contrib/snippet/browser/snippet","vs/editor/browser/viewLayout/scrollManager","vs/editor/browser/viewLayout/layoutProvider","vs/editor/browser/viewParts/contentWidgets/contentWidgets","vs/editor/browser/viewParts/lines/viewLine","vs/editor/browser/viewParts/overlayWidgets/overlayWidgets","vs/css!vs/editor/contrib/rename/browser/renameInputField","vs/editor/browser/viewParts/overviewRuler/overviewRuler","vs/editor/browser/viewParts/rulers/rulers","vs/editor/browser/viewParts/scrollDecoration/scrollDecoration","vs/editor/browser/viewParts/viewZones/viewZones","vs/editor/common/controller/textAreaHandler","vs/css!vs/editor/contrib/referenceSearch/browser/referencesWidget","vs/editor/contrib/hover/browser/modesGlyphHover","vs/editor/contrib/quickFix/browser/lightBulpWidget","vs/css!vs/editor/contrib/quickOpen/browser/quickOutline","vs/nls!vs/base/common/severity","vs/css!vs/editor/contrib/quickOpen/browser/gotoLine","vs/editor/common/standalone/standaloneBase","vs/nls!vs/base/parts/quickopen/browser/quickOpenModel","vs/nls!vs/base/parts/quickopen/browser/quickOpenWidget","vs/nls!vs/base/parts/tree/browser/treeDefaults","vs/css!vs/editor/contrib/quickFix/browser/quickFix","vs/css!vs/editor/contrib/parameterHints/browser/parameterHints","vs/css!vs/editor/contrib/outlineMarker/browser/outlineMarker","vs/base/parts/quickopen/browser/quickOpenWidget","vs/editor/contrib/quickOpen/browser/quickOpenEditorWidget","vs/nls!vs/editor/browser/standalone/standaloneSchemas","vs/editor/browser/standalone/standaloneSchemas","vs/nls!vs/editor/common/config/commonEditorConfig","vs/nls!vs/editor/common/config/defaultConfig","vs/css!vs/editor/contrib/links/browser/links","vs/css!vs/editor/contrib/inPlaceReplace/browser/inPlaceReplace","vs/nls!vs/editor/common/controller/cursor","vs/editor/common/controller/cursor","vs/nls!vs/editor/common/model/textModelWithTokens","vs/css!vs/editor/contrib/iPadShowKeyboard/browser/iPadShowKeyboard","vs/editor/common/model/mirrorModel","vs/editor/common/model/textModelWithMarkers","vs/editor/common/model/textModelWithTrackedRanges","vs/editor/common/model/textModelWithDecorations","vs/editor/common/model/editableTextModel","vs/css!vs/editor/contrib/hover/browser/hover","vs/nls!vs/editor/common/modes/modesRegistry","vs/nls!vs/editor/common/modes/supports/suggestSupport","vs/nls!vs/editor/common/services/bulkEdit","vs/nls!vs/editor/common/services/modeServiceImpl","vs/nls!vs/editor/common/services/modelServiceImpl","vs/nls!vs/editor/contrib/accessibility/browser/accessibility","vs/nls!vs/editor/contrib/clipboard/browser/clipboard","vs/nls!vs/editor/contrib/comment/common/comment","vs/nls!vs/editor/contrib/contextmenu/browser/contextmenu","vs/nls!vs/editor/contrib/defineKeybinding/browser/defineKeybinding","vs/nls!vs/editor/contrib/find/browser/findWidget","vs/editor/contrib/find/browser/findWidget","vs/nls!vs/editor/contrib/find/common/findController","vs/nls!vs/editor/contrib/folding/browser/folding","vs/nls!vs/editor/contrib/format/common/formatActions","vs/nls!vs/editor/contrib/goToDeclaration/browser/goToDeclaration","vs/nls!vs/editor/contrib/gotoError/browser/gotoError","vs/nls!vs/editor/contrib/hover/browser/hover","vs/nls!vs/editor/contrib/hover/browser/modesContentHover","vs/nls!vs/editor/contrib/inPlaceReplace/common/inPlaceReplace","vs/nls!vs/editor/contrib/indentation/common/indentation","vs/nls!vs/editor/contrib/linesOperations/common/linesOperations","vs/nls!vs/editor/contrib/links/browser/links","vs/nls!vs/editor/contrib/multicursor/common/multicursor","vs/nls!vs/editor/contrib/parameterHints/browser/parameterHints","vs/nls!vs/editor/contrib/parameterHints/browser/parameterHintsWidget","vs/nls!vs/editor/contrib/quickFix/browser/quickFix","vs/nls!vs/editor/contrib/quickFix/browser/quickFixSelectionWidget","vs/editor/contrib/quickFix/browser/quickFixSelectionWidget","vs/nls!vs/editor/contrib/quickOpen/browser/gotoLine","vs/nls!vs/editor/contrib/quickOpen/browser/gotoLine.contribution","vs/nls!vs/editor/contrib/quickOpen/browser/quickCommand","vs/nls!vs/editor/contrib/quickOpen/browser/quickCommand.contribution","vs/nls!vs/editor/contrib/quickOpen/browser/quickOutline","vs/nls!vs/editor/contrib/quickOpen/browser/quickOutline.contribution","vs/editor/contrib/snippet/browser/snippet","vs/nls!vs/editor/contrib/referenceSearch/browser/referencesController","vs/nls!vs/editor/contrib/referenceSearch/browser/referencesWidget","vs/nls!vs/editor/contrib/rename/browser/rename","vs/nls!vs/editor/contrib/rename/browser/renameInputField","vs/editor/contrib/rename/browser/renameInputField","vs/nls!vs/editor/contrib/rename/common/rename","vs/nls!vs/editor/contrib/smartSelect/common/jumpToBracket","vs/nls!vs/editor/contrib/smartSelect/common/smartSelect","vs/nls!vs/editor/contrib/suggest/browser/suggest","vs/nls!vs/editor/contrib/suggest/browser/suggestWidget","vs/nls!vs/editor/contrib/toggleTabFocusMode/common/toggleTabFocusMode","vs/nls!vs/editor/contrib/toggleWordWrap/common/toggleWordWrap","vs/nls!vs/editor/contrib/zoneWidget/browser/peekViewWidget","vs/nls!vs/languages/html/common/html.contribution","vs/nls!vs/languages/json/common/json.contribution","vs/nls!vs/languages/markdown/common/markdown.contribution","vs/nls!vs/platform/configuration/common/configurationRegistry","vs/nls!vs/platform/extensions/common/abstractExtensionService","vs/nls!vs/platform/extensions/common/extensionsRegistry","vs/nls!vs/platform/jsonschemas/common/jsonContributionRegistry","vs/nls!vs/platform/keybinding/browser/keybindingServiceImpl","vs/nls!vs/platform/message/common/message","vs/platform/contextview/browser/contextMenuHandler","vs/css!vs/editor/contrib/gotoError/browser/gotoError","vs/css!vs/editor/contrib/goToDeclaration/browser/goToDeclaration","vs/css!vs/editor/contrib/folding/browser/folding","vs/editor/common/services/abstractCodeEditorService","vs/editor/browser/services/codeEditorServiceImpl","vs/css!vs/editor/contrib/find/browser/findWidget","vs/css!vs/editor/contrib/defineKeybinding/browser/defineKeybinding","vs/css!vs/editor/contrib/color/browser/color","vs/css!vs/editor/contrib/codelens/browser/codelens","vs/editor/common/services/resourceService","vs/editor/contrib/smartSelect/common/tokenSelectionSupport","vs/css!vs/editor/contrib/clipboard/browser/clipboard","vs/css!vs/editor/contrib/accessibility/browser/accessibility","vs/platform/contextview/browser/contextMenuService","vs/css!vs/editor/browser/widget/media/tokens","vs/css!vs/editor/browser/widget/media/editor","vs/platform/event/common/eventService","vs/css!vs/editor/browser/widget/media/diffEditor","vs/css!vs/editor/browser/viewParts/viewCursors/viewCursors","vs/editor/common/services/bulkEdit","vs/css!vs/editor/browser/viewParts/selections/selections","vs/css!vs/editor/browser/viewParts/scrollDecoration/scrollDecoration","vs/css!vs/editor/browser/viewParts/rulers/rulers","vs/editor/common/commonCodeEditor","vs/css!vs/editor/browser/viewParts/overlayWidgets/overlayWidgets","vs/css!vs/editor/browser/viewParts/linesDecorations/linesDecorations","vs/css!vs/editor/browser/viewParts/lines/viewLines","vs/css!vs/editor/browser/viewParts/lineNumbers/lineNumbers","vs/css!vs/editor/browser/viewParts/glyphMargin/glyphMargin","vs/css!vs/editor/browser/viewParts/decorations/decorations","vs/css!vs/editor/browser/viewParts/currentLineHighlight/currentLineHighlight","vs/editor/common/services/languagesRegistry","vs/editor/contrib/iPadShowKeyboard/browser/iPadShowKeyboard","vs/css!vs/editor/browser/viewParts/contentWidgets/contentWidgets","vs/editor/contrib/quickOpen/browser/gotoLine","vs/editor/contrib/quickOpen/browser/quickCommand","vs/languages/handlebars/common/handlebars.contribution","vs/languages/php/common/php.contribution","vs/languages/razor/common/razor.contribution","vs/css!vs/editor/browser/standalone/media/standalone-tokens","vs/css!vs/base/parts/tree/browser/tree","vs/css!vs/base/parts/quickopen/browser/quickopen","vs/css!vs/base/browser/ui/scrollbar/media/scrollbars","vs/css!vs/base/browser/ui/sash/sash","vs/editor/browser/controller/keyboardHandler","vs/editor/browser/view/viewOverlays","vs/editor/browser/viewParts/lines/viewLines","vs/editor/browser/viewParts/viewCursors/viewCursor","vs/editor/browser/viewParts/viewCursors/viewCursors","vs/css!vs/base/browser/ui/menu/menu","vs/css!vs/base/browser/ui/list/list","vs/languages/html/common/html.contribution","vs/languages/json/common/json.contribution","vs/languages/markdown/common/markdown.contribution","vs/languages/languages.main","vs/platform/configuration/common/model","vs/platform/configuration/common/configurationService","vs/platform/extensions/common/abstractExtensionService","vs/css!vs/base/browser/ui/leftRightWidget/leftRightWidget","vs/css!vs/base/browser/ui/inputbox/inputBox","vs/css!vs/base/browser/ui/findinput/findInput","vs/css!vs/base/browser/ui/fileLabel/fileLabel","vs/css!vs/base/browser/ui/countBadge/countBadge","vs/css!vs/base/browser/ui/contextview/contextview","vs/css!vs/base/browser/ui/checkbox/checkbox","vs/editor/contrib/clipboard/browser/clipboard","vs/editor/contrib/codelens/common/codelens","vs/editor/contrib/codelens/browser/codelens","vs/editor/contrib/color/browser/color","vs/editor/contrib/comment/common/comment","vs/editor/contrib/contextmenu/browser/contextmenu","vs/editor/contrib/find/common/findController","vs/editor/contrib/find/browser/find","vs/editor/contrib/folding/browser/folding","vs/editor/contrib/format/common/format","vs/editor/contrib/format/common/formatActions","vs/editor/contrib/goToDeclaration/common/goToDeclaration","vs/editor/contrib/hover/common/hover","vs/editor/contrib/hover/browser/modesContentHover","vs/editor/contrib/hover/browser/hover","vs/editor/contrib/inPlaceReplace/common/inPlaceReplace","vs/editor/contrib/linesOperations/common/linesOperations","vs/editor/contrib/links/browser/links","vs/editor/contrib/multicursor/common/multicursor","vs/css!vs/base/browser/ui/aria/aria","vs/editor/contrib/parameterHints/browser/parameterHintsWidget","vs/editor/contrib/parameterHints/browser/parameterHints","vs/css!vs/base/browser/ui/actionbar/actionbar","vs/editor/contrib/gotoError/browser/gotoError","vs/editor/contrib/quickFix/browser/quickFixModel","vs/editor/contrib/quickFix/browser/quickFix","vs/editor/contrib/quickOpen/browser/gotoLine.contribution","vs/editor/contrib/quickOpen/browser/quickCommand.contribution","vs/css!vs/base/browser/builder","vs/editor/contrib/outlineMarker/browser/outlineMarker","vs/editor/contrib/quickOpen/browser/quickOutline","vs/editor/contrib/quickOpen/browser/quickOutline.contribution","vs/editor/contrib/referenceSearch/common/referenceSearch","vs/editor/contrib/rename/common/rename","vs/editor/contrib/rename/browser/rename","vs/editor/contrib/smartSelect/common/jumpToBracket","vs/editor/contrib/smartSelect/common/smartSelect","vs/base/parts/tree/browser/treeDnd","vs/editor/contrib/defineKeybinding/browser/defineKeybinding","vs/base/parts/tree/browser/tree","vs/editor/contrib/suggest/browser/suggestModel","vs/editor/contrib/suggest/browser/suggestWidget","vs/editor/contrib/suggest/browser/suggest","vs/base/common/marshalling","vs/editor/contrib/accessibility/browser/accessibility","vs/editor/contrib/toggleWordWrap/common/toggleWordWrap","vs/editor/contrib/wordHighlighter/common/wordHighlighter","vs/platform/contextview/browser/contextViewService","vs/platform/request/common/baseRequestService","vs/base/common/graph","vs/platform/theme/common/themes","vs/editor/browser/viewParts/overviewRuler/decorationsOverviewRuler","vs/editor/browser/view/viewImpl","vs/base/common/comparers","vs/base/browser/ui/octiconLabel/octiconLabel","vs/base/common/sortedList","vs/base/common/scorer","vs/editor/contrib/indentation/common/indentation","vs/editor/common/services/modeServiceImpl","vs/editor/common/services/modelServiceImpl","vs/platform/markers/common/markerService","vs/platform/telemetry/common/remoteTelemetryService","vs/base/common/marked/marked","vs/platform/thread/common/abstractThreadService","vs/platform/thread/common/mainThreadService","vs/base/common/htmlContent","vs/editor/common/languages.common","vs/base/common/hash","vs/base/common/diff/diff","vs/editor/contrib/goToDeclaration/browser/goToDeclaration","vs/editor/contrib/referenceSearch/browser/referenceSearch","vs/platform/workspace/common/baseWorkspaceContextService","vs/base/common/diff/diffChange","vs/base/browser/ui/list/rangeMap","vs/editor/browser/standalone/standaloneEditor","vs/editor/browser/standalone/standaloneLanguages","vs/workbench/services/quickopen/common/quickOpenService","vs/base/common/marked/raw.marked","vs/base/common/winjs.base.raw","vs/editor/editor.main"];
+var __m = ["require","exports","vs/base/common/winjs.base","vs/base/common/lifecycle","vs/nls","vs/nls!vs/editor/editor.main","vs/editor/common/editorCommon","vs/editor/common/core/range","vs/base/common/errors","vs/css!vs/editor/editor.main","vs/base/common/strings","vs/base/browser/dom","vs/editor/common/editorCommonExtensions","vs/base/common/keyCodes","vs/base/common/async","vs/platform/instantiation/common/instantiation","vs/editor/common/modes","vs/base/common/platform","vs/base/common/event","vs/editor/common/editorAction","vs/platform/keybinding/common/keybindingService","vs/editor/common/core/position","vs/base/common/eventEmitter","vs/editor/browser/editorBrowser","vs/editor/common/core/selection","vs/editor/common/editorActionEnablement","vs/base/browser/styleMutator","vs/base/browser/browser","vs/base/common/types","vs/base/common/uri","vs/editor/browser/editorBrowserExtensions","vs/base/common/objects","vs/platform/platform","vs/base/common/severity","vs/base/common/arrays","vs/platform/telemetry/common/telemetry","vs/base/browser/builder","vs/base/browser/mouseEvent","vs/base/common/paths","vs/editor/common/services/modelService","vs/editor/common/modes/languageConfigurationRegistry","vs/platform/editor/common/editor","vs/base/browser/ui/scrollbar/scrollableElementOptions","vs/platform/message/common/message","vs/editor/common/modes/modesRegistry","vs/base/browser/ui/widget","vs/editor/common/modes/supports","vs/editor/browser/view/viewPart","vs/platform/keybinding/common/keybindingsRegistry","vs/platform/thread/common/thread","vs/editor/common/config/defaultConfig","vs/base/common/assert","vs/base/common/actions","vs/platform/configuration/common/configurationRegistry","vs/editor/common/viewModel/viewEventHandler","vs/base/browser/keyboardEvent","vs/base/common/timer","vs/base/common/collections","vs/editor/common/core/editOperation","vs/editor/common/core/viewLineToken","vs/base/common/events","vs/base/common/idGenerator","vs/editor/browser/config/configuration","vs/editor/common/services/codeEditorService","vs/editor/common/services/editorWorkerService","vs/base/browser/touch","vs/base/parts/tree/browser/treeDefaults","vs/base/browser/htmlContentRenderer","vs/platform/configuration/common/configuration","vs/platform/markers/common/markers","vs/platform/instantiation/common/descriptors","vs/base/common/filters","vs/editor/browser/view/dynamicViewOverlay","vs/base/browser/ui/actionbar/actionbar","vs/platform/instantiation/common/serviceCollection","vs/platform/contextview/browser/contextView","vs/editor/common/config/config","vs/editor/common/core/modeTransition","vs/editor/common/modes/supports/richEditBrackets","vs/platform/workspace/common/workspace","vs/platform/jsonschemas/common/jsonContributionRegistry","vs/base/common/network","vs/platform/extensions/common/extensionsRegistry","vs/editor/common/model/wordHelper","vs/editor/common/services/modeService","vs/editor/contrib/snippet/common/snippet","vs/base/parts/quickopen/common/quickOpen","vs/base/browser/ui/aria/aria","vs/editor/common/core/arrays","vs/editor/browser/widget/codeEditorWidget","vs/editor/contrib/zoneWidget/browser/peekViewWidget","vs/base/browser/ui/scrollbar/scrollableElement","vs/editor/common/modes/monarch/monarchCommon","vs/editor/common/modes/nullMode","vs/base/common/flags","vs/editor/contrib/suggest/common/suggest","vs/editor/common/config/commonEditorConfig","vs/platform/keybinding/common/keybindingResolver","vs/base/common/iterator","vs/editor/common/view/renderingContext","vs/editor/contrib/referenceSearch/browser/referencesModel","vs/editor/common/viewLayout/viewLineRenderer","vs/editor/common/model/textModelWithTokens","vs/editor/common/viewModel/prefixSumComputer","vs/base/browser/ui/highlightedlabel/highlightedLabel","vs/editor/common/model/textModel","vs/editor/common/commands/replaceCommand","vs/editor/common/controller/cursorMoveHelper","vs/editor/common/model/modelLine","vs/editor/browser/standalone/simpleServices","vs/base/parts/tree/browser/treeImpl","vs/editor/common/viewModel/viewModel","vs/platform/files/common/files","vs/platform/event/common/event","vs/base/common/map","vs/editor/contrib/quickOpen/browser/editorQuickOpen","vs/editor/browser/standalone/standaloneServices","vs/base/common/cancellation","vs/base/browser/ui/inputbox/inputBox","vs/base/browser/globalMouseMoveMonitor","vs/base/browser/ui/scrollbar/scrollbarArrow","vs/editor/common/modes/abstractState","vs/base/browser/ui/sash/sash","vs/base/parts/quickopen/browser/quickOpenModel","vs/editor/contrib/toggleTabFocusMode/common/toggleTabFocusMode","vs/base/common/uuid","vs/platform/thread/common/threadService","vs/editor/browser/widget/diffEditorWidget","vs/editor/common/modes/lineStream","vs/editor/contrib/referenceSearch/browser/referencesWidget","vs/editor/common/modes/monarch/monarchCompile","vs/editor/contrib/zoneWidget/browser/zoneWidget","vs/editor/contrib/hover/browser/hoverWidgets","vs/editor/browser/viewParts/overviewRuler/overviewRulerImpl","vs/editor/browser/view/viewLayer","vs/base/worker/defaultWorkerFactory","vs/editor/common/modes/supports/tokenizationSupport","vs/editor/common/modes/monarch/monarchLexer","vs/editor/common/modes/textToHtmlTokenizer","vs/platform/opener/common/opener","vs/base/browser/ui/scrollbar/abstractScrollbar","vs/base/common/json","vs/editor/contrib/quickOpen/common/quickOpen","vs/editor/contrib/hover/browser/hoverOperation","vs/base/browser/ui/scrollbar/scrollbarState","vs/editor/contrib/find/common/findModel","vs/editor/contrib/comment/common/blockCommentCommand","vs/editor/common/model/textModelWithTokensHelpers","vs/editor/common/controller/oneCursor","vs/editor/contrib/quickFix/common/quickFix","vs/editor/contrib/parameterHints/common/parameterHints","vs/editor/common/viewModel/splitLinesCollection","vs/platform/instantiation/common/instantiationService","vs/base/common/glob","vs/editor/browser/standalone/standaloneCodeEditor","vs/platform/extensions/common/extensions","vs/platform/storage/common/storage","vs/editor/common/model/tokensBinaryEncoding","vs/editor/browser/viewParts/glyphMargin/glyphMargin","vs/platform/request/common/request","vs/editor/browser/standalone/colorizer","vs/platform/keybinding/browser/keybindingServiceImpl","vs/editor/contrib/referenceSearch/browser/referencesController","vs/editor/common/viewLayout/viewLineParts","vs/editor/common/services/editorWorkerServiceImpl","vs/base/browser/ui/contextview/contextview","vs/base/common/labels","vs/editor/common/modes/abstractMode","vs/editor/common/modes/supports/suggestSupport","vs/css!vs/base/browser/ui/progressbar/progressbar","vs/base/browser/iframe","vs/base/common/mime","vs/editor/common/controller/textAreaState","vs/base/common/callbackList","vs/editor/common/model/model","vs/editor/browser/widget/embeddedCodeEditorWidget","vs/base/common/stopwatch","vs/nls!vs/editor/contrib/referenceSearch/browser/referenceSearch","vs/nls!vs/base/browser/ui/actionbar/actionbar","vs/editor/contrib/linesOperations/common/sortLinesCommand","vs/nls!vs/base/browser/ui/aria/aria","vs/nls!vs/base/browser/ui/findinput/findInput","vs/nls!vs/base/browser/ui/inputbox/inputBox","vs/nls!vs/base/common/errors","vs/editor/contrib/linesOperations/common/moveLinesCommand","vs/editor/contrib/linesOperations/common/deleteLinesCommand","vs/editor/contrib/linesOperations/common/copyLinesCommand","vs/editor/contrib/indentation/common/indentationCommands","vs/editor/contrib/inPlaceReplace/common/inPlaceReplaceCommand","vs/editor/contrib/format/common/formatCommand","vs/editor/contrib/folding/common/indentFoldStrategy","vs/base/common/scrollable","vs/editor/contrib/find/common/replaceAllCommand","vs/editor/contrib/find/common/findDecorations","vs/editor/browser/editor.all","vs/editor/common/viewModel/viewModelDecorations","vs/editor/common/viewModel/viewModelCursors","vs/base/browser/ui/scrollbar/scrollbarVisibilityController","vs/editor/browser/viewParts/selections/selections","vs/base/common/worker/simpleWorker","vs/base/common/worker/workerProtocol","vs/base/common/worker/workerClient","vs/base/parts/quickopen/browser/quickOpenViewer","vs/base/parts/tree/browser/treeModel","vs/base/parts/tree/browser/treeViewModel","vs/editor/browser/viewParts/linesDecorations/linesDecorations","vs/editor/browser/view/viewEventDispatcher","vs/editor/browser/viewParts/lineNumbers/lineNumbers","vs/editor/common/model/editStack","vs/editor/browser/viewParts/decorations/decorations","vs/editor/browser/viewParts/currentLineHighlight/currentLineHighlight","vs/editor/common/modes/languageFeatureRegistry","vs/editor/common/viewModel/characterHardWrappingLineMapper","vs/editor/common/modes/supports/onEnter","vs/editor/common/viewModel/filteredLineTokens","vs/editor/common/commands/shiftCommand","vs/editor/common/viewLayout/linesLayout","vs/editor/common/controller/cursorCollection","vs/editor/common/viewLayout/verticalObjects","vs/editor/common/viewModel/viewModelImpl","vs/editor/common/viewLayout/whitespaceComputer","vs/editor/contrib/comment/common/lineCommentCommand","vs/editor/contrib/diffNavigator/common/diffNavigator","vs/editor/common/viewLayout/viewLinesViewportData","vs/editor/contrib/find/common/findState","vs/editor/common/viewLayout/editorLayoutProvider","vs/editor/contrib/links/common/links","vs/editor/common/view/viewContext","vs/editor/contrib/smartSelect/common/tokenTree","vs/editor/contrib/suggest/browser/completionModel","vs/nls!vs/base/common/json","vs/editor/browser/viewParts/lines/rangeUtil","vs/editor/contrib/defineKeybinding/common/smartSnippetInserter","vs/nls!vs/base/common/keyCodes","vs/editor/common/view/overviewZoneManager","vs/editor/common/modes/supports/electricCharacter","vs/editor/common/modes/supports/characterPair","vs/editor/common/modes/languageSelector","vs/editor/common/model/tokenIterator","vs/editor/common/model/lineToken","vs/editor/common/model/indentationGuesser","vs/editor/common/core/editorState","vs/editor/browser/view/viewController","vs/editor/browser/controller/mouseTarget","vs/editor/common/commands/surroundSelectionCommand","vs/base/browser/ui/countBadge/countBadge","vs/editor/common/commands/trimTrailingWhitespaceCommand","vs/base/browser/ui/fileLabel/fileLabel","vs/base/browser/ui/leftRightWidget/leftRightWidget","vs/base/browser/ui/list/rowCache","vs/base/browser/ui/menu/menu","vs/base/browser/ui/progressbar/progressbar","vs/editor/browser/config/elementSizeObserver","vs/css!vs/platform/keybinding/browser/keybindings","vs/base/browser/ui/checkbox/checkbox","vs/css!vs/platform/contextview/browser/contextMenuHandler","vs/base/browser/ui/findinput/findInput","vs/css!vs/editor/contrib/zoneWidget/browser/zoneWidget","vs/css!vs/editor/contrib/zoneWidget/browser/peekViewWidget","vs/base/browser/ui/scrollbar/horizontalScrollbar","vs/base/browser/ui/scrollbar/verticalScrollbar","vs/css!vs/editor/contrib/wordHighlighter/browser/wordHighlighter","vs/base/browser/ui/list/listView","vs/base/browser/ui/list/listWidget","vs/base/parts/tree/browser/treeView","vs/css!vs/editor/contrib/suggest/browser/suggest","vs/editor/browser/controller/mouseHandler","vs/editor/browser/controller/pointerHandler","vs/css!vs/editor/contrib/snippet/browser/snippet","vs/editor/browser/viewLayout/scrollManager","vs/editor/browser/viewLayout/layoutProvider","vs/editor/browser/viewParts/contentWidgets/contentWidgets","vs/editor/browser/viewParts/lines/viewLine","vs/editor/browser/viewParts/overlayWidgets/overlayWidgets","vs/css!vs/editor/contrib/rename/browser/renameInputField","vs/editor/browser/viewParts/overviewRuler/overviewRuler","vs/editor/browser/viewParts/rulers/rulers","vs/editor/browser/viewParts/scrollDecoration/scrollDecoration","vs/editor/browser/viewParts/viewZones/viewZones","vs/editor/common/controller/textAreaHandler","vs/css!vs/editor/contrib/referenceSearch/browser/referencesWidget","vs/editor/contrib/hover/browser/modesGlyphHover","vs/editor/contrib/quickFix/browser/lightBulpWidget","vs/css!vs/editor/contrib/quickOpen/browser/quickOutline","vs/nls!vs/base/common/severity","vs/css!vs/editor/contrib/quickOpen/browser/gotoLine","vs/editor/common/standalone/standaloneBase","vs/nls!vs/base/parts/quickopen/browser/quickOpenModel","vs/nls!vs/base/parts/quickopen/browser/quickOpenWidget","vs/nls!vs/base/parts/tree/browser/treeDefaults","vs/css!vs/editor/contrib/quickFix/browser/quickFix","vs/css!vs/editor/contrib/parameterHints/browser/parameterHints","vs/css!vs/editor/contrib/outlineMarker/browser/outlineMarker","vs/base/parts/quickopen/browser/quickOpenWidget","vs/editor/contrib/quickOpen/browser/quickOpenEditorWidget","vs/nls!vs/editor/browser/standalone/standaloneSchemas","vs/editor/browser/standalone/standaloneSchemas","vs/nls!vs/editor/common/config/commonEditorConfig","vs/nls!vs/editor/common/config/defaultConfig","vs/css!vs/editor/contrib/links/browser/links","vs/css!vs/editor/contrib/inPlaceReplace/browser/inPlaceReplace","vs/nls!vs/editor/common/controller/cursor","vs/editor/common/controller/cursor","vs/nls!vs/editor/common/model/textModelWithTokens","vs/css!vs/editor/contrib/iPadShowKeyboard/browser/iPadShowKeyboard","vs/editor/common/model/mirrorModel","vs/editor/common/model/textModelWithMarkers","vs/editor/common/model/textModelWithTrackedRanges","vs/editor/common/model/textModelWithDecorations","vs/editor/common/model/editableTextModel","vs/css!vs/editor/contrib/hover/browser/hover","vs/nls!vs/editor/common/modes/modesRegistry","vs/nls!vs/editor/common/modes/supports/suggestSupport","vs/nls!vs/editor/common/services/bulkEdit","vs/nls!vs/editor/common/services/modeServiceImpl","vs/nls!vs/editor/common/services/modelServiceImpl","vs/nls!vs/editor/contrib/accessibility/browser/accessibility","vs/nls!vs/editor/contrib/clipboard/browser/clipboard","vs/nls!vs/editor/contrib/comment/common/comment","vs/nls!vs/editor/contrib/contextmenu/browser/contextmenu","vs/nls!vs/editor/contrib/defineKeybinding/browser/defineKeybinding","vs/nls!vs/editor/contrib/find/browser/findWidget","vs/editor/contrib/find/browser/findWidget","vs/nls!vs/editor/contrib/find/common/findController","vs/nls!vs/editor/contrib/folding/browser/folding","vs/nls!vs/editor/contrib/format/common/formatActions","vs/nls!vs/editor/contrib/goToDeclaration/browser/goToDeclaration","vs/nls!vs/editor/contrib/gotoError/browser/gotoError","vs/nls!vs/editor/contrib/hover/browser/hover","vs/nls!vs/editor/contrib/hover/browser/modesContentHover","vs/nls!vs/editor/contrib/inPlaceReplace/common/inPlaceReplace","vs/nls!vs/editor/contrib/indentation/common/indentation","vs/nls!vs/editor/contrib/linesOperations/common/linesOperations","vs/nls!vs/editor/contrib/links/browser/links","vs/nls!vs/editor/contrib/multicursor/common/multicursor","vs/nls!vs/editor/contrib/parameterHints/browser/parameterHints","vs/nls!vs/editor/contrib/parameterHints/browser/parameterHintsWidget","vs/nls!vs/editor/contrib/quickFix/browser/quickFix","vs/nls!vs/editor/contrib/quickFix/browser/quickFixSelectionWidget","vs/editor/contrib/quickFix/browser/quickFixSelectionWidget","vs/nls!vs/editor/contrib/quickOpen/browser/gotoLine","vs/nls!vs/editor/contrib/quickOpen/browser/gotoLine.contribution","vs/nls!vs/editor/contrib/quickOpen/browser/quickCommand","vs/nls!vs/editor/contrib/quickOpen/browser/quickCommand.contribution","vs/nls!vs/editor/contrib/quickOpen/browser/quickOutline","vs/nls!vs/editor/contrib/quickOpen/browser/quickOutline.contribution","vs/editor/contrib/snippet/browser/snippet","vs/nls!vs/editor/contrib/referenceSearch/browser/referencesController","vs/nls!vs/editor/contrib/referenceSearch/browser/referencesWidget","vs/nls!vs/editor/contrib/rename/browser/rename","vs/nls!vs/editor/contrib/rename/browser/renameInputField","vs/editor/contrib/rename/browser/renameInputField","vs/nls!vs/editor/contrib/rename/common/rename","vs/nls!vs/editor/contrib/smartSelect/common/jumpToBracket","vs/nls!vs/editor/contrib/smartSelect/common/smartSelect","vs/nls!vs/editor/contrib/suggest/browser/suggest","vs/nls!vs/editor/contrib/suggest/browser/suggestWidget","vs/nls!vs/editor/contrib/toggleTabFocusMode/common/toggleTabFocusMode","vs/nls!vs/editor/contrib/toggleWordWrap/common/toggleWordWrap","vs/nls!vs/editor/contrib/zoneWidget/browser/peekViewWidget","vs/nls!vs/languages/html/common/html.contribution","vs/nls!vs/languages/json/common/json.contribution","vs/nls!vs/languages/markdown/common/markdown.contribution","vs/nls!vs/platform/configuration/common/configurationRegistry","vs/nls!vs/platform/extensions/common/abstractExtensionService","vs/nls!vs/platform/extensions/common/extensionsRegistry","vs/nls!vs/platform/jsonschemas/common/jsonContributionRegistry","vs/nls!vs/platform/keybinding/browser/keybindingServiceImpl","vs/nls!vs/platform/message/common/message","vs/platform/contextview/browser/contextMenuHandler","vs/css!vs/editor/contrib/gotoError/browser/gotoError","vs/css!vs/editor/contrib/goToDeclaration/browser/goToDeclaration","vs/css!vs/editor/contrib/folding/browser/folding","vs/editor/common/services/abstractCodeEditorService","vs/editor/browser/services/codeEditorServiceImpl","vs/css!vs/editor/contrib/find/browser/findWidget","vs/css!vs/editor/contrib/defineKeybinding/browser/defineKeybinding","vs/css!vs/editor/contrib/color/browser/color","vs/css!vs/editor/contrib/codelens/browser/codelens","vs/editor/common/services/resourceService","vs/editor/contrib/smartSelect/common/tokenSelectionSupport","vs/css!vs/editor/contrib/clipboard/browser/clipboard","vs/css!vs/editor/contrib/accessibility/browser/accessibility","vs/platform/contextview/browser/contextMenuService","vs/css!vs/editor/browser/widget/media/tokens","vs/css!vs/editor/browser/widget/media/editor","vs/platform/event/common/eventService","vs/css!vs/editor/browser/widget/media/diffEditor","vs/css!vs/editor/browser/viewParts/viewCursors/viewCursors","vs/editor/common/services/bulkEdit","vs/css!vs/editor/browser/viewParts/selections/selections","vs/css!vs/editor/browser/viewParts/scrollDecoration/scrollDecoration","vs/css!vs/editor/browser/viewParts/rulers/rulers","vs/editor/common/commonCodeEditor","vs/css!vs/editor/browser/viewParts/overlayWidgets/overlayWidgets","vs/css!vs/editor/browser/viewParts/linesDecorations/linesDecorations","vs/css!vs/editor/browser/viewParts/lines/viewLines","vs/css!vs/editor/browser/viewParts/lineNumbers/lineNumbers","vs/css!vs/editor/browser/viewParts/glyphMargin/glyphMargin","vs/css!vs/editor/browser/viewParts/decorations/decorations","vs/css!vs/editor/browser/viewParts/currentLineHighlight/currentLineHighlight","vs/editor/common/services/languagesRegistry","vs/editor/contrib/iPadShowKeyboard/browser/iPadShowKeyboard","vs/css!vs/editor/browser/viewParts/contentWidgets/contentWidgets","vs/editor/contrib/quickOpen/browser/gotoLine","vs/editor/contrib/quickOpen/browser/quickCommand","vs/languages/handlebars/common/handlebars.contribution","vs/languages/php/common/php.contribution","vs/languages/razor/common/razor.contribution","vs/css!vs/editor/browser/standalone/media/standalone-tokens","vs/css!vs/base/parts/tree/browser/tree","vs/css!vs/base/parts/quickopen/browser/quickopen","vs/css!vs/base/browser/ui/scrollbar/media/scrollbars","vs/css!vs/base/browser/ui/sash/sash","vs/editor/browser/controller/keyboardHandler","vs/editor/browser/view/viewOverlays","vs/editor/browser/viewParts/lines/viewLines","vs/editor/browser/viewParts/viewCursors/viewCursor","vs/editor/browser/viewParts/viewCursors/viewCursors","vs/css!vs/base/browser/ui/menu/menu","vs/css!vs/base/browser/ui/list/list","vs/languages/html/common/html.contribution","vs/languages/json/common/json.contribution","vs/languages/markdown/common/markdown.contribution","vs/languages/languages.main","vs/platform/configuration/common/model","vs/platform/configuration/common/configurationService","vs/platform/extensions/common/abstractExtensionService","vs/css!vs/base/browser/ui/leftRightWidget/leftRightWidget","vs/css!vs/base/browser/ui/inputbox/inputBox","vs/css!vs/base/browser/ui/findinput/findInput","vs/css!vs/base/browser/ui/fileLabel/fileLabel","vs/css!vs/base/browser/ui/countBadge/countBadge","vs/css!vs/base/browser/ui/contextview/contextview","vs/css!vs/base/browser/ui/checkbox/checkbox","vs/editor/contrib/clipboard/browser/clipboard","vs/editor/contrib/codelens/common/codelens","vs/editor/contrib/codelens/browser/codelens","vs/editor/contrib/color/browser/color","vs/editor/contrib/comment/common/comment","vs/editor/contrib/contextmenu/browser/contextmenu","vs/editor/contrib/find/common/findController","vs/editor/contrib/find/browser/find","vs/editor/contrib/folding/browser/folding","vs/editor/contrib/format/common/format","vs/editor/contrib/format/common/formatActions","vs/editor/contrib/goToDeclaration/common/goToDeclaration","vs/editor/contrib/hover/common/hover","vs/editor/contrib/hover/browser/modesContentHover","vs/editor/contrib/hover/browser/hover","vs/editor/contrib/inPlaceReplace/common/inPlaceReplace","vs/editor/contrib/linesOperations/common/linesOperations","vs/editor/contrib/links/browser/links","vs/editor/contrib/multicursor/common/multicursor","vs/css!vs/base/browser/ui/aria/aria","vs/editor/contrib/parameterHints/browser/parameterHintsWidget","vs/editor/contrib/parameterHints/browser/parameterHints","vs/css!vs/base/browser/ui/actionbar/actionbar","vs/editor/contrib/gotoError/browser/gotoError","vs/editor/contrib/quickFix/browser/quickFixModel","vs/editor/contrib/quickFix/browser/quickFix","vs/editor/contrib/quickOpen/browser/gotoLine.contribution","vs/editor/contrib/quickOpen/browser/quickCommand.contribution","vs/css!vs/base/browser/builder","vs/editor/contrib/outlineMarker/browser/outlineMarker","vs/editor/contrib/quickOpen/browser/quickOutline","vs/editor/contrib/quickOpen/browser/quickOutline.contribution","vs/editor/contrib/referenceSearch/common/referenceSearch","vs/editor/contrib/rename/common/rename","vs/editor/contrib/rename/browser/rename","vs/editor/contrib/smartSelect/common/jumpToBracket","vs/editor/contrib/smartSelect/common/smartSelect","vs/base/parts/tree/browser/treeDnd","vs/editor/contrib/defineKeybinding/browser/defineKeybinding","vs/base/parts/tree/browser/tree","vs/editor/contrib/suggest/browser/suggestModel","vs/editor/contrib/suggest/browser/suggestWidget","vs/editor/contrib/suggest/browser/suggest","vs/base/common/marshalling","vs/editor/contrib/accessibility/browser/accessibility","vs/editor/contrib/toggleWordWrap/common/toggleWordWrap","vs/editor/contrib/wordHighlighter/common/wordHighlighter","vs/platform/contextview/browser/contextViewService","vs/platform/request/common/baseRequestService","vs/base/common/graph","vs/platform/theme/common/themes","vs/editor/browser/viewParts/overviewRuler/decorationsOverviewRuler","vs/editor/browser/view/viewImpl","vs/base/common/comparers","vs/base/browser/ui/octiconLabel/octiconLabel","vs/base/common/sortedList","vs/base/common/scorer","vs/editor/contrib/indentation/common/indentation","vs/editor/common/services/modeServiceImpl","vs/editor/common/services/modelServiceImpl","vs/platform/markers/common/markerService","vs/platform/telemetry/common/remoteTelemetryService","vs/base/common/marked/marked","vs/platform/thread/common/abstractThreadService","vs/platform/thread/common/mainThreadService","vs/base/common/htmlContent","vs/editor/common/languages.common","vs/base/common/hash","vs/base/common/diff/diff","vs/editor/contrib/goToDeclaration/browser/goToDeclaration","vs/editor/contrib/referenceSearch/browser/referenceSearch","vs/platform/workspace/common/baseWorkspaceContextService","vs/base/common/diff/diffChange","vs/base/browser/ui/list/rangeMap","vs/editor/browser/standalone/standaloneEditor","vs/editor/browser/standalone/standaloneLanguages","vs/workbench/services/quickopen/common/quickOpenService","vs/base/common/marked/raw.marked","vs/base/common/winjs.base.raw","vs/editor/editor.main"];
 var __M = function(deps) {
   var result = [];
   for (var i = 0, len = deps.length; i < len; i++) {
@@ -9030,7 +9030,7 @@ define(__m[252], __M([0,1,3]), function (require, exports, lifecycle_1) {
     exports.ElementSizeObserver = ElementSizeObserver;
 });
 
-define(__m[22], __M([0,1]), function (require, exports) {
+define(__m[23], __M([0,1]), function (require, exports) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -11348,7 +11348,7 @@ define(__m[6], __M([0,1]), function (require, exports) {
     exports.OverviewRulerZone = OverviewRulerZone;
 });
 
-define(__m[243], __M([0,1,21,7,6,22]), function (require, exports, position_1, range_1, editorCommon_1, editorBrowser_1) {
+define(__m[243], __M([0,1,21,7,6,23]), function (require, exports, position_1, range_1, editorCommon_1, editorBrowser_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -18016,7 +18016,7 @@ define(__m[212], __M([0,1,10,6,103,151]), function (require, exports, strings, e
     exports.CharacterHardWrappingLineMapping = CharacterHardWrappingLineMapping;
 });
 
-define(__m[50], __M([0,1,6]), function (require, exports, editorCommon) {
+define(__m[54], __M([0,1,6]), function (require, exports, editorCommon) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -18194,7 +18194,7 @@ define(__m[50], __M([0,1,6]), function (require, exports, editorCommon) {
 
 
 
-define(__m[72], __M([0,1,50]), function (require, exports, viewEventHandler_1) {
+define(__m[72], __M([0,1,54]), function (require, exports, viewEventHandler_1) {
     'use strict';
     var DynamicViewOverlay = (function (_super) {
         __extends(DynamicViewOverlay, _super);
@@ -18211,7 +18211,7 @@ define(__m[72], __M([0,1,50]), function (require, exports, viewEventHandler_1) {
 
 
 
-define(__m[47], __M([0,1,50]), function (require, exports, viewEventHandler_1) {
+define(__m[47], __M([0,1,54]), function (require, exports, viewEventHandler_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -18713,7 +18713,7 @@ define(__m[158], __M([0,1,72,398]), function (require, exports, dynamicViewOverl
 
 
 
-define(__m[207], __M([0,1,17,72,22,397]), function (require, exports, platform, dynamicViewOverlay_1, editorBrowser_1) {
+define(__m[207], __M([0,1,17,72,23,397]), function (require, exports, platform, dynamicViewOverlay_1, editorBrowser_1) {
     'use strict';
     var LineNumbersOverlay = (function (_super) {
         __extends(LineNumbersOverlay, _super);
@@ -21235,7 +21235,7 @@ define(__m[18], __M([0,1,173]), function (require, exports, callbackList_1) {
     exports.EventBufferer = EventBufferer;
 });
 
-define(__m[26], __M([0,1,28,17,18]), function (require, exports, types, Platform, event_1) {
+define(__m[27], __M([0,1,28,17,18]), function (require, exports, types, Platform, event_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -21352,7 +21352,7 @@ define(__m[26], __M([0,1,28,17,18]), function (require, exports, types, Platform
 
 
 
-define(__m[37], __M([0,1,17,26,170]), function (require, exports, platform, browser, iframe_1) {
+define(__m[37], __M([0,1,17,27,170]), function (require, exports, platform, browser, iframe_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -21587,7 +21587,7 @@ define(__m[117], __M([0,1,18]), function (require, exports, event_1) {
 
 
 
-define(__m[23], __M([0,1,8]), function (require, exports, Errors) {
+define(__m[22], __M([0,1,8]), function (require, exports, Errors) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -21939,7 +21939,7 @@ define(__m[191], __M([0,1,3,18]), function (require, exports, lifecycle_1, event
     exports.Scrollable = Scrollable;
 });
 
-define(__m[55], __M([0,1,17,8,176]), function (require, exports, Platform, errors, precision) {
+define(__m[56], __M([0,1,17,8,176]), function (require, exports, Platform, errors, precision) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -22223,7 +22223,7 @@ define(__m[2], __M([513,8]), function (winjs, __Errors__) {
 
 
 
-define(__m[52], __M([0,1,2,23,60]), function (require, exports, winjs_base_1, eventEmitter_1, Events) {
+define(__m[52], __M([0,1,2,22,60]), function (require, exports, winjs_base_1, eventEmitter_1, Events) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -23456,7 +23456,7 @@ define(__m[200], __M([0,1,2]), function (require, exports, winjs_base_1) {
     exports.RemoteCom = RemoteCom;
 });
 
-define(__m[201], __M([0,1,8,478,55,2,200]), function (require, exports, errors_1, marshalling_1, timer, winjs_base_1, workerProtocol) {
+define(__m[201], __M([0,1,8,478,56,2,200]), function (require, exports, errors_1, marshalling_1, timer, winjs_base_1, workerProtocol) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -23838,7 +23838,7 @@ define(__m[202], __M([0,1,2,28]), function (require, exports, winjs_base_1, type
 
 
 
-define(__m[203], __M([0,1,51,8,3,34,23,2]), function (require, exports, Assert, errors_1, lifecycle_1, arrays, Events, WinJS) {
+define(__m[203], __M([0,1,51,8,3,34,22,2]), function (require, exports, Assert, errors_1, lifecycle_1, arrays, Events, WinJS) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -24931,7 +24931,7 @@ define(__m[203], __M([0,1,51,8,3,34,23,2]), function (require, exports, Assert, 
 
 
 
-define(__m[204], __M([0,1,23,98]), function (require, exports, eventEmitter_1, iterator_1) {
+define(__m[204], __M([0,1,22,98]), function (require, exports, eventEmitter_1, iterator_1) {
     "use strict";
     var HeightMap = (function (_super) {
         __extends(HeightMap, _super);
@@ -25223,7 +25223,7 @@ define(__m[160], __M([0,1,14,2,101,59]), function (require, exports, async_1, wi
     }
 });
 
-define(__m[206], __M([0,1,23]), function (require, exports, eventEmitter_1) {
+define(__m[206], __M([0,1,22]), function (require, exports, eventEmitter_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -26891,7 +26891,7 @@ define(__m[213], __M([0,1,8,10,16,46]), function (require, exports, errors_1, st
     exports.OnEnterSupport = OnEnterSupport;
 });
 
-define(__m[39], __M([0,1,16,236,235,213,78,18,8,21,10,83]), function (require, exports, modes_1, characterPair_1, electricCharacter_1, onEnter_1, richEditBrackets_1, event_1, errors_1, position_1, strings, wordHelper_1) {
+define(__m[40], __M([0,1,16,236,235,213,78,18,8,21,10,83]), function (require, exports, modes_1, characterPair_1, electricCharacter_1, onEnter_1, richEditBrackets_1, event_1, errors_1, position_1, strings, wordHelper_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -27077,7 +27077,7 @@ define(__m[39], __M([0,1,16,236,235,213,78,18,8,21,10,83]), function (require, e
     exports.LanguageConfigurationRegistry = new LanguageConfigurationRegistryImpl();
 });
 
-define(__m[215], __M([0,1,10,107,7,24,39]), function (require, exports, strings, cursorMoveHelper_1, range_1, selection_1, languageConfigurationRegistry_1) {
+define(__m[215], __M([0,1,10,107,7,24,40]), function (require, exports, strings, cursorMoveHelper_1, range_1, selection_1, languageConfigurationRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -27197,7 +27197,7 @@ define(__m[215], __M([0,1,10,107,7,24,39]), function (require, exports, strings,
     exports.ShiftCommand = ShiftCommand;
 });
 
-define(__m[148], __M([0,1,8,10,106,215,244,107,21,7,24,6,16,39]), function (require, exports, errors_1, strings, replaceCommand_1, shiftCommand_1, surroundSelectionCommand_1, cursorMoveHelper_1, position_1, range_1, selection_1, editorCommon, modes_1, languageConfigurationRegistry_1) {
+define(__m[148], __M([0,1,8,10,106,215,244,107,21,7,24,6,16,40]), function (require, exports, errors_1, strings, replaceCommand_1, shiftCommand_1, surroundSelectionCommand_1, cursorMoveHelper_1, position_1, range_1, selection_1, editorCommon, modes_1, languageConfigurationRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -28932,7 +28932,7 @@ define(__m[148], __M([0,1,8,10,106,215,244,107,21,7,24,6,16,39]), function (requ
     }());
 });
 
-define(__m[217], __M([0,1,8,148,24,39]), function (require, exports, errors_1, oneCursor_1, selection_1, languageConfigurationRegistry_1) {
+define(__m[217], __M([0,1,8,148,24,40]), function (require, exports, errors_1, oneCursor_1, selection_1, languageConfigurationRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -29244,7 +29244,7 @@ define(__m[217], __M([0,1,8,148,24,39]), function (require, exports, errors_1, o
     exports.CursorCollection = CursorCollection;
 });
 
-define(__m[147], __M([0,1,77,39,83]), function (require, exports, modeTransition_1, languageConfigurationRegistry_1, wordHelper_1) {
+define(__m[147], __M([0,1,77,40,83]), function (require, exports, modeTransition_1, languageConfigurationRegistry_1, wordHelper_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -29286,7 +29286,7 @@ define(__m[147], __M([0,1,77,39,83]), function (require, exports, modeTransition
 
 
 
-define(__m[219], __M([0,1,23,3,10,21,7,24,6,196,195]), function (require, exports, eventEmitter_1, lifecycle_1, strings, position_1, range_1, selection_1, editorCommon, viewModelCursors_1, viewModelDecorations_1) {
+define(__m[219], __M([0,1,22,3,10,21,7,24,6,196,195]), function (require, exports, eventEmitter_1, lifecycle_1, strings, position_1, range_1, selection_1, editorCommon, viewModelCursors_1, viewModelDecorations_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -29680,7 +29680,7 @@ define(__m[219], __M([0,1,23,3,10,21,7,24,6,196,195]), function (require, export
     exports.ViewModel = ViewModel;
 });
 
-define(__m[146], __M([0,1,58,21,7,24,39]), function (require, exports, editOperation_1, position_1, range_1, selection_1, languageConfigurationRegistry_1) {
+define(__m[146], __M([0,1,58,21,7,24,40]), function (require, exports, editOperation_1, position_1, range_1, selection_1, languageConfigurationRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -29797,7 +29797,7 @@ define(__m[146], __M([0,1,58,21,7,24,39]), function (require, exports, editOpera
     exports.BlockCommentCommand = BlockCommentCommand;
 });
 
-define(__m[221], __M([0,1,10,58,21,7,24,146,39]), function (require, exports, strings, editOperation_1, position_1, range_1, selection_1, blockCommentCommand_1, languageConfigurationRegistry_1) {
+define(__m[221], __M([0,1,10,58,21,7,24,146,40]), function (require, exports, strings, editOperation_1, position_1, range_1, selection_1, blockCommentCommand_1, languageConfigurationRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -30127,7 +30127,7 @@ define(__m[221], __M([0,1,10,58,21,7,24,146,39]), function (require, exports, st
 
 
 
-define(__m[222], __M([0,1,51,23,31,7,3]), function (require, exports, assert, eventEmitter_1, objects, range_1, lifecycle_1) {
+define(__m[222], __M([0,1,51,22,31,7,3]), function (require, exports, assert, eventEmitter_1, objects, range_1, lifecycle_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -30687,7 +30687,7 @@ define(__m[145], __M([0,1,14,3,10,106,21,7,6,193,192,24]), function (require, ex
     exports.parseReplaceString = parseReplaceString;
 });
 
-define(__m[224], __M([0,1,23,7]), function (require, exports, eventEmitter_1, range_1) {
+define(__m[224], __M([0,1,22,7]), function (require, exports, eventEmitter_1, range_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -31040,7 +31040,7 @@ define(__m[226], __M([0,1,8,2,16,14]), function (require, exports, errors_1, win
     exports.getLinks = getLinks;
 });
 
-define(__m[100], __M([0,1,23,18,38,10,61,2,7]), function (require, exports, eventEmitter_1, event_1, paths_1, strings, idGenerator_1, winjs_base_1, range_1) {
+define(__m[100], __M([0,1,22,18,38,10,61,2,7]), function (require, exports, eventEmitter_1, event_1, paths_1, strings, idGenerator_1, winjs_base_1, range_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -31318,7 +31318,7 @@ define(__m[100], __M([0,1,23,18,38,10,61,2,7]), function (require, exports, even
 
 
 
-define(__m[228], __M([0,1,7,46,78,39]), function (require, exports, range_1, supports_1, richEditBrackets_1, languageConfigurationRegistry_1) {
+define(__m[228], __M([0,1,7,46,78,40]), function (require, exports, range_1, supports_1, richEditBrackets_1, languageConfigurationRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -33830,7 +33830,7 @@ define(__m[13], __M([0,1,233,17]), function (require, exports, nls, defaultPlatf
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-define(__m[49], __M([0,1,13,17,26]), function (require, exports, keyCodes_1, platform, browser) {
+define(__m[55], __M([0,1,13,17,27]), function (require, exports, keyCodes_1, platform, browser) {
     'use strict';
     var KEY_CODE_MAP = {};
     (function () {
@@ -34063,7 +34063,7 @@ define(__m[49], __M([0,1,13,17,26]), function (require, exports, keyCodes_1, pla
 
 
 
-define(__m[11], __M([0,1,14,8,23,3,28,26,49,37]), function (require, exports, async_1, errors_1, eventEmitter_1, lifecycle_1, types_1, browser_1, keyboardEvent_1, mouseEvent_1) {
+define(__m[11], __M([0,1,14,8,22,3,28,27,55,37]), function (require, exports, async_1, errors_1, eventEmitter_1, lifecycle_1, types_1, browser_1, keyboardEvent_1, mouseEvent_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -36973,7 +36973,7 @@ define(__m[67], __M([0,1,11,61,2,497]), function (require, exports, DOM, idGener
 
 
 
-define(__m[27], __M([0,1,11]), function (require, exports, dom) {
+define(__m[26], __M([0,1,11]), function (require, exports, dom) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -37454,7 +37454,7 @@ define(__m[65], __M([0,1,34,3,11]), function (require, exports, arrays, lifecycl
 
 
 
-define(__m[73], __M([0,1,178,3,36,17,52,11,60,28,23,65,49,13,457]), function (require, exports, nls, lifecycle, builder_1, platform, actions_1, DOM, events_1, types, eventEmitter_1, touch_1, keyboardEvent_1, keyCodes_1) {
+define(__m[73], __M([0,1,178,3,36,17,52,11,60,28,22,65,55,13,457]), function (require, exports, nls, lifecycle, builder_1, platform, actions_1, DOM, events_1, types, eventEmitter_1, touch_1, keyboardEvent_1, keyCodes_1) {
     'use strict';
     var BaseActionItem = (function (_super) {
         __extends(BaseActionItem, _super);
@@ -38141,7 +38141,7 @@ define(__m[87], __M([0,1,180,17,36,454]), function (require, exports, nls, platf
 
 
 
-define(__m[165], __M([0,1,36,11,3,23,433]), function (require, exports, builder_1, DOM, lifecycle_1, eventEmitter_1) {
+define(__m[165], __M([0,1,36,11,3,22,433]), function (require, exports, builder_1, DOM, lifecycle_1, eventEmitter_1) {
     'use strict';
     (function (AnchorAlignment) {
         AnchorAlignment[AnchorAlignment["LEFT"] = 0] = "LEFT";
@@ -38611,7 +38611,7 @@ define(__m[249], __M([0,1,11]), function (require, exports, dom_1) {
 
 
 
-define(__m[250], __M([0,1,36,73,23,419]), function (require, exports, builder_1, actionbar_1, eventEmitter_1) {
+define(__m[250], __M([0,1,36,73,22,419]), function (require, exports, builder_1, actionbar_1, eventEmitter_1) {
     'use strict';
     var Menu = (function (_super) {
         __extends(Menu, _super);
@@ -38652,7 +38652,7 @@ define(__m[250], __M([0,1,36,73,23,419]), function (require, exports, builder_1,
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-define(__m[251], __M([0,1,2,51,26,36,11,125,3,169]), function (require, exports, winjs_base_1, assert, browser, builder_1, DOM, uuid, lifecycle_1) {
+define(__m[251], __M([0,1,2,51,27,36,11,125,3,169]), function (require, exports, winjs_base_1, assert, browser, builder_1, DOM, uuid, lifecycle_1) {
     'use strict';
     var css_done = 'done';
     var css_active = 'active';
@@ -38843,7 +38843,7 @@ define(__m[251], __M([0,1,2,51,26,36,11,125,3,169]), function (require, exports,
 
 
 
-define(__m[122], __M([0,1,3,36,26,17,28,11,65,23,37,413]), function (require, exports, lifecycle_1, builder_1, browser_1, platform_1, types, DOM, touch_1, eventEmitter_1, mouseEvent_1) {
+define(__m[122], __M([0,1,3,36,27,17,28,11,65,22,37,413]), function (require, exports, lifecycle_1, builder_1, browser_1, platform_1, types, DOM, touch_1, eventEmitter_1, mouseEvent_1) {
     'use strict';
     (function (Orientation) {
         Orientation[Orientation["VERTICAL"] = 0] = "VERTICAL";
@@ -39026,7 +39026,7 @@ define(__m[122], __M([0,1,3,36,26,17,28,11,65,23,37,413]), function (require, ex
 
 
 
-define(__m[44], __M([0,1,3,37,49,11]), function (require, exports, lifecycle_1, mouseEvent_1, keyboardEvent_1, DomUtils) {
+define(__m[45], __M([0,1,3,37,55,11]), function (require, exports, lifecycle_1, mouseEvent_1, keyboardEvent_1, DomUtils) {
     'use strict';
     var Widget = (function (_super) {
         __extends(Widget, _super);
@@ -39077,7 +39077,7 @@ define(__m[44], __M([0,1,3,37,49,11]), function (require, exports, lifecycle_1, 
 
 
 
-define(__m[254], __M([0,1,11,13,44,434]), function (require, exports, DOM, keyCodes_1, widget_1) {
+define(__m[254], __M([0,1,11,13,45,434]), function (require, exports, DOM, keyCodes_1, widget_1) {
     'use strict';
     var Checkbox = (function (_super) {
         __extends(Checkbox, _super);
@@ -39149,7 +39149,7 @@ define(__m[254], __M([0,1,11,13,44,434]), function (require, exports, DOM, keyCo
 
 
 
-define(__m[118], __M([0,1,182,26,11,67,87,73,165,18,44,429]), function (require, exports, nls, Bal, dom, htmlContentRenderer_1, aria, actionbar_1, contextview_1, event_1, widget_1) {
+define(__m[118], __M([0,1,182,27,11,67,87,73,165,18,45,429]), function (require, exports, nls, Bal, dom, htmlContentRenderer_1, aria, actionbar_1, contextview_1, event_1, widget_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -39461,7 +39461,7 @@ define(__m[118], __M([0,1,182,26,11,67,87,73,165,18,44,429]), function (require,
 
 
 
-define(__m[256], __M([0,1,181,11,118,254,44,18,13,430]), function (require, exports, nls, dom, inputBox_1, checkbox_1, widget_1, event_1, keyCodes_1) {
+define(__m[256], __M([0,1,181,11,118,254,45,18,13,430]), function (require, exports, nls, dom, inputBox_1, checkbox_1, widget_1, event_1, keyCodes_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -39737,7 +39737,7 @@ define(__m[256], __M([0,1,181,11,118,254,44,18,13,430]), function (require, expo
 
 
 
-define(__m[120], __M([0,1,119,44,14]), function (require, exports, globalMouseMoveMonitor_1, widget_1, async_1) {
+define(__m[120], __M([0,1,119,45,14]), function (require, exports, globalMouseMoveMonitor_1, widget_1, async_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -39819,7 +39819,7 @@ define(__m[120], __M([0,1,119,44,14]), function (require, exports, globalMouseMo
 
 
 
-define(__m[140], __M([0,1,17,11,37,119,44,27,120,197]), function (require, exports, Platform, DomUtils, mouseEvent_1, globalMouseMoveMonitor_1, widget_1, styleMutator_1, scrollbarArrow_1, scrollbarVisibilityController_1) {
+define(__m[140], __M([0,1,17,11,37,119,45,26,120,197]), function (require, exports, Platform, DomUtils, mouseEvent_1, globalMouseMoveMonitor_1, widget_1, styleMutator_1, scrollbarArrow_1, scrollbarVisibilityController_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -40199,7 +40199,7 @@ define(__m[260], __M([0,1,140,37,42,144,120]), function (require, exports, abstr
 
 
 
-define(__m[91], __M([0,1,26,11,17,37,259,260,42,3,191,44,14,27,18,412]), function (require, exports, Browser, DomUtils, Platform, mouseEvent_1, horizontalScrollbar_1, verticalScrollbar_1, scrollableElementOptions_1, lifecycle_1, scrollable_1, widget_1, async_1, styleMutator_1, event_1) {
+define(__m[91], __M([0,1,27,11,17,37,259,260,42,3,191,45,14,26,18,412]), function (require, exports, Browser, DomUtils, Platform, mouseEvent_1, horizontalScrollbar_1, verticalScrollbar_1, scrollableElementOptions_1, lifecycle_1, scrollable_1, widget_1, async_1, styleMutator_1, event_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -41095,7 +41095,7 @@ define(__m[263], __M([0,1,3,28,11,18,262,420]), function (require, exports, life
 
 
 
-define(__m[264], __M([0,1,17,26,2,3,11,503,65,10,37,49,472,98,91,42,204,474,13]), function (require, exports, Platform, Browser, WinJS, Lifecycle, DOM, Diff, Touch, strings, Mouse, Keyboard, dnd, iterator_1, scrollableElement_1, scrollableElementOptions_1, treeViewModel_1, _, keyCodes_1) {
+define(__m[264], __M([0,1,17,27,2,3,11,503,65,10,37,55,472,98,91,42,204,474,13]), function (require, exports, Platform, Browser, WinJS, Lifecycle, DOM, Diff, Touch, strings, Mouse, Keyboard, dnd, iterator_1, scrollableElement_1, scrollableElementOptions_1, treeViewModel_1, _, keyCodes_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -42518,7 +42518,7 @@ define(__m[135], __M([0,1,94,3,11]), function (require, exports, flags, lifecycl
 
 
 
-define(__m[266], __M([0,1,3,17,26,11,119,37,21,24,6,50,243,14]), function (require, exports, lifecycle_1, platform, browser, dom, globalMouseMoveMonitor_1, mouseEvent_1, position_1, selection_1, editorCommon, viewEventHandler_1, mouseTarget_1, async_1) {
+define(__m[266], __M([0,1,3,17,27,11,119,37,21,24,6,54,243,14]), function (require, exports, lifecycle_1, platform, browser, dom, globalMouseMoveMonitor_1, mouseEvent_1, position_1, selection_1, editorCommon, viewEventHandler_1, mouseTarget_1, async_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -43178,7 +43178,7 @@ define(__m[267], __M([0,1,11,37,65,266]), function (require, exports, dom, mouse
 
 
 
-define(__m[134], __M([0,1,47,27]), function (require, exports, viewPart_1, styleMutator_1) {
+define(__m[134], __M([0,1,47,26]), function (require, exports, viewPart_1, styleMutator_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -43611,7 +43611,7 @@ define(__m[134], __M([0,1,47,27]), function (require, exports, viewPart_1, style
     }());
 });
 
-define(__m[269], __M([0,1,3,11,91,6,22]), function (require, exports, lifecycle_1, dom, scrollableElement_1, editorCommon_1, editorBrowser_1) {
+define(__m[269], __M([0,1,3,11,91,6,23]), function (require, exports, lifecycle_1, dom, scrollableElement_1, editorCommon_1, editorBrowser_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -43754,7 +43754,7 @@ define(__m[269], __M([0,1,3,11,91,6,22]), function (require, exports, lifecycle_
 
 
 
-define(__m[270], __M([0,1,6,216,50,269]), function (require, exports, editorCommon, linesLayout_1, viewEventHandler_1, scrollManager_1) {
+define(__m[270], __M([0,1,6,216,54,269]), function (require, exports, editorCommon, linesLayout_1, viewEventHandler_1, scrollManager_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -43952,7 +43952,7 @@ define(__m[270], __M([0,1,6,216,50,269]), function (require, exports, editorComm
 
 
 
-define(__m[271], __M([0,1,11,27,22,47,403]), function (require, exports, dom, styleMutator_1, editorBrowser_1, viewPart_1) {
+define(__m[271], __M([0,1,11,26,23,47,403]), function (require, exports, dom, styleMutator_1, editorBrowser_1, viewPart_1) {
     'use strict';
     var ViewContentWidgets = (function (_super) {
         __extends(ViewContentWidgets, _super);
@@ -44262,7 +44262,7 @@ define(__m[271], __M([0,1,11,27,22,47,403]), function (require, exports, dom, st
 
 
 
-define(__m[272], __M([0,1,26,27,163,101,22,231,99]), function (require, exports, browser, styleMutator_1, viewLineParts_1, viewLineRenderer_1, editorBrowser_1, rangeUtil_1, renderingContext_1) {
+define(__m[272], __M([0,1,27,26,163,101,23,231,99]), function (require, exports, browser, styleMutator_1, viewLineParts_1, viewLineRenderer_1, editorBrowser_1, rangeUtil_1, renderingContext_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -44535,7 +44535,7 @@ define(__m[272], __M([0,1,26,27,163,101,22,231,99]), function (require, exports,
 
 
 
-define(__m[273], __M([0,1,27,22,47,394]), function (require, exports, styleMutator_1, editorBrowser_1, viewPart_1) {
+define(__m[273], __M([0,1,26,23,47,394]), function (require, exports, styleMutator_1, editorBrowser_1, viewPart_1) {
     'use strict';
     var ViewOverlayWidgets = (function (_super) {
         __extends(ViewOverlayWidgets, _super);
@@ -44645,7 +44645,7 @@ define(__m[273], __M([0,1,27,22,47,394]), function (require, exports, styleMutat
     exports.ViewOverlayWidgets = ViewOverlayWidgets;
 });
 
-define(__m[133], __M([0,1,27,6,26,234]), function (require, exports, styleMutator_1, editorCommon_1, browser, overviewZoneManager_1) {
+define(__m[133], __M([0,1,26,6,27,234]), function (require, exports, styleMutator_1, editorCommon_1, browser, overviewZoneManager_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -44844,7 +44844,7 @@ define(__m[133], __M([0,1,27,6,26,234]), function (require, exports, styleMutato
 
 
 
-define(__m[275], __M([0,1,50,133]), function (require, exports, viewEventHandler_1, overviewRulerImpl_1) {
+define(__m[275], __M([0,1,54,133]), function (require, exports, viewEventHandler_1, overviewRulerImpl_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -44909,7 +44909,7 @@ define(__m[275], __M([0,1,50,133]), function (require, exports, viewEventHandler
 
 
 
-define(__m[276], __M([0,1,27,47,392]), function (require, exports, styleMutator_1, viewPart_1) {
+define(__m[276], __M([0,1,26,47,392]), function (require, exports, styleMutator_1, viewPart_1) {
     'use strict';
     var Rulers = (function (_super) {
         __extends(Rulers, _super);
@@ -44980,7 +44980,7 @@ define(__m[276], __M([0,1,27,47,392]), function (require, exports, styleMutator_
 
 
 
-define(__m[277], __M([0,1,11,27,22,47,391]), function (require, exports, dom, styleMutator_1, editorBrowser_1, viewPart_1) {
+define(__m[277], __M([0,1,11,26,23,47,391]), function (require, exports, dom, styleMutator_1, editorBrowser_1, viewPart_1) {
     'use strict';
     var ScrollDecorationViewPart = (function (_super) {
         __extends(ScrollDecorationViewPart, _super);
@@ -45042,7 +45042,7 @@ define(__m[277], __M([0,1,11,27,22,47,391]), function (require, exports, dom, st
 
 
 
-define(__m[278], __M([0,1,8,27,22,47]), function (require, exports, errors_1, styleMutator_1, editorBrowser_1, viewPart_1) {
+define(__m[278], __M([0,1,8,26,23,47]), function (require, exports, errors_1, styleMutator_1, editorBrowser_1, viewPart_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -45570,7 +45570,7 @@ define(__m[279], __M([0,1,14,18,13,3,172,21,7,6]), function (require, exports, a
 
 
 
-define(__m[132], __M([0,1,13,27,21,22,44]), function (require, exports, keyCodes_1, styleMutator_1, position_1, editorBrowser, widget_1) {
+define(__m[132], __M([0,1,13,26,21,23,45]), function (require, exports, keyCodes_1, styleMutator_1, position_1, editorBrowser, widget_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -45842,7 +45842,7 @@ define(__m[281], __M([0,1,143,132]), function (require, exports, hoverOperation_
     exports.ModesGlyphHoverWidget = ModesGlyphHoverWidget;
 });
 
-define(__m[282], __M([0,1,3,11,21,22]), function (require, exports, lifecycle_1, dom, position_1, editorBrowser_1) {
+define(__m[282], __M([0,1,3,11,21,23]), function (require, exports, lifecycle_1, dom, position_1, editorBrowser_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -47226,7 +47226,7 @@ define(__m[123], __M([0,1,287,2,28,71,10,38,488,73,66,104,11,491]), function (re
 
 
 
-define(__m[110], __M([0,1,66,23,203,264,98,410]), function (require, exports, TreeDefaults, Events, Model, View, iterator_1) {
+define(__m[110], __M([0,1,66,22,203,264,98,410]), function (require, exports, TreeDefaults, Events, Model, View, iterator_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -47480,7 +47480,7 @@ define(__m[110], __M([0,1,66,23,203,264,98,410]), function (require, exports, Tr
 
 
 
-define(__m[293], __M([0,1,288,2,17,26,60,28,8,125,86,202,36,118,33,110,251,49,66,11,13,3,42,411]), function (require, exports, nls, winjs_base_1, platform, browser, events_1, types, errors, uuid, quickOpen_1, quickOpenViewer_1, builder_1, inputBox_1, severity_1, treeImpl_1, progressbar_1, keyboardEvent_1, treeDefaults_1, DOM, keyCodes_1, lifecycle_1, scrollableElementOptions_1) {
+define(__m[293], __M([0,1,288,2,17,27,60,28,8,125,86,202,36,118,33,110,251,55,66,11,13,3,42,411]), function (require, exports, nls, winjs_base_1, platform, browser, events_1, types, errors, uuid, quickOpen_1, quickOpenViewer_1, builder_1, inputBox_1, severity_1, treeImpl_1, progressbar_1, keyboardEvent_1, treeDefaults_1, DOM, keyCodes_1, lifecycle_1, scrollableElementOptions_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -48138,7 +48138,7 @@ define(__m[293], __M([0,1,288,2,17,26,60,28,8,125,86,202,36,118,33,110,251,49,66
     exports.QuickOpenWidget = QuickOpenWidget;
 });
 
-define(__m[294], __M([0,1,36,293,22]), function (require, exports, builder_1, quickOpenWidget_1, editorBrowser_1) {
+define(__m[294], __M([0,1,36,293,23]), function (require, exports, builder_1, quickOpenWidget_1, editorBrowser_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -49041,7 +49041,7 @@ define(__m[296], __M([0,1,295]), function (require, exports, nls) {
 
 define(__m[297], __M([4,5]), function(nls, data) { return nls.create("vs/editor/common/config/commonEditorConfig", data); });
 define(__m[298], __M([4,5]), function(nls, data) { return nls.create("vs/editor/common/config/defaultConfig", data); });
-define(__m[54], __M([0,1,298,17,83]), function (require, exports, nls, platform, wordHelper_1) {
+define(__m[50], __M([0,1,298,17,83]), function (require, exports, nls, platform, wordHelper_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -49132,7 +49132,7 @@ define(__m[54], __M([0,1,298,17,83]), function (require, exports, nls, platform,
 
 
 
-define(__m[105], __M([0,1,23,10,21,7,6,108,240,54,103]), function (require, exports, eventEmitter_1, strings, position_1, range_1, editorCommon, modelLine_1, indentationGuesser_1, defaultConfig_1, prefixSumComputer_1) {
+define(__m[105], __M([0,1,22,10,21,7,6,108,240,50,103]), function (require, exports, eventEmitter_1, strings, position_1, range_1, editorCommon, modelLine_1, indentationGuesser_1, defaultConfig_1, prefixSumComputer_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -49820,7 +49820,7 @@ define(__m[301], __M([4,5]), function(nls, data) { return nls.create("vs/editor/
 
 
 
-define(__m[302], __M([0,1,301,8,23,3,106,217,148,21,7,24,6,39]), function (require, exports, nls, errors_1, eventEmitter_1, lifecycle_1, replaceCommand_1, cursorCollection_1, oneCursor_1, position_1, range_1, selection_1, editorCommon, languageConfigurationRegistry_1) {
+define(__m[302], __M([0,1,301,8,22,3,106,217,148,21,7,24,6,40]), function (require, exports, nls, errors_1, eventEmitter_1, lifecycle_1, replaceCommand_1, cursorCollection_1, oneCursor_1, position_1, range_1, selection_1, editorCommon, languageConfigurationRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -51067,7 +51067,7 @@ define(__m[303], __M([4,5]), function(nls, data) { return nls.create("vs/editor/
 
 
 
-define(__m[102], __M([0,1,303,14,8,3,176,55,2,6,105,147,238,93,46,78,77,239,157,39]), function (require, exports, nls, async_1, errors_1, lifecycle_1, stopwatch_1, timer, winjs_base_1, editorCommon, textModel_1, textModelWithTokensHelpers_1, tokenIterator_1, nullMode_1, supports_1, richEditBrackets_1, modeTransition_1, lineToken_1, tokensBinaryEncoding_1, languageConfigurationRegistry_1) {
+define(__m[102], __M([0,1,303,14,8,3,176,56,2,6,105,147,238,93,46,78,77,239,157,40]), function (require, exports, nls, async_1, errors_1, lifecycle_1, stopwatch_1, timer, winjs_base_1, editorCommon, textModel_1, textModelWithTokensHelpers_1, tokenIterator_1, nullMode_1, supports_1, richEditBrackets_1, modeTransition_1, lineToken_1, tokensBinaryEncoding_1, languageConfigurationRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -54122,7 +54122,7 @@ define(__m[321], __M([4,5]), function(nls, data) { return nls.create("vs/editor/
 
 
 
-define(__m[322], __M([0,1,321,8,13,10,11,256,118,44,22,145,375]), function (require, exports, nls, errors_1, keyCodes_1, strings, dom, findInput_1, inputBox_1, widget_1, editorBrowser_1, findModel_1) {
+define(__m[322], __M([0,1,321,8,13,10,11,256,118,45,23,145,375]), function (require, exports, nls, errors_1, keyCodes_1, strings, dom, findInput_1, inputBox_1, widget_1, editorBrowser_1, findModel_1) {
     'use strict';
     var NLS_FIND_INPUT_LABEL = nls.localize(0, null);
     var NLS_FIND_INPUT_PLACEHOLDER = nls.localize(1, null);
@@ -54727,7 +54727,7 @@ define(__m[338], __M([4,5]), function(nls, data) { return nls.create("vs/editor/
 
 
 
-define(__m[339], __M([0,1,338,8,2,11,66,110,22,87,42,3,290]), function (require, exports, nls, errors_1, winjs_base_1, dom, treeDefaults_1, treeImpl_1, editorBrowser_1, aria_1, scrollableElementOptions_1, lifecycle_1) {
+define(__m[339], __M([0,1,338,8,2,11,66,110,23,87,42,3,290]), function (require, exports, nls, errors_1, winjs_base_1, dom, treeDefaults_1, treeImpl_1, editorBrowser_1, aria_1, scrollableElementOptions_1, lifecycle_1) {
     'use strict';
     var $ = dom.emmet;
     function isQuickFix(quickfix) {
@@ -55225,7 +55225,7 @@ define(__m[350], __M([4,5]), function(nls, data) { return nls.create("vs/editor/
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-define(__m[351], __M([0,1,350,8,3,2,7,22,274]), function (require, exports, nls_1, errors_1, lifecycle_1, winjs_base_1, range_1, editorBrowser_1) {
+define(__m[351], __M([0,1,350,8,3,2,7,23,274]), function (require, exports, nls_1, errors_1, lifecycle_1, winjs_base_1, range_1, editorBrowser_1) {
     'use strict';
     var RenameInputField = (function () {
         function RenameInputField(editor) {
@@ -56063,7 +56063,7 @@ define(__m[84], __M([0,1,15]), function (require, exports, instantiation_1) {
     exports.IModeService = instantiation_1.createDecorator('modeService');
 });
 
-define(__m[40], __M([0,1,15]), function (require, exports, instantiation_1) {
+define(__m[39], __M([0,1,15]), function (require, exports, instantiation_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -56086,7 +56086,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-define(__m[164], __M([0,1,14,3,2,199,135,6,147,64,40]), function (require, exports, async_1, lifecycle_1, winjs_base_1, simpleWorker_1, defaultWorkerFactory_1, editorCommon, textModelWithTokensHelpers_1, editorWorkerService_1, modelService_1) {
+define(__m[164], __M([0,1,14,3,2,199,135,6,147,64,39]), function (require, exports, async_1, lifecycle_1, winjs_base_1, simpleWorker_1, defaultWorkerFactory_1, editorCommon, textModelWithTokensHelpers_1, editorWorkerService_1, modelService_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -56358,7 +56358,7 @@ define(__m[379], __M([0,1,15]), function (require, exports, instantiation_1) {
 
 
 
-define(__m[380], __M([0,1,2,7,40,228]), function (require, exports, winjs_base_1, range_1, modelService_1, tokenTree_1) {
+define(__m[380], __M([0,1,2,7,39,228]), function (require, exports, winjs_base_1, range_1, modelService_1, tokenTree_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -56518,7 +56518,7 @@ define(__m[113], __M([0,1,15]), function (require, exports, instantiation_1) {
 
 
 
-define(__m[386], __M([0,1,23,113]), function (require, exports, eventEmitter_1, event_1) {
+define(__m[386], __M([0,1,22,113]), function (require, exports, eventEmitter_1, event_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -57755,7 +57755,7 @@ define(__m[20], __M([0,1,15]), function (require, exports, instantiation_1) {
 
 
 
-define(__m[393], __M([0,1,52,8,23,3,55,2,74,20,54,302,107,241,21,7,24,19,6,212,151,219,502]), function (require, exports, actions_1, errors_1, eventEmitter_1, lifecycle_1, timer, winjs_base_1, serviceCollection_1, keybindingService_1, defaultConfig_1, cursor_1, cursorMoveHelper_1, editorState_1, position_1, range_1, selection_1, editorAction_1, editorCommon, characterHardWrappingLineMapper_1, splitLinesCollection_1, viewModelImpl_1, hash_1) {
+define(__m[393], __M([0,1,52,8,22,3,56,2,74,20,50,302,107,241,21,7,24,19,6,212,151,219,502]), function (require, exports, actions_1, errors_1, eventEmitter_1, lifecycle_1, timer, winjs_base_1, serviceCollection_1, keybindingService_1, defaultConfig_1, cursor_1, cursorMoveHelper_1, editorState_1, position_1, range_1, selection_1, editorAction_1, editorCommon, characterHardWrappingLineMapper_1, splitLinesCollection_1, viewModelImpl_1, hash_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -58871,7 +58871,7 @@ define(__m[69], __M([0,1,15]), function (require, exports, instantiation_1) {
     var MarkerType = exports.MarkerType;
 });
 
-define(__m[45], __M([0,1,368,2,33,15,52]), function (require, exports, nls, winjs_base_1, severity_1, instantiation_1, actions_1) {
+define(__m[43], __M([0,1,368,2,33,15,52]), function (require, exports, nls, winjs_base_1, severity_1, instantiation_1, actions_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -59006,7 +59006,7 @@ define(__m[30], __M([0,1,32]), function (require, exports, platform_1) {
     platform_1.Registry.add(Extensions.EditorContributions, new EditorContributionRegistry());
 });
 
-define(__m[43], __M([0,1,311,18,32]), function (require, exports, nls, event_1, platform_1) {
+define(__m[44], __M([0,1,311,18,32]), function (require, exports, nls, event_1, platform_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -59062,7 +59062,7 @@ define(__m[43], __M([0,1,311,18,32]), function (require, exports, nls, event_1, 
     });
 });
 
-define(__m[401], __M([0,1,8,18,171,10,43]), function (require, exports, errors_1, event_1, mime, strings, modesRegistry_1) {
+define(__m[401], __M([0,1,8,18,171,10,44]), function (require, exports, errors_1, event_1, mime, strings, modesRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -59285,7 +59285,7 @@ define(__m[401], __M([0,1,8,18,171,10,43]), function (require, exports, errors_1
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-define(__m[402], __M([0,1,3,26,11,22,30,304]), function (require, exports, lifecycle_1, browser, dom, editorBrowser_1, editorBrowserExtensions_1) {
+define(__m[402], __M([0,1,3,27,11,23,30,304]), function (require, exports, lifecycle_1, browser, dom, editorBrowser_1, editorBrowserExtensions_1) {
     'use strict';
     var IPadShowKeyboard = (function () {
         function IPadShowKeyboard(editor) {
@@ -59766,7 +59766,7 @@ define(__m[405], __M([0,1,342,8,71,10,2,123,86,20,25,115]), function (require, e
     exports.QuickCommandAction = QuickCommandAction;
 });
 
-define(__m[406], __M([0,1,43]), function (require, exports, modesRegistry_1) {
+define(__m[406], __M([0,1,44]), function (require, exports, modesRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -59782,7 +59782,7 @@ define(__m[406], __M([0,1,43]), function (require, exports, modesRegistry_1) {
     });
 });
 
-define(__m[407], __M([0,1,43]), function (require, exports, modesRegistry_1) {
+define(__m[407], __M([0,1,44]), function (require, exports, modesRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -59798,7 +59798,7 @@ define(__m[407], __M([0,1,43]), function (require, exports, modesRegistry_1) {
     });
 });
 
-define(__m[408], __M([0,1,43]), function (require, exports, modesRegistry_1) {
+define(__m[408], __M([0,1,44]), function (require, exports, modesRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -59814,7 +59814,7 @@ define(__m[408], __M([0,1,43]), function (require, exports, modesRegistry_1) {
     });
 });
 
-define(__m[80], __M([0,1,366,32,23]), function (require, exports, nls, platform, eventEmitter_1) {
+define(__m[80], __M([0,1,366,32,22]), function (require, exports, nls, platform, eventEmitter_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -60521,7 +60521,7 @@ define(__m[53], __M([0,1,363,18,32,31,82,80]), function (require, exports, nls, 
 
 
 
-define(__m[96], __M([0,1,297,18,3,31,17,53,32,54,6,225,42]), function (require, exports, nls, event_1, lifecycle_1, objects, platform, configurationRegistry_1, platform_1, defaultConfig_1, editorCommon, editorLayoutProvider_1, scrollableElementOptions_1) {
+define(__m[96], __M([0,1,297,18,3,31,17,53,32,50,6,225,42]), function (require, exports, nls, event_1, lifecycle_1, objects, platform, configurationRegistry_1, platform_1, defaultConfig_1, editorCommon, editorLayoutProvider_1, scrollableElementOptions_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -61131,7 +61131,7 @@ define(__m[96], __M([0,1,297,18,3,31,17,53,32,54,6,225,42]), function (require, 
 
 
 
-define(__m[62], __M([0,1,18,3,17,26,96,6,252]), function (require, exports, event_1, lifecycle_1, platform, browser, commonEditorConfig_1, editorCommon_1, elementSizeObserver_1) {
+define(__m[62], __M([0,1,18,3,17,27,96,6,252]), function (require, exports, event_1, lifecycle_1, platform, browser, commonEditorConfig_1, editorCommon_1, elementSizeObserver_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -61383,7 +61383,7 @@ define(__m[62], __M([0,1,18,3,17,26,96,6,252]), function (require, exports, even
 
 
 
-define(__m[414], __M([0,1,18,3,26,11,27,96,279,172,7,6,50,62]), function (require, exports, event_1, lifecycle_1, browser, dom, styleMutator_1, commonEditorConfig_1, textAreaHandler_1, textAreaState_1, range_1, editorCommon, viewEventHandler_1, configuration_1) {
+define(__m[414], __M([0,1,18,3,27,11,26,96,279,172,7,6,54,62]), function (require, exports, event_1, lifecycle_1, browser, dom, styleMutator_1, commonEditorConfig_1, textAreaHandler_1, textAreaState_1, range_1, editorCommon, viewEventHandler_1, configuration_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -61675,7 +61675,7 @@ define(__m[414], __M([0,1,18,3,26,11,27,96,279,172,7,6,50,62]), function (requir
 
 
 
-define(__m[415], __M([0,1,27,22,134,62]), function (require, exports, styleMutator_1, editorBrowser, viewLayer_1, configuration_1) {
+define(__m[415], __M([0,1,26,23,134,62]), function (require, exports, styleMutator_1, editorBrowser, viewLayer_1, configuration_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -61918,7 +61918,7 @@ define(__m[415], __M([0,1,27,22,134,62]), function (require, exports, styleMutat
 
 
 
-define(__m[416], __M([0,1,14,27,7,6,22,134,272,62,99,396]), function (require, exports, async_1, styleMutator_1, range_1, editorCommon, editorBrowser_1, viewLayer_1, viewLine_1, configuration_1, renderingContext_1) {
+define(__m[416], __M([0,1,14,26,7,6,23,134,272,62,99,396]), function (require, exports, async_1, styleMutator_1, range_1, editorCommon, editorBrowser_1, viewLayer_1, viewLine_1, configuration_1, renderingContext_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -62336,7 +62336,7 @@ define(__m[416], __M([0,1,14,27,7,6,22,134,272,62,99,396]), function (require, e
     exports.ViewLines = ViewLines;
 });
 
-define(__m[417], __M([0,1,27,6,62]), function (require, exports, styleMutator_1, editorCommon_1, configuration_1) {
+define(__m[417], __M([0,1,26,6,62]), function (require, exports, styleMutator_1, editorCommon_1, configuration_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -62477,7 +62477,7 @@ define(__m[417], __M([0,1,27,6,62]), function (require, exports, styleMutator_1,
 
 
 
-define(__m[418], __M([0,1,6,22,47,417,27,388]), function (require, exports, editorCommon, editorBrowser_1, viewPart_1, viewCursor_1, styleMutator_1) {
+define(__m[418], __M([0,1,6,23,47,417,26,388]), function (require, exports, editorCommon, editorBrowser_1, viewPart_1, viewCursor_1, styleMutator_1) {
     'use strict';
     var RenderType;
     (function (RenderType) {
@@ -62811,7 +62811,7 @@ define(__m[168], __M([0,1,71,53,32,312,14]), function (require, exports, filters
 
 
 
-define(__m[167], __M([0,1,23,2,70,15,68,16,168,64,83]), function (require, exports, eventEmitter_1, winjs_base_1, descriptors_1, instantiation_1, configuration_1, modes, suggestSupport_1, editorWorkerService_1, wordHelper) {
+define(__m[167], __M([0,1,22,2,70,15,68,16,168,64,83]), function (require, exports, eventEmitter_1, winjs_base_1, descriptors_1, instantiation_1, configuration_1, modes, suggestSupport_1, editorWorkerService_1, wordHelper) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -62982,7 +62982,7 @@ define(__m[167], __M([0,1,23,2,70,15,68,16,168,64,83]), function (require, expor
     }
 });
 
-define(__m[421], __M([0,1,43,360,32,53]), function (require, exports, modesRegistry_1, nls, platform, ConfigurationRegistry) {
+define(__m[421], __M([0,1,44,360,32,53]), function (require, exports, modesRegistry_1, nls, platform, ConfigurationRegistry) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -63047,7 +63047,7 @@ define(__m[421], __M([0,1,43,360,32,53]), function (require, exports, modesRegis
     });
 });
 
-define(__m[422], __M([0,1,361,53,32,43]), function (require, exports, nls, ConfigurationRegistry, Platform, modesRegistry_1) {
+define(__m[422], __M([0,1,361,53,32,44]), function (require, exports, nls, ConfigurationRegistry, Platform, modesRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -63101,7 +63101,7 @@ define(__m[422], __M([0,1,361,53,32,43]), function (require, exports, nls, Confi
     });
 });
 
-define(__m[423], __M([0,1,362,43,53,32]), function (require, exports, nls, modesRegistry_1, ConfigurationRegistry, Platform) {
+define(__m[423], __M([0,1,362,44,53,32]), function (require, exports, nls, modesRegistry_1, ConfigurationRegistry, Platform) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -63700,7 +63700,7 @@ define(__m[427], __M([0,1,364,33,2,155,82]), function (require, exports, nls, se
     exports.AbstractExtensionService = AbstractExtensionService;
 });
 
-define(__m[56], __M([0,1,13,17,28,32]), function (require, exports, keyCodes_1, platform, types_1, platform_1) {
+define(__m[48], __M([0,1,13,17,28,32]), function (require, exports, keyCodes_1, platform, types_1, platform_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -63827,7 +63827,7 @@ define(__m[56], __M([0,1,13,17,28,32]), function (require, exports, keyCodes_1, 
     platform_1.Registry.add(exports.Extensions.EditorModes, exports.KeybindingsRegistry);
 });
 
-define(__m[76], __M([0,1,13,41,20,56,6,63]), function (require, exports, keyCodes_1, editor_1, keybindingService_1, keybindingsRegistry_1, editorCommon, codeEditorService_1) {
+define(__m[76], __M([0,1,13,41,20,48,6,63]), function (require, exports, keyCodes_1, editor_1, keybindingService_1, keybindingsRegistry_1, editorCommon, codeEditorService_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -64191,7 +64191,7 @@ define(__m[76], __M([0,1,13,41,20,56,6,63]), function (require, exports, keyCode
 
 
 
-define(__m[161], __M([0,1,367,13,3,33,34,2,11,49,97,20,56,253]), function (require, exports, nls, keyCodes_1, lifecycle_1, severity_1, arrays_1, winjs_base_1, dom, keyboardEvent_1, keybindingResolver_1, keybindingService_1, keybindingsRegistry_1) {
+define(__m[161], __M([0,1,367,13,3,33,34,2,11,55,97,20,48,253]), function (require, exports, nls, keyCodes_1, lifecycle_1, severity_1, arrays_1, winjs_base_1, dom, keyboardEvent_1, keybindingResolver_1, keybindingService_1, keybindingsRegistry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -64581,7 +64581,7 @@ define(__m[156], __M([0,1,15]), function (require, exports, instantiation_1) {
     };
 });
 
-define(__m[35], __M([0,1,2,55,15]), function (require, exports, winjs_base_1, timer_1, instantiation_1) {
+define(__m[35], __M([0,1,2,56,15]), function (require, exports, winjs_base_1, timer_1, instantiation_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -64637,7 +64637,7 @@ define(__m[35], __M([0,1,2,55,15]), function (require, exports, winjs_base_1, ti
     exports.anonymize = anonymize;
 });
 
-define(__m[12], __M([0,1,8,29,70,20,56,32,35,76,21,6,40]), function (require, exports, errors_1, uri_1, descriptors_1, keybindingService_1, keybindingsRegistry_1, platform_1, telemetry_1, config_1, position_1, editorCommon, modelService_1) {
+define(__m[12], __M([0,1,8,29,70,20,48,32,35,76,21,6,39]), function (require, exports, errors_1, uri_1, descriptors_1, keybindingService_1, keybindingsRegistry_1, platform_1, telemetry_1, config_1, position_1, editorCommon, modelService_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -64852,7 +64852,7 @@ define(__m[12], __M([0,1,8,29,70,20,56,32,35,76,21,6,40]), function (require, ex
 
 
 
-define(__m[435], __M([0,1,317,13,3,2,26,76,19,25,12,381]), function (require, exports, nls, keyCodes_1, lifecycle_1, winjs_base_1, browser, config_1, editorAction_1, editorActionEnablement_1, editorCommonExtensions_1) {
+define(__m[435], __M([0,1,317,13,3,2,27,76,19,25,12,381]), function (require, exports, nls, keyCodes_1, lifecycle_1, winjs_base_1, browser, config_1, editorAction_1, editorActionEnablement_1, editorCommonExtensions_1) {
     'use strict';
     var ClipboardWritingAction = (function (_super) {
         __extends(ClipboardWritingAction, _super);
@@ -64995,7 +64995,7 @@ define(__m[435], __M([0,1,317,13,3,2,26,76,19,25,12,381]), function (require, ex
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-define(__m[436], __M([0,1,8,29,2,12,16,40,14]), function (require, exports, errors_1, uri_1, winjs_base_1, editorCommonExtensions_1, modes_1, modelService_1, async_1) {
+define(__m[436], __M([0,1,8,29,2,12,16,39,14]), function (require, exports, errors_1, uri_1, winjs_base_1, editorCommonExtensions_1, modes_1, modelService_1, async_1) {
     'use strict';
     function getCodeLensData(model) {
         var symbols = [];
@@ -65045,7 +65045,7 @@ define(__m[436], __M([0,1,8,29,2,12,16,40,14]), function (require, exports, erro
 
 
 
-define(__m[437], __M([0,1,14,8,3,33,10,2,11,20,45,7,6,16,40,22,30,436,378]), function (require, exports, async_1, errors_1, lifecycle_1, severity_1, strings_1, winjs_base_1, dom, keybindingService_1, message_1, range_1, editorCommon, modes_1, modelService_1, editorBrowser, editorBrowserExtensions_1, codelens_1) {
+define(__m[437], __M([0,1,14,8,3,33,10,2,11,20,43,7,6,16,39,23,30,436,378]), function (require, exports, async_1, errors_1, lifecycle_1, severity_1, strings_1, winjs_base_1, dom, keybindingService_1, message_1, range_1, editorCommon, modes_1, modelService_1, editorBrowser, editorBrowserExtensions_1, codelens_1) {
     'use strict';
     var CodeLensViewZone = (function () {
         function CodeLensViewZone(afterLineNumber) {
@@ -67579,7 +67579,7 @@ define(__m[443], __M([0,1,324,14,13,3,2,19,25,6,7,12,30,190,372]), function (req
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-define(__m[444], __M([0,1,8,29,2,7,12,16,40,14]), function (require, exports, errors_1, uri_1, winjs_base_1, range_1, editorCommonExtensions_1, modes_1, modelService_1, async_1) {
+define(__m[444], __M([0,1,8,29,2,7,12,16,39,14]), function (require, exports, errors_1, uri_1, winjs_base_1, range_1, editorCommonExtensions_1, modes_1, modelService_1, async_1) {
     'use strict';
     function getDocumentRangeFormattingEdits(model, range, options) {
         var support = modes_1.DocumentRangeFormattingEditProviderRegistry.ordered(model)[0];
@@ -68662,7 +68662,7 @@ define(__m[451], __M([0,1,332,13,2,179,246,19,6,12,186,185,184]), function (requ
 
 
 
-define(__m[452], __M([0,1,333,8,13,17,33,29,2,41,45,7,19,25,6,12,16,64,226,3,30,299]), function (require, exports, nls, errors_1, keyCodes_1, platform, severity_1, uri_1, winjs_base_1, editor_1, message_1, range_1, editorAction_1, editorActionEnablement_1, editorCommon, editorCommonExtensions_1, modes_1, editorWorkerService_1, links_1, lifecycle_1, editorBrowserExtensions_1) {
+define(__m[452], __M([0,1,333,8,13,17,33,29,2,41,43,7,19,25,6,12,16,64,226,3,30,299]), function (require, exports, nls, errors_1, keyCodes_1, platform, severity_1, uri_1, winjs_base_1, editor_1, message_1, range_1, editorAction_1, editorActionEnablement_1, editorCommon, editorCommonExtensions_1, modes_1, editorWorkerService_1, links_1, lifecycle_1, editorBrowserExtensions_1) {
     'use strict';
     var LinkOccurence = (function () {
         function LinkOccurence(link, decorationId /*, changeAccessor:editorCommon.IModelDecorationsChangeAccessor*/) {
@@ -69136,7 +69136,7 @@ define(__m[150], __M([0,1,2,12,16,14]), function (require, exports, winjs_base_1
 
 
 
-define(__m[455], __M([0,1,336,3,2,11,87,16,22,14,8,18,20,150,291]), function (require, exports, nls, lifecycle_1, winjs_base_1, dom, aria, modes_1, editorBrowser_1, async_1, errors_1, event_1, keybindingService_1, parameterHints_1) {
+define(__m[455], __M([0,1,336,3,2,11,87,16,23,14,8,18,20,150,291]), function (require, exports, nls, lifecycle_1, winjs_base_1, dom, aria, modes_1, editorBrowser_1, async_1, errors_1, event_1, keybindingService_1, parameterHints_1) {
     'use strict';
     var $ = dom.emmet;
     var ParameterHintsModel = (function (_super) {
@@ -69489,7 +69489,7 @@ define(__m[455], __M([0,1,336,3,2,11,87,16,22,14,8,18,20,150,291]), function (re
 
 
 
-define(__m[456], __M([0,1,335,13,2,3,15,19,6,20,56,76,12,30,16,455,150]), function (require, exports, nls, keyCodes_1, winjs_base_1, lifecycle_1, instantiation_1, editorAction_1, editorCommon_1, keybindingService_1, keybindingsRegistry_1, config_1, editorCommonExtensions_1, editorBrowserExtensions_1, modes_1, parameterHintsWidget_1, parameterHints_1) {
+define(__m[456], __M([0,1,335,13,2,3,15,19,6,20,48,76,12,30,16,455,150]), function (require, exports, nls, keyCodes_1, winjs_base_1, lifecycle_1, instantiation_1, editorAction_1, editorCommon_1, keybindingService_1, keybindingsRegistry_1, config_1, editorCommonExtensions_1, editorBrowserExtensions_1, modes_1, parameterHintsWidget_1, parameterHints_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -69581,7 +69581,7 @@ define(__m[456], __M([0,1,335,13,2,3,15,19,6,20,56,76,12,30,16,455,150]), functi
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-define(__m[149], __M([0,1,8,29,2,61,7,12,16,40,14]), function (require, exports, errors_1, uri_1, winjs_base_1, idGenerator_1, range_1, editorCommonExtensions_1, modes_1, modelService_1, async_1) {
+define(__m[149], __M([0,1,8,29,2,61,7,12,16,39,14]), function (require, exports, errors_1, uri_1, winjs_base_1, idGenerator_1, range_1, editorCommonExtensions_1, modes_1, modelService_1, async_1) {
     'use strict';
     function getCodeActions(model, range) {
         var quickFixes = [];
@@ -70104,7 +70104,7 @@ define(__m[458], __M([0,1,327,8,18,13,3,33,10,2,11,67,20,69,35,21,7,19,25,12,30,
 
 
 
-define(__m[459], __M([0,1,34,14,8,23,3,55,2,7,16,149,282]), function (require, exports, arrays, async_1, errors_1, eventEmitter_1, lifecycle_1, timer, winjs_base_1, range_1, modes_1, quickFix_1, lightBulpWidget_1) {
+define(__m[459], __M([0,1,34,14,8,22,3,56,2,7,16,149,282]), function (require, exports, arrays, async_1, errors_1, eventEmitter_1, lifecycle_1, timer, winjs_base_1, range_1, modes_1, quickFix_1, lightBulpWidget_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -70404,7 +70404,7 @@ define(__m[459], __M([0,1,34,14,8,23,3,55,2,7,16,149,282]), function (require, e
 
 
 
-define(__m[460], __M([0,1,337,8,13,2,41,113,20,69,45,35,19,12,16,30,459,339]), function (require, exports, nls, errors_1, keyCodes_1, winjs_base_1, editor_1, event_1, keybindingService_1, markers_1, message_1, telemetry_1, editorAction_1, editorCommonExtensions_1, modes_1, editorBrowserExtensions_1, quickFixModel_1, quickFixSelectionWidget_1) {
+define(__m[460], __M([0,1,337,8,13,2,41,113,20,69,43,35,19,12,16,30,459,339]), function (require, exports, nls, errors_1, keyCodes_1, winjs_base_1, editor_1, event_1, keybindingService_1, markers_1, message_1, telemetry_1, editorAction_1, editorCommonExtensions_1, modes_1, editorBrowserExtensions_1, quickFixModel_1, quickFixSelectionWidget_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -70561,7 +70561,7 @@ define(__m[461], __M([0,1,341,13,12,404]), function (require, exports, nls, keyC
     }, 'Go to Line...'));
 });
 
-define(__m[462], __M([0,1,343,13,26,12,405]), function (require, exports, nls, keyCodes_1, browser, editorCommonExtensions_1, quickCommand_1) {
+define(__m[462], __M([0,1,343,13,27,12,405]), function (require, exports, nls, keyCodes_1, browser, editorCommonExtensions_1, quickCommand_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -70578,7 +70578,7 @@ define(__m[462], __M([0,1,343,13,26,12,405]), function (require, exports, nls, k
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-define(__m[142], __M([0,1,8,29,2,7,12,16,40,14]), function (require, exports, errors_1, uri_1, winjs_base_1, range_1, editorCommonExtensions_1, modes_1, modelService_1, async_1) {
+define(__m[142], __M([0,1,8,29,2,7,12,16,39,14]), function (require, exports, errors_1, uri_1, winjs_base_1, range_1, editorCommonExtensions_1, modes_1, modelService_1, async_1) {
     'use strict';
     function getDocumentSymbols(model) {
         var entries = [];
@@ -71206,7 +71206,7 @@ define(__m[468], __M([0,1,352,14,8,12,16]), function (require, exports, nls_1, a
 
 
 
-define(__m[469], __M([0,1,349,8,13,33,2,41,113,20,45,19,25,12,16,389,468,351]), function (require, exports, nls, errors_1, keyCodes_1, severity_1, winjs_base_1, editor_1, event_1, keybindingService_1, message_1, editorAction_1, editorActionEnablement_1, editorCommonExtensions_1, modes_1, bulkEdit_1, rename_1, renameInputField_1) {
+define(__m[469], __M([0,1,349,8,13,33,2,41,113,20,43,19,25,12,16,389,468,351]), function (require, exports, nls, errors_1, keyCodes_1, severity_1, winjs_base_1, editor_1, event_1, keybindingService_1, message_1, editorAction_1, editorActionEnablement_1, editorCommonExtensions_1, modes_1, bulkEdit_1, rename_1, renameInputField_1) {
     'use strict';
     // ---  register actions and commands
     var CONTEXT_RENAME_INPUT_VISIBLE = 'renameInputVisible';
@@ -72238,7 +72238,7 @@ define(__m[85], __M([0,1,57,13,10,20,58,7,24,6,12,3]), function (require, export
 
 
 
-define(__m[473], __M([0,1,320,14,13,3,2,11,67,49,27,97,20,7,19,25,6,12,22,30,85,232,376]), function (require, exports, nls, async_1, keyCodes_1, lifecycle_1, winjs_base_1, dom, htmlContentRenderer_1, keyboardEvent_1, styleMutator_1, keybindingResolver_1, keybindingService_1, range_1, editorAction_1, editorActionEnablement_1, editorCommon, editorCommonExtensions_1, editorBrowser_1, editorBrowserExtensions_1, snippet_1, smartSnippetInserter_1) {
+define(__m[473], __M([0,1,320,14,13,3,2,11,67,55,26,97,20,7,19,25,6,12,23,30,85,232,376]), function (require, exports, nls, async_1, keyCodes_1, lifecycle_1, winjs_base_1, dom, htmlContentRenderer_1, keyboardEvent_1, styleMutator_1, keybindingResolver_1, keybindingService_1, range_1, editorAction_1, editorActionEnablement_1, editorCommon, editorCommonExtensions_1, editorBrowser_1, editorBrowserExtensions_1, snippet_1, smartSnippetInserter_1) {
     'use strict';
     var NLS_LAUNCH_MESSAGE = nls.localize(0, null);
     var NLS_DEFINE_MESSAGE = nls.localize(1, null);
@@ -72993,7 +72993,7 @@ define(__m[475], __M([0,1,8,18,3,10,2,6,16,85,95,229,21]), function (require, ex
 
 
 
-define(__m[476], __M([0,1,356,10,2,8,3,11,104,263,91,15,20,35,22,95,87,265]), function (require, exports, nls, strings, winjs_base_1, errors_1, lifecycle_1, dom_1, highlightedLabel_1, listWidget_1, scrollableElement_1, instantiation_1, keybindingService_1, telemetry_1, editorBrowser_1, suggest_1, aria_1) {
+define(__m[476], __M([0,1,356,10,2,8,3,11,104,263,91,15,20,35,23,95,87,265]), function (require, exports, nls, strings, winjs_base_1, errors_1, lifecycle_1, dom_1, highlightedLabel_1, listWidget_1, scrollableElement_1, instantiation_1, keybindingService_1, telemetry_1, editorBrowser_1, suggest_1, aria_1) {
     'use strict';
     var Renderer = (function () {
         function Renderer(widget, editor, keybindingService) {
@@ -73704,7 +73704,7 @@ define(__m[476], __M([0,1,356,10,2,8,3,11,104,263,91,15,20,35,22,95,87,265]), fu
 
 
 
-define(__m[477], __M([0,1,355,8,13,3,2,15,20,19,6,12,16,30,85,95,56,76,475,476]), function (require, exports, nls, errors_1, keyCodes_1, lifecycle_1, winjs_base_1, instantiation_1, keybindingService_1, editorAction_1, editorCommon_1, editorCommonExtensions_1, modes_1, editorBrowserExtensions_1, snippet_1, suggest_1, keybindingsRegistry_1, config_1, suggestModel_1, suggestWidget_1) {
+define(__m[477], __M([0,1,355,8,13,3,2,15,20,19,6,12,16,30,85,95,48,76,475,476]), function (require, exports, nls, errors_1, keyCodes_1, lifecycle_1, winjs_base_1, instantiation_1, keybindingService_1, editorAction_1, editorCommon_1, editorCommonExtensions_1, modes_1, editorBrowserExtensions_1, snippet_1, suggest_1, keybindingsRegistry_1, config_1, suggestModel_1, suggestWidget_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -73988,7 +73988,7 @@ define(__m[124], __M([0,1,357,13,2,19,25,12]), function (require, exports, nls, 
 
 
 
-define(__m[479], __M([0,1,316,13,3,10,2,11,67,27,44,20,56,96,19,25,6,12,30,124,382]), function (require, exports, nls, keyCodes_1, lifecycle_1, strings, winjs_base_1, dom_1, htmlContentRenderer_1, styleMutator_1, widget_1, keybindingService_1, keybindingsRegistry_1, commonEditorConfig_1, editorAction_1, editorActionEnablement_1, editorCommon_1, editorCommonExtensions_1, editorBrowserExtensions_1, toggleTabFocusMode_1) {
+define(__m[479], __M([0,1,316,13,3,10,2,11,67,26,45,20,48,96,19,25,6,12,30,124,382]), function (require, exports, nls, keyCodes_1, lifecycle_1, strings, winjs_base_1, dom_1, htmlContentRenderer_1, styleMutator_1, widget_1, keybindingService_1, keybindingsRegistry_1, commonEditorConfig_1, editorAction_1, editorActionEnablement_1, editorCommon_1, editorCommonExtensions_1, editorBrowserExtensions_1, toggleTabFocusMode_1) {
     'use strict';
     var NLS_SHOW_ACCESSIBILITY_HELP_ACTION_LABEL = nls.localize(0, null);
     var CONTEXT_ACCESSIBILITY_WIDGET_VISIBLE = 'accessibilityHelpWidgetVisible';
@@ -74443,7 +74443,7 @@ define(__m[481], __M([0,1,14,8,7,6,12,16,3]), function (require, exports, async_
 
 
 
-define(__m[482], __M([0,1,75,165,35,45]), function (require, exports, contextView_1, contextview_1, telemetry_1, message_1) {
+define(__m[482], __M([0,1,75,165,35,43]), function (require, exports, contextView_1, contextview_1, telemetry_1, message_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -74479,7 +74479,7 @@ define(__m[482], __M([0,1,75,165,35,45]), function (require, exports, contextVie
     exports.ContextViewService = ContextViewService;
 });
 
-define(__m[483], __M([0,1,29,2,81,10,55,14,31,159,35]), function (require, exports, uri_1, winjs_base_1, network_1, strings, Timer, Async, objects, request_1, telemetry_1) {
+define(__m[483], __M([0,1,29,2,81,10,56,14,31,159,35]), function (require, exports, uri_1, winjs_base_1, network_1, strings, Timer, Async, objects, request_1, telemetry_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -74569,7 +74569,7 @@ define(__m[483], __M([0,1,29,2,81,10,55,14,31,159,35]), function (require, expor
 
 
 
-define(__m[109], __M([0,1,8,23,81,33,2,426,41,427,161,97,45,483,6]), function (require, exports, errors_1, eventEmitter_1, network_1, severity_1, winjs_base_1, configurationService_1, editor_1, abstractExtensionService_1, keybindingServiceImpl_1, keybindingResolver_1, message_1, baseRequestService_1, editorCommon) {
+define(__m[109], __M([0,1,8,22,81,33,2,426,41,427,161,97,43,483,6]), function (require, exports, errors_1, eventEmitter_1, network_1, severity_1, winjs_base_1, configurationService_1, editor_1, abstractExtensionService_1, keybindingServiceImpl_1, keybindingResolver_1, message_1, baseRequestService_1, editorCommon) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -75001,7 +75001,7 @@ define(__m[486], __M([0,1,485,6,47,133]), function (require, exports, themes, ed
 
 
 
-define(__m[487], __M([0,1,8,23,3,55,26,11,27,7,6,50,414,267,22,242,206,415,270,271,210,209,158,207,416,205,273,486,275,276,277,198,418,278,227]), function (require, exports, errors_1, eventEmitter_1, lifecycle_1, timer, browser, dom, styleMutator_1, range_1, editorCommon, viewEventHandler_1, keyboardHandler_1, pointerHandler_1, editorBrowser, viewController_1, viewEventDispatcher_1, viewOverlays_1, layoutProvider_1, contentWidgets_1, currentLineHighlight_1, decorations_1, glyphMargin_1, lineNumbers_1, viewLines_1, linesDecorations_1, overlayWidgets_1, decorationsOverviewRuler_1, overviewRuler_1, rulers_1, scrollDecoration_1, selections_1, viewCursors_1, viewZones_1, viewContext_1) {
+define(__m[487], __M([0,1,8,22,3,56,27,11,26,7,6,54,414,267,23,242,206,415,270,271,210,209,158,207,416,205,273,486,275,276,277,198,418,278,227]), function (require, exports, errors_1, eventEmitter_1, lifecycle_1, timer, browser, dom, styleMutator_1, range_1, editorCommon, viewEventHandler_1, keyboardHandler_1, pointerHandler_1, editorBrowser, viewController_1, viewEventDispatcher_1, viewOverlays_1, layoutProvider_1, contentWidgets_1, currentLineHighlight_1, decorations_1, glyphMargin_1, lineNumbers_1, viewLines_1, linesDecorations_1, overlayWidgets_1, decorationsOverviewRuler_1, overviewRuler_1, rulers_1, scrollDecoration_1, selections_1, viewCursors_1, viewZones_1, viewContext_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -75758,7 +75758,7 @@ define(__m[487], __M([0,1,8,23,3,55,26,11,27,7,6,50,414,267,22,242,206,415,270,2
 
 
 
-define(__m[89], __M([0,1,8,26,11,15,20,35,393,7,24,6,12,63,62,30,160,487,3,18,385,384]), function (require, exports, errors_1, browser, dom, instantiation_1, keybindingService_1, telemetry_1, commonCodeEditor_1, range_1, selection_1, editorCommon, editorCommonExtensions_1, codeEditorService_1, configuration_1, editorBrowserExtensions_1, colorizer_1, viewImpl_1, lifecycle_1, event_1) {
+define(__m[89], __M([0,1,8,27,11,15,20,35,393,7,24,6,12,63,62,30,160,487,3,18,385,384]), function (require, exports, errors_1, browser, dom, instantiation_1, keybindingService_1, telemetry_1, commonCodeEditor_1, range_1, selection_1, editorCommon, editorCommonExtensions_1, codeEditorService_1, configuration_1, editorBrowserExtensions_1, colorizer_1, viewImpl_1, lifecycle_1, event_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -76318,7 +76318,7 @@ define(__m[89], __M([0,1,8,26,11,15,20,35,393,7,24,6,12,63,62,30,160,487,3,18,38
 
 
 
-define(__m[127], __M([0,1,14,23,3,31,11,27,122,15,54,7,6,64,163,101,89,59,62,111,387]), function (require, exports, async_1, eventEmitter_1, lifecycle_1, objects, dom, styleMutator_1, sash_1, instantiation_1, defaultConfig_1, range_1, editorCommon, editorWorkerService_1, viewLineParts_1, viewLineRenderer_1, codeEditorWidget_1, viewLineToken_1, configuration_1, viewModel_1) {
+define(__m[127], __M([0,1,14,22,3,31,11,26,122,15,50,7,6,64,163,101,89,59,62,111,387]), function (require, exports, async_1, eventEmitter_1, lifecycle_1, objects, dom, styleMutator_1, sash_1, instantiation_1, defaultConfig_1, range_1, editorCommon, editorWorkerService_1, viewLineParts_1, viewLineRenderer_1, codeEditorWidget_1, viewLineToken_1, configuration_1, viewModel_1) {
     'use strict';
     var VisualEditorState = (function () {
         function VisualEditorState() {
@@ -77897,7 +77897,7 @@ define(__m[90], __M([0,1,359,52,10,36,18,11,73,15,63,131,175,258]), function (re
     exports.PeekViewWidget = PeekViewWidget;
 });
 
-define(__m[48], __M([0,1,15]), function (require, exports, instantiation) {
+define(__m[49], __M([0,1,15]), function (require, exports, instantiation) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -77991,7 +77991,7 @@ define(__m[48], __M([0,1,15]), function (require, exports, instantiation) {
 
 
 
-define(__m[493], __M([0,1,314,8,18,3,31,38,2,171,70,155,82,48,167,43,401,84,68,121,46]), function (require, exports, nls, errors_1, event_1, lifecycle_1, objects, paths, winjs_base_1, mime, descriptors_1, extensions_1, extensionsRegistry_1, thread_1, abstractMode_1, modesRegistry_1, languagesRegistry_1, modeService_1, configuration_1, abstractState_1, supports_1) {
+define(__m[493], __M([0,1,314,8,18,3,31,38,2,171,70,155,82,49,167,44,401,84,68,121,46]), function (require, exports, nls, errors_1, event_1, lifecycle_1, objects, paths, winjs_base_1, mime, descriptors_1, extensions_1, extensionsRegistry_1, thread_1, abstractMode_1, modesRegistry_1, languagesRegistry_1, modeService_1, configuration_1, abstractState_1, supports_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -78539,7 +78539,7 @@ define(__m[493], __M([0,1,314,8,18,3,31,38,2,171,70,155,82,48,167,43,401,84,68,1
 
 
 
-define(__m[494], __M([0,1,315,8,18,33,29,69,35,48,7,6,305,174,84,40,379,17,68,54,45]), function (require, exports, nls, errors_1, event_1, severity_1, uri_1, markers_1, telemetry_1, thread_1, range_1, editorCommon, mirrorModel_1, model_1, modeService_1, modelService_1, resourceService_1, platform, configuration_1, defaultConfig_1, message_1) {
+define(__m[494], __M([0,1,315,8,18,33,29,69,35,49,7,6,305,174,84,39,379,17,68,50,43]), function (require, exports, nls, errors_1, event_1, severity_1, uri_1, markers_1, telemetry_1, thread_1, range_1, editorCommon, mirrorModel_1, model_1, modeService_1, modelService_1, resourceService_1, platform, configuration_1, defaultConfig_1, message_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -79057,7 +79057,7 @@ define(__m[494], __M([0,1,315,8,18,33,29,69,35,48,7,6,305,174,84,40,379,17,68,54
 
 
 
-define(__m[495], __M([0,1,34,81,10,57,29,18,33,48,69]), function (require, exports, arrays, network, strings, collections, uri_1, event_1, severity_1, thread_1, markers_1) {
+define(__m[495], __M([0,1,34,81,10,57,29,18,33,49,69]), function (require, exports, arrays, network, strings, collections, uri_1, event_1, severity_1, thread_1, markers_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -79352,7 +79352,7 @@ define(__m[495], __M([0,1,34,81,10,57,29,18,33,48,69]), function (require, expor
 
 
 
-define(__m[496], __M([0,1,8,2,35,48]), function (require, exports, errors_1, winjs_base_1, telemetry_1, thread_1) {
+define(__m[496], __M([0,1,8,2,35,49]), function (require, exports, errors_1, winjs_base_1, telemetry_1, thread_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -79410,7 +79410,7 @@ define(__m[496], __M([0,1,8,2,35,48]), function (require, exports, errors_1, win
     exports.RemoteTelemetryService = RemoteTelemetryService;
 });
 
-define(__m[126], __M([0,1,2,48]), function (require, exports, winjs_base_1, thread) {
+define(__m[126], __M([0,1,2,49]), function (require, exports, winjs_base_1, thread) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -79474,7 +79474,7 @@ define(__m[126], __M([0,1,2,48]), function (require, exports, winjs_base_1, thre
     exports.AllWorkersAttr = AllWorkersAttr;
 });
 
-define(__m[498], __M([0,1,2,48,126,70]), function (require, exports, winjs_base_1, thread_1, threadService_1, descriptors_1) {
+define(__m[498], __M([0,1,2,49,126,70]), function (require, exports, winjs_base_1, thread_1, threadService_1, descriptors_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -79629,7 +79629,7 @@ define(__m[498], __M([0,1,2,48,126,70]), function (require, exports, winjs_base_
 
 
 
-define(__m[499], __M([0,1,2,201,498,94,17,48,135]), function (require, exports, winjs_base_1, Worker, abstractThreadService, Env, Platform, thread_1, defaultWorkerFactory_1) {
+define(__m[499], __M([0,1,2,201,498,94,17,49,135]), function (require, exports, winjs_base_1, Worker, abstractThreadService, Env, Platform, thread_1, defaultWorkerFactory_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -79825,7 +79825,7 @@ define(__m[79], __M([0,1,15]), function (require, exports, instantiation_1) {
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-define(__m[501], __M([0,1,51,14,173,117,57,18,60,3,38,29,32,80,112,159,79,35,48,126,6,16,167,121,92,137,130,39,168,136,40,84]), function (require, exports) {
+define(__m[501], __M([0,1,51,14,173,117,57,18,60,3,38,29,32,80,112,159,79,35,49,126,6,16,167,121,92,137,130,40,168,136,39,84]), function (require, exports) {
     'use strict';
 });
 
@@ -79843,7 +79843,7 @@ define(__m[501], __M([0,1,51,14,173,117,57,18,60,3,38,29,32,80,112,159,79,35,48,
 
 
 
-define(__m[129], __M([0,1,348,57,8,166,18,3,81,10,2,36,11,122,245,247,248,66,110,41,74,79,54,7,6,174,175,90,100,280]), function (require, exports, nls, collections, errors_1, labels_1, event_1, lifecycle_1, network_1, strings, winjs_base_1, builder_1, dom, sash_1, countBadge_1, fileLabel_1, leftRightWidget_1, treeDefaults_1, treeImpl_1, editor_1, serviceCollection_1, workspace_1, defaultConfig_1, range_1, editorCommon, model_1, embeddedCodeEditorWidget_1, peekViewWidget_1, referencesModel_1) {
+define(__m[129], __M([0,1,348,57,8,166,18,3,81,10,2,36,11,122,245,247,248,66,110,41,74,79,50,7,6,174,175,90,100,280]), function (require, exports, nls, collections, errors_1, labels_1, event_1, lifecycle_1, network_1, strings, winjs_base_1, builder_1, dom, sash_1, countBadge_1, fileLabel_1, leftRightWidget_1, treeDefaults_1, treeImpl_1, editor_1, serviceCollection_1, workspace_1, defaultConfig_1, range_1, editorCommon, model_1, embeddedCodeEditorWidget_1, peekViewWidget_1, referencesModel_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -80475,7 +80475,7 @@ define(__m[129], __M([0,1,348,57,8,166,18,3,81,10,2,36,11,122,245,247,248,66,110
 
 
 
-define(__m[162], __M([0,1,347,8,3,33,41,15,20,45,35,68,79,156,30,90,129]), function (require, exports, nls, errors_1, lifecycle_1, severity_1, editor_1, instantiation_1, keybindingService_1, message_1, telemetry_1, configuration_1, workspace_1, storage_1, editorBrowserExtensions_1, peekViewWidget_1, referencesWidget_1) {
+define(__m[162], __M([0,1,347,8,3,33,41,15,20,43,35,68,79,156,30,90,129]), function (require, exports, nls, errors_1, lifecycle_1, severity_1, editor_1, instantiation_1, keybindingService_1, message_1, telemetry_1, configuration_1, workspace_1, storage_1, editorBrowserExtensions_1, peekViewWidget_1, referencesWidget_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -80687,7 +80687,7 @@ define(__m[162], __M([0,1,347,8,3,33,41,15,20,45,35,68,79,156,30,90,129]), funct
 
 
 
-define(__m[504], __M([0,1,326,14,8,13,17,33,10,2,26,41,45,7,19,25,6,12,16,138,30,446,162,100,3,90,15,371]), function (require, exports, nls, async_1, errors_1, keyCodes_1, platform, severity_1, strings, winjs_base_1, browser, editor_1, message_1, range_1, editorAction_1, editorActionEnablement_1, editorCommon, editorCommonExtensions_1, modes_1, textToHtmlTokenizer_1, editorBrowserExtensions_1, goToDeclaration_1, referencesController_1, referencesModel_1, lifecycle_1, peekViewWidget_1, instantiation_1) {
+define(__m[504], __M([0,1,326,14,8,13,17,33,10,2,27,41,43,7,19,25,6,12,16,138,30,446,162,100,3,90,15,371]), function (require, exports, nls, async_1, errors_1, keyCodes_1, platform, severity_1, strings, winjs_base_1, browser, editor_1, message_1, range_1, editorAction_1, editorActionEnablement_1, editorCommon, editorCommonExtensions_1, modes_1, textToHtmlTokenizer_1, editorBrowserExtensions_1, goToDeclaration_1, referencesController_1, referencesModel_1, lifecycle_1, peekViewWidget_1, instantiation_1) {
     'use strict';
     var DefinitionActionConfig = (function () {
         function DefinitionActionConfig(condition, openToSide, openInPeek, filterCurrent) {
@@ -81096,7 +81096,7 @@ define(__m[504], __M([0,1,326,14,8,13,17,33,10,2,26,41,45,7,19,25,6,12,16,138,30
 
 
 
-define(__m[505], __M([0,1,177,13,29,2,41,15,20,56,21,7,19,25,12,16,90,467,129,162,100]), function (require, exports, nls, keyCodes_1, uri_1, winjs_base_1, editor_1, instantiation_1, keybindingService_1, keybindingsRegistry_1, position_1, range_1, editorAction_1, editorActionEnablement_1, editorCommonExtensions_1, modes_1, peekViewWidget_1, referenceSearch_1, referencesWidget_1, referencesController_1, referencesModel_1) {
+define(__m[505], __M([0,1,177,13,29,2,41,15,20,48,21,7,19,25,12,16,90,467,129,162,100]), function (require, exports, nls, keyCodes_1, uri_1, winjs_base_1, editor_1, instantiation_1, keybindingService_1, keybindingsRegistry_1, position_1, range_1, editorAction_1, editorActionEnablement_1, editorCommonExtensions_1, modes_1, peekViewWidget_1, referenceSearch_1, referencesWidget_1, referencesController_1, referencesModel_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -81629,7 +81629,7 @@ define(__m[154], __M([0,1,3,75,41,15,161,20,69,496,35,6,63,64,109,116,89,127]), 
 
 
 
-define(__m[509], __M([0,1,6,22,14,154,42,116,15,74,152,160,109,164,296,409]), function (require, exports, editorCommon, editorBrowser_1, async_1, standaloneCodeEditor_1, scrollableElementOptions_1, standaloneServices_1, instantiation_1, serviceCollection_1, instantiationService_1, colorizer_1, simpleServices_1, editorWorkerServiceImpl_1) {
+define(__m[509], __M([0,1,6,23,14,154,42,116,15,74,152,160,109,164,296,409]), function (require, exports, editorCommon, editorBrowser_1, async_1, standaloneCodeEditor_1, scrollableElementOptions_1, standaloneServices_1, instantiation_1, serviceCollection_1, instantiationService_1, colorizer_1, simpleServices_1, editorWorkerServiceImpl_1) {
     /*---------------------------------------------------------------------------------------------
      *  Copyright (c) Microsoft Corporation. All rights reserved.
      *  Licensed under the MIT License. See License.txt in the project root for license information.
@@ -81967,7 +81967,7 @@ define(__m[509], __M([0,1,6,22,14,154,42,116,15,74,152,160,109,164,296,409]), fu
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-define(__m[510], __M([0,1,2,82,80,32,43,116,16,154,7,14,130,137,39]), function (require, exports, winjs_base_1, extensionsRegistry_1, jsonContributionRegistry_1, platform_1, modesRegistry_1, standaloneServices_1, modes, standaloneCodeEditor_1, range_1, async_1, monarchCompile_1, monarchLexer_1, languageConfigurationRegistry_1) {
+define(__m[510], __M([0,1,2,82,80,32,44,116,16,154,7,14,130,137,40]), function (require, exports, winjs_base_1, extensionsRegistry_1, jsonContributionRegistry_1, platform_1, modesRegistry_1, standaloneServices_1, modes, standaloneCodeEditor_1, range_1, async_1, monarchCompile_1, monarchLexer_1, languageConfigurationRegistry_1) {
     'use strict';
     /**
      * Register information about a new language.
@@ -82340,7 +82340,7 @@ define(__m[511], __M([0,1,15]), function (require, exports, instantiation_1) {
 
 
 
-define(__m[492], __M([0,1,331,2,19,12,187,511,40,25]), function (require, exports, nls, winjs_base_1, editorAction_1, editorCommonExtensions_1, indentationCommands_1, quickOpenService_1, modelService_1, editorActionEnablement_1) {
+define(__m[492], __M([0,1,331,2,19,12,187,511,39,25]), function (require, exports, nls, winjs_base_1, editorAction_1, editorCommonExtensions_1, indentationCommands_1, quickOpenService_1, modelService_1, editorActionEnablement_1) {
     "use strict";
     var IndentationToSpacesAction = (function (_super) {
         __extends(IndentationToSpacesAction, _super);
@@ -82507,7 +82507,7 @@ define(__m[194], __M([0,1,89,127,479,435,437,438,439,440,222,442,445,504,458,449
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-define(__m[514], __M([0,1,286,509,510,54,12,194,466,461,462,424,407,422]), function (require, exports, standaloneBase_1, standaloneEditor_1, standaloneLanguages_1, defaultConfig_1, editorCommonExtensions_1) {
+define(__m[514], __M([0,1,286,509,510,50,12,48,194,466,461,462,424,407,422]), function (require, exports, standaloneBase_1, standaloneEditor_1, standaloneLanguages_1, defaultConfig_1, editorCommonExtensions_1, keybindingsRegistry_1) {
     'use strict';
     // Set defaults for standalone editor
     defaultConfig_1.DefaultConfig.editor.wrappingIndent = 'none';
@@ -82522,7 +82522,8 @@ define(__m[514], __M([0,1,286,509,510,54,12,194,466,461,462,424,407,422]), funct
         standaloneLanguages_1.registerStandaloneSchema(uri, MonacoEditorSchemas[uri]);
     }
     global.monaco.internal = {
-        CommonEditorRegistry: editorCommonExtensions_1.CommonEditorRegistry
+        CommonEditorRegistry: editorCommonExtensions_1.CommonEditorRegistry,
+        KeybindingsRegistry: keybindingsRegistry_1.KeybindingsRegistry,
     };
     /**
      * Copied off https://github.com/Microsoft/vscode/blob/d436ded577a95a9cc3d43f4ece8f848b524ce430/src/vs/editor/standalone-languages/all.ts

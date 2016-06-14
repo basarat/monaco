@@ -4847,4 +4847,47 @@ declare module monaco.internal {
         KbAndExpression = 5,
     }
 
+    export interface ICommandsMap {
+        [id: string]: ICommandHandler;
+    }
+
+    export interface IKeybindingItem {
+        keybinding: number;
+        command: string;
+        when: KbExpr;
+        weight1: number;
+        weight2: number;
+    }
+
+}
+
+/** We wanted KeyBindingsRegistry. Rest is brought in for it */
+declare module monaco.internal {
+
+    export let KeybindingsRegistry: IKeybindingsRegistry;
+
+    export interface IKeybindingsRegistry {
+        registerCommandRule(rule: ICommandRule): any;
+        registerCommandDesc(desc: ICommandDescriptor): void;
+        getCommands(): ICommandsMap;
+        getDefaultKeybindings(): IKeybindingItem[];
+        WEIGHT: {
+            editorCore(importance?: number): number;
+            editorContrib(importance?: number): number;
+            workbenchContrib(importance?: number): number;
+            builtinExtension(importance?: number): number;
+            externalExtension(importance?: number): number;
+        };
+    }
+
+    export interface ICommandRule extends IKeybindings {
+        id: string;
+        weight: number;
+        when: KbExpr;
+    }
+
+    export interface ICommandDescriptor extends ICommandRule {
+        handler: ICommandHandler;
+        description?: string | ICommandHandlerDescription;
+    }
 }
