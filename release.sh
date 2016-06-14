@@ -9,7 +9,7 @@ cd ..
 # Version of this script
 toolsVersion="0"
 
-commitVersion="0.$(date +%Y%m%d%H%M).$toolsVersion+$commitHash"
+commitVersion="1.$(date +%Y%m%d%H%M).$toolsVersion+$commitHash"
 commitName="$(date +%Y-%m-%d) [ci skip] Version: $commitVersion"
 
 # Kick travis
