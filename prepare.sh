@@ -3,6 +3,13 @@ set -e
 
 git submodule update --recursive --init
 
+# Bring in monaco-languages latest
+cd ./monaco-languages
+git clean -xfd
+git fetch origin
+git reset --hard origin/master
+cd ..
+
 # Official Microsoft/vscode clone
 cd ./vscode
 
