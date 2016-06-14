@@ -189,13 +189,9 @@ utils.getAllFilesInFolder(utils.resolve('./vscode/src/vs/editor/standalone-langu
     );
     writeFile(filePath, contents);
 });
-// Copy the `all.ts` which loads these languages and remove `monaco.contribution`
-utils.copy(utils.resolve('./standalone-languages/all.ts'), utils.resolve('./vscode/src/vs/editor/standalone-languages/all.ts'));
+// Copy the `all.ts` which loads these languages
+writeFile(editorMainFile, readFile(editorMainFile) + readFile('./standalone-languages/all.ts'));
 /** Copy `buildfile.js` to include the language modules */
 utils.copy(utils.resolve('./standalone-languages/buildfile.js'), utils.resolve('./vscode/src/vs/editor/buildfile.js'));
+// remove `monaco.contribution`
 utils.remove(utils.resolve('./vscode/src/vs/editor/standalone-languages/monaco.contribution.ts'));
-// Finally add to `editor.main`
-const monacoLanguagesStuff = `
-import 'vs/editor/standalone-languages/all';
-`;
-writeFile(editorMainFile, readFile(editorMainFile) + monacoLanguagesStuff);
