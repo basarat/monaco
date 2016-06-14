@@ -115,12 +115,26 @@ var fixesForFiles = [
                 new: "linux: { primary:KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L }"
             },
         ]
-    }
+    },
+    {
+        filePath: './vscode/src/vs/editor/contrib/linesOperations/common/linesOperations.ts',
+        fixes: [
+            {
+                orig: "\nCommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(InsertLineBeforeAction, InsertLineBeforeAction.ID, nls.localize('lines.insertBefore', \"Insert Line Above\"), {\n\tcontext: ContextKey.EditorTextFocus,\n\tprimary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.Enter\n}, 'Insert Line Above'));\nCommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(InsertLineAfterAction, InsertLineAfterAction.ID, nls.localize('lines.insertAfter', \"Insert Line Below\"), {\n\tcontext: ContextKey.EditorTextFocus,\n\tprimary: KeyMod.CtrlCmd | KeyCode.Enter\n}, 'Insert Line Below'));\n                ",
+                new: ''
+            }
+        ],
+        additions: "\nclass DuplicateLinesAction extends CopyLinesAction {\n\tstatic ID = 'editor.action.duplicateLinesAction';\n\n\tconstructor(descriptor:IEditorActionDescriptorData, editor:ICommonCodeEditor) {\n\t\tsuper(descriptor, editor, true);\n\t}\n}\nCommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(DuplicateLinesAction, DuplicateLinesAction.ID, nls.localize('lines.copyDown', \"Duplicate Line\"), {\n\tcontext: ContextKey.EditorTextFocus,\n\tprimary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_D\n}, 'Duplicate Line'));\n        "
+    },
 ];
 fixesForFiles.forEach(function (fff) {
     var content = utils_1.readFile(fff.filePath);
+    content = content.split(/\r\n?|\n/).join('\n');
     fff.fixes.forEach(function (fix) {
-        content = content.replace(fix.orig, fix.new);
+        content = content.replace(fix.orig.split(/\r\n?|\n/).join('\n').trim(), fix.new);
     });
+    if (fff.additions) {
+        content = content + fff.additions;
+    }
     utils_1.writeFile(fff.filePath, content);
 });
