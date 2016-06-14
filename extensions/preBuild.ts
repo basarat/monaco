@@ -202,3 +202,43 @@ writeFile(editorMainFile, readFile(editorMainFile) + readFile('./standalone-lang
 utils.copy(utils.resolve('./standalone-languages/buildfile.js'), utils.resolve('./vscode/src/vs/editor/buildfile.js'));
 // remove `monaco.contribution`
 utils.remove(utils.resolve('./vscode/src/vs/editor/standalone-languages/monaco.contribution.ts'));
+
+
+/**
+ * Moar fixes
+ */
+interface IFix {
+    orig: string;
+    new: string;
+}
+interface IFixForFile {
+    filePath: string,
+    fixes: IFix[]
+}
+const fixesForFiles: IFixForFile[] = [
+    /**
+     * Keybinding changes
+     */
+    /** prefer format command shortcut in intellij idea */
+    {
+        filePath: './vscode/src/vs/editor/contrib/format/common/formatActions.ts',
+        fixes: [
+            {
+                orig: `primary: KeyMod.Shift | KeyMod.Alt | KeyCode.KEY_F,`,
+                new: `primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L,`
+            },
+            {
+                orig: `linux: { primary:KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_I }`,
+                new: `linux: { primary:KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L }`
+            },
+        ]
+    }
+]
+
+fixesForFiles.forEach(fff => {
+    let content = readFile(fff.filePath);
+    fff.fixes.forEach(fix => {
+        content = content.replace(fix.orig, fix.new);
+    })
+    writeFile(fff.filePath, content);
+})

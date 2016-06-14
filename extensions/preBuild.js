@@ -102,3 +102,25 @@ utils.getAllFilesInFolder(utils.resolve('./vscode/src/vs/editor/standalone-langu
 utils_1.writeFile(editorMainFile, utils_1.readFile(editorMainFile) + utils_1.readFile('./standalone-languages/all.ts'));
 utils.copy(utils.resolve('./standalone-languages/buildfile.js'), utils.resolve('./vscode/src/vs/editor/buildfile.js'));
 utils.remove(utils.resolve('./vscode/src/vs/editor/standalone-languages/monaco.contribution.ts'));
+var fixesForFiles = [
+    {
+        filePath: './vscode/src/vs/editor/contrib/format/common/formatActions.ts',
+        fixes: [
+            {
+                orig: "primary: KeyMod.Shift | KeyMod.Alt | KeyCode.KEY_F,",
+                new: "primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L,"
+            },
+            {
+                orig: "linux: { primary:KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_I }",
+                new: "linux: { primary:KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L }"
+            },
+        ]
+    }
+];
+fixesForFiles.forEach(function (fff) {
+    var content = utils_1.readFile(fff.filePath);
+    fff.fixes.forEach(function (fix) {
+        content = content.replace(fix.orig, fix.new);
+    });
+    utils_1.writeFile(fff.filePath, content);
+});
