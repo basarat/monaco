@@ -5,21 +5,25 @@ var path = require('path');
 var EOL = require('os').EOL;
 var glob = require('glob');
 function copy(src, dest) {
-    return fse.copy(src, dest);
+    return fse.copySync(src, dest);
 }
 exports.copy = copy;
 function dir(filePath) {
     return path.dirname(filePath);
 }
 exports.dir = dir;
-function readFile(filePath) {
-    return fs.readFileSync(__dirname + '/../' + filePath, 'utf8');
-}
-exports.readFile = readFile;
+exports.isAbsolute = function (filePath) { return !filePath.startsWith('.'); };
+exports.isRelative = function (filePath) { return !exports.isAbsolute(filePath); };
 function writeFile(filePath, content) {
-    fs.writeFileSync(__dirname + '/../' + filePath, content);
+    filePath = exports.isRelative(filePath) ? resolve(filePath) : filePath;
+    fs.writeFileSync(filePath, content);
 }
 exports.writeFile = writeFile;
+function readFile(filePath) {
+    filePath = exports.isRelative(filePath) ? resolve(filePath) : filePath;
+    return fs.readFileSync(filePath, 'utf8');
+}
+exports.readFile = readFile;
 function stringify(object, eol) {
     if (eol === void 0) { eol = '\n'; }
     var cache = [];

@@ -8,16 +8,21 @@ var EOL: string = require('os').EOL;
 const glob = require('glob');
 
 export function copy(src: string, dest: string) {
-    return fse.copy(src, dest);
+    return fse.copySync(src, dest);
 }
 export function dir(filePath: string): string {
     return path.dirname(filePath);
 }
-export function readFile(filePath: string): string {
-    return fs.readFileSync(__dirname + '/../' + filePath, 'utf8');
-}
+/** see if path is absolute */
+export var isAbsolute = (filePath: string) => !filePath.startsWith('.');
+export var isRelative = (filePath:string) => !isAbsolute(filePath);
 export function writeFile(filePath: string, content: string) {
-    fs.writeFileSync(__dirname + '/../' + filePath, content);
+    filePath = isRelative(filePath) ? resolve(filePath) : filePath;
+    fs.writeFileSync(filePath, content);
+}
+export function readFile(filePath: string): string {
+    filePath = isRelative(filePath) ? resolve(filePath) : filePath;
+    return fs.readFileSync(filePath, 'utf8');
 }
 export function stringify(object: Object, eol: string = '\n'): string {
     var cache = [];

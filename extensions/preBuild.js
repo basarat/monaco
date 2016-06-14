@@ -94,3 +94,12 @@ utils_1.writeFile(recipeFile, utils_1.readFile(recipeFile) + recipeAdditions);
 var editorMainFile = "./vscode/src/vs/editor/editor.main.ts";
 var editorMainAdditions = "\n/** expose more stuff from monaco */\nimport {CommonEditorRegistry} from \"vs/editor/common/editorCommonExtensions\";\nglobal.monaco.internal = {\n\tCommonEditorRegistry\n}\n";
 utils_1.writeFile(editorMainFile, utils_1.readFile(editorMainFile) + editorMainAdditions);
+utils.copy(utils.resolve('./monaco-languages/src'), utils.resolve('./vscode/src/vs/editor/standalone-languages'));
+utils.getAllFilesInFolder(utils.resolve('./vscode/src/vs/editor/standalone-languages')).forEach(function (filePath) {
+    var contents = utils_1.readFile(filePath).replace('import IRichLanguageConfiguration = monaco.languages.IRichLanguageConfiguration;', 'import IRichLanguageConfiguration = monaco.languages.LanguageConfiguration;');
+    utils_1.writeFile(filePath, contents);
+});
+utils.copy(utils.resolve('./standalone-languages/all.ts'), utils.resolve('./vscode/src/vs/editor/standalone-languages/all.ts'));
+utils.remove(utils.resolve('./vscode/src/vs/editor/standalone-languages/monaco.contribution.ts'));
+var monacoLanguagesStuff = "\nimport 'vs/editor/standalone-languages/all';\n";
+utils_1.writeFile(editorMainFile, utils_1.readFile(editorMainFile) + monacoLanguagesStuff);
