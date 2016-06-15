@@ -288,25 +288,6 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(DuplicateLi
 }, 'Duplicate Line'));
         `
     },
-
-    // Bring back `css`/`sass`/`less` languages
-    {
-        filePath: './vscode/src/vs/languages/languages.main.ts',
-        fixes: [
-            {
-                orig: `
-//import 'vs/languages/less/common/less.contribution';
-//import 'vs/languages/sass/common/sass.contribution';
-//import 'vs/languages/css/common/css.contribution';
-                `,
-                new: `
-import 'vs/languages/less/common/less.contribution';
-import 'vs/languages/sass/common/sass.contribution';
-import 'vs/languages/css/common/css.contribution';
-                `
-            }
-        ]
-    }
 ]
 
 fixesForFiles.forEach(fff => {
