@@ -238,10 +238,7 @@ interface IFixForFile {
     additions?: string,
 }
 const fixesForFiles: IFixForFile[] = [
-    /**
-     * Keybinding changes
-     */
-    /** prefer format command shortcut in intellij idea */
+    /** Keybinding change : prefer format command shortcut in intellij idea */
     {
         filePath: './vscode/src/vs/editor/contrib/format/common/formatActions.ts',
         fixes: [
@@ -255,9 +252,7 @@ const fixesForFiles: IFixForFile[] = [
             },
         ]
     },
-    /**
-     * Duplicate copy line down to duplicate line with a new shortcut
-     */
+
     {
         filePath: './vscode/src/vs/editor/contrib/linesOperations/common/linesOperations.ts',
         fixes: [
@@ -276,6 +271,9 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(InsertLineA
                 new: ''
             }
         ],
+        /**
+         * Duplicate copy line down action code reused to -> duplicate line with a new shortcut
+         */
         additions: `
 class DuplicateLinesAction extends CopyLinesAction {
 	static ID = 'editor.action.duplicateLinesAction';
@@ -290,6 +288,25 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(DuplicateLi
 }, 'Duplicate Line'));
         `
     },
+
+    // Bring back `css`/`sass`/`less` languages
+    {
+        filePath: './vscode/src/vs/languages/languages.main.ts',
+        fixes: [
+            {
+                orig: `
+//import 'vs/languages/less/common/less.contribution';
+//import 'vs/languages/sass/common/sass.contribution';
+//import 'vs/languages/css/common/css.contribution';
+                `,
+                new: `
+import 'vs/languages/less/common/less.contribution';
+import 'vs/languages/sass/common/sass.contribution';
+import 'vs/languages/css/common/css.contribution';
+                `
+            }
+        ]
+    }
 ]
 
 fixesForFiles.forEach(fff => {

@@ -126,6 +126,15 @@ var fixesForFiles = [
         ],
         additions: "\nclass DuplicateLinesAction extends CopyLinesAction {\n\tstatic ID = 'editor.action.duplicateLinesAction';\n\n\tconstructor(descriptor:IEditorActionDescriptorData, editor:ICommonCodeEditor) {\n\t\tsuper(descriptor, editor, true);\n\t}\n}\nCommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(DuplicateLinesAction, DuplicateLinesAction.ID, nls.localize('lines.copyDown', \"Duplicate Line\"), {\n\tcontext: ContextKey.EditorTextFocus,\n\tprimary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_D\n}, 'Duplicate Line'));\n        "
     },
+    {
+        filePath: './vscode/src/vs/languages/languages.main.ts',
+        fixes: [
+            {
+                orig: "\n//import 'vs/languages/less/common/less.contribution';\n//import 'vs/languages/sass/common/sass.contribution';\n//import 'vs/languages/css/common/css.contribution';\n                ",
+                new: "\nimport 'vs/languages/less/common/less.contribution';\nimport 'vs/languages/sass/common/sass.contribution';\nimport 'vs/languages/css/common/css.contribution';\n                "
+            }
+        ]
+    }
 ];
 fixesForFiles.forEach(function (fff) {
     var content = utils_1.readFile(fff.filePath);
