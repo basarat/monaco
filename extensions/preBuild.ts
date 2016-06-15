@@ -192,9 +192,10 @@ writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);
 const editorMainFile = "./vscode/src/vs/editor/editor.main.ts";
 const editorMainAdditions = `
 /** expose more stuff from monaco */
-import {CommonEditorRegistry, EditorActionDescriptor} from "vs/editor/common/editorCommonExtensions";
+import {CommonEditorRegistry, EditorActionDescriptor, ContextKey} from "vs/editor/common/editorCommonExtensions";
 global.monaco.CommonEditorRegistry = CommonEditorRegistry;
 global.monaco.EditorActionDescriptor = EditorActionDescriptor;
+global.monaco.ContextKey = ContextKey;
 import {KeybindingsRegistry} from 'vs/platform/keybinding/common/keybindingsRegistry';
 global.monaco.KeybindingsRegistry = KeybindingsRegistry;
 import {EditorAction} from 'vs/editor/common/editorAction';
