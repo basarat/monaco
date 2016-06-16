@@ -255,6 +255,7 @@ const fixesForFiles: IFixForFile[] = [
                 `,
                 new: `
 	primary: KeyMod.CtrlCmd | KeyCode.KEY_E,
+    mac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyCode.KEY_E }
                 `
             },
             {
@@ -264,6 +265,7 @@ const fixesForFiles: IFixForFile[] = [
                 `,
                 new: `
 	primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_E,
+    mac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.KEY_E }
                 `
             }
         ]
