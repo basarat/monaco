@@ -253,6 +253,17 @@ const fixesForFiles: IFixForFile[] = [
         ]
     },
 
+    /** Keybinding: Prefer sublime jump to bracket */
+    {
+        filePath: './vscode/src/vs/editor/contrib/smartSelect/common/jumpToBracket.ts',
+        fixes: [
+            {
+                orig: `primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.US_BACKSLASH`,
+                new: `primary: KeyMod.CtrlCmd | KeyCode.KEY_M`
+            }
+        ]
+    },
+
     {
         filePath: './vscode/src/vs/editor/contrib/linesOperations/common/linesOperations.ts',
         fixes: [
