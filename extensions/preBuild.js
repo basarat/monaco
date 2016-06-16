@@ -95,10 +95,6 @@ var editorMainFile = "./vscode/src/vs/editor/editor.main.ts";
 var editorMainAdditions = "\n/** expose more stuff from monaco */\nimport {CommonEditorRegistry, EditorActionDescriptor, ContextKey} from \"vs/editor/common/editorCommonExtensions\";\nglobal.monaco.CommonEditorRegistry = CommonEditorRegistry;\nglobal.monaco.EditorActionDescriptor = EditorActionDescriptor;\nglobal.monaco.ContextKey = ContextKey;\nimport {KeybindingsRegistry} from 'vs/platform/keybinding/common/keybindingsRegistry';\nglobal.monaco.KeybindingsRegistry = KeybindingsRegistry;\nimport {EditorAction} from 'vs/editor/common/editorAction';\nglobal.monaco.EditorAction = EditorAction;\n";
 utils_1.writeFile(editorMainFile, utils_1.readFile(editorMainFile) + editorMainAdditions);
 utils.copy(utils.resolve('./monaco-languages/src'), utils.resolve('./vscode/src/vs/editor/standalone-languages'));
-utils.getAllFilesInFolder(utils.resolve('./vscode/src/vs/editor/standalone-languages')).forEach(function (filePath) {
-    var contents = utils_1.readFile(filePath).replace('import IRichLanguageConfiguration = monaco.languages.IRichLanguageConfiguration;', 'import IRichLanguageConfiguration = monaco.languages.LanguageConfiguration;');
-    utils_1.writeFile(filePath, contents);
-});
 utils_1.writeFile(editorMainFile, utils_1.readFile(editorMainFile) + utils_1.readFile('./standalone-languages/all.ts'));
 utils.copy(utils.resolve('./standalone-languages/buildfile.js'), utils.resolve('./vscode/src/vs/editor/buildfile.js'));
 utils.remove(utils.resolve('./vscode/src/vs/editor/standalone-languages/monaco.contribution.ts'));

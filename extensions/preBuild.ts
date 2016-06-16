@@ -209,14 +209,6 @@ writeFile(editorMainFile, readFile(editorMainFile) + editorMainAdditions);
  */
 // Copy monaco-languages src to vscode
 utils.copy(utils.resolve('./monaco-languages/src'), utils.resolve('./vscode/src/vs/editor/standalone-languages'));
-// Fix monaco-languages names
-utils.getAllFilesInFolder(utils.resolve('./vscode/src/vs/editor/standalone-languages')).forEach(filePath => {
-    const contents = readFile(filePath).replace(
-        'import IRichLanguageConfiguration = monaco.languages.IRichLanguageConfiguration;',
-        'import IRichLanguageConfiguration = monaco.languages.LanguageConfiguration;'
-    );
-    writeFile(filePath, contents);
-});
 // Copy the `all.ts` which loads these languages
 writeFile(editorMainFile, readFile(editorMainFile) + readFile('./standalone-languages/all.ts'));
 /** Copy `buildfile.js` to include the language modules */
