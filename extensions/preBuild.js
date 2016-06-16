@@ -116,12 +116,20 @@ var fixesForFiles = [
         filePath: './vscode/src/vs/editor/contrib/smartSelect/common/smartSelect.ts',
         fixes: [
             {
+                orig: "Expand Select",
+                new: 'Smart Expand Selection'
+            },
+            {
+                orig: "Shrink Select",
+                new: 'Smart Shrink Selection'
+            },
+            {
                 orig: "\n\tprimary: KeyMod.Shift | KeyMod.Alt | KeyCode.RightArrow,\n\tmac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.RightArrow }\n                ",
                 new: "\n\tprimary: KeyMod.CtrlCmd | KeyCode.KEY_E,\n                "
             },
             {
                 orig: "\n\tprimary: KeyMod.Shift | KeyMod.Alt | KeyCode.LeftArrow,\n\tmac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.LeftArrow }\n                ",
-                new: "\n    // I tried cmd+shift+e and it doesn't work on a mac so \"alt\" \n\tprimary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_E,\n                "
+                new: "\n    // I tried cmd+shift+e and it doesn't work on a mac so \"alt\"\n\tprimary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_E,\n                "
             }
         ]
     },

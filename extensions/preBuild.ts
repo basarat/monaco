@@ -249,6 +249,14 @@ const fixesForFiles: IFixForFile[] = [
         filePath: './vscode/src/vs/editor/contrib/smartSelect/common/smartSelect.ts',
         fixes: [
             {
+                orig: `Expand Select`,
+                new: 'Smart Expand Selection'
+            },
+            {
+                orig: `Shrink Select`,
+                new: 'Smart Shrink Selection'
+            },
+            {
                 orig: `
 	primary: KeyMod.Shift | KeyMod.Alt | KeyCode.RightArrow,
 	mac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.RightArrow }
@@ -263,7 +271,7 @@ const fixesForFiles: IFixForFile[] = [
 	mac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.LeftArrow }
                 `,
                 new: `
-    // I tried cmd+shift+e and it doesn't work on a mac so "alt" 
+    // I tried cmd+shift+e and it doesn't work on a mac so "alt"
 	primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_E,
                 `
             }
