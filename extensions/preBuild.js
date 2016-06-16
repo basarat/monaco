@@ -121,7 +121,7 @@ var fixesForFiles = [
             },
             {
                 orig: "\n\tprimary: KeyMod.Shift | KeyMod.Alt | KeyCode.LeftArrow,\n\tmac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.LeftArrow }\n                ",
-                new: "\n\tprimary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_E,\n                "
+                new: "\n    // I tried cmd+shift+e and it doesn't work on a mac so \"alt\" \n\tprimary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_E,\n                "
             }
         ]
     },

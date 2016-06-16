@@ -263,7 +263,8 @@ const fixesForFiles: IFixForFile[] = [
 	mac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.LeftArrow }
                 `,
                 new: `
-	primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_E,
+    // I tried cmd+shift+e and it doesn't work on a mac so "alt" 
+	primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_E,
                 `
             }
         ]
