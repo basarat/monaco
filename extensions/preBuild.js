@@ -117,6 +117,19 @@ var fixesForFiles = [
         ]
     },
     {
+        filePath: './vscode/src/vs/editor/contrib/smartSelect/common/smartSelect.ts',
+        fixes: [
+            {
+                orig: "\n\tprimary: KeyMod.Shift | KeyMod.Alt | KeyCode.RightArrow,\n\tmac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.RightArrow }\n                ",
+                new: "\n\tprimary: KeyMod.CtrlCmd | KeyCode.KEY_E,\n                "
+            },
+            {
+                orig: "\n\tprimary: KeyMod.Shift | KeyMod.Alt | KeyCode.LeftArrow,\n\tmac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.LeftArrow }\n                ",
+                new: "\n\tprimary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_E,\n                "
+            }
+        ]
+    },
+    {
         filePath: './vscode/src/vs/editor/contrib/smartSelect/common/jumpToBracket.ts',
         fixes: [
             {

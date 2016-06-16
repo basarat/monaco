@@ -252,6 +252,30 @@ const fixesForFiles: IFixForFile[] = [
             },
         ]
     },
+    /** Keybinding: Expand select / Shrink select my shortcuts */
+    {
+        filePath: './vscode/src/vs/editor/contrib/smartSelect/common/smartSelect.ts',
+        fixes: [
+            {
+                orig: `
+	primary: KeyMod.Shift | KeyMod.Alt | KeyCode.RightArrow,
+	mac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.RightArrow }
+                `,
+                new: `
+	primary: KeyMod.CtrlCmd | KeyCode.KEY_E,
+                `
+            },
+            {
+                orig: `
+	primary: KeyMod.Shift | KeyMod.Alt | KeyCode.LeftArrow,
+	mac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.LeftArrow }
+                `,
+                new: `
+	primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_E,
+                `
+            }
+        ]
+    },
 
     /** Keybinding: Prefer sublime jump to bracket */
     {
