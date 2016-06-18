@@ -1,11 +1,21 @@
 # Monaco
 
-The plan is to provide daily automated builds on microsoft monaco.
+[![BuildStatus](https://travis-ci.org/TypeStrong/ntypescript.svg)](https://travis-ci.org/TypeStrong/ntypescript)
 
-## Some notes on monaco dirs
-* src : the source code
-* out : the built assets
-* build : scripts for building various stuff
+A daily automated build of Microsoft Monaco.
+
+> Warning: This is personal endeavour.
+
+## Why?
+If you just want a quick editor on a web page the `monaco-editor` will get you there quicker : https://www.npmjs.com/package/monaco-editor. This internally uses stuff like `monaco-langauges` and `monaco-editor-core`.
+
+But if you want to specialize the experience for a particular language ([in our case `JavaScript`/`TypeScript` as we do in alm.tools](http://alm.tools)) you can use this as a reference for [build automation](https://github.com/basarat/monaco/blob/master/CONTRIBUTING.md) to make your own version.
+
+## Some notes on vscode dirs
+
+* `src` : the source code
+* `out-*` (e.g. `out-editor`) : the built assets
+* `build` : scripts for building various stuff (including monaco)
 
 ## How monaco-editor-core is built
 
@@ -31,11 +41,8 @@ Due to limited testing and automated release we recommend hard version installs:
 npm install monaco --save --save-exact
 ```
 
-you can put this your package.json (and now you can `npm run umonaco`):
+You can put this your package.json to make it easier for you to update to latest (and now you can `npm run umonaco`):
 
 ```
     "umonaco": "npm install nmonaco@latest --save --save-exact && npm run tsc",
 ```
-
-## Why?
-If you just want a quick editor on a web page the `monaco-editor` will get you there quick : https://www.npmjs.com/package/monaco-editor. But if you want to specialize the experience for a particular language (in our case `JavaScript`/`TypeScript` as we do in [alm.tools](http://alm.tools) you might want to use this package).
