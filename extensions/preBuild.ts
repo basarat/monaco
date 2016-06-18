@@ -324,6 +324,19 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(DuplicateLi
 }, 'Duplicate Line'));
         `
     },
+    /** We never want to use to use `tab` to navigate the window. Also this shortcut conflicted with our match bracket shortcut */
+    {
+        filePath: './vscode/src/vs/editor/contrib/toggleTabFocusMode/common/toggleTabFocusMode.ts',
+        fixes: [
+                {
+                orig: `
+	primary: KeyMod.CtrlCmd | KeyCode.KEY_M,
+	mac: { primary: KeyMod.WinCtrl | KeyMod.Shift | KeyCode.KEY_M }
+                `,
+                new:``
+            }
+        ]
+    }
 ]
 
 fixesForFiles.forEach(fff => {

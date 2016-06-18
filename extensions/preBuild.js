@@ -152,6 +152,15 @@ var fixesForFiles = [
         ],
         additions: "\nclass DuplicateLinesAction extends CopyLinesAction {\n\tstatic ID = 'editor.action.duplicateLinesAction';\n\n\tconstructor(descriptor:IEditorActionDescriptorData, editor:ICommonCodeEditor) {\n\t\tsuper(descriptor, editor, true);\n\t}\n}\nCommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(DuplicateLinesAction, DuplicateLinesAction.ID, nls.localize('lines.copyDown', \"Duplicate Line\"), {\n\tcontext: ContextKey.EditorTextFocus,\n\tprimary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_D\n}, 'Duplicate Line'));\n        "
     },
+    {
+        filePath: './vscode/src/vs/editor/contrib/toggleTabFocusMode/common/toggleTabFocusMode.ts',
+        fixes: [
+            {
+                orig: "\n\tprimary: KeyMod.CtrlCmd | KeyCode.KEY_M,\n\tmac: { primary: KeyMod.WinCtrl | KeyMod.Shift | KeyCode.KEY_M }\n                ",
+                new: ""
+            }
+        ]
+    }
 ];
 fixesForFiles.forEach(function (fff) {
     var content = utils_1.readFile(fff.filePath);
