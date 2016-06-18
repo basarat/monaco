@@ -156,7 +156,7 @@ var fixesForFiles = [
         filePath: './vscode/src/vs/editor/contrib/toggleTabFocusMode/common/toggleTabFocusMode.ts',
         fixes: [
             {
-                orig: "\n\tprimary: KeyMod.CtrlCmd | KeyCode.KEY_M,\n\tmac: { primary: KeyMod.WinCtrl | KeyMod.Shift | KeyCode.KEY_M }\n                ",
+                orig: "\nCommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFocusModeAction, ToggleTabFocusModeAction.ID, nls.localize('toggle.tabfocusmode', \"Toggle Use of Tab Key for Setting Focus\"), {\n\tcontext: ContextKey.EditorTextFocus,\n\tprimary: KeyMod.CtrlCmd | KeyCode.KEY_M,\n\tmac: { primary: KeyMod.WinCtrl | KeyMod.Shift | KeyCode.KEY_M }\n}, 'Toggle Use of Tab Key for Setting Focus'));                ",
                 new: ""
             }
         ]

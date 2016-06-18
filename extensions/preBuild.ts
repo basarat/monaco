@@ -329,11 +329,13 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(DuplicateLi
         filePath: './vscode/src/vs/editor/contrib/toggleTabFocusMode/common/toggleTabFocusMode.ts',
         fixes: [
                 {
-                orig: `
+                    orig: `
+CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFocusModeAction, ToggleTabFocusModeAction.ID, nls.localize('toggle.tabfocusmode', "Toggle Use of Tab Key for Setting Focus"), {
+	context: ContextKey.EditorTextFocus,
 	primary: KeyMod.CtrlCmd | KeyCode.KEY_M,
 	mac: { primary: KeyMod.WinCtrl | KeyMod.Shift | KeyCode.KEY_M }
-                `,
-                new:``
+}, 'Toggle Use of Tab Key for Setting Focus'));                `,
+                    new:``
             }
         ]
     }
