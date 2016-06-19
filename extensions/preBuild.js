@@ -160,6 +160,15 @@ var fixesForFiles = [
                 new: ""
             }
         ]
+    },
+    {
+        filePath: './vscode/src/vs/editor/browser/standalone/standaloneLanguages.ts',
+        fixes: [
+            {
+                orig: "if (!isSingleLine || editRange.startColumn !== position.lineNumber) {",
+                new: "if (!isSingleLine || editRange.startLineNumber !== position.lineNumber) {"
+            }
+        ]
     }
 ];
 fixesForFiles.forEach(function (fff) {

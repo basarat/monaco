@@ -338,6 +338,18 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
                     new:``
             }
         ]
+    },
+    /**
+     * Minor bug in monaco. Reported https://github.com/Microsoft/vscode/pull/7864
+     */
+    {
+        filePath: './vscode/src/vs/editor/browser/standalone/standaloneLanguages.ts',
+        fixes: [
+            {
+                orig: `if (!isSingleLine || editRange.startColumn !== position.lineNumber) {`,
+                new: `if (!isSingleLine || editRange.startLineNumber !== position.lineNumber) {`
+            }
+        ]
     }
 ]
 
