@@ -376,13 +376,16 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
 		const otherSuggestion = otherItem.suggestion;
 
         if (suggestion.label === otherSuggestion.label
-			&& suggestion.type === 'snippet'
-			&& otherSuggestion.type !== 'property'
-			&& otherSuggestion.type !== 'field'
-		) {
-			// snippet wins
-			return -1;
-		}
+            && suggestion.type === 'snippet'
+        ) {
+            if (otherSuggestion.type !== 'property'
+                && otherSuggestion.type !== 'field') {
+                // snippet loses
+                return 1;
+            }
+            // snippet wins
+            return -1;
+        }
                 `
             }
         ]

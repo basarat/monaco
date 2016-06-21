@@ -175,7 +175,7 @@ var fixesForFiles = [
         fixes: [
             {
                 orig: "\n\t\tconst otherSuggestion = otherItem.suggestion;\n                ",
-                new: "\n\t\tconst otherSuggestion = otherItem.suggestion;\n\n        if (suggestion.label === otherSuggestion.label\n\t\t\t&& suggestion.type === 'snippet'\n\t\t\t&& otherSuggestion.type !== 'property'\n\t\t\t&& otherSuggestion.type !== 'field'\n\t\t) {\n\t\t\t// snippet wins\n\t\t\treturn -1;\n\t\t}\n                "
+                new: "\n\t\tconst otherSuggestion = otherItem.suggestion;\n\n        if (suggestion.label === otherSuggestion.label\n            && suggestion.type === 'snippet'\n        ) {\n            if (otherSuggestion.type !== 'property'\n                && otherSuggestion.type !== 'field') {\n                // snippet loses\n                return 1;\n            }\n            // snippet wins\n            return -1;\n        }\n                "
             }
         ]
     }

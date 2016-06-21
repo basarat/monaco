@@ -87,7 +87,7 @@ MonacoEditorLanguages.push({
 	id: 'markdown',
     extensions: ['.md', '.markdown', '.mdown', '.mkdn', '.mkd', '.mdwn', '.mdtxt', '.mdtext'],
     aliases: ['Markdown', 'markdown'],
-    module: './markdown'
+    module: 'vs/editor/standalone-languages/markdown'
 });
 MonacoEditorLanguages.push({
 	id: 'objective-c',
