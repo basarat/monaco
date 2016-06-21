@@ -162,14 +162,14 @@ var fixesForFiles = [
         ]
     },
     {
-        filePath: './vscode/src/vs/editor/browser/standalone/standaloneLanguages.ts',
+        filePath: './vscode/src/vs/editor/contrib/snippet/common/snippet.ts',
         fixes: [
             {
-                orig: "if (!isSingleLine || editRange.startColumn !== position.lineNumber) {",
-                new: "if (!isSingleLine || editRange.startLineNumber !== position.lineNumber) {"
+                orig: "\n\t\tif (this.placeHolders.length > this.startPlaceHolderIndex) {\n                ",
+                new: "\n        // Sort snippets by id.\n        this.placeHolders.sort((x,y)=>{\n            // The one without any \"value\" should be last\n            if ((x.id || x.value) && (!y.id && !y.value)) return -100;\n\n            return x.id.localeCompare(y.id);\n        });\n\t\tif (this.placeHolders.length > this.startPlaceHolderIndex) {\n                "
             }
         ]
-    }
+    },
 ];
 fixesForFiles.forEach(function (fff) {
     var content = utils_1.readFile(fff.filePath);
