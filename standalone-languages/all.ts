@@ -84,6 +84,12 @@ MonacoEditorLanguages.push({
 	module: 'vs/editor/standalone-languages/lua'
 });
 MonacoEditorLanguages.push({
+	id: 'markdown',
+    extensions: ['.md', '.markdown', '.mdown', '.mkdn', '.mkd', '.mdwn', '.mdtxt', '.mdtext'],
+    aliases: ['Markdown', 'markdown'],
+    module: './markdown'
+});
+MonacoEditorLanguages.push({
 	id: 'objective-c',
 	extensions: [ '.m' ],
 	aliases: [ 'Objective-C'],

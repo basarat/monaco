@@ -17,6 +17,7 @@ exports.collectModules = function() {
 		{ name: "vs/editor/standalone-languages/jade" },
 		{ name: "vs/editor/standalone-languages/java" },
 		{ name: "vs/editor/standalone-languages/lua" },
+		{ name: "vs/editor/standalone-languages/markdown" },
 		{ name: "vs/editor/standalone-languages/objective-c" },
 		{ name: "vs/editor/standalone-languages/powershell" },
 		{ name: "vs/editor/standalone-languages/python" },
