@@ -178,6 +178,15 @@ var fixesForFiles = [
                 new: "\n\t\tconst otherSuggestion = otherItem.suggestion;\n\n        if (suggestion.label === otherSuggestion.label\n            && suggestion.type === 'snippet'\n\t\t\t&& otherSuggestion.type === 'keyword'\n        ) {\n            // snippet wins\n            return -1;\n        }\n                "
             }
         ]
+    },
+    {
+        filePath: './vscode/src/vs/editor/contrib/hover/browser/hoverWidgets.ts',
+        fixes: [
+            {
+                orig: "\n                 var renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 5);\n                 ",
+                new: "\n                 var renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 15);\n                 "
+            }
+        ]
     }
 ];
 fixesForFiles.forEach(function (fff) {

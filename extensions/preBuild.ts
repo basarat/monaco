@@ -385,7 +385,25 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
                 `
             }
         ]
-    }
+    },
+    /**
+     * The hover widget is trimming text based on our styles.
+     * Fix that
+     */
+     {
+         filePath: './vscode/src/vs/editor/contrib/hover/browser/hoverWidgets.ts',
+         fixes: [
+             {
+                 orig: `
+                 var renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 5);
+                 `,
+                 new: `
+                 var renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 15);
+                 `
+             }
+         ]
+     }
+
 ]
 
 fixesForFiles.forEach(fff => {
