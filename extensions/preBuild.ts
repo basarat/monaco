@@ -362,6 +362,31 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
             }
         ]
     },
+    /**
+     * We want snippets to come before anything with the same label *unless* the other item is a property
+     */
+    {
+        filePath: './vscode/src/vs/editor/contrib/suggest/browser/completionModel.ts',
+        fixes: [
+            {
+                orig: `
+		const otherSuggestion = otherItem.suggestion;
+                `,
+                new: `
+		const otherSuggestion = otherItem.suggestion;
+
+        if (suggestion.label === otherSuggestion.label
+			&& suggestion.type === 'snippet'
+			&& otherSuggestion.type !== 'property'
+			&& otherSuggestion.type !== 'field'
+		) {
+			// snippet wins
+			return -1;
+		}
+                `
+            }
+        ]
+    }
 ]
 
 fixesForFiles.forEach(fff => {

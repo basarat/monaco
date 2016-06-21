@@ -170,6 +170,15 @@ var fixesForFiles = [
             }
         ]
     },
+    {
+        filePath: './vscode/src/vs/editor/contrib/suggest/browser/completionModel.ts',
+        fixes: [
+            {
+                orig: "\n\t\tconst otherSuggestion = otherItem.suggestion;\n                ",
+                new: "\n\t\tconst otherSuggestion = otherItem.suggestion;\n\n        if (suggestion.label === otherSuggestion.label\n\t\t\t&& suggestion.type === 'snippet'\n\t\t\t&& otherSuggestion.type !== 'property'\n\t\t\t&& otherSuggestion.type !== 'field'\n\t\t) {\n\t\t\t// snippet wins\n\t\t\treturn -1;\n\t\t}\n                "
+            }
+        ]
+    }
 ];
 fixesForFiles.forEach(function (fff) {
     var content = utils_1.readFile(fff.filePath);
