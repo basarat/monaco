@@ -187,6 +187,15 @@ var fixesForFiles = [
                 new: "\n                 var renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 15);\n                 "
             }
         ]
+    },
+    {
+        filePath: './vscode/src/vs/editor/contrib/find/common/findController.ts',
+        fixes: [
+            {
+                orig: "\nCommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindReplaceAction, FIND_IDS.StartFindReplaceAction, nls.localize('startReplace', \"Replace\"), {\n\tcontext: ContextKey.None,\n\tprimary: KeyMod.CtrlCmd | KeyCode.KEY_H,\n\tmac: { primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_F }\n}, 'Replace'));\n                ",
+                new: ""
+            }
+        ]
     }
 ];
 fixesForFiles.forEach(function (fff) {

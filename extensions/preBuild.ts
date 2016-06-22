@@ -390,20 +390,38 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
      * The hover widget is trimming text based on our styles.
      * Fix that
      */
-     {
-         filePath: './vscode/src/vs/editor/contrib/hover/browser/hoverWidgets.ts',
-         fixes: [
-             {
-                 orig: `
+    {
+        filePath: './vscode/src/vs/editor/contrib/hover/browser/hoverWidgets.ts',
+        fixes: [
+            {
+                orig: `
                  var renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 5);
                  `,
-                 new: `
+                new: `
                  var renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 15);
                  `
-             }
-         ]
-     }
-
+            }
+        ]
+    },
+     /**
+      * Our find and replace are consolidated.
+      * We want to use `ctrl+h` for symbols (project / current file)
+      */
+    {
+        filePath: './vscode/src/vs/editor/contrib/find/common/findController.ts',
+        fixes: [
+            {
+                orig: `
+CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindReplaceAction, FIND_IDS.StartFindReplaceAction, nls.localize('startReplace', "Replace"), {
+	context: ContextKey.None,
+	primary: KeyMod.CtrlCmd | KeyCode.KEY_H,
+	mac: { primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_F }
+}, 'Replace'));
+                `,
+                new: ``
+            }
+        ]
+    }
 ]
 
 fixesForFiles.forEach(fff => {
