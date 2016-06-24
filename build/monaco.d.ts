@@ -370,14 +370,13 @@ declare module monaco {
     }
 
     export interface IKeyboardEvent {
-        browserEvent: Event;
+        browserEvent: KeyboardEvent;
         target: HTMLElement;
         ctrlKey: boolean;
         shiftKey: boolean;
         altKey: boolean;
         metaKey: boolean;
         keyCode: KeyCode;
-        clone(): IKeyboardEvent;
         asKeybinding(): number;
         equals(keybinding: number): boolean;
         preventDefault(): void;
@@ -4725,13 +4724,15 @@ declare module monaco.worker {
     export interface IMirrorModel {
         uri: Uri;
         version: number;
-        getText(): string;
+        getValue(): string;
     }
 
-    /**
-     * Get all available mirror models in this worker.
-     */
-    export function getMirrorModels(): IMirrorModel[];
+    export interface IWorkerContext {
+        /**
+         * Get all available mirror models in this worker.
+         */
+        getMirrorModels(): IMirrorModel[];
+    }
 
 }
 /** uplift some stuff from monaco.editor so that we can all have a party in the same namespace */
