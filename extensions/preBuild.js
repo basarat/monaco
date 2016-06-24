@@ -196,6 +196,15 @@ var fixesForFiles = [
                 new: ""
             }
         ]
+    },
+    {
+        filePath: './vscode/src/vs/editor/common/config/config.ts',
+        fixes: [
+            {
+                orig: "mac: { primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_Z }",
+                new: ""
+            }
+        ]
     }
 ];
 fixesForFiles.forEach(function (fff) {

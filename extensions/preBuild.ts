@@ -421,6 +421,20 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
                 new: ``
             }
         ]
+    },
+    /**
+     * We want to allow Cmd+Y to redo on a mac.
+     * Otherwise we end up opening history (which makes for an aweful demo mistake)
+     * So delete the extreneous mac extra bindings.
+     */
+    {
+        filePath: './vscode/src/vs/editor/common/config/config.ts',
+        fixes: [
+            {
+                orig: `mac: { primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_Z }`,
+                new: ``
+            }
+        ]
     }
 ]
 
