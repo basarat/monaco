@@ -363,7 +363,11 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
         ]
     },
     /**
-     * We want snippets to come before anything with the same label *unless* the other item is a property
+     * If we have `if` keyword and `if` snippet
+     * We want snippets to come before
+     *
+     * If we have `foo` property and `if` snippet (yes the names don't matter)
+     * We want the property to come before
      */
     {
         filePath: './vscode/src/vs/editor/contrib/suggest/browser/completionModel.ts',
@@ -381,6 +385,13 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
         ) {
             // snippet wins
             return -1;
+        }
+        
+        if (suggestion.type === 'snippet'
+            && otherSuggestion.type !== 'snippet'
+        ) {
+            // snippet loses
+            return 1;
         }
                 `
             }
