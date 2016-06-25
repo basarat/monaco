@@ -435,6 +435,20 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
                 new: ``
             }
         ]
+    },
+    /**
+     * We want the hover widget to show above *only* if it is still going to be *inside*
+     * the editor. Currently it tries to overlay anywhere in the body which doesn't
+     * work well with our layout
+     */
+    {
+        filePath: './vscode/src/vs/editor/browser/viewParts/contentWidgets/contentWidgets.ts',
+        fixes: [
+            {
+                orig: `let fitsAbove = (absoluteAboveTop >= 0),`,
+                new: `let fitsAbove = (absoluteAboveTop >= height),`
+            }
+        ]
     }
 ]
 

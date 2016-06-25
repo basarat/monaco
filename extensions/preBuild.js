@@ -205,6 +205,15 @@ var fixesForFiles = [
                 new: ""
             }
         ]
+    },
+    {
+        filePath: './vscode/src/vs/editor/browser/viewParts/contentWidgets/contentWidgets.ts',
+        fixes: [
+            {
+                orig: "let fitsAbove = (absoluteAboveTop >= 0),",
+                new: "let fitsAbove = (absoluteAboveTop >= height),"
+            }
+        ]
     }
 ];
 fixesForFiles.forEach(function (fff) {
