@@ -175,7 +175,7 @@ var fixesForFiles = [
         fixes: [
             {
                 orig: "\n\t\tconst otherSuggestion = otherItem.suggestion;\n                ",
-                new: "\n\t\tconst otherSuggestion = otherItem.suggestion;\n\n        if (suggestion.label === otherSuggestion.label\n            && suggestion.type === 'snippet'\n\t\t\t&& otherSuggestion.type === 'keyword'\n        ) {\n            // snippet wins\n            return -1;\n        }\n        \n        if (suggestion.type === 'snippet'\n            && otherSuggestion.type !== 'snippet'\n        ) {\n            // snippet loses\n            return 1;\n        }\n                "
+                new: "\n\t\tconst otherSuggestion = otherItem.suggestion;\n\n        // Snippet vs. keyword\n        if (suggestion.label === otherSuggestion.label\n            && suggestion.type === 'snippet'\n\t\t\t&& otherSuggestion.type === 'keyword'\n        ) {\n            // snippet wins\n            return -1;\n        }\n        if (otherSuggestion.label === suggestion.label\n            && otherSuggestion.type === 'snippet'\n\t\t\t&& suggestion.type === 'keyword'\n        ) {\n            // snippet wins\n            return 1;\n        }\n\n        // Snippet vs. anything else\n        if (suggestion.type === 'snippet'\n            && otherSuggestion.type !== 'snippet'\n        ) {\n            // snippet loses\n            return 1;\n        }\n        if (suggestion.type !== 'snippet'\n            && otherSuggestion.type === 'snippet'\n        ) {\n            // snippet loses\n            return -1;\n        }\n                "
             }
         ]
     },

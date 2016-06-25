@@ -379,6 +379,7 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
                 new: `
 		const otherSuggestion = otherItem.suggestion;
 
+        // Snippet vs. keyword
         if (suggestion.label === otherSuggestion.label
             && suggestion.type === 'snippet'
 			&& otherSuggestion.type === 'keyword'
@@ -386,12 +387,26 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
             // snippet wins
             return -1;
         }
-        
+        if (otherSuggestion.label === suggestion.label
+            && otherSuggestion.type === 'snippet'
+			&& suggestion.type === 'keyword'
+        ) {
+            // snippet wins
+            return 1;
+        }
+
+        // Snippet vs. anything else
         if (suggestion.type === 'snippet'
             && otherSuggestion.type !== 'snippet'
         ) {
             // snippet loses
             return 1;
+        }
+        if (suggestion.type !== 'snippet'
+            && otherSuggestion.type === 'snippet'
+        ) {
+            // snippet loses
+            return -1;
         }
                 `
             }
