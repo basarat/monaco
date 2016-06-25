@@ -446,7 +446,7 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
         fixes: [
             {
                 orig: `let fitsAbove = (absoluteAboveTop >= 0),`,
-                new: `let fitsAbove = (absoluteAboveTop >= height),`
+                new: `let fitsAbove = (aboveTop >= 0),`
             }
         ]
     }
