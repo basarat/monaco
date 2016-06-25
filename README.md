@@ -1,6 +1,6 @@
 # Monaco
 
-[![BuildStatus](https://travis-ci.org/TypeStrong/ntypescript.svg)](https://travis-ci.org/TypeStrong/ntypescript)
+[![BuildStatus](https://travis-ci.org/basarat/monaco.svg)](https://travis-ci.org/basarat/monaco)
 
 A daily automated build of Microsoft Monaco.
 
