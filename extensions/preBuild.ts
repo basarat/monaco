@@ -489,7 +489,19 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
                 new: ''
             }
         ]
-    }
+    },
+    /**
+     * We want reg squiggly color to match our IDE `error` color.
+     */
+    {
+        filePath: './vscode/src/vs/editor/browser/widget/media/red-squiggly.svg',
+        fixes: [
+            {
+                orig: 'fill="#F00"',
+                new: 'fill="#F92672"'
+            }
+        ]
+    },
 ]
 
 fixesForFiles.forEach(fff => {
