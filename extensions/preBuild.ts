@@ -190,8 +190,11 @@ declare module monaco {
     export interface ISnippetController {
     	run(snippet: CodeSnippet, overwriteBefore: number, overwriteAfter: number, stripPrefix?:boolean): void;
     }
+    export class CodeSnippet {
+        constructor(snippetTemplate:string);
+    }
 
-    #include(vs/editor/contrib/snippet/common/snippet): CodeSnippet, getSnippetController
+    #include(vs/editor/contrib/snippet/common/snippet): getSnippetController
 }
 `;
 writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);
