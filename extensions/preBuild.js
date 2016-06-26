@@ -223,7 +223,16 @@ var fixesForFiles = [
                 new: ''
             }
         ]
-    }
+    },
+    {
+        filePath: './vscode/src/vs/editor/browser/widget/media/red-squiggly.svg',
+        fixes: [
+            {
+                orig: 'fill="#F00"',
+                new: 'fill="#F92672"'
+            }
+        ]
+    },
 ];
 fixesForFiles.forEach(function (fff) {
     var content = utils_1.readFile(fff.filePath);
