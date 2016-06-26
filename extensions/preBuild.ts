@@ -485,8 +485,8 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
         filePath: './vscode/src/vs/editor/contrib/gotoError/browser/gotoError.ts',
         fixes: [
             {
-                orig: 'super(descriptor, editor, Behaviour.WidgetFocus | Behaviour.Writeable | Behaviour.UpdateOnModelChange);',
-                new: 'super(descriptor, editor, Behaviour.Writeable | Behaviour.UpdateOnModelChange);'
+                orig: 'this._container.focus();',
+                new: ''
             }
         ]
     }
