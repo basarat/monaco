@@ -193,8 +193,7 @@ declare module monaco {
     export class CodeSnippet {
         constructor(snippetTemplate:string);
     }
-
-    #include(vs/editor/contrib/snippet/common/snippet): getSnippetController
+    export function getSnippetController(editor: ICommonCodeEditor): ISnippetController;
 }
 `;
 writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);

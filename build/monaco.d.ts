@@ -1269,6 +1269,11 @@ declare module monaco.editor {
          */
         renderWhitespace?: boolean;
         /**
+         * Enable rendering of control characters.
+         * Defaults to false.
+         */
+        renderControlCharacters?: boolean;
+        /**
          * Enable rendering of indent guides.
          * Defaults to true.
          */
@@ -1363,6 +1368,7 @@ declare module monaco.editor {
         editorClassName: string;
         stopRenderingLineAfter: number;
         renderWhitespace: boolean;
+        renderControlCharacters: boolean;
         indentGuides: boolean;
         scrollbar: InternalEditorScrollbarOptions;
     }
@@ -1386,6 +1392,7 @@ declare module monaco.editor {
         editorClassName: boolean;
         stopRenderingLineAfter: boolean;
         renderWhitespace: boolean;
+        renderControlCharacters: boolean;
         indentGuides: boolean;
         scrollbar: boolean;
     }
@@ -4938,4 +4945,16 @@ declare module monaco {
     class EventEmitter {
         dispose(): void;
     }
+}
+
+/** We wanted CodeSnippet and getSnippetController */
+declare module monaco {
+    // Simplified the api surface to only export what I want
+    export interface ISnippetController {
+        run(snippet: CodeSnippet, overwriteBefore: number, overwriteAfter: number, stripPrefix?: boolean): void;
+    }
+    export class CodeSnippet {
+        constructor(snippetTemplate: string);
+    }
+    export function getSnippetController(editor: ICommonCodeEditor): ISnippetController;
 }
