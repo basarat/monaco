@@ -475,6 +475,20 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
                 new: `let fitsAbove = (aboveTop >= 0),`
             }
         ]
+    },
+    /**
+     * The f8 error navigation should not steal the focus from the editor. Reasons:
+     * - We want the error widget to show but still keep the focus on the editor as we
+     * want the user to be able to fix the error
+     */
+    {
+        filePath: './vscode/src/vs/editor/contrib/gotoError/browser/gotoError.ts',
+        fixes: [
+            {
+                orig: 'super(descriptor, editor, Behaviour.WidgetFocus | Behaviour.Writeable | Behaviour.UpdateOnModelChange);',
+                new: 'super(descriptor, editor, Behaviour.Writeable | Behaviour.UpdateOnModelChange);'
+            }
+        ]
     }
 ]
 
