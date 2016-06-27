@@ -3,4 +3,6 @@ extensions/
 vscode/
 monaco-languages/
 standalone-languages/
+monaco-css/
+monaco-json/
 src/

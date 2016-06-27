@@ -4,3 +4,9 @@
 [submodule "monaco-languages"]
 	path = monaco-languages
 	url = https://github.com/Microsoft/monaco-languages.git
+[submodule "monaco-json"]
+	path = monaco-json
+	url = https://github.com/Microsoft/monaco-json.git
+[submodule "monaco-css"]
+	path = monaco-css
+	url = https://github.com/Microsoft/monaco-css.git

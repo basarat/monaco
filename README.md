@@ -33,6 +33,17 @@ in all of it using `api` + `editor.main` (quite a bit of work.)
 
 All done using `prepare.sh` (with the help of stuff in the `extensions` folder).
 
+## Submodules 
+
+Monaco is in the process of making more addons. Best to add them with 
+
+```
+git submodule add https://github.com/Microsoft/monaco-css.git
+``` 
+And then add the path to `.npmignore`
+
+Finally you need to figure out how to integrate it in editor.main
+
 ## Installation
 
 Due to limited testing and automated release we recommend hard version installs:
