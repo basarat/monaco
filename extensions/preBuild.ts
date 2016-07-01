@@ -355,15 +355,8 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
         ]
     },
     /**
-     * If we have `if` keyword and `if` snippet
-     * We want snippets to come before
-     *
      * If we have `foo` property and `if` snippet (yes the names don't matter)
      * We want the property to come before
-     *
-     * UPDATE: This isn't right. Because we might never actually compare `if (snippet)` with another `if (keyword)`
-     * So we get the snippets at the bottom and everything else up the top :-/
-     * This sorting really needs to happen in fuzzaldrin?
      */
     {
         filePath: './vscode/src/vs/editor/contrib/suggest/browser/completionModel.ts',
@@ -374,22 +367,6 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
                 `,
                 new: `
 		const otherSuggestion = otherItem.suggestion;
-
-        // Snippet vs. keyword
-        if (suggestion.label === otherSuggestion.label
-            && suggestion.type === 'snippet'
-			&& otherSuggestion.type === 'keyword'
-        ) {
-            // snippet wins
-            return -1;
-        }
-        if (otherSuggestion.label === suggestion.label
-            && otherSuggestion.type === 'snippet'
-			&& suggestion.type === 'keyword'
-        ) {
-            // snippet wins
-            return 1;
-        }
 
         // Snippet vs. anything else
         if (suggestion.type === 'snippet'
@@ -404,6 +381,29 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
             // snippet loses
             return -1;
         }
+                `
+            }
+        ]
+    },
+    /**
+     * If we have `if` keyword and `if` snippet
+     * We want snippets to come before.
+     * - do that in the `filter` function (as comparison doesn't have the `prefix` information)
+     */
+    {
+        filePath: './vscode/src/vs/editor/contrib/suggest/browser/completionModel.ts',
+        fixes: [
+            {
+                orig: `
+this._filteredItems.push(item);
+                `,
+                new: `
+if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
+	this._filteredItems.unshift(item);
+}
+else {
+	this._filteredItems.push(item);
+}
                 `
             }
         ]
