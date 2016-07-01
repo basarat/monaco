@@ -355,29 +355,6 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
         ]
     },
     /**
-     * We want snippet sorting by id. Do it :)
-     */
-    {
-        filePath: './vscode/src/vs/editor/contrib/snippet/common/snippet.ts',
-        fixes: [
-            {
-                orig: `
-		if (this.placeHolders.length > this.startPlaceHolderIndex) {
-                `,
-                new: `
-        // Sort snippets by id.
-        this.placeHolders.sort((x,y)=>{
-            // The one without any "value" should be last
-            if ((x.id || x.value) && (!y.id && !y.value)) return -100;
-
-            return x.id.localeCompare(y.id);
-        });
-		if (this.placeHolders.length > this.startPlaceHolderIndex) {
-                `
-            }
-        ]
-    },
-    /**
      * If we have `if` keyword and `if` snippet
      * We want snippets to come before
      *

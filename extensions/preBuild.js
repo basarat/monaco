@@ -162,15 +162,6 @@ var fixesForFiles = [
         ]
     },
     {
-        filePath: './vscode/src/vs/editor/contrib/snippet/common/snippet.ts',
-        fixes: [
-            {
-                orig: "\n\t\tif (this.placeHolders.length > this.startPlaceHolderIndex) {\n                ",
-                new: "\n        // Sort snippets by id.\n        this.placeHolders.sort((x,y)=>{\n            // The one without any \"value\" should be last\n            if ((x.id || x.value) && (!y.id && !y.value)) return -100;\n\n            return x.id.localeCompare(y.id);\n        });\n\t\tif (this.placeHolders.length > this.startPlaceHolderIndex) {\n                "
-            }
-        ]
-    },
-    {
         filePath: './vscode/src/vs/editor/contrib/suggest/browser/completionModel.ts',
         fixes: [
             {
