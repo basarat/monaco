@@ -360,6 +360,10 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
      *
      * If we have `foo` property and `if` snippet (yes the names don't matter)
      * We want the property to come before
+     *
+     * UPDATE: This isn't right. Because we might never actually compare `if (snippet)` with another `if (keyword)`
+     * So we get the snippets at the bottom and everything else up the top :-/
+     * This sorting really needs to happen in fuzzaldrin?
      */
     {
         filePath: './vscode/src/vs/editor/contrib/suggest/browser/completionModel.ts',
