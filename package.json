@@ -1,6 +1,6 @@
 {
   "name": "monaco",
-  "version": "1.201607022108.0+4e72dcc35954ae36a277983922926f3f5a971d0c",
+  "version": "1.201607032109.0+4e72dcc35954ae36a277983922926f3f5a971d0c",
   "description": "A daily build of microsoft monaco",
   "bin": {},
   "repository": {
