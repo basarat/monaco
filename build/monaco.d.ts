@@ -1182,13 +1182,6 @@ declare module monaco.editor {
          */
         wordWrapBreakObtrusiveCharacters?: string;
         /**
-         * Control what pressing Tab does.
-         * If it is false, pressing Tab or Shift-Tab will be handled by the editor.
-         * If it is true, pressing Tab or Shift-Tab will move the browser focus.
-         * Defaults to false.
-         */
-        tabFocusMode?: boolean;
-        /**
          * Performance guard: Stop rendering a line after x characters.
          * Defaults to 10000 if wrappingColumn is -1. Defaults to -1 if wrappingColumn is >= 0.
          * Use -1 to never stop rendering
@@ -1253,11 +1246,6 @@ declare module monaco.editor {
          * Defaults to true.
          */
         selectionHighlight?: boolean;
-        /**
-         * Show lines before classes and methods (based on outline info).
-         * Defaults to false.
-         */
-        outlineMarkers?: boolean;
         /**
          * Show reference infos (a.k.a. code lenses) for modes that support it
          * Defaults to true.
@@ -1416,7 +1404,6 @@ declare module monaco.editor {
         suggestOnTriggerCharacters: boolean;
         acceptSuggestionOnEnter: boolean;
         selectionHighlight: boolean;
-        outlineMarkers: boolean;
         referenceInfos: boolean;
         folding: boolean;
     }
@@ -2743,6 +2730,11 @@ declare module monaco.editor {
      * A context key that is set when the editor's text or an editor's widget has focus.
      */
     export const KEYBINDING_CONTEXT_EDITOR_FOCUS: string;
+
+    /**
+     * A context key that is set when the editor's text is readonly.
+     */
+    export const KEYBINDING_CONTEXT_EDITOR_READONLY: string;
 
     /**
      * A context key that is set when the editor has multiple selections (multiple cursors).
@@ -4903,28 +4895,27 @@ declare module monaco {
         static CLASS: string;
         static ENABLED: string;
         static CHECKED: string;
-        _id: string;
-        _label: string;
-        _tooltip: string;
-        _cssClass: string;
-        _enabled: boolean;
-        _checked: boolean;
-        _actionCallback: IActionCallback;
-        _order: number;
+        protected _id: string;
+        protected _label: string;
+        protected _tooltip: string;
+        protected _cssClass: string;
+        protected _enabled: boolean;
+        protected _checked: boolean;
+        protected _actionCallback: IActionCallback;
+        protected _order: number;
         constructor(id: string, label?: string, cssClass?: string, enabled?: boolean, actionCallback?: IActionCallback);
         id: string;
         label: string;
-        _setLabel(value: string): void;
+        protected _setLabel(value: string): void;
         tooltip: string;
-        _setTooltip(value: string): void;
+        protected _setTooltip(value: string): void;
         class: string;
-        _setClass(value: string): void;
+        protected _setClass(value: string): void;
         enabled: boolean;
-        _setEnabled(value: boolean): void;
+        protected _setEnabled(value: boolean): void;
         checked: boolean;
-        _setChecked(value: boolean): void;
+        protected _setChecked(value: boolean): void;
         order: number;
-        actionCallback: IActionCallback;
         run(event?: any): Promise<any>;
     }
 
