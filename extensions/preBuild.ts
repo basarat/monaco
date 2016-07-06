@@ -163,7 +163,7 @@ declare module monaco {
 declare module monaco {
 
     #include(vs/editor/common/editorCommonExtensions;editorCommon.=>): CommonEditorRegistry, EditorActionDescriptor, IEditorCommandHandler, IEditorActionKeybindingOptions, ContextKey
-    #include(vs/platform/keybinding/common/keybindingService): IKeybindings, ICommandHandler, ICommandHandlerDescription, KbExpr, KbExprType, ICommandsMap, IKeybindingItem
+    #include(vs/platform/keybinding/common/keybinding): IKeybindings, ICommandHandler, ICommandHandlerDescription, KbExpr, KbExprType, ICommandsMap, IKeybindingItem
 
 }
 
@@ -175,7 +175,7 @@ declare module monaco {
 /** We wanted EditorAction */
 declare module monaco {
     #include(vs/editor/common/editorAction): EditorAction
-    #include(vs/base/common/actions): Action, IAction, IActionCallback
+    #include(vs/base/common/actions): Action, IAction, IActionCallback, IActionChangeEvent
     #include(vs/editor/common/editorActionEnablement): Behaviour
 
     /** Placeholder. Bringing it in would be too much work */
