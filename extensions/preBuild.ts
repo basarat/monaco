@@ -220,19 +220,6 @@ writeFile(editorMainFile, readFile(editorMainFile) + editorMainAdditions);
 
 
 /**
- * Also add in all the languages from `monaco-languages`
- */
-// Copy monaco-languages src to vscode
-utils.copy(utils.resolve('./monaco-languages/src'), utils.resolve('./vscode/src/vs/editor/standalone-languages'));
-// Copy the `all.ts` which loads these languages
-writeFile(editorMainFile, readFile(editorMainFile) + readFile('./standalone-languages/all.ts'));
-/** Copy `buildfile.js` to include the language modules */
-utils.copy(utils.resolve('./standalone-languages/buildfile.js'), utils.resolve('./vscode/src/vs/editor/buildfile.js'));
-// remove `monaco.contribution`
-utils.remove(utils.resolve('./vscode/src/vs/editor/standalone-languages/monaco.contribution.ts'));
-
-
-/**
  * Moar fixes
  */
 interface IFix {

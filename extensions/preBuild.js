@@ -94,10 +94,6 @@ utils_1.writeFile(recipeFile, utils_1.readFile(recipeFile) + recipeAdditions);
 var editorMainFile = "./vscode/src/vs/editor/editor.main.ts";
 var editorMainAdditions = "\n/** expose more stuff from monaco */\nimport {CommonEditorRegistry, EditorActionDescriptor, ContextKey} from \"vs/editor/common/editorCommonExtensions\";\nglobal.monaco.CommonEditorRegistry = CommonEditorRegistry;\nglobal.monaco.EditorActionDescriptor = EditorActionDescriptor;\nglobal.monaco.ContextKey = ContextKey;\nimport {KeybindingsRegistry} from 'vs/platform/keybinding/common/keybindingsRegistry';\nglobal.monaco.KeybindingsRegistry = KeybindingsRegistry;\nimport {EditorAction} from 'vs/editor/common/editorAction';\nglobal.monaco.EditorAction = EditorAction;\nimport {CodeSnippet, getSnippetController} from 'vs/editor/contrib/snippet/common/snippet';\nglobal.monaco.CodeSnippet = CodeSnippet;\nglobal.monaco.getSnippetController = getSnippetController;\n";
 utils_1.writeFile(editorMainFile, utils_1.readFile(editorMainFile) + editorMainAdditions);
-utils.copy(utils.resolve('./monaco-languages/src'), utils.resolve('./vscode/src/vs/editor/standalone-languages'));
-utils_1.writeFile(editorMainFile, utils_1.readFile(editorMainFile) + utils_1.readFile('./standalone-languages/all.ts'));
-utils.copy(utils.resolve('./standalone-languages/buildfile.js'), utils.resolve('./vscode/src/vs/editor/buildfile.js'));
-utils.remove(utils.resolve('./vscode/src/vs/editor/standalone-languages/monaco.contribution.ts'));
 var fixesForFiles = [
     {
         filePath: './vscode/src/vs/editor/contrib/format/common/formatActions.ts',
