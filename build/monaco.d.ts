@@ -926,6 +926,7 @@ declare module monaco.editor {
         theme?: string;
         mimeType?: string;
     }
+
     export enum ScrollbarVisibility {
         Auto = 1,
         Hidden = 2,
@@ -2795,17 +2796,6 @@ declare module monaco.editor {
          * A set of enablement conditions.
          */
         enablement?: IActionEnablement;
-        /**
-         * Control if the action should show up in the context menu and where.
-         * Built-in groups:
-         *   1_goto/* => e.g. 1_goto/1_peekDefinition
-         *   2_change/* => e.g. 2_change/2_format
-         *   3_edit/* => e.g. 3_edit/1_copy
-         *   4_tools/* => e.g. 4_tools/1_commands
-         * You can also create your own group.
-         * Defaults to null (don't show in context menu).
-         */
-        contextMenuGroupId?: string;
         /**
          * Method that will be executed when the action is triggered.
          * @param editor The editor instance is passed in as a convinience
@@ -4687,13 +4677,13 @@ declare module monaco {
 
     export interface IConstructorSignature1<A1, T> {
         new (first: A1, ...services: {
-            serviceId: ServiceIdentifier<any>;
+            _serviceBrand: any;
         }[]): T;
     }
 
     export interface IConstructorSignature2<A1, A2, T> {
         new (first: A1, second: A2, ...services: {
-            serviceId: ServiceIdentifier<any>;
+            _serviceBrand: any;
         }[]): T;
     }
 
@@ -4776,6 +4766,7 @@ declare module monaco {
         label: string;
         alias: string;
         kbOpts: IEditorActionKeybindingOptions;
+        menuOpts: IEditorCommandMenuOptions;
         constructor(ctor: IEditorActionContributionCtor, id: string, label: string, kbOpts?: IEditorActionKeybindingOptions, alias?: string);
     }
 
@@ -4795,6 +4786,12 @@ declare module monaco {
         EditorFocus = 2,
     }
 
+    export interface IEditorCommandMenuOptions {
+        kbExpr: KbExpr;
+        menu?: MenuId;
+        group?: string;
+    }
+
     export interface IKeybindings {
         primary: number;
         secondary?: number[];
@@ -4810,21 +4807,6 @@ declare module monaco {
             primary: number;
             secondary?: number[];
         };
-    }
-
-    export interface ICommandHandler {
-        (accessor: ServicesAccessor, ...args: any[]): void;
-        description?: string | ICommandHandlerDescription;
-    }
-
-    export interface ICommandHandlerDescription {
-        description: string;
-        args: {
-            name: string;
-            description?: string;
-            constraint?: TypeConstraint;
-        }[];
-        returns?: string;
     }
 
     export interface KbExpr {
@@ -4844,16 +4826,32 @@ declare module monaco {
         KbAndExpression = 5,
     }
 
-    export interface ICommandsMap {
-        [id: string]: ICommandHandler;
-    }
-
     export interface IKeybindingItem {
         keybinding: number;
         command: string;
         when: KbExpr;
         weight1: number;
         weight2: number;
+    }
+
+    export interface ICommandHandler {
+        (accessor: ServicesAccessor, ...args: any[]): void;
+    }
+
+    export interface ICommandHandlerDescription {
+        description: string;
+        args: {
+            name: string;
+            description?: string;
+            constraint?: TypeConstraint;
+        }[];
+        returns?: string;
+    }
+
+    export enum MenuId {
+        EditorTitle = 1,
+        EditorContext = 2,
+        ExplorerContext = 3,
     }
 
 }
@@ -4866,7 +4864,6 @@ declare module monaco {
     export interface IKeybindingsRegistry {
         registerCommandRule(rule: ICommandRule): any;
         registerCommandDesc(desc: ICommandDescriptor): void;
-        getCommands(): ICommandsMap;
         getDefaultKeybindings(): IKeybindingItem[];
         WEIGHT: {
             editorCore(importance?: number): number;
@@ -4885,7 +4882,7 @@ declare module monaco {
 
     export interface ICommandDescriptor extends ICommandRule {
         handler: ICommandHandler;
-        description?: string | ICommandHandlerDescription;
+        description?: ICommandHandlerDescription;
     }
 }
 
@@ -4897,11 +4894,6 @@ declare module monaco {
         constructor(descriptor: IEditorActionDescriptorData, editor: ICommonCodeEditor, condition?: Behaviour);
         getId(): string;
         dispose(): void;
-        /**
-         * A helper to be able to group and sort actions when they are presented visually.
-         */
-        getGroupId(): string;
-        shouldShowInContextMenu(): boolean;
         getDescriptor(): IEditorActionDescriptorData;
         enabled: boolean;
         resetEnablementState(): void;
@@ -4972,7 +4964,6 @@ declare module monaco {
         Writeable = 4,
         UpdateOnModelChange = 8,
         UpdateOnConfigurationChange = 16,
-        ShowInContextMenu = 32,
         UpdateOnCursorPositionChange = 64,
     }
 

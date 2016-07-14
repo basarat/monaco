@@ -162,8 +162,10 @@ declare module monaco {
 
 declare module monaco {
 
-    #include(vs/editor/common/editorCommonExtensions;editorCommon.=>): CommonEditorRegistry, EditorActionDescriptor, IEditorCommandHandler, IEditorActionKeybindingOptions, ContextKey
-    #include(vs/platform/keybinding/common/keybinding): IKeybindings, ICommandHandler, ICommandHandlerDescription, KbExpr, KbExprType, ICommandsMap, IKeybindingItem
+    #include(vs/editor/common/editorCommonExtensions;editorCommon.=>): CommonEditorRegistry, EditorActionDescriptor, IEditorCommandHandler, IEditorActionKeybindingOptions, ContextKey, IEditorCommandMenuOptions
+    #include(vs/platform/keybinding/common/keybinding): IKeybindings, KbExpr, KbExprType, ICommandsMap, IKeybindingItem
+    #include(vs/platform/commands/common/commands): ICommandHandler, ICommandHandlerDescription
+    #include(vs/platform/actions/common/actions): MenuId
 
 }
 
