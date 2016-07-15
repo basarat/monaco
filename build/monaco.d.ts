@@ -4790,6 +4790,7 @@ declare module monaco {
         kbExpr: KbExpr;
         menu?: MenuId;
         group?: string;
+        order?: number;
     }
 
     export interface IKeybindings {
