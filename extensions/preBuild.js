@@ -229,6 +229,15 @@ var fixesForFiles = [
             }
         ]
     },
+    {
+        filePath: './vscode/src/vs/editor/browser/widget/media/green-squiggly.svg',
+        fixes: [
+            {
+                orig: 'fill="#080"',
+                new: 'fill="#F6D675"'
+            }
+        ]
+    },
 ];
 fixesForFiles.forEach(function (fff) {
     var content = utils_1.readFile(fff.filePath);
