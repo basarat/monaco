@@ -238,6 +238,19 @@ var fixesForFiles = [
             }
         ]
     },
+    {
+        filePath: './vscode/src/vs/editor/contrib/gotoError/browser/gotoError.ts',
+        fixes: [
+            {
+                orig: "this.options.frameColor = '#ff5a5a';",
+                new: "this.options.frameColor = '#F92672';"
+            },
+            {
+                orig: "this.options.frameColor = '#5aac5a';",
+                new: "this.options.frameColor = '#F6D675';"
+            }
+        ]
+    },
 ];
 fixesForFiles.forEach(function (fff) {
     var content = utils_1.readFile(fff.filePath);

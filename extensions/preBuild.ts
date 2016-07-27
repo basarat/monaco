@@ -479,6 +479,7 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
      * We want
      * - reg squiggly color to match our IDE `error` color.
      * - green squiggly color to match our IDE `warning` color.
+     * Also do the same for `gotoError` inline widget
      */
     {
         filePath: './vscode/src/vs/editor/browser/widget/media/red-squiggly.svg',
@@ -495,6 +496,19 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
             {
                 orig: 'fill="#080"',
                 new: 'fill="#F6D675"'
+            }
+        ]
+    },
+    {
+        filePath: './vscode/src/vs/editor/contrib/gotoError/browser/gotoError.ts',
+        fixes: [
+            {
+                orig: `this.options.frameColor = '#ff5a5a';`,
+                new: `this.options.frameColor = '#F92672';`
+            },
+            {
+                orig: `this.options.frameColor = '#5aac5a';`,
+                new: `this.options.frameColor = '#F6D675';`
             }
         ]
     },
