@@ -32,7 +32,7 @@ release.sh
 npm publish
 ```
 
-> If `prepare` fails you might leave submodules dirty and prepare will not run again. Run `reset.sh` to get around that.
+> If `prepare` fails you might leave submodules dirty and prepare will not run again. Run `./reset.sh && ./prepare.sh` to get around that.
 
 > Note: once travis was setup to publish we don't need `npm publish` anymore.
 
