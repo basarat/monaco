@@ -32,10 +32,12 @@ release.sh
 npm publish
 ```
 
+> If `prepare` fails you might leave submodules dirty and prepare will not run again. Run `reset.sh` to get around that.
+
 > Note: once travis was setup to publish we don't need `npm publish` anymore.
 
 # After jumping on a new machine
-We leave submodules dirty to ease debugging. But this can lead to difficulty in fetching latest. Simply run `resume.sh` to pull latest and disregard anthing you have staged locally.
+We leave submodules dirty to ease debugging. But this can lead to difficulty in fetching latest. Simply run `resume.sh` to pull latest and disregard anything you have staged locally.
 
 # Travis
 
