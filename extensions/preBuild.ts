@@ -170,8 +170,15 @@ declare module monaco {
     #include(vs/editor/common/editorCommonExtensions;editorCommon.=>): CommonEditorRegistry, EditorAction
 }
 
-/** We wanted KeyBindingsRegistry. Rest is brought in for it */
+/** We wanted KeyBindingsRegistry, EditorContextKeys. Rest is brought in for it */
 declare module monaco {
+    #include(vs/editor/common/editorCommon): EditorContextKeys
+    #include(vs/platform/keybinding/common/keybinding): KbCtxKey, KbDefinedExpression, IKeybindingContextKey
+
+    /** Shortcut: I don't care */
+    type IKeybindingService = any;
+
+
     #include(vs/platform/keybinding/common/keybindingsRegistry): KeybindingsRegistry, IKeybindingsRegistry, ICommandAndKeybindingRule, IKeybindingRule
 }
 
@@ -198,7 +205,9 @@ const editorMainAdditions = `
 import {CommonEditorRegistry, EditorAction} from "vs/editor/common/editorCommonExtensions";
 global.monaco.CommonEditorRegistry = CommonEditorRegistry;
 global.monaco.EditorAction = EditorAction;
+import {EditorContextKeys} from 'vs/editor/common/editorCommon';
 import {KeybindingsRegistry} from 'vs/platform/keybinding/common/keybindingsRegistry';
+global.monaco.EditorContextKeys = EditorContextKeys;
 global.monaco.KeybindingsRegistry = KeybindingsRegistry;
 import {CodeSnippet, getSnippetController} from 'vs/editor/contrib/snippet/common/snippet';
 global.monaco.CodeSnippet = CodeSnippet;

@@ -4962,8 +4962,95 @@ declare module monaco {
     }
 }
 
-/** We wanted KeyBindingsRegistry. Rest is brought in for it */
+/** We wanted KeyBindingsRegistry, EditorContextKeys. Rest is brought in for it */
 declare module monaco {
+
+    /**
+     * @internal
+     */
+    export namespace EditorContextKeys {
+        /**
+         * A context key that is set when the editor's text has focus (cursor is blinking).
+         * @internal
+         */
+        const TextFocus: KbCtxKey<boolean>;
+        /**
+         * A context key that is set when the editor's text or an editor's widget has focus.
+         * @internal
+         */
+        const Focus: KbCtxKey<boolean>;
+        /**
+         * A context key that is set when the editor's text is readonly.
+         * @internal
+         */
+        const ReadOnly: KbCtxKey<boolean>;
+        /**
+         * @internal
+         */
+        const Writable: KbExpr;
+        /**
+         * A context key that is set when the editor has a non-collapsed selection.
+         * @internal
+         */
+        const HasNonEmptySelection: KbCtxKey<boolean>;
+        /**
+         * @internal
+         */
+        const HasOnlyEmptySelection: KbExpr;
+        /**
+         * A context key that is set when the editor has multiple selections (multiple cursors).
+         * @internal
+         */
+        const HasMultipleSelections: KbCtxKey<boolean>;
+        /**
+         * @internal
+         */
+        const HasSingleSelection: KbExpr;
+        /**
+         * @internal
+         */
+        const TabMovesFocus: KbCtxKey<boolean>;
+        /**
+         * @internal
+         */
+        const TabDoesNotMoveFocus: KbExpr;
+        /**
+         * A context key that is set to the language associated with the model associated with the editor.
+         * @internal
+         */
+        const LanguageId: KbCtxKey<string>;
+    }
+
+    export class KbCtxKey<T> extends KbDefinedExpression {
+        constructor(key: string, defaultValue: T);
+        bindTo(target: IKeybindingService): IKeybindingContextKey<T>;
+        getValue(target: IKeybindingService): T;
+        toNegated(): KbExpr;
+        isEqualTo(value: string): KbExpr;
+    }
+
+    export class KbDefinedExpression implements KbExpr {
+        protected key: string;
+        constructor(key: string);
+        getType(): KbExprType;
+        cmp(other: KbDefinedExpression): number;
+        equals(other: KbExpr): boolean;
+        evaluate(context: any): boolean;
+        normalize(): KbExpr;
+        serialize(): string;
+        keys(): string[];
+    }
+
+    export interface IKeybindingContextKey<T> {
+        set(value: T): void;
+        reset(): void;
+        get(): T;
+    }
+
+    /** Shortcut: I don't care */
+    type IKeybindingService = any;
+
+
 
     export let KeybindingsRegistry: IKeybindingsRegistry;
 
