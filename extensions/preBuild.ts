@@ -26,14 +26,13 @@ var contentFixes = [
     /** Remove gulp target we do not need (also helps us removing thier deps from npm install) */
     {
         fileName: './vscode/gulpfile.js',
-        orig: `require('./build/gulpfile.hygiene');`,
-        new: ``
-    },
-    {
-        fileName: './vscode/gulpfile.js',
-        orig: `require('./build/gulpfile.vscode');`,
-        new: ``
-    },
+        orig: '.forEach(f => require(`./build/${ f }`));',
+        new: `.forEach(f => {
+            require('./build/gulpfile');
+            require('./build/gulpfile.editor');
+            require('./build/gulpfile.extensions');
+        });`
+    }
 ];
 
 for (let fix of contentFixes) {
@@ -138,52 +137,42 @@ declare module monaco {
     export type ICommonCodeEditor = monaco.editor.ICommonCodeEditor;
     export type IEditorContribution = monaco.editor.IEditorContribution;
     export type IModel = monaco.editor.IModel;
-}
-
-/** We wanted CommonEditorRegistry. Rest is brought in for it */
-
-declare module monaco {
 
     /** Stuff from "types" */
     #include(vs/base/common/types): TypeConstraint
+}
 
+/** We wanted CommonEditorRegistry and EditorAction. Rest is brought in for it */
+declare module monaco {
+    #include(vs/platform/instantiation/common/instantiation): IConstructorSignature0,IConstructorSignature1,IConstructorSignature2,IConstructorSignature3,IConstructorSignature4,IConstructorSignature5,IConstructorSignature6,IConstructorSignature7,IConstructorSignature8
+    #include(vs/platform/instantiation/common/instantiation): ServicesAccessor,ServiceIdentifier,optional
 
-    /** Stuff from instantiation **/
-    #include(vs/platform/instantiation/common/instantiation): IConstructorSignature1, IConstructorSignature2, ServiceIdentifier, ServicesAccessor, optional
     /** Was a really deep rabbit hole so shortened */
     export type IInstantiationService = any;
-}
-
-declare module monaco {
 
     #include(vs/editor/common/editorCommon): ICommonEditorContributionCtor, ICommonEditorContributionDescriptor, IEditorActionContributionCtor, IEditorActionDescriptorData
-
 }
-
 declare module monaco {
+    /** Just shut up */
+    type ConfigBasicCommand = any;
 
-    #include(vs/editor/common/editorCommonExtensions;editorCommon.=>): CommonEditorRegistry, EditorActionDescriptor, IEditorCommandHandler, IEditorActionKeybindingOptions, ContextKey, IEditorCommandMenuOptions
-    #include(vs/platform/keybinding/common/keybinding): IKeybindings, KbExpr, KbExprType, ICommandsMap, IKeybindingItem
+    #include(vs/platform/actions/common/actions):IMenuItem,ICommandAction
+    #include(vs/editor/common/config/config;editorCommon.=>): ICommandOptions,ICommandKeybindingsOptions,EditorCommand,Command,EditorControllerCommand,IContributionCommandOptions
+    #include(vs/platform/keybinding/common/keybinding): KbExpr,KbExprType,IKeybindings,IKeybindingItem
     #include(vs/platform/commands/common/commands): ICommandHandler, ICommandHandlerDescription
-    #include(vs/platform/actions/common/actions): MenuId
 
+    /** Because its aliased */
+    type ConfigEditorCommand = EditorCommand;
+    var ConfigEditorCommand:typeof EditorCommand;
+
+    #include(vs/editor/common/editorCommonExtensions;editorCommon.=>): IActionOptions, IEditorCommandMenuOptions
+
+    #include(vs/editor/common/editorCommonExtensions;editorCommon.=>): CommonEditorRegistry, EditorAction
 }
 
 /** We wanted KeyBindingsRegistry. Rest is brought in for it */
 declare module monaco {
-    #include(vs/platform/keybinding/common/keybindingsRegistry): KeybindingsRegistry, IKeybindingsRegistry, ICommandRule, ICommandDescriptor
-}
-
-/** We wanted EditorAction */
-declare module monaco {
-    #include(vs/editor/common/editorAction): EditorAction
-    #include(vs/base/common/actions): Action, IAction, IActionCallback, IActionChangeEvent
-    #include(vs/editor/common/editorActionEnablement): Behaviour
-
-    /** Placeholder. Bringing it in would be too much work */
-    class EventEmitter{
-        dispose(): void;
-    }
+    #include(vs/platform/keybinding/common/keybindingsRegistry): KeybindingsRegistry, IKeybindingsRegistry, ICommandAndKeybindingRule, IKeybindingRule
 }
 
 /** We wanted CodeSnippet and getSnippetController */
@@ -206,14 +195,11 @@ writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);
 const editorMainFile = "./vscode/src/vs/editor/editor.main.ts";
 const editorMainAdditions = `
 /** expose more stuff from monaco */
-import {CommonEditorRegistry, EditorActionDescriptor, ContextKey} from "vs/editor/common/editorCommonExtensions";
+import {CommonEditorRegistry, EditorAction} from "vs/editor/common/editorCommonExtensions";
 global.monaco.CommonEditorRegistry = CommonEditorRegistry;
-global.monaco.EditorActionDescriptor = EditorActionDescriptor;
-global.monaco.ContextKey = ContextKey;
+global.monaco.EditorAction = EditorAction;
 import {KeybindingsRegistry} from 'vs/platform/keybinding/common/keybindingsRegistry';
 global.monaco.KeybindingsRegistry = KeybindingsRegistry;
-import {EditorAction} from 'vs/editor/common/editorAction';
-global.monaco.EditorAction = EditorAction;
 import {CodeSnippet, getSnippetController} from 'vs/editor/contrib/snippet/common/snippet';
 global.monaco.CodeSnippet = CodeSnippet;
 global.monaco.getSnippetController = getSnippetController;
@@ -299,14 +285,39 @@ const fixesForFiles: IFixForFile[] = [
             {
                 // We want to use this for jumpy and tab jumps
                 orig: `
-CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(InsertLineBeforeAction, InsertLineBeforeAction.ID, nls.localize('lines.insertBefore', "Insert Line Above"), {
-	context: ContextKey.EditorTextFocus,
-	primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.Enter
-}, 'Insert Line Above'));
-CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(InsertLineAfterAction, InsertLineAfterAction.ID, nls.localize('lines.insertAfter', "Insert Line Below"), {
-	context: ContextKey.EditorTextFocus,
-	primary: KeyMod.CtrlCmd | KeyCode.Enter
-}, 'Insert Line Below'));
+@editorAction
+class InsertLineBeforeAction extends HandlerEditorAction {
+	constructor() {
+		super({
+			id: 'editor.action.insertLineBefore',
+			label: nls.localize('lines.insertBefore', "Insert Line Above"),
+			alias: 'Insert Line Above',
+			precondition: EditorContextKeys.Writable,
+			handlerId: Handler.LineInsertBefore,
+			kbOpts: {
+				kbExpr: EditorContextKeys.TextFocus,
+				primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.Enter
+			}
+		});
+	}
+}
+
+@editorAction
+class InsertLineAfterAction extends HandlerEditorAction {
+	constructor() {
+		super({
+			id: 'editor.action.insertLineAfter',
+			label: nls.localize('lines.insertAfter', "Insert Line Below"),
+			alias: 'Insert Line Below',
+			precondition: EditorContextKeys.Writable,
+			handlerId: Handler.LineInsertAfter,
+			kbOpts: {
+				kbExpr: EditorContextKeys.TextFocus,
+				primary: KeyMod.CtrlCmd | KeyCode.Enter
+			}
+		});
+	}
+}
                 `,
                 new: ''
             }
@@ -315,17 +326,21 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(InsertLineA
          * Duplicate copy line down action code reused to -> duplicate line with a new shortcut
          */
         additions: `
-class DuplicateLinesAction extends CopyLinesAction {
-	static ID = 'editor.action.duplicateLinesAction';
-
-	constructor(descriptor:IEditorActionDescriptorData, editor:ICommonCodeEditor) {
-		super(descriptor, editor, true);
+@editorAction
+class DuplicateLinesAction extends AbstractCopyLinesAction {
+	constructor() {
+		super(true, {
+			id: 'editor.action.duplicateLinesAction',
+			label: 'Duplicate Line',
+			alias: 'Duplicate Line',
+			precondition: EditorContextKeys.Writable,
+			kbOpts: {
+				kbExpr: EditorContextKeys.TextFocus,
+				primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_D
+			}
+		});
 	}
 }
-CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(DuplicateLinesAction, DuplicateLinesAction.ID, nls.localize('lines.copyDown', "Duplicate Line"), {
-	context: ContextKey.EditorTextFocus,
-	primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_D
-}, 'Duplicate Line'));
         `
     },
     /** We never want to use to use `tab` to navigate the window. Also this shortcut conflicted with our match bracket shortcut */
@@ -348,7 +363,7 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
      * We want the property to come before
      */
     {
-        filePath: './vscode/src/vs/editor/contrib/suggest/browser/completionModel.ts',
+        filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
         fixes: [
             {
                 orig: `
@@ -380,7 +395,7 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
      * - do that in the `filter` function (as comparison doesn't have the `prefix` information)
      */
     {
-        filePath: './vscode/src/vs/editor/contrib/suggest/browser/completionModel.ts',
+        filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
         fixes: [
             {
                 orig: `

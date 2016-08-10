@@ -111,6 +111,7 @@ declare module monaco {
      *
      */
     export class Uri {
+        static isUri(thing: any): thing is Uri;
         constructor();
         /**
          * scheme is the 'http' part of 'http://www.msft.com/some/path?query#fragment'.
@@ -899,6 +900,7 @@ declare module monaco.editor {
     export interface IKeybindingContextKey<T> {
         set(value: T): void;
         reset(): void;
+        get(): T;
     }
 
     export interface IEditorOverrideServices {
@@ -1243,15 +1245,27 @@ declare module monaco.editor {
          */
         acceptSuggestionOnEnter?: boolean;
         /**
+         * Enable snippet suggestions. Default to 'true'.
+         */
+        snippetSuggestions?: 'top' | 'bottom' | 'inline' | 'none';
+        /**
+         * Enable tab completion. Defaults to 'false'
+         */
+        tabCompletion?: boolean;
+        /**
+         * Enable word based suggestions. Defaults to 'true'
+         */
+        wordBasedSuggestions?: boolean;
+        /**
          * Enable selection highlight.
          * Defaults to true.
          */
         selectionHighlight?: boolean;
         /**
-         * Show reference infos (a.k.a. code lenses) for modes that support it
+         * Show code lens
          * Defaults to true.
          */
-        referenceInfos?: boolean;
+        codeLens?: boolean;
         /**
          * Enable code folding
          * Defaults to true.
@@ -1404,8 +1418,11 @@ declare module monaco.editor {
         formatOnType: boolean;
         suggestOnTriggerCharacters: boolean;
         acceptSuggestionOnEnter: boolean;
+        snippetSuggestions: 'top' | 'bottom' | 'inline' | 'none';
+        tabCompletion: boolean;
+        wordBasedSuggestions: boolean;
         selectionHighlight: boolean;
-        referenceInfos: boolean;
+        codeLens: boolean;
         folding: boolean;
     }
 
@@ -2555,38 +2572,6 @@ declare module monaco.editor {
     }
 
     /**
-     * Conditions describing action enablement
-     */
-    export interface IActionEnablement {
-        /**
-         * The action is enabled only if text in the editor is focused (e.g. blinking cursor).
-         * Warning: This condition will be disabled if the action is marked to be displayed in the context menu
-         * Defaults to false.
-         */
-        textFocus?: boolean;
-        /**
-         * The action is enabled only if the editor or its widgets have focus (e.g. focus is in find widget).
-         * Defaults to false.
-         */
-        widgetFocus?: boolean;
-        /**
-         * The action is enabled only if the editor is not in read only mode.
-         * Defaults to false.
-         */
-        writeableEditor?: boolean;
-        /**
-         * The action is enabled only if the cursor position is over tokens of a certain kind.
-         * Defaults to no tokens required.
-         */
-        tokensAtPosition?: string[];
-        /**
-         * The action is enabled only if the cursor position is over a word (i.e. not whitespace).
-         * Defaults to false.
-         */
-        wordAtPosition?: boolean;
-    }
-
-    /**
      * A (serializable) state of the cursors.
      */
     export interface ICursorState {
@@ -2722,36 +2707,6 @@ declare module monaco.editor {
         charChanges: ICharChange[];
     }
 
-    /**
-     * A context key that is set when the editor's text has focus (cursor is blinking).
-     */
-    export const KEYBINDING_CONTEXT_EDITOR_TEXT_FOCUS: string;
-
-    /**
-     * A context key that is set when the editor's text or an editor's widget has focus.
-     */
-    export const KEYBINDING_CONTEXT_EDITOR_FOCUS: string;
-
-    /**
-     * A context key that is set when the editor's text is readonly.
-     */
-    export const KEYBINDING_CONTEXT_EDITOR_READONLY: string;
-
-    /**
-     * A context key that is set when the editor has multiple selections (multiple cursors).
-     */
-    export const KEYBINDING_CONTEXT_EDITOR_HAS_MULTIPLE_SELECTIONS: string;
-
-    /**
-     * A context key that is set when the editor has a non-collapsed selection.
-     */
-    export const KEYBINDING_CONTEXT_EDITOR_HAS_NON_EMPTY_SELECTION: string;
-
-    /**
-     * A context key that is set to the language associated with the model associated with the editor.
-     */
-    export const KEYBINDING_CONTEXT_EDITOR_LANGUAGE_ID: string;
-
     export class BareFontInfo {
         _bareFontInfoBrand: void;
         fontFamily: string;
@@ -2793,14 +2748,18 @@ declare module monaco.editor {
          */
         keybindingContext?: string;
         /**
-         * A set of enablement conditions.
-         */
-        enablement?: IActionEnablement;
-        /**
          * Method that will be executed when the action is triggered.
          * @param editor The editor instance is passed in as a convinience
          */
         run: (editor: ICommonCodeEditor) => Promise<void>;
+    }
+
+    export interface IEditorAction {
+        id: string;
+        label: string;
+        alias: string;
+        isSupported(): boolean;
+        run(): Promise<void>;
     }
 
     /**
@@ -2872,7 +2831,11 @@ declare module monaco.editor {
         /**
          * Returns all actions associated with this editor.
          */
-        getActions(): IAction[];
+        getActions(): IEditorAction[];
+        /**
+         * Returns all actions associated with this editor.
+         */
+        getSupportedActions(): IEditorAction[];
         /**
          * Saves current view state of the editor in a serializable object.
          */
@@ -3108,7 +3071,7 @@ declare module monaco.editor {
          * @id Unique identifier of the contribution.
          * @return The action or null if action not found.
          */
-        getAction(id: string): IAction;
+        getAction(id: string): IEditorAction;
         /**
          * Execute a command on the editor.
          * @param source The source of the call.
@@ -3185,6 +3148,71 @@ declare module monaco.editor {
     };
 
     /**
+     * Positions in the view for cursor move command.
+     */
+    export const CursorMovePosition: {
+        Left: string;
+        Right: string;
+        Up: string;
+        Down: string;
+        WrappedLineStart: string;
+        WrappedLineFirstNonWhitespaceCharacter: string;
+        WrappedLineColumnCenter: string;
+        WrappedLineEnd: string;
+        WrappedLineLastNonWhitespaceCharacter: string;
+        ViewPortTop: string;
+        ViewPortCenter: string;
+        ViewPortBottom: string;
+    };
+
+    /**
+     * Units for Cursor move 'by' argument
+     */
+    export const CursorMoveByUnit: {
+        Line: string;
+        WrappedLine: string;
+        Character: string;
+        HalfLine: string;
+    };
+
+    /**
+     * Arguments for Cursor move command
+     */
+    export interface CursorMoveArguments {
+        to: string;
+        select?: boolean;
+        by?: string;
+        value?: number;
+    }
+
+    /**
+     * Directions in the view for editor scroll command.
+     */
+    export const EditorScrollDirection: {
+        Up: string;
+        Down: string;
+    };
+
+    /**
+     * Units for editor scroll 'by' argument
+     */
+    export const EditorScrollByUnit: {
+        Line: string;
+        WrappedLine: string;
+        Page: string;
+        HalfPage: string;
+    };
+
+    /**
+     * Arguments for editor scroll command
+     */
+    export interface EditorScrollArguments {
+        to: string;
+        by?: string;
+        value?: number;
+    }
+
+    /**
      * Built-in commands.
      */
     export var Handler: {
@@ -3229,6 +3257,7 @@ declare module monaco.editor {
         CursorColumnSelectPageUp: string;
         CursorColumnSelectDown: string;
         CursorColumnSelectPageDown: string;
+        CursorMove: string;
         AddCursorDown: string;
         AddCursorUp: string;
         CursorUndo: string;
@@ -3240,6 +3269,8 @@ declare module monaco.editor {
         JumpToBracket: string;
         Type: string;
         ReplacePreviousChar: string;
+        CompositionStart: string;
+        CompositionEnd: string;
         Paste: string;
         Tab: string;
         Indent: string;
@@ -3270,6 +3301,7 @@ declare module monaco.editor {
         LineInsertAfter: string;
         LineBreakInsert: string;
         SelectAll: string;
+        EditorScroll: string;
         ScrollLineUp: string;
         ScrollLineDown: string;
         ScrollPageUp: string;
@@ -4423,6 +4455,7 @@ declare module monaco.languages {
      */
     export interface LinkProvider {
         provideLinks(model: editor.IReadOnlyModel, token: CancellationToken): ILink[] | Thenable<ILink[]>;
+        resolveLink?: (link: ILink, token: CancellationToken) => ILink | Thenable<ILink>;
     }
 
     export interface IResourceEdit {
@@ -4662,18 +4695,20 @@ declare module monaco {
     export type ICommonCodeEditor = monaco.editor.ICommonCodeEditor;
     export type IEditorContribution = monaco.editor.IEditorContribution;
     export type IModel = monaco.editor.IModel;
-}
-
-/** We wanted CommonEditorRegistry. Rest is brought in for it */
-
-declare module monaco {
 
     /** Stuff from "types" */
 
     export type TypeConstraint = string | Function;
+}
 
+/** We wanted CommonEditorRegistry and EditorAction. Rest is brought in for it */
+declare module monaco {
 
-    /** Stuff from instantiation **/
+    export interface IConstructorSignature0<T> {
+        new (...services: {
+            _serviceBrand: any;
+        }[]): T;
+    }
 
     export interface IConstructorSignature1<A1, T> {
         new (first: A1, ...services: {
@@ -4687,6 +4722,46 @@ declare module monaco {
         }[]): T;
     }
 
+    export interface IConstructorSignature3<A1, A2, A3, T> {
+        new (first: A1, second: A2, third: A3, ...services: {
+            _serviceBrand: any;
+        }[]): T;
+    }
+
+    export interface IConstructorSignature4<A1, A2, A3, A4, T> {
+        new (first: A1, second: A2, third: A3, forth: A4, ...services: {
+            _serviceBrand: any;
+        }[]): T;
+    }
+
+    export interface IConstructorSignature5<A1, A2, A3, A4, A5, T> {
+        new (first: A1, second: A2, third: A3, forth: A4, fifth: A5, ...services: {
+            _serviceBrand: any;
+        }[]): T;
+    }
+
+    export interface IConstructorSignature6<A1, A2, A3, A4, A5, A6, T> {
+        new (first: A1, second: A2, third: A3, forth: A4, fifth: A5, sixth: A6, ...services: {
+            _serviceBrand: any;
+        }[]): T;
+    }
+
+    export interface IConstructorSignature7<A1, A2, A3, A4, A5, A6, A7, T> {
+        new (first: A1, second: A2, third: A3, forth: A4, fifth: A5, sixth: A6, seventh: A7, ...services: {
+            _serviceBrand: any;
+        }[]): T;
+    }
+
+    export interface IConstructorSignature8<A1, A2, A3, A4, A5, A6, A7, A8, T> {
+        new (first: A1, second: A2, third: A3, forth: A4, fifth: A5, sixth: A6, seventh: A7, eigth: A8, ...services: {
+            _serviceBrand: any;
+        }[]): T;
+    }
+
+    export interface ServicesAccessor {
+        get<T>(id: ServiceIdentifier<T>, isOptional?: typeof optional): T;
+    }
+
     /**
      * Identifies a service of type T
      */
@@ -4695,19 +4770,13 @@ declare module monaco {
         type: T;
     }
 
-    export interface ServicesAccessor {
-        get<T>(id: ServiceIdentifier<T>, isOptional?: typeof optional): T;
-    }
-
     /**
      * Mark a service dependency as optional.
      */
     export function optional<T>(serviceIdentifier: ServiceIdentifier<T>): (target: Function, key: string, index: number) => void;
+
     /** Was a really deep rabbit hole so shortened */
     export type IInstantiationService = any;
-}
-
-declare module monaco {
 
 
     /**
@@ -4740,74 +4809,59 @@ declare module monaco {
         label: string;
         alias?: string;
     }
-
 }
-
 declare module monaco {
+    /** Just shut up */
+    type ConfigBasicCommand = any;
 
 
-    export module CommonEditorRegistry {
-        function registerEditorAction(desc: EditorActionDescriptor): void;
-        function registerEditorContribution(ctor: ICommonEditorContributionCtor): void;
-        function getEditorContributions(): ICommonEditorContributionDescriptor[];
-        function commandWeight(importance?: number): number;
-        function registerEditorCommand(commandId: string, weight: number, keybinding: IKeybindings, needsTextFocus: boolean, needsKey: string, handler: IEditorCommandHandler): void;
-        function registerLanguageCommand(id: string, handler: (accessor: ServicesAccessor, args: {
-            [n: string]: any;
-        }) => any): void;
-        function registerDefaultLanguageCommand(id: string, handler: (model: IModel, position: Position, args: {
-            [n: string]: any;
-        }) => any): void;
-    }
-
-    export class EditorActionDescriptor {
-        ctor: IEditorActionContributionCtor;
-        id: string;
-        label: string;
-        alias: string;
-        kbOpts: IEditorActionKeybindingOptions;
-        menuOpts: IEditorCommandMenuOptions;
-        constructor(ctor: IEditorActionContributionCtor, id: string, label: string, kbOpts?: IEditorActionKeybindingOptions, alias?: string);
-    }
-
-    export interface IEditorCommandHandler {
-        (accessor: ServicesAccessor, editor: ICommonCodeEditor, args: any): void;
-    }
-
-    export interface IEditorActionKeybindingOptions extends IKeybindings {
-        handler?: ICommandHandler;
-        context: ContextKey;
-        kbExpr?: KbExpr;
-    }
-
-    export enum ContextKey {
-        None = 0,
-        EditorTextFocus = 1,
-        EditorFocus = 2,
-    }
-
-    export interface IEditorCommandMenuOptions {
-        kbExpr: KbExpr;
-        menu?: MenuId;
-        group?: string;
+    export interface IMenuItem {
+        command: ICommandAction;
+        alt?: ICommandAction;
+        when?: KbExpr;
+        group?: 'navigation' | string;
         order?: number;
     }
 
-    export interface IKeybindings {
-        primary: number;
-        secondary?: number[];
-        win?: {
-            primary: number;
-            secondary?: number[];
-        };
-        linux?: {
-            primary: number;
-            secondary?: number[];
-        };
-        mac?: {
-            primary: number;
-            secondary?: number[];
-        };
+    export interface ICommandAction {
+        id: string;
+        title: string;
+        category?: string;
+        iconClass?: string;
+    }
+
+    export interface ICommandOptions {
+        id: string;
+        precondition: KbExpr;
+        kbOpts?: ICommandKeybindingsOptions;
+    }
+
+    export interface ICommandKeybindingsOptions extends IKeybindings {
+        kbExpr?: KbExpr;
+        weight?: number;
+    }
+
+    export abstract class EditorCommand extends Command {
+        static bindToContribution<T extends IEditorContribution>(controllerGetter: (editor: ICommonCodeEditor) => T): EditorControllerCommand<T>;
+        constructor(opts: ICommandOptions);
+        runCommand(accessor: ServicesAccessor, args: any): void | Promise<void>;
+        protected abstract runEditorCommand(accessor: ServicesAccessor, editor: ICommonCodeEditor, args: any): void | Promise<void>;
+    }
+
+    export abstract class Command {
+        id: string;
+        precondition: KbExpr;
+        constructor(opts: ICommandOptions);
+        abstract runCommand(accessor: ServicesAccessor, args: any): void | Promise<void>;
+        toCommandAndKeybindingRule(defaultWeight: number): ICommandAndKeybindingRule;
+    }
+
+    export interface EditorControllerCommand<T extends IEditorContribution> {
+        new (opts: IContributionCommandOptions<T>): EditorCommand;
+    }
+
+    export interface IContributionCommandOptions<T> extends ICommandOptions {
+        handler: (controller: T) => void;
     }
 
     export interface KbExpr {
@@ -4825,6 +4879,23 @@ declare module monaco {
         KbEqualsExpression = 3,
         KbNotEqualsExpression = 4,
         KbAndExpression = 5,
+    }
+
+    export interface IKeybindings {
+        primary: number;
+        secondary?: number[];
+        win?: {
+            primary: number;
+            secondary?: number[];
+        };
+        linux?: {
+            primary: number;
+            secondary?: number[];
+        };
+        mac?: {
+            primary: number;
+            secondary?: number[];
+        };
     }
 
     export interface IKeybindingItem {
@@ -4849,12 +4920,46 @@ declare module monaco {
         returns?: string;
     }
 
-    export enum MenuId {
-        EditorTitle = 1,
-        EditorContext = 2,
-        ExplorerContext = 3,
+    /** Because its aliased */
+    type ConfigEditorCommand = EditorCommand;
+    var ConfigEditorCommand: typeof EditorCommand;
+
+
+    export interface IActionOptions extends ICommandOptions {
+        label: string;
+        alias: string;
+        menuOpts?: IEditorCommandMenuOptions;
     }
 
+    export interface IEditorCommandMenuOptions {
+        group?: string;
+        order?: number;
+    }
+
+
+    export module CommonEditorRegistry {
+        function registerEditorAction(desc: EditorAction): void;
+        function getEditorActions(): EditorAction[];
+        function registerEditorContribution(ctor: ICommonEditorContributionCtor): void;
+        function getEditorContributions(): ICommonEditorContributionDescriptor[];
+        function commandWeight(importance?: number): number;
+        function registerEditorCommand2(desc: ConfigBasicCommand): void;
+        function registerLanguageCommand(id: string, handler: (accessor: ServicesAccessor, args: {
+            [n: string]: any;
+        }) => any): void;
+        function registerDefaultLanguageCommand(id: string, handler: (model: IModel, position: Position, args: {
+            [n: string]: any;
+        }) => any): void;
+    }
+
+    export abstract class EditorAction extends ConfigEditorCommand {
+        label: string;
+        alias: string;
+        constructor(opts: IActionOptions);
+        toMenuItem(): IMenuItem;
+        runEditorCommand(accessor: ServicesAccessor, editor: ICommonCodeEditor, args: any): void | Promise<void>;
+        abstract run(accessor: ServicesAccessor, editor: ICommonCodeEditor): void | Promise<void>;
+    }
 }
 
 /** We wanted KeyBindingsRegistry. Rest is brought in for it */
@@ -4863,8 +4968,8 @@ declare module monaco {
     export let KeybindingsRegistry: IKeybindingsRegistry;
 
     export interface IKeybindingsRegistry {
-        registerCommandRule(rule: ICommandRule): any;
-        registerCommandDesc(desc: ICommandDescriptor): void;
+        registerKeybindingRule(rule: IKeybindingRule): any;
+        registerCommandAndKeybindingRule(desc: ICommandAndKeybindingRule): void;
         getDefaultKeybindings(): IKeybindingItem[];
         WEIGHT: {
             editorCore(importance?: number): number;
@@ -4875,102 +4980,15 @@ declare module monaco {
         };
     }
 
-    export interface ICommandRule extends IKeybindings {
-        id: string;
-        weight: number;
-        when: KbExpr;
-    }
-
-    export interface ICommandDescriptor extends ICommandRule {
+    export interface ICommandAndKeybindingRule extends IKeybindingRule {
         handler: ICommandHandler;
         description?: ICommandHandlerDescription;
     }
-}
 
-/** We wanted EditorAction */
-declare module monaco {
-
-    export class EditorAction extends Action implements IEditorContribution {
-        editor: ICommonCodeEditor;
-        constructor(descriptor: IEditorActionDescriptorData, editor: ICommonCodeEditor, condition?: Behaviour);
-        getId(): string;
-        dispose(): void;
-        getDescriptor(): IEditorActionDescriptorData;
-        enabled: boolean;
-        resetEnablementState(): void;
-        /**
-         * Returns {{true}} in case this action works
-         * with the current mode. To be overwritten
-         * in subclasses.
-         */
-        isSupported(): boolean;
-        /**
-         * Returns the enablement state of this action. This
-         * method is being called in the process of {{updateEnablementState}}
-         * and overwriters should call super (this method).
-         */
-        getEnablementState(): boolean;
-        getAlias(): string;
-    }
-
-    export class Action implements IAction {
-        protected _onDidChange: Emitter<IActionChangeEvent>;
-        protected _id: string;
-        protected _label: string;
-        protected _tooltip: string;
-        protected _cssClass: string;
-        protected _enabled: boolean;
-        protected _checked: boolean;
-        protected _order: number;
-        protected _actionCallback: (event?: any) => Promise<any>;
-        constructor(id: string, label?: string, cssClass?: string, enabled?: boolean, actionCallback?: (event?: any) => Promise<any>);
-        dispose(): void;
-        onDidChange: IEvent<IActionChangeEvent>;
+    export interface IKeybindingRule extends IKeybindings {
         id: string;
-        label: string;
-        protected _setLabel(value: string): void;
-        tooltip: string;
-        protected _setTooltip(value: string): void;
-        class: string;
-        protected _setClass(value: string): void;
-        enabled: boolean;
-        protected _setEnabled(value: boolean): void;
-        checked: boolean;
-        protected _setChecked(value: boolean): void;
-        order: number;
-        run(event?: any): Promise<any>;
-    }
-
-    export interface IAction extends IDisposable {
-        id: string;
-        label: string;
-        tooltip: string;
-        class: string;
-        enabled: boolean;
-        checked: boolean;
-        run(event?: any): Promise<any>;
-    }
-
-    export interface IActionChangeEvent {
-        label?: string;
-        tooltip?: string;
-        class?: string;
-        enabled?: boolean;
-        checked?: boolean;
-    }
-
-    export enum Behaviour {
-        TextFocus = 1,
-        WidgetFocus = 2,
-        Writeable = 4,
-        UpdateOnModelChange = 8,
-        UpdateOnConfigurationChange = 16,
-        UpdateOnCursorPositionChange = 64,
-    }
-
-    /** Placeholder. Bringing it in would be too much work */
-    class EventEmitter {
-        dispose(): void;
+        weight: number;
+        when: KbExpr;
     }
 }
 

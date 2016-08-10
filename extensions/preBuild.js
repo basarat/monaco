@@ -15,14 +15,9 @@ var contentFixes = [
     },
     {
         fileName: './vscode/gulpfile.js',
-        orig: "require('./build/gulpfile.hygiene');",
-        new: ""
-    },
-    {
-        fileName: './vscode/gulpfile.js',
-        orig: "require('./build/gulpfile.vscode');",
-        new: ""
-    },
+        orig: '.forEach(f => require(`./build/${ f }`));',
+        new: ".forEach(f => {\n            require('./build/gulpfile');\n            require('./build/gulpfile.editor');\n            require('./build/gulpfile.extensions');\n        });"
+    }
 ];
 for (var _i = 0, contentFixes_1 = contentFixes; _i < contentFixes_1.length; _i++) {
     var fix = contentFixes_1[_i];
@@ -89,10 +84,10 @@ delete packJsonContents.scripts;
 utils_1.writeFile(packageJsonPath, utils_1.stringify(packJsonContents));
 utils.remove(utils.resolve('./vscode/npm-shrinkwrap.json'));
 var recipeFile = "./vscode/build/monaco/monaco.d.ts.recipe";
-var recipeAdditions = "\n/** uplift some stuff from monaco.editor so that we can all have a party in the same namespace */\ndeclare module monaco {\n    export type ICommonCodeEditor = monaco.editor.ICommonCodeEditor;\n    export type IEditorContribution = monaco.editor.IEditorContribution;\n    export type IModel = monaco.editor.IModel;\n}\n\n/** We wanted CommonEditorRegistry. Rest is brought in for it */\n\ndeclare module monaco {\n\n    /** Stuff from \"types\" */\n    #include(vs/base/common/types): TypeConstraint\n\n\n    /** Stuff from instantiation **/\n    #include(vs/platform/instantiation/common/instantiation): IConstructorSignature1, IConstructorSignature2, ServiceIdentifier, ServicesAccessor, optional\n    /** Was a really deep rabbit hole so shortened */\n    export type IInstantiationService = any;\n}\n\ndeclare module monaco {\n\n    #include(vs/editor/common/editorCommon): ICommonEditorContributionCtor, ICommonEditorContributionDescriptor, IEditorActionContributionCtor, IEditorActionDescriptorData\n\n}\n\ndeclare module monaco {\n\n    #include(vs/editor/common/editorCommonExtensions;editorCommon.=>): CommonEditorRegistry, EditorActionDescriptor, IEditorCommandHandler, IEditorActionKeybindingOptions, ContextKey, IEditorCommandMenuOptions\n    #include(vs/platform/keybinding/common/keybinding): IKeybindings, KbExpr, KbExprType, ICommandsMap, IKeybindingItem\n    #include(vs/platform/commands/common/commands): ICommandHandler, ICommandHandlerDescription\n    #include(vs/platform/actions/common/actions): MenuId\n\n}\n\n/** We wanted KeyBindingsRegistry. Rest is brought in for it */\ndeclare module monaco {\n    #include(vs/platform/keybinding/common/keybindingsRegistry): KeybindingsRegistry, IKeybindingsRegistry, ICommandRule, ICommandDescriptor\n}\n\n/** We wanted EditorAction */\ndeclare module monaco {\n    #include(vs/editor/common/editorAction): EditorAction\n    #include(vs/base/common/actions): Action, IAction, IActionCallback, IActionChangeEvent\n    #include(vs/editor/common/editorActionEnablement): Behaviour\n\n    /** Placeholder. Bringing it in would be too much work */\n    class EventEmitter{\n        dispose(): void;\n    }\n}\n\n/** We wanted CodeSnippet and getSnippetController */\ndeclare module monaco {\n    // Simplified the api surface to only export what I want\n    export interface ISnippetController {\n    \trun(snippet: CodeSnippet, overwriteBefore: number, overwriteAfter: number, stripPrefix?:boolean): void;\n    }\n    export class CodeSnippet {\n        constructor(snippetTemplate:string);\n    }\n    export function getSnippetController(editor: ICommonCodeEditor): ISnippetController;\n}\n";
+var recipeAdditions = "\n/** uplift some stuff from monaco.editor so that we can all have a party in the same namespace */\ndeclare module monaco {\n    export type ICommonCodeEditor = monaco.editor.ICommonCodeEditor;\n    export type IEditorContribution = monaco.editor.IEditorContribution;\n    export type IModel = monaco.editor.IModel;\n\n    /** Stuff from \"types\" */\n    #include(vs/base/common/types): TypeConstraint\n}\n\n/** We wanted CommonEditorRegistry and EditorAction. Rest is brought in for it */\ndeclare module monaco {\n    #include(vs/platform/instantiation/common/instantiation): IConstructorSignature0,IConstructorSignature1,IConstructorSignature2,IConstructorSignature3,IConstructorSignature4,IConstructorSignature5,IConstructorSignature6,IConstructorSignature7,IConstructorSignature8\n    #include(vs/platform/instantiation/common/instantiation): ServicesAccessor,ServiceIdentifier,optional\n\n    /** Was a really deep rabbit hole so shortened */\n    export type IInstantiationService = any;\n\n    #include(vs/editor/common/editorCommon): ICommonEditorContributionCtor, ICommonEditorContributionDescriptor, IEditorActionContributionCtor, IEditorActionDescriptorData\n}\ndeclare module monaco {\n    /** Just shut up */\n    type ConfigBasicCommand = any;\n\n    #include(vs/platform/actions/common/actions):IMenuItem,ICommandAction\n    #include(vs/editor/common/config/config;editorCommon.=>): ICommandOptions,ICommandKeybindingsOptions,EditorCommand,Command,EditorControllerCommand,IContributionCommandOptions\n    #include(vs/platform/keybinding/common/keybinding): KbExpr,KbExprType,IKeybindings,IKeybindingItem\n    #include(vs/platform/commands/common/commands): ICommandHandler, ICommandHandlerDescription\n\n    /** Because its aliased */\n    type ConfigEditorCommand = EditorCommand;\n    var ConfigEditorCommand:typeof EditorCommand;\n\n    #include(vs/editor/common/editorCommonExtensions;editorCommon.=>): IActionOptions, IEditorCommandMenuOptions\n\n    #include(vs/editor/common/editorCommonExtensions;editorCommon.=>): CommonEditorRegistry, EditorAction\n}\n\n/** We wanted KeyBindingsRegistry. Rest is brought in for it */\ndeclare module monaco {\n    #include(vs/platform/keybinding/common/keybindingsRegistry): KeybindingsRegistry, IKeybindingsRegistry, ICommandAndKeybindingRule, IKeybindingRule\n}\n\n/** We wanted CodeSnippet and getSnippetController */\ndeclare module monaco {\n    // Simplified the api surface to only export what I want\n    export interface ISnippetController {\n    \trun(snippet: CodeSnippet, overwriteBefore: number, overwriteAfter: number, stripPrefix?:boolean): void;\n    }\n    export class CodeSnippet {\n        constructor(snippetTemplate:string);\n    }\n    export function getSnippetController(editor: ICommonCodeEditor): ISnippetController;\n}\n";
 utils_1.writeFile(recipeFile, utils_1.readFile(recipeFile) + recipeAdditions);
 var editorMainFile = "./vscode/src/vs/editor/editor.main.ts";
-var editorMainAdditions = "\n/** expose more stuff from monaco */\nimport {CommonEditorRegistry, EditorActionDescriptor, ContextKey} from \"vs/editor/common/editorCommonExtensions\";\nglobal.monaco.CommonEditorRegistry = CommonEditorRegistry;\nglobal.monaco.EditorActionDescriptor = EditorActionDescriptor;\nglobal.monaco.ContextKey = ContextKey;\nimport {KeybindingsRegistry} from 'vs/platform/keybinding/common/keybindingsRegistry';\nglobal.monaco.KeybindingsRegistry = KeybindingsRegistry;\nimport {EditorAction} from 'vs/editor/common/editorAction';\nglobal.monaco.EditorAction = EditorAction;\nimport {CodeSnippet, getSnippetController} from 'vs/editor/contrib/snippet/common/snippet';\nglobal.monaco.CodeSnippet = CodeSnippet;\nglobal.monaco.getSnippetController = getSnippetController;\n";
+var editorMainAdditions = "\n/** expose more stuff from monaco */\nimport {CommonEditorRegistry, EditorAction} from \"vs/editor/common/editorCommonExtensions\";\nglobal.monaco.CommonEditorRegistry = CommonEditorRegistry;\nglobal.monaco.EditorAction = EditorAction;\nimport {KeybindingsRegistry} from 'vs/platform/keybinding/common/keybindingsRegistry';\nglobal.monaco.KeybindingsRegistry = KeybindingsRegistry;\nimport {CodeSnippet, getSnippetController} from 'vs/editor/contrib/snippet/common/snippet';\nglobal.monaco.CodeSnippet = CodeSnippet;\nglobal.monaco.getSnippetController = getSnippetController;\n";
 utils_1.writeFile(editorMainFile, utils_1.readFile(editorMainFile) + editorMainAdditions);
 var fixesForFiles = [
     {
@@ -142,11 +137,11 @@ var fixesForFiles = [
         filePath: './vscode/src/vs/editor/contrib/linesOperations/common/linesOperations.ts',
         fixes: [
             {
-                orig: "\nCommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(InsertLineBeforeAction, InsertLineBeforeAction.ID, nls.localize('lines.insertBefore', \"Insert Line Above\"), {\n\tcontext: ContextKey.EditorTextFocus,\n\tprimary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.Enter\n}, 'Insert Line Above'));\nCommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(InsertLineAfterAction, InsertLineAfterAction.ID, nls.localize('lines.insertAfter', \"Insert Line Below\"), {\n\tcontext: ContextKey.EditorTextFocus,\n\tprimary: KeyMod.CtrlCmd | KeyCode.Enter\n}, 'Insert Line Below'));\n                ",
+                orig: "\n@editorAction\nclass InsertLineBeforeAction extends HandlerEditorAction {\n\tconstructor() {\n\t\tsuper({\n\t\t\tid: 'editor.action.insertLineBefore',\n\t\t\tlabel: nls.localize('lines.insertBefore', \"Insert Line Above\"),\n\t\t\talias: 'Insert Line Above',\n\t\t\tprecondition: EditorContextKeys.Writable,\n\t\t\thandlerId: Handler.LineInsertBefore,\n\t\t\tkbOpts: {\n\t\t\t\tkbExpr: EditorContextKeys.TextFocus,\n\t\t\t\tprimary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.Enter\n\t\t\t}\n\t\t});\n\t}\n}\n\n@editorAction\nclass InsertLineAfterAction extends HandlerEditorAction {\n\tconstructor() {\n\t\tsuper({\n\t\t\tid: 'editor.action.insertLineAfter',\n\t\t\tlabel: nls.localize('lines.insertAfter', \"Insert Line Below\"),\n\t\t\talias: 'Insert Line Below',\n\t\t\tprecondition: EditorContextKeys.Writable,\n\t\t\thandlerId: Handler.LineInsertAfter,\n\t\t\tkbOpts: {\n\t\t\t\tkbExpr: EditorContextKeys.TextFocus,\n\t\t\t\tprimary: KeyMod.CtrlCmd | KeyCode.Enter\n\t\t\t}\n\t\t});\n\t}\n}\n                ",
                 new: ''
             }
         ],
-        additions: "\nclass DuplicateLinesAction extends CopyLinesAction {\n\tstatic ID = 'editor.action.duplicateLinesAction';\n\n\tconstructor(descriptor:IEditorActionDescriptorData, editor:ICommonCodeEditor) {\n\t\tsuper(descriptor, editor, true);\n\t}\n}\nCommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(DuplicateLinesAction, DuplicateLinesAction.ID, nls.localize('lines.copyDown', \"Duplicate Line\"), {\n\tcontext: ContextKey.EditorTextFocus,\n\tprimary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_D\n}, 'Duplicate Line'));\n        "
+        additions: "\n@editorAction\nclass DuplicateLinesAction extends AbstractCopyLinesAction {\n\tconstructor() {\n\t\tsuper(true, {\n\t\t\tid: 'editor.action.duplicateLinesAction',\n\t\t\tlabel: 'Duplicate Line',\n\t\t\talias: 'Duplicate Line',\n\t\t\tprecondition: EditorContextKeys.Writable,\n\t\t\tkbOpts: {\n\t\t\t\tkbExpr: EditorContextKeys.TextFocus,\n\t\t\t\tprimary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_D\n\t\t\t}\n\t\t});\n\t}\n}\n        "
     },
     {
         filePath: './vscode/src/vs/editor/contrib/toggleTabFocusMode/common/toggleTabFocusMode.ts',
@@ -158,7 +153,7 @@ var fixesForFiles = [
         ]
     },
     {
-        filePath: './vscode/src/vs/editor/contrib/suggest/browser/completionModel.ts',
+        filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
         fixes: [
             {
                 orig: "\n\t\tconst otherSuggestion = otherItem.suggestion;\n                ",
@@ -167,7 +162,7 @@ var fixesForFiles = [
         ]
     },
     {
-        filePath: './vscode/src/vs/editor/contrib/suggest/browser/completionModel.ts',
+        filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
         fixes: [
             {
                 orig: "\nthis._filteredItems.push(item);\n                ",
