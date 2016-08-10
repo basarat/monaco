@@ -4943,7 +4943,7 @@ declare module monaco {
         function registerEditorContribution(ctor: ICommonEditorContributionCtor): void;
         function getEditorContributions(): ICommonEditorContributionDescriptor[];
         function commandWeight(importance?: number): number;
-        function registerEditorCommand2(desc: ConfigBasicCommand): void;
+        function registerEditorCommand(desc: ConfigBasicCommand): void;
         function registerLanguageCommand(id: string, handler: (accessor: ServicesAccessor, args: {
             [n: string]: any;
         }) => any): void;
@@ -5049,7 +5049,6 @@ declare module monaco {
 
     /** Shortcut: I don't care */
     type IKeybindingService = any;
-
 
 
     export let KeybindingsRegistry: IKeybindingsRegistry;
