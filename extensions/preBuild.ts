@@ -178,7 +178,6 @@ declare module monaco {
     /** Shortcut: I don't care */
     type IKeybindingService = any;
 
-
     #include(vs/platform/keybinding/common/keybindingsRegistry): KeybindingsRegistry, IKeybindingsRegistry, ICommandAndKeybindingRule, IKeybindingRule
 }
 
