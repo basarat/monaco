@@ -884,20 +884,20 @@ declare module monaco.editor {
 
     export interface IStandaloneCodeEditor extends ICodeEditor {
         addCommand(keybinding: number, handler: ICommandHandler, context: string): string;
-        createContextKey<T>(key: string, defaultValue: T): IKeybindingContextKey<T>;
+        createContextKey<T>(key: string, defaultValue: T): IContextKey<T>;
         addAction(descriptor: IActionDescriptor): void;
     }
 
     export interface IStandaloneDiffEditor extends IDiffEditor {
         addCommand(keybinding: number, handler: ICommandHandler, context: string): string;
-        createContextKey<T>(key: string, defaultValue: T): IKeybindingContextKey<T>;
+        createContextKey<T>(key: string, defaultValue: T): IContextKey<T>;
         addAction(descriptor: IActionDescriptor): void;
     }
     export interface ICommandHandler {
         (...args: any[]): void;
     }
 
-    export interface IKeybindingContextKey<T> {
+    export interface IContextKey<T> {
         set(value: T): void;
         reset(): void;
         get(): T;
@@ -4815,10 +4815,33 @@ declare module monaco {
     type ConfigBasicCommand = any;
 
 
+    export abstract class ContextKeyExpr {
+        static has(key: string): ContextKeyExpr;
+        static equals(key: string, value: any): ContextKeyExpr;
+        static notEquals(key: string, value: any): ContextKeyExpr;
+        static not(key: string): ContextKeyExpr;
+        static and(...expr: ContextKeyExpr[]): ContextKeyExpr;
+        static deserialize(serialized: string): ContextKeyExpr;
+        abstract getType(): ContextKeyExprType;
+        abstract equals(other: ContextKeyExpr): boolean;
+        abstract evaluate(context: any): boolean;
+        abstract normalize(): ContextKeyExpr;
+        abstract serialize(): string;
+        abstract keys(): string[];
+    }
+
+    export enum ContextKeyExprType {
+        Defined = 1,
+        Not = 2,
+        Equals = 3,
+        NotEquals = 4,
+        And = 5,
+    }
+
     export interface IMenuItem {
         command: ICommandAction;
         alt?: ICommandAction;
-        when?: KbExpr;
+        when?: ContextKeyExpr;
         group?: 'navigation' | string;
         order?: number;
     }
@@ -4832,12 +4855,12 @@ declare module monaco {
 
     export interface ICommandOptions {
         id: string;
-        precondition: KbExpr;
+        precondition: ContextKeyExpr;
         kbOpts?: ICommandKeybindingsOptions;
     }
 
     export interface ICommandKeybindingsOptions extends IKeybindings {
-        kbExpr?: KbExpr;
+        kbExpr?: ContextKeyExpr;
         weight?: number;
     }
 
@@ -4850,7 +4873,7 @@ declare module monaco {
 
     export abstract class Command {
         id: string;
-        precondition: KbExpr;
+        precondition: ContextKeyExpr;
         constructor(opts: ICommandOptions);
         abstract runCommand(accessor: ServicesAccessor, args: any): void | Promise<void>;
         toCommandAndKeybindingRule(defaultWeight: number): ICommandAndKeybindingRule;
@@ -4862,23 +4885,6 @@ declare module monaco {
 
     export interface IContributionCommandOptions<T> extends ICommandOptions {
         handler: (controller: T) => void;
-    }
-
-    export interface KbExpr {
-        getType(): KbExprType;
-        equals(other: KbExpr): boolean;
-        evaluate(context: any): boolean;
-        normalize(): KbExpr;
-        serialize(): string;
-        keys(): string[];
-    }
-
-    export enum KbExprType {
-        KbDefinedExpression = 1,
-        KbNotExpression = 2,
-        KbEqualsExpression = 3,
-        KbNotEqualsExpression = 4,
-        KbAndExpression = 5,
     }
 
     export interface IKeybindings {
@@ -4901,7 +4907,7 @@ declare module monaco {
     export interface IKeybindingItem {
         keybinding: number;
         command: string;
-        when: KbExpr;
+        when: ContextKeyExpr;
         weight1: number;
         weight2: number;
     }
@@ -4964,6 +4970,9 @@ declare module monaco {
 
 /** We wanted KeyBindingsRegistry, EditorContextKeys. Rest is brought in for it */
 declare module monaco {
+    /** Shortcut: we don't care */
+    type RawContextKey<T> = any;
+
 
     /**
      * @internal
@@ -4973,78 +4982,52 @@ declare module monaco {
          * A context key that is set when the editor's text has focus (cursor is blinking).
          * @internal
          */
-        const TextFocus: KbCtxKey<boolean>;
+        const TextFocus: RawContextKey<boolean>;
         /**
          * A context key that is set when the editor's text or an editor's widget has focus.
          * @internal
          */
-        const Focus: KbCtxKey<boolean>;
+        const Focus: RawContextKey<boolean>;
         /**
          * A context key that is set when the editor's text is readonly.
          * @internal
          */
-        const ReadOnly: KbCtxKey<boolean>;
+        const ReadOnly: RawContextKey<boolean>;
         /**
          * @internal
          */
-        const Writable: KbExpr;
+        const Writable: ContextKeyExpr;
         /**
          * A context key that is set when the editor has a non-collapsed selection.
          * @internal
          */
-        const HasNonEmptySelection: KbCtxKey<boolean>;
+        const HasNonEmptySelection: RawContextKey<boolean>;
         /**
          * @internal
          */
-        const HasOnlyEmptySelection: KbExpr;
+        const HasOnlyEmptySelection: ContextKeyExpr;
         /**
          * A context key that is set when the editor has multiple selections (multiple cursors).
          * @internal
          */
-        const HasMultipleSelections: KbCtxKey<boolean>;
+        const HasMultipleSelections: RawContextKey<boolean>;
         /**
          * @internal
          */
-        const HasSingleSelection: KbExpr;
+        const HasSingleSelection: ContextKeyExpr;
         /**
          * @internal
          */
-        const TabMovesFocus: KbCtxKey<boolean>;
+        const TabMovesFocus: RawContextKey<boolean>;
         /**
          * @internal
          */
-        const TabDoesNotMoveFocus: KbExpr;
+        const TabDoesNotMoveFocus: ContextKeyExpr;
         /**
          * A context key that is set to the language associated with the model associated with the editor.
          * @internal
          */
-        const LanguageId: KbCtxKey<string>;
-    }
-
-    export class KbCtxKey<T> extends KbDefinedExpression {
-        constructor(key: string, defaultValue: T);
-        bindTo(target: IKeybindingService): IKeybindingContextKey<T>;
-        getValue(target: IKeybindingService): T;
-        toNegated(): KbExpr;
-        isEqualTo(value: string): KbExpr;
-    }
-
-    export class KbDefinedExpression implements KbExpr {
-        protected key: string;
-        constructor(key: string);
-        getType(): KbExprType;
-        cmp(other: KbDefinedExpression): number;
-        equals(other: KbExpr): boolean;
-        evaluate(context: any): boolean;
-        normalize(): KbExpr;
-        serialize(): string;
-        keys(): string[];
-    }
-
-    export interface IKeybindingContextKey<T> {
-        set(value: T): void;
-        reset(): void;
-        get(): T;
+        const LanguageId: RawContextKey<string>;
     }
 
     /** Shortcut: I don't care */
@@ -5074,7 +5057,7 @@ declare module monaco {
     export interface IKeybindingRule extends IKeybindings {
         id: string;
         weight: number;
-        when: KbExpr;
+        when: ContextKeyExpr;
     }
 }
 

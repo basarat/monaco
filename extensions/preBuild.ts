@@ -156,9 +156,10 @@ declare module monaco {
     /** Just shut up */
     type ConfigBasicCommand = any;
 
+    #include(vs/platform/contextkey/common/contextkey):ContextKeyExpr,ContextKeyExprType
     #include(vs/platform/actions/common/actions):IMenuItem,ICommandAction
     #include(vs/editor/common/config/config;editorCommon.=>): ICommandOptions,ICommandKeybindingsOptions,EditorCommand,Command,EditorControllerCommand,IContributionCommandOptions
-    #include(vs/platform/keybinding/common/keybinding): KbExpr,KbExprType,IKeybindings,IKeybindingItem
+    #include(vs/platform/keybinding/common/keybinding): IKeybindings,IKeybindingItem
     #include(vs/platform/commands/common/commands): ICommandHandler, ICommandHandlerDescription
 
     /** Because its aliased */
@@ -172,8 +173,10 @@ declare module monaco {
 
 /** We wanted KeyBindingsRegistry, EditorContextKeys. Rest is brought in for it */
 declare module monaco {
+    /** Shortcut: we don't care */
+    type RawContextKey<T> = any;
+
     #include(vs/editor/common/editorCommon): EditorContextKeys
-    #include(vs/platform/keybinding/common/keybinding): KbCtxKey, KbDefinedExpression, IKeybindingContextKey
 
     /** Shortcut: I don't care */
     type IKeybindingService = any;
