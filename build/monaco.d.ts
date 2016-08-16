@@ -1295,6 +1295,10 @@ declare module monaco.editor {
          */
         fontFamily?: string;
         /**
+         * The font weight
+         */
+        fontWeight?: 'normal' | 'bold' | 'bolder' | 'lighter' | 'initial' | 'inherit' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
+        /**
          * The font size
          */
         fontSize?: number;
@@ -2710,6 +2714,7 @@ declare module monaco.editor {
     export class BareFontInfo {
         _bareFontInfoBrand: void;
         fontFamily: string;
+        fontWeight: string;
         fontSize: number;
         lineHeight: number;
     }
@@ -3466,6 +3471,7 @@ declare module monaco.editor {
          * Render this content widget in a location where it could overflow the editor's view dom node.
          */
         allowEditorOverflow?: boolean;
+        suppressMouseDown?: boolean;
         /**
          * Get a unique identifier of the content widget.
          */
