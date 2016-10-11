@@ -115,6 +115,14 @@ Object.keys(packJsonContents.devDependencies).forEach(dep => {
     delete packJsonContents.devDependencies[dep];
 })
 
+/**
+ *  See this commit
+ *  https://github.com/Microsoft/vscode/commit/94eb60a29272ba41273c76c821cc8900f028dc67
+ *  Cry a little
+ *  Now add
+ */
+packJsonContents.devDependencies['gulp-watch'] = "^4.3.9";
+
 /** Don't want post install or any other script either */
 delete packJsonContents.scripts;
 
