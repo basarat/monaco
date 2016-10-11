@@ -196,14 +196,14 @@ declare module monaco {
 
 /** We wanted CodeSnippet and getSnippetController */
 declare module monaco {
-    // Simplified the api surface to only export what I want
-    export interface ISnippetController {
-    	run(snippet: CodeSnippet, overwriteBefore: number, overwriteAfter: number, stripPrefix?:boolean): void;
-    }
     export class CodeSnippet {
         constructor(snippetTemplate:string);
     }
-    export function getSnippetController(editor: ICommonCodeEditor): ISnippetController;
+    // Simplified the api surface to only export what I want
+    class SnippetController {
+        static get(editor: ICommonCodeEditor): SnippetController;
+        run(snippet: CodeSnippet, overwriteBefore: number, overwriteAfter: number, stripPrefix?:boolean): void;
+    }
 }
 `;
 writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);
@@ -221,9 +221,10 @@ import {EditorContextKeys} from 'vs/editor/common/editorCommon';
 import {KeybindingsRegistry} from 'vs/platform/keybinding/common/keybindingsRegistry';
 global.monaco.EditorContextKeys = EditorContextKeys;
 global.monaco.KeybindingsRegistry = KeybindingsRegistry;
-import {CodeSnippet, getSnippetController} from 'vs/editor/contrib/snippet/common/snippet';
+import {CodeSnippet} from 'vs/editor/contrib/snippet/common/snippet';
 global.monaco.CodeSnippet = CodeSnippet;
-global.monaco.getSnippetController = getSnippetController;
+import {SnippetController} from 'vs/editor/contrib/snippet/common/snippetController';
+global.monaco.SnippetController = SnippetController;
 `;
 writeFile(editorMainFile, readFile(editorMainFile) + editorMainAdditions);
 
