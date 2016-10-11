@@ -196,13 +196,13 @@ declare module monaco {
 
 /** We wanted CodeSnippet and getSnippetController */
 declare module monaco {
-    export class CodeSnippet {
-        constructor(snippetTemplate:string);
-    }
     // Simplified the api surface to only export what I want
+    class CodeSnippet {
+        static fromInternal(snippetTemplate: string): CodeSnippet;
+    }
     class SnippetController {
         static get(editor: ICommonCodeEditor): SnippetController;
-        run(snippet: CodeSnippet, overwriteBefore: number, overwriteAfter: number, stripPrefix?:boolean): void;
+        run(snippet: CodeSnippet, overwriteBefore: number, overwriteAfter: number, stripPrefix?: boolean): void;
     }
 }
 `;
