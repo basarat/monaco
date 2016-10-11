@@ -99,6 +99,8 @@ const keepThePackages = [
     'gulp-uglify',
     'gulp-concat',
     'gulp-util',
+    'gulp-flatmap',
+    'pump',
     /** build/gulpfile.extension.js */
     'vscode-nls-dev',
     /** build/watch/index.js */

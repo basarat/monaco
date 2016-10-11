@@ -67,6 +67,8 @@ var keepThePackages = [
     'gulp-uglify',
     'gulp-concat',
     'gulp-util',
+    'gulp-flatmap',
+    'pump',
     'vscode-nls-dev',
     'gulp-watch',
 ];
