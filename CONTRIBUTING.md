@@ -37,7 +37,9 @@ npm publish
 > Note: once travis was setup to publish we don't need `npm publish` anymore.
 
 # After jumping on a new machine
-We leave submodules dirty to ease debugging. But this can lead to difficulty in fetching latest. Simply run `resume.sh` to pull latest and disregard anything you have staged locally.
+Run `resume.sh` to pull latest and disregard anything you have staged locally.
+
+> We leave submodules dirty to ease debugging. But this can lead to difficulty in fetching latest `resume.sh` does the right thing :)
 
 # Travis
 
