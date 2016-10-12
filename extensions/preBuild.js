@@ -240,6 +240,15 @@ var fixesForFiles = [
             }
         ]
     },
+    {
+        filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
+        fixes: [
+            {
+                orig: "\nconst score = CompletionModel._scoreByHighlight(item, word, wordLowerCase);\n                 ",
+                new: "\nlet score = CompletionModel._scoreByHighlight(item, word, wordLowerCase);\nif (item.suggestion.label == word && item.suggestion.type === 'snippet') {\n  score = 1000;\n}\n"
+            }
+        ]
+    },
 ];
 fixesForFiles.forEach(function (fff) {
     var content = utils_1.readFile(fff.filePath);

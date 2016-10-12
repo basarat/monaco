@@ -511,6 +511,26 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
              }
          ]
      },
+     /**
+      * Improved completionModel sorting to get exact match snippets up.
+      * TODO: But only if there isn't a property match in the list.
+      */
+      {
+         filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
+         fixes: [
+             {
+                 orig: `
+const score = CompletionModel._scoreByHighlight(item, word, wordLowerCase);
+                 `,
+                 new: `
+let score = CompletionModel._scoreByHighlight(item, word, wordLowerCase);
+if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
+  score = 1000;
+}
+`
+             }
+         ]
+     },
 ]
 
 fixesForFiles.forEach(fff => {
