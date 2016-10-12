@@ -381,60 +381,6 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
         ]
     },
     /**
-     * If we have `foo` property and `if` snippet (yes the names don't matter)
-     * We want the property to come before
-     */
-    {
-        filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
-        fixes: [
-            {
-                orig: `
-		const otherSuggestion = otherItem.suggestion;
-                `,
-                new: `
-		const otherSuggestion = otherItem.suggestion;
-
-        // Snippet vs. anything else
-        if (suggestion.type === 'snippet'
-            && otherSuggestion.type !== 'snippet'
-        ) {
-            // snippet loses
-            return 1;
-        }
-        if (suggestion.type !== 'snippet'
-            && otherSuggestion.type === 'snippet'
-        ) {
-            // snippet loses
-            return -1;
-        }
-                `
-            }
-        ]
-    },
-    /**
-     * If we have `if` keyword and `if` snippet
-     * We want snippets to come before.
-     * - do that in the `filter` function (as comparison doesn't have the `prefix` information)
-     */
-    {
-        filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
-        fixes: [
-            {
-                orig: `
-this._filteredItems.push(item);
-                `,
-                new: `
-if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
-	this._filteredItems.unshift(item);
-}
-else {
-	this._filteredItems.push(item);
-}
-                `
-            }
-        ]
-    },
-    /**
      * The hover widget is trimming text based on our styles.
      * Fix that
      */

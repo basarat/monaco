@@ -156,24 +156,6 @@ var fixesForFiles = [
         ]
     },
     {
-        filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
-        fixes: [
-            {
-                orig: "\n\t\tconst otherSuggestion = otherItem.suggestion;\n                ",
-                new: "\n\t\tconst otherSuggestion = otherItem.suggestion;\n\n        // Snippet vs. anything else\n        if (suggestion.type === 'snippet'\n            && otherSuggestion.type !== 'snippet'\n        ) {\n            // snippet loses\n            return 1;\n        }\n        if (suggestion.type !== 'snippet'\n            && otherSuggestion.type === 'snippet'\n        ) {\n            // snippet loses\n            return -1;\n        }\n                "
-            }
-        ]
-    },
-    {
-        filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
-        fixes: [
-            {
-                orig: "\nthis._filteredItems.push(item);\n                ",
-                new: "\nif (item.suggestion.label == word && item.suggestion.type === 'snippet') {\n\tthis._filteredItems.unshift(item);\n}\nelse {\n\tthis._filteredItems.push(item);\n}\n                "
-            }
-        ]
-    },
-    {
         filePath: './vscode/src/vs/editor/contrib/hover/browser/hoverWidgets.ts',
         fixes: [
             {
