@@ -249,6 +249,15 @@ var fixesForFiles = [
             }
         ]
     },
+    {
+        filePath: './vscode/src/vs/platform/markers/common/markerService.ts',
+        fixes: [
+            {
+                orig: "\n\t\t\tif (a !== b) {\n\t\t\t\tthrow new Error('invalid marker service state');\n\t\t\t}\n                 ",
+                new: ""
+            }
+        ]
+    },
 ];
 fixesForFiles.forEach(function (fff) {
     var content = utils_1.readFile(fff.filePath);

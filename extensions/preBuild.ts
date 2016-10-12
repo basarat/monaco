@@ -549,6 +549,22 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
             }
         ]
     },
+    /**
+     * Fix https://github.com/Microsoft/vscode/issues/13548
+     */
+     {
+         filePath: './vscode/src/vs/platform/markers/common/markerService.ts',
+         fixes: [
+             {
+                 orig: `
+			if (a !== b) {
+				throw new Error('invalid marker service state');
+			}
+                 `,
+                 new: ``
+             }
+         ]
+     },
 ]
 
 fixesForFiles.forEach(fff => {
