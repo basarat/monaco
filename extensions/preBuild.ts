@@ -11,7 +11,11 @@ const path = require('path');
  */
 var contentFixes = [
     {
-        /** Allows us to build monaco.d.ts */
+        /** 
+         * Allows us to build monaco.d.ts with our modifications
+         * Without this the build will fail with:
+         * "Error: monaco.d.ts is no longer up to date. Please run gulp watch and commit the new file."
+         */
         fileName: './vscode/gulpfile.js',
         orig: `if (isWatch) {`,
         new: `if (true) {`
