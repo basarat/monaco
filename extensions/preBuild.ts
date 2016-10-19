@@ -19,23 +19,6 @@ var contentFixes = [
         fileName: './vscode/gulpfile.js',
         orig: `if (isWatch) {`,
         new: `if (true) {`
-    },
-    {
-        /** ship marked as a part of the build */
-        fileName: './vscode/build/gulpfile.editor.js',
-        orig: `result.paths['vs/base/common/marked/marked'] = 'out-build/vs/base/common/marked/marked.mock';`,
-        new: ``
-    },
-
-    /** Remove gulp target we do not need (also helps us removing thier deps from npm install) */
-    {
-        fileName: './vscode/gulpfile.js',
-        orig: '.forEach(f => require(`./build/${ f }`));',
-        new: `.forEach(f => {
-            require('./build/gulpfile');
-            require('./build/gulpfile.editor');
-            require('./build/gulpfile.extensions');
-        });`
     }
 ];
 
