@@ -7,39 +7,6 @@ import * as utils from "./utils";
 const path = require('path');
 
 /**
- * Any line changes
- */
-var contentFixes = [
-    {
-        /** Allows us to build monaco.d.ts */
-        fileName: './vscode/gulpfile.js',
-        orig: `if (isWatch) {`,
-        new: `if (true) {`
-    },
-    {
-        /** ship marked as a part of the build */
-        fileName: './vscode/build/gulpfile.editor.js',
-        orig: `result.paths['vs/base/common/marked/marked'] = 'out-build/vs/base/common/marked/marked.mock';`,
-        new: ``
-    },
-
-    /** Remove gulp target we do not need (also helps us removing thier deps from npm install) */
-    {
-        fileName: './vscode/gulpfile.js',
-        orig: '.forEach(f => require(`./build/${ f }`));',
-        new: `.forEach(f => {
-            require('./build/gulpfile');
-            require('./build/gulpfile.editor');
-            require('./build/gulpfile.extensions');
-        });`
-    }
-];
-
-for (let fix of contentFixes) {
-    writeFile(fix.fileName, readFile(fix.fileName).replace(fix.orig, fix.new));
-}
-
-/**
  * Package.json cleanups
  */
 const packagesWeDontWant = [
