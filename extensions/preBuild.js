@@ -2,27 +2,6 @@
 var utils_1 = require("./utils");
 var utils = require("./utils");
 var path = require('path');
-var contentFixes = [
-    {
-        fileName: './vscode/gulpfile.js',
-        orig: "if (isWatch) {",
-        new: "if (true) {"
-    },
-    {
-        fileName: './vscode/build/gulpfile.editor.js',
-        orig: "result.paths['vs/base/common/marked/marked'] = 'out-build/vs/base/common/marked/marked.mock';",
-        new: ""
-    },
-    {
-        fileName: './vscode/gulpfile.js',
-        orig: '.forEach(f => require(`./build/${ f }`));',
-        new: ".forEach(f => {\n            require('./build/gulpfile');\n            require('./build/gulpfile.editor');\n            require('./build/gulpfile.extensions');\n        });"
-    }
-];
-for (var _i = 0, contentFixes_1 = contentFixes; _i < contentFixes_1.length; _i++) {
-    var fix = contentFixes_1[_i];
-    utils_1.writeFile(fix.fileName, utils_1.readFile(fix.fileName).replace(fix.orig, fix.new));
-}
 var packagesWeDontWant = [
     "pty.js",
     "vscode-textmate",
