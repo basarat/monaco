@@ -1,6 +1,3 @@
 [submodule "vscode"]
 	path = vscode
 	url = https://github.com/Microsoft/vscode.git
-[submodule "monaco-json"]
-	path = monaco-json
-	url = https://github.com/Microsoft/monaco-json.git
