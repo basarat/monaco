@@ -16,7 +16,7 @@ var contentFixes = [
          * Without this the build will fail with:
          * "Error: monaco.d.ts is no longer up to date. Please run gulp watch and commit the new file."
          */
-        fileName: './vscode/gulpfile.js',
+        fileName: './vscode/build/lib/compilation.js',
         orig: `if (isWatch) {`,
         new: `if (true) {`
     }
@@ -92,6 +92,10 @@ const keepThePackages = [
     'vscode-nls-dev',
     /** build/watch/index.js */
     'gulp-watch',
+    /** build/gulpfile.hygiene.js */
+    'gulp-tslint',
+    'tslint',
+    'typescript-formatter',
 ]
 Object.keys(packJsonContents.dependencies).forEach(dep => {
     if (keepThePackages.indexOf(dep) !== -1) return;

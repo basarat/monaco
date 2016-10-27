@@ -4,7 +4,7 @@ var utils = require("./utils");
 var path = require('path');
 var contentFixes = [
     {
-        fileName: './vscode/gulpfile.js',
+        fileName: './vscode/build/lib/compilation.js',
         orig: "if (isWatch) {",
         new: "if (true) {"
     }
@@ -61,6 +61,9 @@ var keepThePackages = [
     'pump',
     'vscode-nls-dev',
     'gulp-watch',
+    'gulp-tslint',
+    'tslint',
+    'typescript-formatter',
 ];
 Object.keys(packJsonContents.dependencies).forEach(function (dep) {
     if (keepThePackages.indexOf(dep) !== -1)
