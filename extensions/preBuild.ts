@@ -114,9 +114,6 @@ Object.keys(packJsonContents.devDependencies).forEach(dep => {
  */
 packJsonContents.devDependencies['gulp-watch'] = "^4.3.9";
 
-/** Don't want post install or any other script either */
-delete packJsonContents.scripts;
-
 /** Finally write out package.json */
 writeFile(packageJsonPath, stringify(packJsonContents));
 
