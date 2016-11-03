@@ -5015,6 +5015,7 @@ declare module monaco {
     export interface IKeybindingItem {
         keybinding: number;
         command: string;
+        commandArgs?: any;
         when: ContextKeyExpr;
         weight1: number;
         weight2: number;
