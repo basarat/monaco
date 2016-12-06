@@ -1367,6 +1367,11 @@ declare module monaco.editor {
          */
         ignoreTrimWhitespace?: boolean;
         /**
+         * Render +/- indicators for added/deleted changes.
+         * Defaults to true.
+         */
+        renderIndicators?: boolean;
+        /**
          * Original model should be editable?
          * Defaults to false.
          */
@@ -1636,6 +1641,10 @@ declare module monaco.editor {
          * Options associated with this decoration.
          */
         readonly options: IModelDecorationOptions;
+        /**
+         * A flag describing if this is a problem decoration (e.g. warning/error).
+         */
+        readonly isForValidation: boolean;
     }
 
     /**
@@ -1703,7 +1712,7 @@ declare module monaco.editor {
     }
 
     /**
-     * And identifier for a single edit operation.
+     * An identifier for a single edit operation.
      */
     export interface ISingleEditOperationIdentifier {
         /**
@@ -2104,12 +2113,6 @@ declare module monaco.editor {
     }
 
     /**
-     * A model that can track ranges.
-     */
-    export interface ITextModelWithTrackedRanges extends ITextModel {
-    }
-
-    /**
      * A model that can have decorations.
      */
     export interface ITextModelWithDecorations {
@@ -2217,7 +2220,7 @@ declare module monaco.editor {
     /**
      * A model.
      */
-    export interface IModel extends IReadOnlyModel, IEditableTextModel, ITextModelWithMarkers, ITokenizedModel, ITextModelWithTrackedRanges, ITextModelWithDecorations, IEditorModel {
+    export interface IModel extends IReadOnlyModel, IEditableTextModel, ITextModelWithMarkers, ITokenizedModel, ITextModelWithDecorations, IEditorModel {
         /**
          * An event emitted when the contents of the model have changed.
          * @event
@@ -2338,59 +2341,21 @@ declare module monaco.editor {
     }
 
     /**
-     * Decoration data associated with a model decorations changed event.
-     */
-    export interface IModelDecorationsChangedEventDecorationData {
-        /**
-         * The id of the decoration.
-         */
-        readonly id: string;
-        /**
-         * The owner id of the decoration.
-         */
-        readonly ownerId: number;
-        /**
-         * The range of the decoration.
-         */
-        readonly range: IRange;
-        /**
-         * A flag describing if this is a problem decoration (e.g. warning/error).
-         */
-        readonly isForValidation: boolean;
-        /**
-         * The options for this decoration.
-         */
-        readonly options: IModelDecorationOptions;
-    }
-
-    /**
      * An event describing that model decorations have changed.
      */
     export interface IModelDecorationsChangedEvent {
         /**
-         * A summary with ids of decorations that have changed.
+         * Lists of ids for added decorations.
          */
-        readonly ids: string[];
+        readonly addedDecorations: string[];
         /**
-         * Lists of details for added or changed decorations.
+         * Lists of ids for changed decorations.
          */
-        readonly addedOrChangedDecorations: IModelDecorationsChangedEventDecorationData[];
+        readonly changedDecorations: string[];
         /**
          * List of ids for removed decorations.
          */
         readonly removedDecorations: string[];
-        /**
-         * Details regarding old options.
-         */
-        readonly oldOptions: {
-            [decorationId: string]: IModelDecorationOptions;
-        };
-        /**
-         * Details regarding old ranges.
-         */
-        readonly oldRanges: {
-            [decorationId: string]: IRange;
-        };
     }
 
     /**
