@@ -4658,6 +4658,7 @@ declare module monaco.languages {
     }
 
     export interface CodeLensProvider {
+        onDidChange?: IEvent<this>;
         provideCodeLenses(model: editor.IReadOnlyModel, token: CancellationToken): ICodeLensSymbol[] | Thenable<ICodeLensSymbol[]>;
         resolveCodeLens?(model: editor.IReadOnlyModel, codeLens: ICodeLensSymbol, token: CancellationToken): ICodeLensSymbol | Thenable<ICodeLensSymbol>;
     }
@@ -5055,7 +5056,7 @@ declare module monaco {
         toMenuItem(): IMenuItem;
         runEditorCommand(accessor: ServicesAccessor, editor: ICommonCodeEditor, args: any): void | Promise<void>;
         protected reportTelemetry(accessor: ServicesAccessor): void;
-        abstract run(accessor: ServicesAccessor, editor: ICommonCodeEditor): void | Promise<void>;
+        abstract run(accessor: ServicesAccessor, editor: ICommonCodeEditor, args: any): void | Promise<void>;
     }
 }
 
