@@ -21,7 +21,7 @@ node ../extensions/preBuild.js
 #
 
 # Install everything
-npm install
+npm run monaco-editor-setup
 
 # Rebuild the api.js file
 ./node_modules/.bin/tsc ./src/typings/node.d.ts ../extensions/globals.d.ts ./build/monaco/api.ts

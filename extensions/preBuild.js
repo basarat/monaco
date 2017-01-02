@@ -76,7 +76,6 @@ Object.keys(packJsonContents.devDependencies).forEach(function (dep) {
     delete packJsonContents.devDependencies[dep];
 });
 packJsonContents.devDependencies['gulp-watch'] = "^4.3.9";
-delete packJsonContents.scripts;
 utils_1.writeFile(packageJsonPath, utils_1.stringify(packJsonContents));
 utils.remove(utils.resolve('./vscode/npm-shrinkwrap.json'));
 var recipeFile = "./vscode/build/monaco/monaco.d.ts.recipe";
