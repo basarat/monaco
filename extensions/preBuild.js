@@ -238,7 +238,8 @@ fixesForFiles.forEach(function (fff) {
     var content = utils_1.readFile(fff.filePath);
     content = content.split(/\r\n?|\n/).join('\n');
     fff.fixes.forEach(function (fix) {
-        content = content.replace(fix.orig.split(/\r\n?|\n/).join('\n').trim(), fix.new);
+        var orig = fix.orig.split(/\r\n?|\n/).join('\n').trim();
+        content = content.replace(orig, fix.new);
     });
     if (fff.additions) {
         content = content + fff.additions;
