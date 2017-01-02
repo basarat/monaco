@@ -236,7 +236,7 @@ fixesForFiles.forEach(function (fff) {
     fff.fixes.forEach(function (fix) {
         var orig = fix.orig.split(/\r\n?|\n/).join('\n').trim();
         if (content.indexOf(orig) === -1) {
-            console.log('FIX ORIG NOT FOUND:');
+            console.log('FIX ORIG NOT FOUND:', fff.filePath);
             console.log(fix);
             process.exit(1);
         }

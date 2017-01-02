@@ -571,7 +571,7 @@ fixesForFiles.forEach(fff => {
     const orig = fix.orig.split(/\r\n?|\n/).join('\n').trim();
     if (content.indexOf(orig) === -1) {
       // OH OH . Fix no longer valid
-      console.log('FIX ORIG NOT FOUND:');
+      console.log('FIX ORIG NOT FOUND:', fff.filePath);
       console.log(fix)
       process.exit(1);
     }
