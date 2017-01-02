@@ -93,10 +93,6 @@ var fixesForFiles = [
                 orig: "primary: KeyMod.Shift | KeyMod.Alt | KeyCode.KEY_F,",
                 new: "primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L,"
             },
-            {
-                orig: "linux: { primary:KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_I }",
-                new: "linux: { primary:KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L }"
-            },
         ]
     },
     {
@@ -111,12 +107,12 @@ var fixesForFiles = [
                 new: 'Smart Shrink Selection'
             },
             {
-                orig: "\n\tprimary: KeyMod.Shift | KeyMod.Alt | KeyCode.RightArrow,\n\tmac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.RightArrow }\n                ",
-                new: "\n\tprimary: KeyMod.CtrlCmd | KeyCode.KEY_E,\n                "
+                orig: "\n\t\t\t\tprimary: KeyMod.Shift | KeyMod.Alt | KeyCode.RightArrow,\n\t\t\t\tmac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.RightArrow }\n\t\t\t",
+                new: "\n\t\t\t\tprimary: KeyMod.CtrlCmd | KeyCode.KEY_E,\n\t\t\t"
             },
             {
-                orig: "\n\tprimary: KeyMod.Shift | KeyMod.Alt | KeyCode.LeftArrow,\n\tmac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.LeftArrow }\n                ",
-                new: "\n    // I tried cmd+shift+e and it doesn't work on a mac so \"alt\"\n\tprimary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_E,\n                "
+                orig: "\n\t\t\t\tprimary: KeyMod.Shift | KeyMod.Alt | KeyCode.LeftArrow,\n\t\t\t\tmac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.LeftArrow }\n\t\t\t",
+                new: "\n\t\t\t\t// I tried cmd+shift+e and it doesn't work on a mac so \"alt\"\n\t\t\t\tprimary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_E,\n\t\t\t"
             }
         ]
     },
@@ -143,17 +139,8 @@ var fixesForFiles = [
         filePath: './vscode/src/vs/editor/contrib/toggleTabFocusMode/common/toggleTabFocusMode.ts',
         fixes: [
             {
-                orig: "\nCommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFocusModeAction, ToggleTabFocusModeAction.ID, nls.localize('toggle.tabfocusmode', \"Toggle Use of Tab Key for Setting Focus\"), {\n\tcontext: ContextKey.EditorTextFocus,\n\tprimary: KeyMod.CtrlCmd | KeyCode.KEY_M,\n\tmac: { primary: KeyMod.WinCtrl | KeyMod.Shift | KeyCode.KEY_M }\n}, 'Toggle Use of Tab Key for Setting Focus'));                ",
-                new: ""
-            }
-        ]
-    },
-    {
-        filePath: './vscode/src/vs/editor/contrib/hover/browser/hoverWidgets.ts',
-        fixes: [
-            {
-                orig: "\n                 var renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 5);\n                 ",
-                new: "\n                 var renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 15);\n                 "
+                orig: "\n@editorAction\nexport class ToggleTabFocusModeAction extends EditorAction {\n",
+                new: "\nexport class ToggleTabFocusModeAction extends EditorAction {\n"
             }
         ]
     },
@@ -161,7 +148,7 @@ var fixesForFiles = [
         filePath: './vscode/src/vs/editor/contrib/find/common/findController.ts',
         fixes: [
             {
-                orig: "\nCommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindReplaceAction, FIND_IDS.StartFindReplaceAction, nls.localize('startReplace', \"Replace\"), {\n\tcontext: ContextKey.None,\n\tprimary: KeyMod.CtrlCmd | KeyCode.KEY_H,\n\tmac: { primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_F }\n}, 'Replace'));\n                ",
+                orig: "\n\n@editorAction\nexport class StartFindReplaceAction extends EditorAction {\n\n\tconstructor() {\n\t\tsuper({\n\t\t\tid: FIND_IDS.StartFindReplaceAction,\n\t\t\tlabel: nls.localize('startReplace', \"Replace\"),\n\t\t\talias: 'Replace',\n\t\t\tprecondition: null,\n\t\t\tkbOpts: {\n\t\t\t\tkbExpr: null,\n\t\t\t\tprimary: KeyMod.CtrlCmd | KeyCode.KEY_H,\n\t\t\t\tmac: { primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_F }\n\t\t\t}\n\t\t});\n\t}\n\n\tpublic run(accessor: ServicesAccessor, editor: editorCommon.ICommonCodeEditor): void {\n\t\tif (editor.getConfiguration().readOnly) {\n\t\t\treturn;\n\t\t}\n\n\t\tlet controller = CommonFindController.get(editor);\n\t\tif (controller) {\n\t\t\tcontroller.start({\n\t\t\t\tforceRevealReplace: true,\n\t\t\t\tseedSearchStringFromSelection: true,\n\t\t\t\tshouldFocus: FindStartFocusAction.FocusReplaceInput,\n\t\t\t\tshouldAnimate: true\n\t\t\t});\n\t\t}\n\t}\n}\n                ",
                 new: ""
             }
         ]
@@ -179,7 +166,7 @@ var fixesForFiles = [
         filePath: './vscode/src/vs/editor/browser/viewParts/contentWidgets/contentWidgets.ts',
         fixes: [
             {
-                orig: "let fitsAbove = (absoluteAboveTop >= 0),",
+                orig: "let fitsAbove = (absoluteAboveTop >= TOP_PADDING),",
                 new: "let fitsAbove = (aboveTop >= 0),"
             }
         ]
@@ -188,7 +175,7 @@ var fixesForFiles = [
         filePath: './vscode/src/vs/editor/contrib/gotoError/browser/gotoError.ts',
         fixes: [
             {
-                orig: 'this._container.focus();',
+                orig: 'this.focus();',
                 new: ''
             }
         ]
@@ -228,8 +215,8 @@ var fixesForFiles = [
         filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
         fixes: [
             {
-                orig: "\nconst score = CompletionModel._scoreByHighlight(item, word, wordLowerCase);\n                 ",
-                new: "\nlet score = CompletionModel._scoreByHighlight(item, word, wordLowerCase);\nif (item.suggestion.label == word && item.suggestion.type === 'snippet') {\n  score = 1000;\n}\n"
+                orig: "\nconst score = CompletionModel._scoreByHighlight(item, word, word.toLowerCase());\n                 ",
+                new: "\nlet score = CompletionModel._scoreByHighlight(item, word, word.toLowerCase());\nif (item.suggestion.label == word && item.suggestion.type === 'snippet') {\n  score = 1000;\n}\n"
             }
         ]
     },

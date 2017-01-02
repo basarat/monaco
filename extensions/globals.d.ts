@@ -1,4 +1,4 @@
-declare var require, __dirname, process;
+declare var require, __dirname;
 interface String {
     startsWith(str:string): boolean
     endsWith(str:string): boolean

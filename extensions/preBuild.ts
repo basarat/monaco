@@ -241,10 +241,11 @@ const fixesForFiles: IFixForFile[] = [
         orig: `primary: KeyMod.Shift | KeyMod.Alt | KeyCode.KEY_F,`,
         new: `primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L,`
       },
-      {
-        orig: `linux: { primary:KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_I }`,
-        new: `linux: { primary:KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L }`
-      },
+      /** TODO: No longer works. see https://github.com/basarat/monaco/issues/4 */
+      // {
+      //   orig: `linux: { primary:KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_I }`,
+      //   new: `linux: { primary:KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L }`
+      // },
     ]
   },
   /** Keybinding: Expand select / Shrink select my shortcuts */
@@ -261,22 +262,22 @@ const fixesForFiles: IFixForFile[] = [
       },
       {
         orig: `
-	primary: KeyMod.Shift | KeyMod.Alt | KeyCode.RightArrow,
-	mac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.RightArrow }
-                `,
+				primary: KeyMod.Shift | KeyMod.Alt | KeyCode.RightArrow,
+				mac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.RightArrow }
+			`,
         new: `
-	primary: KeyMod.CtrlCmd | KeyCode.KEY_E,
-                `
+				primary: KeyMod.CtrlCmd | KeyCode.KEY_E,
+			`
       },
       {
         orig: `
-	primary: KeyMod.Shift | KeyMod.Alt | KeyCode.LeftArrow,
-	mac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.LeftArrow }
-                `,
+				primary: KeyMod.Shift | KeyMod.Alt | KeyCode.LeftArrow,
+				mac: { primary: KeyMod.CtrlCmd | KeyMod.WinCtrl | KeyMod.Shift | KeyCode.LeftArrow }
+			`,
         new: `
-    // I tried cmd+shift+e and it doesn't work on a mac so "alt"
-	primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_E,
-                `
+				// I tried cmd+shift+e and it doesn't work on a mac so "alt"
+				primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_E,
+			`
       }
     ]
   },
@@ -356,18 +357,22 @@ class DuplicateLinesAction extends AbstractCopyLinesAction {
 }
         `
   },
-  /** We never want to use to use `tab` to navigate the window. Also this shortcut conflicted with our match bracket shortcut */
+  /** 
+   * We never want to use to use `tab` to navigate the window.
+   * Also this shortcut conflicted with our match bracket shortcut
+   **/
   {
     filePath: './vscode/src/vs/editor/contrib/toggleTabFocusMode/common/toggleTabFocusMode.ts',
     fixes: [
       {
         orig: `
-CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFocusModeAction, ToggleTabFocusModeAction.ID, nls.localize('toggle.tabfocusmode', "Toggle Use of Tab Key for Setting Focus"), {
-	context: ContextKey.EditorTextFocus,
-	primary: KeyMod.CtrlCmd | KeyCode.KEY_M,
-	mac: { primary: KeyMod.WinCtrl | KeyMod.Shift | KeyCode.KEY_M }
-}, 'Toggle Use of Tab Key for Setting Focus'));                `,
-        new: ``
+@editorAction
+export class ToggleTabFocusModeAction extends EditorAction {
+`,
+        /** Leave the class (as its used elsewhere) but don't register as an action ;) */
+        new: `
+export class ToggleTabFocusModeAction extends EditorAction {
+`
       }
     ]
   },
@@ -375,19 +380,24 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
    * The hover widget is trimming text based on our styles.
    * Fix that
    */
-  {
-    filePath: './vscode/src/vs/editor/contrib/hover/browser/hoverWidgets.ts',
-    fixes: [
-      {
-        orig: `
-                 var renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 5);
-                 `,
-        new: `
-                 var renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 15);
-                 `
-      }
-    ]
-  },
+  /**
+   * TODO: Removed in
+   * https://github.com/Microsoft/vscode/commit/6fad6a4ed98a498e6d25a03c6e7b60d6ecccaf53#diff-31c6b548ae0e34308e688d6d7bf51981
+   * Hopefully not required
+   */
+  // {
+  //   filePath: './vscode/src/vs/editor/contrib/hover/browser/hoverWidgets.ts',
+  //   fixes: [
+  //     {
+  //       orig: `
+  //                let renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 5);
+  //                `,
+  //       new: `
+  //                let renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 15);
+  //                `
+  //     }
+  //   ]
+  // },
   /**
    * Our find and replace are consolidated.
    * We want to use `ctrl+h` for symbols (project / current file)
@@ -397,11 +407,40 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(ToggleTabFo
     fixes: [
       {
         orig: `
-CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindReplaceAction, FIND_IDS.StartFindReplaceAction, nls.localize('startReplace', "Replace"), {
-	context: ContextKey.None,
-	primary: KeyMod.CtrlCmd | KeyCode.KEY_H,
-	mac: { primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_F }
-}, 'Replace'));
+
+@editorAction
+export class StartFindReplaceAction extends EditorAction {
+
+	constructor() {
+		super({
+			id: FIND_IDS.StartFindReplaceAction,
+			label: nls.localize('startReplace', "Replace"),
+			alias: 'Replace',
+			precondition: null,
+			kbOpts: {
+				kbExpr: null,
+				primary: KeyMod.CtrlCmd | KeyCode.KEY_H,
+				mac: { primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_F }
+			}
+		});
+	}
+
+	public run(accessor: ServicesAccessor, editor: editorCommon.ICommonCodeEditor): void {
+		if (editor.getConfiguration().readOnly) {
+			return;
+		}
+
+		let controller = CommonFindController.get(editor);
+		if (controller) {
+			controller.start({
+				forceRevealReplace: true,
+				seedSearchStringFromSelection: true,
+				shouldFocus: FindStartFocusAction.FocusReplaceInput,
+				shouldAnimate: true
+			});
+		}
+	}
+}
                 `,
         new: ``
       }
@@ -430,7 +469,7 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
     filePath: './vscode/src/vs/editor/browser/viewParts/contentWidgets/contentWidgets.ts',
     fixes: [
       {
-        orig: `let fitsAbove = (absoluteAboveTop >= 0),`,
+        orig: `let fitsAbove = (absoluteAboveTop >= TOP_PADDING),`,
         new: `let fitsAbove = (aboveTop >= 0),`
       }
     ]
@@ -444,7 +483,7 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
     filePath: './vscode/src/vs/editor/contrib/gotoError/browser/gotoError.ts',
     fixes: [
       {
-        orig: 'this._container.focus();',
+        orig: 'this.focus();',
         new: ''
       }
     ]
@@ -495,10 +534,10 @@ CommonEditorRegistry.registerEditorAction(new EditorActionDescriptor(StartFindRe
     fixes: [
       {
         orig: `
-const score = CompletionModel._scoreByHighlight(item, word, wordLowerCase);
+const score = CompletionModel._scoreByHighlight(item, word, word.toLowerCase());
                  `,
         new: `
-let score = CompletionModel._scoreByHighlight(item, word, wordLowerCase);
+let score = CompletionModel._scoreByHighlight(item, word, word.toLowerCase());
 if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
   score = 1000;
 }
@@ -507,7 +546,7 @@ if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
     ]
   },
 ]
-
+declare var process;
 fixesForFiles.forEach(fff => {
   let content = readFile(fff.filePath);
   content = content.split(/\r\n?|\n/).join('\n');
