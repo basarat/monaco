@@ -233,21 +233,6 @@ interface IFixForFile {
   additions?: string,
 }
 const fixesForFiles: IFixForFile[] = [
-  /** Keybinding change : prefer format command shortcut in intellij idea */
-  {
-    filePath: './vscode/src/vs/editor/contrib/format/common/formatActions.ts',
-    fixes: [
-      {
-        orig: `primary: KeyMod.Shift | KeyMod.Alt | KeyCode.KEY_F,`,
-        new: `primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L,`
-      },
-      /** TODO: No longer works. see https://github.com/basarat/monaco/issues/4 */
-      // {
-      //   orig: `linux: { primary:KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.KEY_I }`,
-      //   new: `linux: { primary:KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L }`
-      // },
-    ]
-  },
   /** Keybinding: Expand select / Shrink select my shortcuts */
   {
     filePath: './vscode/src/vs/editor/contrib/smartSelect/common/smartSelect.ts',

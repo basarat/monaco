@@ -87,15 +87,6 @@ var editorMainAdditions = "\n/** expose more stuff from monaco */\nimport {Commo
 utils_1.writeFile(editorMainFile, utils_1.readFile(editorMainFile) + editorMainAdditions);
 var fixesForFiles = [
     {
-        filePath: './vscode/src/vs/editor/contrib/format/common/formatActions.ts',
-        fixes: [
-            {
-                orig: "primary: KeyMod.Shift | KeyMod.Alt | KeyCode.KEY_F,",
-                new: "primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KEY_L,"
-            },
-        ]
-    },
-    {
         filePath: './vscode/src/vs/editor/contrib/smartSelect/common/smartSelect.ts',
         fixes: [
             {
