@@ -362,28 +362,6 @@ export class ToggleTabFocusModeAction extends EditorAction {
     ]
   },
   /**
-   * The hover widget is trimming text based on our styles.
-   * Fix that
-   */
-  /**
-   * TODO: Removed in
-   * https://github.com/Microsoft/vscode/commit/6fad6a4ed98a498e6d25a03c6e7b60d6ecccaf53#diff-31c6b548ae0e34308e688d6d7bf51981
-   * Hopefully not required
-   */
-  // {
-  //   filePath: './vscode/src/vs/editor/contrib/hover/browser/hoverWidgets.ts',
-  //   fixes: [
-  //     {
-  //       orig: `
-  //                let renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 5);
-  //                `,
-  //       new: `
-  //                let renderedWidth = Math.min(editorMaxWidth, this._domNode.clientWidth + 15);
-  //                `
-  //     }
-  //   ]
-  // },
-  /**
    * Our find and replace are consolidated.
    * We want to use `ctrl+h` for symbols (project / current file)
    */
