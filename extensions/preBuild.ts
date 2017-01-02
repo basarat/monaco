@@ -151,7 +151,7 @@ declare module monaco {
     /** Was a really deep rabbit hole so shortened */
     export type IInstantiationService = any;
 
-    #include(vs/editor/common/editorCommon): ICommonEditorContributionCtor, ICommonEditorContributionDescriptor, IEditorActionContributionCtor, IEditorActionDescriptorData
+    #include(vs/editor/common/editorCommon): ICommonEditorContributionCtor, ICommonEditorContributionDescriptor, IEditorActionContributionCtor
 }
 declare module monaco {
     /** Just shut up */
