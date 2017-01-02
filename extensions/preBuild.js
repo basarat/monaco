@@ -239,6 +239,10 @@ fixesForFiles.forEach(function (fff) {
     content = content.split(/\r\n?|\n/).join('\n');
     fff.fixes.forEach(function (fix) {
         var orig = fix.orig.split(/\r\n?|\n/).join('\n').trim();
+        if (content.indexOf(orig) === -1) {
+            console.log('Content fix could not find', fix);
+            process.exit(1);
+        }
         content = content.replace(orig, fix.new);
     });
     if (fff.additions) {
