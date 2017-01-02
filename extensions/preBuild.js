@@ -224,6 +224,15 @@ var fixesForFiles = [
         filePath: './vscode/src/vs/editor/contrib/rename/browser/rename.ts',
         fixes: [
             {
+                orig: "\n@editorAction\nexport class RenameAction extends EditorAction {\n        ",
+                new: "\nexport class RenameAction extends EditorAction {\n        "
+            }
+        ],
+    },
+    {
+        filePath: './vscode/src/vs/editor/contrib/rename/browser/rename.ts',
+        fixes: [
+            {
                 orig: "\n@editorContribution\nclass RenameController implements IEditorContribution {\n        ",
                 new: "\nclass RenameController implements IEditorContribution {\n        "
             }

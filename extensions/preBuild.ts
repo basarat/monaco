@@ -546,6 +546,23 @@ if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
     ]
   },
   /**
+   * We have our own better rename experience
+   */
+  {
+    filePath: './vscode/src/vs/editor/contrib/rename/browser/rename.ts',
+    fixes: [
+      {
+        orig: `
+@editorAction
+export class RenameAction extends EditorAction {
+        `,
+        new: `
+export class RenameAction extends EditorAction {
+        `
+      }
+    ],
+  },
+  /**
    * Fix bug https://github.com/Microsoft/vscode/issues/18002
    */
   {
