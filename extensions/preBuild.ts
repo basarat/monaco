@@ -545,6 +545,23 @@ if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
       }
     ]
   },
+  /**
+   * Fix bug https://github.com/Microsoft/vscode/issues/18002
+   */
+  {
+    filePath: './vscode/src/vs/editor/contrib/rename/browser/rename.ts',
+    fixes: [
+      {
+        orig: `
+@editorContribution
+class RenameController implements IEditorContribution {
+        `,
+        new: `
+class RenameController implements IEditorContribution {
+        `
+      }
+    ]
+  }
 ]
 declare var process;
 fixesForFiles.forEach(fff => {

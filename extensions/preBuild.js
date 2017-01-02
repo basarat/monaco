@@ -220,6 +220,15 @@ var fixesForFiles = [
             }
         ]
     },
+    {
+        filePath: './vscode/src/vs/editor/contrib/rename/browser/rename.ts',
+        fixes: [
+            {
+                orig: "\n@editorContribution\nclass RenameController implements IEditorContribution {\n        ",
+                new: "\nclass RenameController implements IEditorContribution {\n        "
+            }
+        ]
+    }
 ];
 fixesForFiles.forEach(function (fff) {
     var content = utils_1.readFile(fff.filePath);
