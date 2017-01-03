@@ -502,7 +502,7 @@ const score = CompletionModel._scoreByHighlight(item, word, word.toLowerCase());
         new: `
 let score = CompletionModel._scoreByHighlight(item, word, word.toLowerCase());
 if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
-  score = 1000;
+  score = 301010000 /* a number that came from debuggin scores */ * 10000;
 }
 `
       }

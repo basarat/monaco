@@ -207,7 +207,7 @@ var fixesForFiles = [
         fixes: [
             {
                 orig: "\nconst score = CompletionModel._scoreByHighlight(item, word, word.toLowerCase());\n                 ",
-                new: "\nlet score = CompletionModel._scoreByHighlight(item, word, word.toLowerCase());\nif (item.suggestion.label == word && item.suggestion.type === 'snippet') {\n  score = 1000;\n}\n"
+                new: "\nlet score = CompletionModel._scoreByHighlight(item, word, word.toLowerCase());\nif (item.suggestion.label == word && item.suggestion.type === 'snippet') {\n  score = 301010000 /* a number that came from debuggin scores */ * 10000;\n}\n"
             }
         ]
     },
