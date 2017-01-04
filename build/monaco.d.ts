@@ -5129,7 +5129,7 @@ declare module monaco {
     export let KeybindingsRegistry: IKeybindingsRegistry;
 
     export interface IKeybindingsRegistry {
-        registerKeybindingRule(rule: IKeybindingRule): any;
+        registerKeybindingRule(rule: IKeybindingRule): void;
         registerCommandAndKeybindingRule(desc: ICommandAndKeybindingRule): void;
         getDefaultKeybindings(): IKeybindingItem[];
         WEIGHT: {
