@@ -497,10 +497,10 @@ export class StartFindReplaceAction extends EditorAction {
     fixes: [
       {
         orig: `
-const score = CompletionModel._scoreByHighlight(item, word, word.toLowerCase());
+const score = CompletionModel._scoreByHighlight(item, word);
                  `,
         new: `
-let score = CompletionModel._scoreByHighlight(item, word, word.toLowerCase());
+let score = CompletionModel._scoreByHighlight(item, word);
 if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
   score = 301010000 /* a number that came from debuggin scores */ * 10000;
 }
