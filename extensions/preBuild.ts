@@ -513,6 +513,46 @@ if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
     ]
   },
   /**
+   * Allow tokenizer to know the filePath
+   */
+  {
+    filePath: './vscode/src/vs/editor/common/modes.ts',
+    fixes: [
+      {
+        orig: 'tokenize2(line: string, state: IState, offsetDelta: number): TokenizationResult2;',
+        new: 'tokenize2(line: string, state: IState, offsetDelta: number, filePath?: string): TokenizationResult2;'
+      }
+    ]
+  },
+  {
+    filePath: './vscode/src/vs/editor/common/model/textModelWithTokens.ts',
+    fixes: [
+      {
+        orig: 'r = this._tokenizationSupport.tokenize2(this._lines[lineIndex].text, freshState, 0);',
+        new: 'r = this._tokenizationSupport.tokenize2(this._lines[lineIndex].text, freshState, 0, (this as any).filePath);'
+      }
+    ]
+  },
+  {
+    filePath: './vscode/src/vs/editor/browser/standalone/standaloneLanguages.ts',
+    fixes: [
+      {
+        orig: 'tokenize(line: string, state: modes.IState): ILineTokens;',
+        new : 'tokenize(line: string, state: modes.IState, filePath?: string): ILineTokens;'
+      },
+      {
+        orig: `
+  public tokenize2(line: string, state: modes.IState, offsetDelta: number): TokenizationResult2 {
+		let actualResult = this._actual.tokenize(line, state);
+        `,
+        new: `
+        public tokenize2(line: string, state: modes.IState, offsetDelta: number, filePath?: string): TokenizationResult2 {
+		let actualResult = this._actual.tokenize(line, state, filePath);
+        `
+      }
+    ]
+  },
+  /**
    * We have our own better rename experience
    */
   {

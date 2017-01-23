@@ -3884,7 +3884,7 @@ declare module monaco.languages {
         /**
          * Tokenize a line given the state at the beginning of the line.
          */
-        tokenize(line: string, state: IState): ILineTokens;
+        tokenize(line: string, state: IState, filePath?: string): ILineTokens;
     }
 
     /**
