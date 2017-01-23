@@ -146,10 +146,14 @@ declare module monaco {
 /** We wanted CommonEditorRegistry and EditorAction. Rest is brought in for it */
 declare module monaco {
     #include(vs/platform/instantiation/common/instantiation): IConstructorSignature0,IConstructorSignature1,IConstructorSignature2,IConstructorSignature3,IConstructorSignature4,IConstructorSignature5,IConstructorSignature6,IConstructorSignature7,IConstructorSignature8
-    #include(vs/platform/instantiation/common/instantiation): ServicesAccessor,ServiceIdentifier,optional
+    #include(vs/platform/instantiation/common/instantiation): ServicesAccessor,optional
 
     /** Was a really deep rabbit hole so shortened */
     export type IInstantiationService = any;
+
+    /** Tired so leaving it untyped */
+    export type ServiceIdentifier<T> = any;
+    export type Map<K,V> = any;
 
     #include(vs/editor/common/editorCommon): ICommonEditorContributionCtor, ICommonEditorContributionDescriptor, IEditorActionContributionCtor
 }
@@ -269,7 +273,7 @@ const fixesForFiles: IFixForFile[] = [
 
   /** Keybinding: Prefer sublime jump to bracket */
   {
-    filePath: './vscode/src/vs/editor/contrib/smartSelect/common/jumpToBracket.ts',
+    filePath: './vscode/src/vs/editor/contrib/bracketMatching/common/bracketMatching.ts',
     fixes: [
       {
         orig: `primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.US_BACKSLASH`,
