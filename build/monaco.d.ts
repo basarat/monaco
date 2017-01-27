@@ -1211,6 +1211,11 @@ declare module monaco.editor {
          */
         disableTranslate3d?: boolean;
         /**
+         * Disable the optimizations for monospace fonts.
+         * Defaults to false.
+         */
+        disableMonospaceOptimizations?: boolean;
+        /**
          * Should the cursor be hidden in the overview ruler.
          * Defaults to false.
          */
@@ -1474,6 +1479,7 @@ declare module monaco.editor {
         readonly _internalEditorViewOptionsBrand: void;
         readonly theme: string;
         readonly canUseTranslate3d: boolean;
+        readonly disableMonospaceOptimizations: boolean;
         readonly experimentalScreenReader: boolean;
         readonly rulers: number[];
         readonly ariaLabel: string;
@@ -1503,6 +1509,7 @@ declare module monaco.editor {
     export interface IViewConfigurationChangedEvent {
         readonly theme: boolean;
         readonly canUseTranslate3d: boolean;
+        readonly disableMonospaceOptimizations: boolean;
         readonly experimentalScreenReader: boolean;
         readonly rulers: boolean;
         readonly ariaLabel: boolean;
@@ -2796,9 +2803,17 @@ declare module monaco.editor {
          */
         label: string;
         /**
+         * Precondition rule.
+         */
+        precondition?: string;
+        /**
          * An array of keybindings for the action.
          */
         keybindings?: number[];
+        /**
+         * The keybinding rule (condition on top of precondition).
+         */
+        keybindingContext?: string;
         /**
          * Control if the action should show up in the context menu and where.
          * The context menu of the editor has these default:
@@ -2813,10 +2828,6 @@ declare module monaco.editor {
          * Control the order in the context menu group.
          */
         contextMenuOrder?: number;
-        /**
-         * The keybinding rule.
-         */
-        keybindingContext?: string;
         /**
          * Method that will be executed when the action is triggered.
          * @param editor The editor instance is passed in as a convinience
