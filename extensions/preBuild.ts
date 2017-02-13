@@ -120,6 +120,11 @@ utils.remove(utils.resolve('./vscode/npm-shrinkwrap.json'));
  */
 const monacoPackageJson = require('../vscode/build/monaco/package.json');
 Object.keys(monacoPackageJson.devDependencies).forEach(dep => {
+  /** Excluding a few that break build */
+  if ([
+    'ghooks'
+  ].indexOf(dep) !== -1) return;
+
   packJsonContents.devDependencies[dep] = monacoPackageJson.devDependencies[dep];
 });
 
@@ -538,7 +543,7 @@ if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
     fixes: [
       {
         orig: 'tokenize(line: string, state: modes.IState): ILineTokens;',
-        new : 'tokenize(line: string, state: modes.IState, filePath?: string): ILineTokens;'
+        new: 'tokenize(line: string, state: modes.IState, filePath?: string): ILineTokens;'
       },
       {
         orig: `
