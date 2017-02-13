@@ -106,25 +106,25 @@ Object.keys(packJsonContents.devDependencies).forEach(dep => {
   delete packJsonContents.devDependencies[dep];
 })
 
-/**
- *  See this commit
- *  https://github.com/Microsoft/vscode/commit/94eb60a29272ba41273c76c821cc8900f028dc67
- *  Cry a little
- *  Now add
- */
-packJsonContents.devDependencies['gulp-watch'] = "^4.3.9";
-
 /** Don't want post install or any other script either */
 delete packJsonContents.scripts;
-
-/** Finally write out package.json */
-writeFile(packageJsonPath, stringify(packJsonContents));
 
 /**
  * also delete shrinkwrap (otherwise `npm install` will install these too)
  */
 utils.remove(utils.resolve('./vscode/npm-shrinkwrap.json'));
 
+/**
+ * Also add all the `package.json` stuff from `vscode/build/monaco/packages.json`
+ * as it contains the types etc needed for `api.ts` to work
+ */
+const monacoPackageJson = require('../vscode/build/monaco/package.json');
+Object.keys(monacoPackageJson.devDependencies).forEach(dep => {
+  packJsonContents.devDependencies[dep] = monacoPackageJson.devDependencies[dep];
+});
+
+/** Finally write out package.json */
+writeFile(packageJsonPath, stringify(packJsonContents));
 
 /**
  * Extend the monaco API to expose more stuff
