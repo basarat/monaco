@@ -55,6 +55,7 @@ const keepThePackages = [
    */
   /** VSCode */
   'winreg',
+  '@types/winreg',
   /** gulpfile.js */
   'gulp',
   'gulp-json-editor',
