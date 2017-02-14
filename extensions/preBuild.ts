@@ -53,6 +53,8 @@ const keepThePackages = [
    * Adding to this list is not that hard.
    * You generally get a stack trace on a `require` load fail ;) and then you know all the other require calls in the root of that file
    */
+  /** VSCode */
+  'winreg',
   /** gulpfile.js */
   'gulp',
   'gulp-json-editor',
