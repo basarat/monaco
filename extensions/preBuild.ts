@@ -236,7 +236,7 @@ writeFile(editorMainFile, readFile(editorMainFile) + editorMainAdditions);
  * Moar fixes
  */
 interface IFix {
-  orig: string;
+  orig: string | RegExp;
   new: string;
 }
 interface IFixForFile {
@@ -467,7 +467,7 @@ export class StartFindReplaceAction extends EditorAction {
    * We want
    * - reg squiggly color to match our IDE `error` color.
    * - green squiggly color to match our IDE `warning` color.
-   * Also do the same for `gotoError` inline widget
+   * - Also do the same for `gotoError` inline widget (using css)
    */
   {
     filePath: './vscode/src/vs/editor/browser/widget/media/red-squiggly.svg',
@@ -488,15 +488,15 @@ export class StartFindReplaceAction extends EditorAction {
     ]
   },
   {
-    filePath: './vscode/src/vs/editor/contrib/gotoError/browser/gotoError.ts',
+    filePath: './vscode/src/vs/editor/contrib/gotoError/browser/gotoError.css',
     fixes: [
       {
-        orig: `this.options.frameColor = '#ff5a5a';`,
-        new: `this.options.frameColor = '#F92672';`
+        orig: /#ff5a5a/gi,
+        new: `#F92672`
       },
       {
-        orig: `this.options.frameColor = '#5aac5a';`,
-        new: `this.options.frameColor = '#F6D675';`
+        orig: /#5aac5a/gi,
+        new: `#F6D675`
       }
     ]
   },
@@ -600,14 +600,25 @@ fixesForFiles.forEach(fff => {
   let content = readFile(fff.filePath);
   content = content.split(/\r\n?|\n/).join('\n');
   fff.fixes.forEach(fix => {
-    const orig = fix.orig.split(/\r\n?|\n/).join('\n').trim();
-    if (content.indexOf(orig) === -1) {
-      // OH OH . Fix no longer valid
-      console.log('FIX ORIG NOT FOUND:', fff.filePath);
-      console.log(fix)
-      process.exit(1);
+    if (typeof fix.orig === 'string') {
+      const orig = fix.orig.split(/\r\n?|\n/).join('\n').trim();
+      if (content.indexOf(orig) === -1) {
+        // OH OH . Fix no longer valid
+        console.log('FIX ORIG NOT FOUND:', fff.filePath);
+        console.log(fix)
+        process.exit(1);
+      }
+      content = content.replace(orig, fix.new);
     }
-    content = content.replace(orig, fix.new);
+    else {
+      if (fix.orig.test(content) == null) {
+        // OH OH . Fix no longer valid
+        console.log('FIX ORIG NOT FOUND:', fff.filePath);
+        console.log(fix)
+        process.exit(1);
+      }
+      content = content.replace(fix.orig, fix.new);
+    }
   })
   if (fff.additions) {
     content = content + fff.additions;

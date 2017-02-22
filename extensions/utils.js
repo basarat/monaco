@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var fse = require('fs-extra');
 var fs = require('fs');
 var path = require('path');
