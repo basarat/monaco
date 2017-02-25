@@ -1089,7 +1089,12 @@ declare module monaco.editor {
          * Render the actual text on a line (as opposed to color blocks).
          * Defaults to true.
          */
-        renderText?: boolean;
+        renderCharacters?: boolean;
+        /**
+         * Limit the width of the minimap to render at most a certain number of columns.
+         * Defaults to 120.
+         */
+        maxColumn?: number;
     }
 
     /**
@@ -1260,17 +1265,17 @@ declare module monaco.editor {
          * Control the wrapping of the editor.
          * When `wordWrap` = "off", the lines will never wrap.
          * When `wordWrap` = "on", the lines will wrap at the viewport width.
-         * When `wordWrap` = "fixed", the lines will wrap at `wordWrapColumn`.
-         * When `wordWrap` = "clamped", the lines will wrap at min(viewport width, wordWrapColumn).
+         * When `wordWrap` = "wordWrapColumn", the lines will wrap at `wordWrapColumn`.
+         * When `wordWrap` = "bounded", the lines will wrap at min(viewport width, wordWrapColumn).
          * Defaults to "off".
          */
-        wordWrap?: 'off' | 'on' | 'fixed' | 'clamped';
+        wordWrap?: 'off' | 'on' | 'wordWrapColumn' | 'bounded';
         /**
          * Control the wrapping of the editor.
          * When `wordWrap` = "off", the lines will never wrap.
          * When `wordWrap` = "on", the lines will wrap at the viewport width.
-         * When `wordWrap` = "fixed", the lines will wrap at `wordWrapColumn`.
-         * When `wordWrap` = "clamped", the lines will wrap at min(viewport width, wordWrapColumn).
+         * When `wordWrap` = "wordWrapColumn", the lines will wrap at `wordWrapColumn`.
+         * When `wordWrap` = "bounded", the lines will wrap at min(viewport width, wordWrapColumn).
          * Defaults to 80.
          */
         wordWrapColumn?: number;
@@ -1503,7 +1508,8 @@ declare module monaco.editor {
     export class InternalEditorMinimapOptions {
         readonly _internalEditorMinimapOptionsBrand: void;
         readonly enabled: boolean;
-        readonly renderText: boolean;
+        readonly renderCharacters: boolean;
+        readonly maxColumn: number;
     }
 
     export class EditorWrappingInfo {
