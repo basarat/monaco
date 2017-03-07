@@ -5147,6 +5147,7 @@ declare module monaco {
     export interface ICommandAction {
         id: string;
         title: string;
+        alias?: string;
         category?: string;
         iconClass?: string;
     }
