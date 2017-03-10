@@ -363,10 +363,9 @@ declare module monaco {
         static chord(firstPart: number, secondPart: number): number;
     }
 
-    export class Keybinding {
-        value: number;
+    export class SimpleKeybinding {
+        readonly value: number;
         constructor(keybinding: number);
-        equals(other: Keybinding): boolean;
         hasCtrlCmd(): boolean;
         hasShift(): boolean;
         hasAlt(): boolean;
@@ -392,7 +391,7 @@ declare module monaco {
         readonly altKey: boolean;
         readonly metaKey: boolean;
         readonly keyCode: KeyCode;
-        toKeybinding(): Keybinding;
+        toKeybinding(): SimpleKeybinding;
         equals(keybinding: number): boolean;
         preventDefault(): void;
         stopPropagation(): void;
@@ -1398,7 +1397,11 @@ declare module monaco.editor {
         /**
          * Enable word based suggestions. Defaults to 'true'
          */
-        wordBasedSuggestions?: boolean;
+        wordBasedSuggestions?: boolean | {
+            strings?: boolean;
+            comments?: boolean;
+            default?: boolean;
+        };
         /**
          * The font size for the suggest widget.
          * Defaults to the editor font size.
@@ -1620,7 +1623,11 @@ declare module monaco.editor {
         readonly acceptSuggestionOnCommitCharacter: boolean;
         readonly snippetSuggestions: 'top' | 'bottom' | 'inline' | 'none';
         readonly emptySelectionClipboard: boolean;
-        readonly wordBasedSuggestions: boolean;
+        readonly wordBasedSuggestions: boolean | {
+            strings?: boolean;
+            comments?: boolean;
+            default?: boolean;
+        };
         readonly suggestFontSize: number;
         readonly suggestLineHeight: number;
         readonly selectionHighlight: boolean;
