@@ -208,6 +208,19 @@ declare module monaco {
         run(snippet: CodeSnippet, overwriteBefore: number, overwriteAfter: number, stripPrefix?: boolean): void;
     }
 }
+
+/** Needed by other things */
+declare module monaco {
+  #include(vs/platform/keybinding/common/keybindingsRegistry): IKeybindings
+}
+
+/** Tired of fixing types. So just adding them as any */
+declare module monaco {
+  type IContext = any;
+  type ILocalizedString = any;
+  type IKeybindingRule2 = any;
+  type IKeybindingItem = any;
+}
 `;
 writeFile(recipeFile, readFile(recipeFile) + recipeAdditions);
 
@@ -500,26 +513,26 @@ export class StartFindReplaceAction extends EditorAction {
       }
     ]
   },
-  /**
-   * Improved completionModel sorting to get exact match snippets up.
-   * TODO: But only if there isn't a property match in the list.
-   */
-  {
-    filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
-    fixes: [
-      {
-        orig: `
-const score = CompletionModel._scoreByHighlight(item, word);
-                 `,
-        new: `
-let score = CompletionModel._scoreByHighlight(item, word);
-if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
-  score = 301010000 /* a number that came from debuggin scores */ * 10000;
-}
-`
-      }
-    ]
-  },
+//   /**
+//    * Improved completionModel sorting to get exact match snippets up.
+//    * TODO: But only if there isn't a property match in the list.
+//    */
+//   {
+//     filePath: './vscode/src/vs/editor/contrib/suggest/common/completionModel.ts',
+//     fixes: [
+//       {
+//         orig: `
+// const score = CompletionModel._scoreByHighlight(item, word);
+//                  `,
+//         new: `
+// let score = CompletionModel._scoreByHighlight(item, word);
+// if (item.suggestion.label == word && item.suggestion.type === 'snippet') {
+//   score = 301010000 /* a number that came from debuggin scores */ * 10000;
+// }
+// `
+//       }
+//   ]
+// },
   /**
    * Allow tokenizer to know the filePath
    */
