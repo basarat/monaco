@@ -32,7 +32,7 @@ release.sh
 npm publish
 ```
 
-> If `quick` (or `prepare`) fails you might leave submodules dirty and prepare will not run again. Run `./reset.sh && ./quick.sh` (or `prepare`) to get around that.
+> If `quick` (or `prepare`) fails you might leave submodules dirty and prepare will not run again. Run `./reset.sh && ./quick.sh` (or `./reset.sh && ./prepare.sh`) to get around that.
 
 > Note: once travis was setup to publish we don't need `npm publish` anymore.
 
