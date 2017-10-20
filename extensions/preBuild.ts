@@ -310,36 +310,44 @@ const fixesForFiles: IFixForFile[] = [
         // We want to use this for jumpy and tab jumps
         orig: `
 @editorAction
-class InsertLineBeforeAction extends HandlerEditorAction {
+export class InsertLineBeforeAction extends EditorAction {
 	constructor() {
 		super({
 			id: 'editor.action.insertLineBefore',
 			label: nls.localize('lines.insertBefore', "Insert Line Above"),
 			alias: 'Insert Line Above',
-			precondition: EditorContextKeys.Writable,
-			handlerId: Handler.LineInsertBefore,
+			precondition: EditorContextKeys.writable,
 			kbOpts: {
-				kbExpr: EditorContextKeys.TextFocus,
+				kbExpr: EditorContextKeys.textFocus,
 				primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.Enter
 			}
 		});
 	}
+
+	public run(accessor: ServicesAccessor, editor: ICommonCodeEditor): void {
+		editor.pushUndoStop();
+		editor.executeCommands(this.id, TypeOperations.lineInsertBefore(editor._getCursorConfiguration(), editor.getModel(), editor.getSelections()));
+	}
 }
 
 @editorAction
-class InsertLineAfterAction extends HandlerEditorAction {
+export class InsertLineAfterAction extends EditorAction {
 	constructor() {
 		super({
 			id: 'editor.action.insertLineAfter',
 			label: nls.localize('lines.insertAfter', "Insert Line Below"),
 			alias: 'Insert Line Below',
-			precondition: EditorContextKeys.Writable,
-			handlerId: Handler.LineInsertAfter,
+			precondition: EditorContextKeys.writable,
 			kbOpts: {
-				kbExpr: EditorContextKeys.TextFocus,
+				kbExpr: EditorContextKeys.textFocus,
 				primary: KeyMod.CtrlCmd | KeyCode.Enter
 			}
 		});
+	}
+
+	public run(accessor: ServicesAccessor, editor: ICommonCodeEditor): void {
+		editor.pushUndoStop();
+		editor.executeCommands(this.id, TypeOperations.lineInsertAfter(editor._getCursorConfiguration(), editor.getModel(), editor.getSelections()));
 	}
 }
                 `,
