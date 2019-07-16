@@ -1,6 +1,6 @@
 # Monaco
 
-[![BuildStatus](https://travis-ci.org/basarat/monaco.svg)](https://travis-ci.org/basarat/monaco)
+[![BuildStatus](https://travis-ci.org/basarat/monaco.svg)](https://travis-ci.org/basarat/monaco) [![Greenkeeper badge](https://badges.greenkeeper.io/basarat/monaco.svg)](https://greenkeeper.io/)
 
 A daily automated build of Microsoft Monaco.
 
