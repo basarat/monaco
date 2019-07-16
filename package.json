@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/basarat/monaco#readme",
   "devDependencies": {
-    "fs-extra": "^0.30.0",
+    "fs-extra": "^8.1.0",
     "glob": "^7.0.3",
-    "typescript": "2.3.0-dev.20170221"
+    "typescript": "3.5.3"
   }
 }
